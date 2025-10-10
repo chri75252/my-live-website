@@ -1,8 +1,0 @@
---- FILE: .\robots.txt ---
-User-agent: *
-Allow: /
-
-# Sitemap
-Sitemap: https://www.theblacksmithmarket.co.uk/sitemap.xml
-
---- END OF FILE ---
