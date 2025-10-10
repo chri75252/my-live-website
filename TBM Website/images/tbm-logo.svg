@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500">
+  <circle cx="250" cy="250" r="240" fill="white" stroke="black" stroke-width="10"/>
+  <circle cx="250" cy="250" r="215" fill="none" stroke="black" stroke-width="6"/>
+  
+  <!-- Text around the circle -->
+  <path id="textPath" d="M 250,35 a 215,215 0 1,1 -1,0" fill="none"/>
+  <text font-family="Arial Black, sans-serif" font-size="32" font-weight="bold">
+    <textPath href="#textPath" startOffset="3%">THE BLACKSMITH MARKET</textPath>
+  </text>
+  
+  <!-- Anvil Silhouette -->
+  <g transform="translate(120,140) scale(1.4)">
+    <path d="M 40,100 h 160 v 20 h -30 l -10,40 h -80 l -10,-40 h -30 z" fill="black"/>
+    <path d="M 100,60 h 40 v 40 h -40 z" fill="black"/>
+    <path d="M 90,50 h 60 v 10 h -60 z" fill="black"/>
+    <text x="120" y="90" font-family="Arial Black, sans-serif" font-size="24" font-weight="bold" fill="white" text-anchor="middle">TBM</text>
+  </g>
+</svg>

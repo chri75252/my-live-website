@@ -1,0 +1,504 @@
+--- FILE: .\partnership.html ---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Supplier Partnership | The Blacksmith Market - UK Wholesale Distributor</title>
+    
+    <!-- Meta Tags -->
+    <meta name="description" content="Partner with The Blacksmith Market, a premier UK wholesale distributor for branded goods. Expand your reach through our multi-channel retail network.">
+    <meta name="keywords" content="partner with UK distributor, sell to UK reseller, UK wholesale partnership, multi-channel UK reseller, branded goods distribution UK">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Supplier Partnership | The Blacksmith Market">
+    <meta property="og:description" content="Partner with The Blacksmith Market and expand your reach through our UK-based multi-channel retail network.">
+    <meta property="og:image" content="https://www.theblacksmithmarket.co.uk/images/og-image.jpg">
+    <meta property="og:url" content="https://www.theblacksmithmarket.co.uk/partnership.html">
+    <meta property="og:type" content="website">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Raleway:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <div class="logo-icon">TBM</div>
+                <span class="logo-text">The Blacksmith Market</span>
+            </div>
+            <nav class="nav-menu" id="nav-menu">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="about.html" class="nav-link">About Us</a>
+                <a href="products.html" class="nav-link">Products</a>
+                <a href="partnership.html" class="nav-link">Partnership</a>
+                <a href="testimonials.html" class="nav-link">Testimonials</a>
+                <a href="blog.html" class="nav-link">Blog</a>
+                <a href="contact.html" class="nav-link">Contact</a>
+            </nav>
+            <button class="mobile-menu-btn" id="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </button>
+            <div class="mobile-menu" id="mobile-menu">
+                <a href="index.html" class="mobile-nav-link">Home</a>
+                <a href="about.html" class="mobile-nav-link">About Us</a>
+                <a href="products.html" class="mobile-nav-link">Products</a>
+                <a href="partnership.html" class="mobile-nav-link">Partnership</a>
+                <a href="testimonials.html" class="mobile-nav-link">Testimonials</a>
+                <a href="blog.html" class="mobile-nav-link">Blog</a>
+                <a href="contact.html" class="mobile-nav-link">Contact</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1>Supplier Partnership</h1>
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Supplier Partnership</li>
+                </ol>
+            </nav>
+        </div>
+    </section>
+
+    <!-- Partnership Introduction -->
+    <section class="section section-dark">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Why Partner With Us</h2>
+                <div class="title-underline"></div>
+                <p class="section-description">The Blacksmith Market establishes long-term relationships with manufacturers who share our commitment to quality products and market success.</p>
+            </div>
+            <div class="partnership-intro">
+                <div class="partnership-image animate-on-scroll">
+                    <img src="https://images.unsplash.com/photo-1600880292089-90a7e086ee0c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Warehouse logistics operation">
+                </div>
+                <div class="partnership-text animate-on-scroll">
+                    <p>As a UK-registered wholesale distributor, we offer manufacturers a reliable and growth-oriented distribution channel for their branded products. Our multi-channel approach ensures your products reach the right customers through the most effective retail platforms.</p>
+                    <p>We value transparency, consistent communication, and mutual success in all our supplier relationships. Our team works closely with manufacturing partners to understand their goals and align our distribution strategy accordingly.</p>
+                    <p>Whether you're an established brand looking to expand your UK presence or an emerging manufacturer seeking a reliable distribution partner, The Blacksmith Market offers the expertise, channels, and commitment to help you succeed.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Order Profile -->
+    <section class="section section-light">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Our Order Profile</h2>
+                <div class="title-underline"></div>
+                <p class="section-description">What you can expect when you partner with The Blacksmith Market as your wholesale distributor.</p>
+            </div>
+            <div class="partnership-content">
+                <div class="order-profile animate-on-scroll">
+                    <div class="feature-list">
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <i class="fas fa-box-open"></i>
+                            </div>
+                            <div class="feature-text">
+                                <h4>Consistent Order Volume</h4>
+                                <p>We maintain regular replenishment orders with predictable increases during seasonal peaks. Our data-driven forecasting helps us plan inventory needs effectively.</p>
+                            </div>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <i class="fas fa-truck-loading"></i>
+                            </div>
+                            <div class="feature-text">
+                                <h4>Flexible MOQs</h4>
+                                <p>We work with various minimum order quantities to accommodate different supplier capabilities and product categories. Our order volumes typically increase as our partnership develops.</p>
+                            </div>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <i class="fas fa-file-invoice-dollar"></i>
+                            </div>
+                            <div class="feature-text">
+                                <h4>Prompt Payments</h4>
+                                <p>We maintain reliable payment terms with an established track record of timely settlements. We offer standard industry payment terms with options for long-term partners.</p>
+                            </div>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <i class="fas fa-chart-bar"></i>
+                            </div>
+                            <div class="feature-text">
+                                <h4>Performance Metrics</h4>
+                                <p>We provide regular sales data and performance feedback to help optimize your product offerings and marketing strategies for the UK market.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="partner-benefits animate-on-scroll">
+                    <h3>Partner Benefits</h3>
+                    <div class="benefits-card">
+                        <div class="benefit-item">
+                            <div class="benefit-icon">
+                                <i class="fas fa-check-circle"></i>
+                            </div>
+                            <div class="benefit-text">
+                                <p><span class="font-semibold">Market Expansion:</span> Access to multiple retail channels throughout the UK without additional sales and logistics effort.</p>
+                            </div>
+                        </div>
+                        <div class="benefit-item">
+                            <div class="benefit-icon">
+                                <i class="fas fa-check-circle"></i>
+                            </div>
+                            <div class="benefit-text">
+                                <p><span class="font-semibold">Sales Growth:</span> Consistent order volume with strategic increases during seasonal peaks and promotions.</p>
+                            </div>
+                        </div>
+                        <div class="benefit-item">
+                            <div class="benefit-icon">
+                                <i class="fas fa-check-circle"></i>
+                            </div>
+                            <div class="benefit-text">
+                                <p><span class="font-semibold">Product Feedback:</span> Valuable market insights and consumer feedback to help improve your offerings.</p>
+                            </div>
+                        </div>
+                        <div class="benefit-item">
+                            <div class="benefit-icon">
+                                <i class="fas fa-check-circle"></i>
+                            </div>
+                            <div class="benefit-text">
+                                <p><span class="font-semibold">Brand Protection:</span> We maintain your brand integrity across all sales channels and marketing materials.</p>
+                            </div>
+                        </div>
+                        <div class="benefit-item">
+                            <div class="benefit-icon">
+                                <i class="fas fa-check-circle"></i>
+                            </div>
+                            <div class="benefit-text">
+                                <p><span class="font-semibold">UK Market Expertise:</span> Guidance on product adaptation, compliance, and positioning for UK consumers.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="contact.html" class="link-arrow">Request supplier information <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Partnership Process -->
+    <section class="section section-dark">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Our Partnership Process</h2>
+                <div class="title-underline"></div>
+                <p class="section-description">How we establish and develop successful supplier relationships.</p>
+            </div>
+            <div class="process-timeline">
+                <div class="timeline-item animate-on-scroll">
+                    <div class="timeline-number">01</div>
+                    <div class="timeline-content">
+                        <h3>Initial Inquiry</h3>
+                        <p>Complete our supplier form to share information about your products, manufacturing capabilities, and distribution goals.</p>
+                    </div>
+                </div>
+                <div class="timeline-item animate-on-scroll">
+                    <div class="timeline-number">02</div>
+                    <div class="timeline-content">
+                        <h3>Product Evaluation</h3>
+                        <p>Our product team evaluates your offerings based on quality, market potential, pricing structure, and alignment with our product categories.</p>
+                    </div>
+                </div>
+                <div class="timeline-item animate-on-scroll">
+                    <div class="timeline-number">03</div>
+                    <div class="timeline-content">
+                        <h3>Partnership Discussion</h3>
+                        <p>We discuss terms, logistics, volumes, and growth strategies to ensure our partnership is mutually beneficial.</p>
+                    </div>
+                </div>
+                <div class="timeline-item animate-on-scroll">
+                    <div class="timeline-number">04</div>
+                    <div class="timeline-content">
+                        <h3>Initial Order</h3>
+                        <p>We place a starter order to introduce your products to our distribution channels and assess market response.</p>
+                    </div>
+                </div>
+                <div class="timeline-item animate-on-scroll">
+                    <div class="timeline-number">05</div>
+                    <div class="timeline-content">
+                        <h3>Performance Review</h3>
+                        <p>After the initial period, we review sales performance and consumer feedback to optimize our distribution strategy.</p>
+                    </div>
+                </div>
+                <div class="timeline-item animate-on-scroll">
+                    <div class="timeline-number">06</div>
+                    <div class="timeline-content">
+                        <h3>Growth Planning</h3>
+                        <p>For successful products, we develop a long-term growth plan with increased order volumes and expanded channel presence.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- What We Look For -->
+    <section class="section section-light">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">What We Look For in Partners</h2>
+                <div class="title-underline"></div>
+                <p class="section-description">The key criteria we consider when evaluating potential supplier partnerships.</p>
+            </div>
+            <div class="criteria-grid">
+                <div class="criteria-card animate-on-scroll">
+                    <div class="criteria-icon">
+                        <i class="fas fa-medal"></i>
+                    </div>
+                    <h3>Product Quality</h3>
+                    <p>High-quality products that meet or exceed UK consumer expectations and safety standards. We carefully evaluate durability, functionality, and overall quality.</p>
+                </div>
+                <div class="criteria-card animate-on-scroll">
+                    <div class="criteria-icon">
+                        <i class="fas fa-lightbulb"></i>
+                    </div>
+                    <h3>Innovation</h3>
+                    <p>Products that offer unique features, solve consumer problems, or bring fresh concepts to established categories. Innovation helps products stand out in competitive markets.</p>
+                </div>
+                <div class="criteria-card animate-on-scroll">
+                    <div class="criteria-icon">
+                        <i class="fas fa-pound-sign"></i>
+                    </div>
+                    <h3>Competitive Pricing</h3>
+                    <p>Price points that allow for competitive retail positioning while maintaining healthy margins for all parties in the distribution chain.</p>
+                </div>
+                <div class="criteria-card animate-on-scroll">
+                    <div class="criteria-icon">
+                        <i class="fas fa-box"></i>
+                    </div>
+                    <h3>Packaging Excellence</h3>
+                    <p>Retail-ready packaging that protects products, communicates value, and enhances shelf presence. Packaging should meet UK labeling requirements.</p>
+                </div>
+                <div class="criteria-card animate-on-scroll">
+                    <div class="criteria-icon">
+                        <i class="fas fa-sync-alt"></i>
+                    </div>
+                    <h3>Supply Reliability</h3>
+                    <p>Consistent manufacturing capacity with reliable lead times to ensure we can meet retailer demand without interruptions.</p>
+                </div>
+                <div class="criteria-card animate-on-scroll">
+                    <div class="criteria-icon">
+                        <i class="fas fa-expand-arrows-alt"></i>
+                    </div>
+                    <h3>Growth Potential</h3>
+                    <p>Capacity to scale production as demand increases and potentially expand product lines based on market success.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Preview -->
+    <section class="section section-dark">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">What Our Partners Say</h2>
+                <div class="title-underline"></div>
+                <p class="section-description">Hear from manufacturers who have grown their business through The Blacksmith Market.</p>
+            </div>
+            <div class="testimonials-grid testimonials-preview">
+                <div class="testimonial-card animate-on-scroll">
+                    <div class="testimonial-stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="testimonial-text">"The Blacksmith Market has become one of our most reliable partners. Their orders are consistent and their payments are always on time. They truly understand the market and provide valuable feedback on our products."</p>
+                    <div class="testimonial-author">
+                        <div class="author-image">
+                            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80" alt="James Wilson">
+                        </div>
+                        <div class="author-info">
+                            <h4 class="author-name">James Wilson</h4>
+                            <p class="author-title">Sales Director, HomePro Manufacturing</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card animate-on-scroll">
+                    <div class="testimonial-stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                    </div>
+                    <p class="testimonial-text">"We appreciate their professional approach to product selection. They provide valuable feedback that has helped us improve our offerings for the UK retail market. Our sales have grown steadily since partnering with them."</p>
+                    <div class="testimonial-author">
+                        <div class="author-image">
+                            <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80" alt="Lisa Zhang">
+                        </div>
+                        <div class="author-info">
+                            <h4 class="author-name">Lisa Zhang</h4>
+                            <p class="author-title">Export Manager, TechGadgets Co.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="section-footer text-center">
+                <a href="testimonials.html" class="btn btn-primary">See All Testimonials</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="section section-light">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Frequently Asked Questions</h2>
+                <div class="title-underline"></div>
+                <p class="section-description">Common questions from potential supplier partners.</p>
+            </div>
+            <div class="faq-container">
+                <div class="faq-item animate-on-scroll">
+                    <div class="faq-question">
+                        <h3>What retail channels do you distribute through?</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>We distribute products through multiple channels including online marketplaces (Amazon, eBay), specialty retailers, independent shops, and direct-to-consumer platforms. Our multi-channel approach allows us to place products where they're most likely to succeed based on category, price point, and target audience.</p>
+                    </div>
+                </div>
+                <div class="faq-item animate-on-scroll">
+                    <div class="faq-question">
+                        <h3>What are your typical order quantities?</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Our order quantities vary by product category, seasonality, and sales velocity. Initial orders typically range from 50-200 units per SKU for testing market response. For established products with proven sales, our regular orders can range from 200-1,000+ units depending on category and sales volume.</p>
+                    </div>
+                </div>
+                <div class="faq-item animate-on-scroll">
+                    <div class="faq-question">
+                        <h3>What are your payment terms?</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>We typically work with standard industry payment terms of Net 30 or Net 60 days. For new suppliers, we may start with a deposit and balance payment structure until the relationship is established. Long-term partners may qualify for more favorable terms as our relationship develops.</p>
+                    </div>
+                </div>
+                <div class="faq-item animate-on-scroll">
+                    <div class="faq-question">
+                        <h3>Do you require exclusive distribution rights?</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>While we don't require exclusivity for all products, we may discuss exclusive arrangements for select categories or channels where we can demonstrate significant market penetration and sales potential. These arrangements are negotiated on a case-by-case basis to ensure they benefit both parties.</p>
+                    </div>
+                </div>
+                <div class="faq-item animate-on-scroll">
+                    <div class="faq-question">
+                        <h3>How do you handle product returns and warranties?</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>We work with suppliers to establish clear return and warranty policies that meet UK consumer expectations while being fair to all parties. Typically, we handle minor returns through our own processes but coordinate with suppliers on larger warranty issues or product defects.</p>
+                    </div>
+                </div>
+                <div class="faq-item animate-on-scroll">
+                    <div class="faq-question">
+                        <h3>What documentation do you need from suppliers?</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>We require standard product documentation including detailed specifications, high-resolution images, safety certifications relevant to the UK market (e.g., CE/UKCA marking), user manuals, and any required compliance documentation. For international suppliers, we also need export documentation and proof of ethical manufacturing practices.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="section section-dark">
+        <div class="container">
+            <div class="cta-container animate-on-scroll">
+                <h2>Ready to grow your brand in the UK market?</h2>
+                <p>Complete our supplier inquiry form to start the conversation.</p>
+                <a href="contact.html" class="btn btn-primary">Contact Us Today</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container footer-container">
+            <div class="footer-branding">
+                <div class="logo">
+                    <div class="logo-icon">TBM</div>
+                    <span class="logo-text">The Blacksmith Market</span>
+                </div>
+                <p>Professional wholesale distribution of branded products throughout the UK and Europe.</p>
+            </div>
+            <div class="footer-links-container">
+                <h3 class="footer-heading">Quick Links</h3>
+                <ul class="footer-links">
+                    <li class="footer-item"><a href="index.html" class="footer-link">Home</a></li>
+                    <li class="footer-item"><a href="about.html" class="footer-link">About Us</a></li>
+                    <li class="footer-item"><a href="products.html" class="footer-link">Products</a></li>
+                    <li class="footer-item"><a href="partnership.html" class="footer-link">Partnership</a></li>
+                    <li class="footer-item"><a href="testimonials.html" class="footer-link">Testimonials</a></li>
+                    <li class="footer-item"><a href="blog.html" class="footer-link">Blog</a></li>
+                    <li class="footer-item"><a href="contact.html" class="footer-link">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-links-container">
+                <h3 class="footer-heading">Product Categories</h3>
+                <ul class="footer-links">
+                    <li class="footer-item"><a href="products.html#home" class="footer-link">Home & Kitchen</a></li>
+                    <li class="footer-item"><a href="products.html#beauty" class="footer-link">Beauty & Personal Care</a></li>
+                    <li class="footer-item"><a href="products.html#toys" class="footer-link">Toys & Games</a></li>
+                    <li class="footer-item"><a href="products.html#electronics" class="footer-link">Electronics</a></li>
+                    <li class="footer-item"><a href="products.html#health" class="footer-link">Health & Wellness</a></li>
+                </ul>
+            </div>
+            <div class="footer-links-container">
+                <h3 class="footer-heading">Legal</h3>
+                <ul class="footer-links">
+                    <li class="footer-item"><a href="privacy-policy.html" class="footer-link">Privacy Policy</a></li>
+                    <li class="footer-item"><a href="terms.html" class="footer-link">Terms of Service</a></li>
+                    <li class="footer-item"><a href="supplier-agreement.html" class="footer-link">Supplier Agreement</a></li>
+                </ul>
+                <div class="trust-badges">
+                    <div class="badge">UK VAT Registered Business</div>
+                    <div class="badge">GDPR Compliant</div>
+                    <div class="badge">SSL Secured</div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="container footer-bottom-container">
+                <p class="footer-copyright">© 2025 The Blacksmith Market Ltd. All rights reserved.</p>
+                <div class="social-links">
+                    <a href="#" class="social-link" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#" class="social-link" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="social-link" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/main.js"></script>
+</body>
+</html>
+
+--- END OF FILE ---
