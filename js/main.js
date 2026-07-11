@@ -1,5 +1,18 @@
 document.documentElement.classList.add('js');
 
+// Secondary pages still use the original HTML structure. Load the scoped
+// premium layer so they visually match the redesigned homepage without
+// affecting the homepage-specific site-v2.css system.
+const currentScript = document.currentScript;
+const assetPrefix = currentScript?.src.includes('/blog/') ? '../' : '';
+if (!document.querySelector('link[data-premium-legacy]')) {
+  const premiumStyles = document.createElement('link');
+  premiumStyles.rel = 'stylesheet';
+  premiumStyles.href = `${assetPrefix}css/premium-legacy.css`;
+  premiumStyles.dataset.premiumLegacy = 'true';
+  document.head.appendChild(premiumStyles);
+}
+
 const menuButton = document.getElementById('mobile-menu-btn');
 const mobileMenu = document.getElementById('mobile-menu');
 const header = document.querySelector('header');
