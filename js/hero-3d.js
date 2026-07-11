@@ -1,3 +1,6 @@
+const HERO_BUILD = '2026-07-11-v6';
+document.documentElement.dataset.heroBuild = HERO_BUILD;
+
 const hero = document.querySelector('.hero-scroll-sequence');
 const grid = hero?.querySelector('.hero-grid');
 const stage = document.getElementById('hero-stage');
