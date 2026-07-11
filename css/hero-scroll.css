@@ -2,8 +2,8 @@
 .hero-scroll-sequence{position:relative;isolation:isolate;overflow:clip}
 .hero-scroll-sequence.is-pinned{overflow:visible}
 .hero-scroll-sequence .hero-visual{overflow:visible}
-.hero-scroll-sequence .hero-stage{width:min(100%,720px);max-width:100%;margin-inline:auto;transform:none;will-change:transform}
-.hero-scroll-sequence .hero-stage:before{inset:8%;background:radial-gradient(circle at 50% 54%,rgba(231,171,59,.2),rgba(112,64,11,.055) 40%,transparent 68%);filter:blur(14px)}
+.hero-scroll-sequence .hero-stage{width:min(100%,720px);max-width:100%;margin-inline:auto;transform:none;isolation:isolate;will-change:transform}
+.hero-scroll-sequence .hero-stage:before{inset:8%;opacity:.8;background:radial-gradient(circle at 50% 54%,rgba(231,171,59,.24),rgba(112,64,11,.07) 40%,transparent 68%);filter:blur(15px);animation:hero-aura-pulse 5.2s ease-in-out infinite;will-change:transform,opacity}
 .hero-scroll-sequence .crest{display:none!important}
 .header-shell .brand-mark--actual{width:58px;height:58px;filter:none;background:#f7f1e4;border:1px solid rgba(230,185,85,.5);border-radius:50%;overflow:hidden;box-shadow:0 8px 26px rgba(0,0,0,.28)}
 .header-shell .brand-mark--actual img{width:100%;height:100%;object-fit:cover;filter:none}
@@ -26,14 +26,15 @@ html[data-hero-motion="paused"] .motion-toggle:before{background:#77766f;box-sha
 .webgl-ready .armillary-fallback{opacity:0;transition:opacity .35s ease}
 .webgl-fallback .armillary-fallback{opacity:1}
 .webgl-fallback .hero-motion-ui{display:none}
+@keyframes hero-aura-pulse{0%,100%{opacity:.7;transform:scale(.98)}50%{opacity:1;transform:scale(1.045)}}
 @keyframes fallback-orbit-a{to{transform:rotateX(68deg) rotateZ(360deg)}}
 @keyframes fallback-orbit-b{to{transform:rotateY(68deg) rotateZ(360deg)}}
 @keyframes fallback-orbit-c{to{transform:rotateX(55deg) rotateY(55deg) rotateZ(360deg)}}
 @keyframes fallback-orbit-d{to{transform:rotateX(-55deg) rotateY(55deg) rotateZ(360deg)}}
 @keyframes fallback-core-pulse{50%{transform:scale(1.06);box-shadow:0 0 90px rgba(230,185,85,.34)}}
 @keyframes motion-status-pulse{0%{box-shadow:0 0 0 0 rgba(230,185,85,.52)}70%{box-shadow:0 0 0 8px rgba(230,185,85,0)}100%{box-shadow:0 0 0 0 rgba(230,185,85,0)}}
-@media(max-width:1320px){.hero-scroll-sequence .hero-stage{width:min(100%,680px)}}
-@media(max-width:1180px){.header-shell .brand-mark--actual{width:52px;height:52px}.hero-motion-ui{right:1.2%;bottom:1.8%}.hero-scroll-sequence .hero-stage{width:min(100%,640px)}}
+@media(max-width:1320px){.hero-scroll-sequence .hero-stage{width:min(100%,690px)}}
+@media(max-width:1180px){.header-shell .brand-mark--actual{width:52px;height:52px}.hero-motion-ui{right:1.2%;bottom:1.8%}.hero-scroll-sequence .hero-stage{width:min(100%,650px)}}
 @media(max-width:899px){.hero-scroll-sequence{min-height:auto}.hero-scroll-sequence .hero-stage{width:min(100%,620px)}.hero-motion-ui{position:relative;right:auto;bottom:auto;justify-content:center;margin-top:-34px;margin-bottom:24px}.scroll-cue{display:none}.motion-toggle{background:rgba(7,9,7,.9)}}
 @media(max-width:560px){.header-shell .brand-mark--actual{width:46px;height:46px}.motion-toggle{font-size:.56rem}.hero-scroll-sequence .hero-stage{width:100%;margin-left:0}}
-@media(prefers-reduced-motion:reduce){.armillary-fallback .fallback-ring{animation-duration:26s}.armillary-fallback .fallback-core{animation-duration:6s}.scroll-cue{display:none}.hero-scroll-sequence .float-card{transition:none}.motion-toggle{display:inline-flex}html[data-hero-motion="running"] .motion-toggle:before{animation:none}}
+@media(prefers-reduced-motion:reduce){.hero-scroll-sequence .hero-stage:before{animation:none;opacity:.75}.armillary-fallback .fallback-ring{animation-duration:26s}.armillary-fallback .fallback-core{animation-duration:6s}.scroll-cue{display:none}.hero-scroll-sequence .float-card{transition:none}.motion-toggle{display:inline-flex}html[data-hero-motion="running"] .motion-toggle:before{animation:none}}
