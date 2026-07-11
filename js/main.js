@@ -1,14 +1,12 @@
 document.documentElement.classList.add('js');
 
-// Secondary pages still use the original HTML structure. Load the scoped
-// premium layer so they visually match the redesigned homepage without
-// affecting the homepage-specific site-v2.css system.
+// Load the focused secondary-page completion layer after the shared V2 styles.
+// Resolving from this script URL works for root pages and nested /blog/ pages.
 const currentScript = document.currentScript;
-const assetPrefix = currentScript?.src.includes('/blog/') ? '../' : '';
-if (!document.querySelector('link[data-premium-legacy]')) {
+if (currentScript && !document.querySelector('link[data-premium-legacy]')) {
   const premiumStyles = document.createElement('link');
   premiumStyles.rel = 'stylesheet';
-  premiumStyles.href = `${assetPrefix}css/premium-legacy.css`;
+  premiumStyles.href = new URL('../css/premium-legacy.css', currentScript.src).href;
   premiumStyles.dataset.premiumLegacy = 'true';
   document.head.appendChild(premiumStyles);
 }
