@@ -1,432 +1,201 @@
-import * as THREE from 'https://cdn.jsdelivr.net/npm/three@0.180.0/build/three.module.js';
+import * as THREE from 'https://esm.sh/three@0.180.0';
+import { EffectComposer } from 'https://esm.sh/three@0.180.0/examples/jsm/postprocessing/EffectComposer.js';
+import { RenderPass } from 'https://esm.sh/three@0.180.0/examples/jsm/postprocessing/RenderPass.js';
+import { UnrealBloomPass } from 'https://esm.sh/three@0.180.0/examples/jsm/postprocessing/UnrealBloomPass.js';
+import { OutputPass } from 'https://esm.sh/three@0.180.0/examples/jsm/postprocessing/OutputPass.js';
 
-const canvas = document.getElementById('hero-canvas');
-const stage = document.getElementById('hero-stage');
 const hero = document.querySelector('.hero-scroll-sequence');
-const heroGrid = hero?.querySelector('.hero-grid');
-const motionToggle = document.getElementById('motion-toggle');
-const scrollCue = document.querySelector('.scroll-cue');
+const grid = hero?.querySelector('.hero-grid');
+const stage = document.getElementById('hero-stage');
+const canvas = document.getElementById('hero-canvas');
+const toggle = document.getElementById('motion-toggle');
+const cue = document.querySelector('.scroll-cue');
 const cards = [...document.querySelectorAll('.hero-stage .float-card')];
-const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+const reduce = matchMedia('(prefers-reduced-motion: reduce)');
 
-if (canvas && stage && hero && heroGrid) {
-  initialiseHeroScene().catch(error => {
-    console.error('3D hero failed to initialise.', error);
-    document.documentElement.classList.remove('webgl-ready');
+if (!hero || !grid || !stage || !canvas) {
+  document.documentElement.classList.add('webgl-fallback');
+} else {
+  try { init(); } catch (error) {
+    console.error('3D hero failed.', error);
     document.documentElement.classList.add('webgl-fallback');
-  });
+  }
 }
 
-async function initialiseHeroScene() {
-  const renderer = new THREE.WebGLRenderer({
-    canvas,
-    alpha: true,
-    antialias: window.devicePixelRatio <= 1.5,
-    powerPreference: 'high-performance',
-    failIfMajorPerformanceCaveat: false
-  });
-
-  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.5));
+function init() {
+  const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: devicePixelRatio <= 1.5, powerPreference: 'high-performance' });
+  renderer.setClearColor(0, 0);
+  renderer.setPixelRatio(Math.min(devicePixelRatio || 1, 1.5));
   renderer.outputColorSpace = THREE.SRGBColorSpace;
   renderer.toneMapping = THREE.ACESFilmicToneMapping;
-  renderer.toneMappingExposure = 1.22;
+  renderer.toneMappingExposure = 1.08;
 
   const scene = new THREE.Scene();
-  const camera = new THREE.PerspectiveCamera(32, 1, 0.1, 100);
-  camera.position.set(0, 0.08, 7.25);
+  const camera = new THREE.PerspectiveCamera(34, 1, .1, 100);
+  const root = new THREE.Group();
+  scene.add(root);
 
-  const sculpture = new THREE.Group();
-  scene.add(sculpture);
+  const gold = new THREE.MeshPhysicalMaterial({ color: 0xe5ae47, emissive: 0x4b2200, emissiveIntensity: .38, metalness: 1, roughness: .2, clearcoat: 1 });
+  const bright = gold.clone();
+  bright.color.setHex(0xffcd70);
+  bright.emissive.setHex(0x7a3200);
+  bright.emissiveIntensity = .62;
+  const dark = new THREE.MeshPhysicalMaterial({ color: 0x080908, metalness: .9, roughness: .38, clearcoat: 1 });
+  const wireMat = new THREE.MeshBasicMaterial({ color: 0x8e641f, wireframe: true, transparent: true, opacity: .2 });
 
-  const gold = new THREE.MeshPhysicalMaterial({
-    color: 0xd59a32,
-    metalness: 1,
-    roughness: 0.18,
-    clearcoat: 1,
-    clearcoatRoughness: 0.08,
-    emissive: 0x241003,
-    emissiveIntensity: 0.4
-  });
+  const core = new THREE.Mesh(new THREE.SphereGeometry(1.22, 64, 64), dark);
+  const wire = new THREE.Mesh(new THREE.IcosahedronGeometry(1.42, 3), wireMat);
+  root.add(core, wire);
 
-  const darkMetal = new THREE.MeshPhysicalMaterial({
-    color: 0x111311,
-    metalness: 0.94,
-    roughness: 0.22,
-    clearcoat: 1,
-    clearcoatRoughness: 0.14,
-    transparent: true,
-    opacity: 1
-  });
-
-  const edgeGold = new THREE.MeshStandardMaterial({
-    color: 0xf0bf58,
-    metalness: 1,
-    roughness: 0.12,
-    emissive: 0x3a1903,
-    emissiveIntensity: 0.78
-  });
-
-  const core = new THREE.Mesh(new THREE.SphereGeometry(1.08, 64, 64), darkMetal);
-  sculpture.add(core);
-
-  const wireMaterial = new THREE.MeshBasicMaterial({
-    color: 0xa76816,
-    wireframe: true,
-    transparent: true,
-    opacity: 0.12
-  });
-  const innerWire = new THREE.Mesh(new THREE.IcosahedronGeometry(1.17, 2), wireMaterial);
-  sculpture.add(innerWire);
-
-  const ringData = [
-    [1.55, 0.025, 1.15, 0.00, 0.18, 0.23],
-    [1.73, 0.021, 0.08, 1.18, 0.63, -0.18],
-    [1.91, 0.018, 0.77, 0.54, 1.22, 0.15],
-    [2.10, 0.016, 1.42, 0.83, 0.10, -0.12],
-    [2.28, 0.014, 0.48, 1.38, 0.82, 0.10]
+  const ringSpecs = [
+    [1.46,.025,1.1,.06,.22,.34], [1.64,.022,.06,1.14,.58,-.27],
+    [1.82,.019,.72,.5,1.16,.23], [2,.017,1.34,.8,.1,-.18],
+    [2.14,.015,.42,1.3,.78,.16]
   ];
-
-  const revealOffsets = [
-    new THREE.Vector3(-0.48, 0.3, -0.22),
-    new THREE.Vector3(0.42, -0.24, 0.2),
-    new THREE.Vector3(-0.32, -0.4, -0.12),
-    new THREE.Vector3(0.36, 0.38, 0.08),
-    new THREE.Vector3(0.08, -0.08, -0.48)
-  ];
-
-  const rings = ringData.map(([radius, tube, x, y, z, spinSpeed], index) => {
-    const ring = new THREE.Mesh(
-      new THREE.TorusGeometry(radius, tube, 18, 220),
-      index < 2 ? edgeGold : gold
-    );
-    ring.userData.baseRotation = new THREE.Euler(x, y, z);
-    ring.userData.revealRotation = new THREE.Euler(
-      x + (index % 2 ? -0.34 : 0.32),
-      y + (index % 2 ? 0.28 : -0.3),
-      z + (index - 2) * 0.08
-    );
-    ring.userData.offset = revealOffsets[index];
-    ring.userData.spinSpeed = spinSpeed;
-    ring.userData.phaseOffset = index * 1.37;
-    sculpture.add(ring);
-    return ring;
+  const rings = ringSpecs.map(([r,t,x,y,z,s],i) => {
+    const mesh = new THREE.Mesh(new THREE.TorusGeometry(r,t,18,220), i < 2 ? bright : gold);
+    mesh.rotation.set(x,y,z);
+    mesh.userData = { base: new THREE.Euler(x,y,z), speed:s, phase:i*1.31 };
+    root.add(mesh);
+    return mesh;
   });
 
   const nodes = new THREE.Group();
-  const nodeGeometry = new THREE.SphereGeometry(0.055, 18, 18);
-  for (let index = 0; index < 18; index += 1) {
-    const node = new THREE.Mesh(nodeGeometry, index % 3 === 0 ? edgeGold : gold);
-    const angle = (index / 18) * Math.PI * 2;
-    const radius = 1.58 + (index % 4) * 0.17;
-    node.position.set(
-      Math.cos(angle) * radius,
-      Math.sin(angle * 1.7) * 0.72,
-      Math.sin(angle) * radius
-    );
-    node.scale.setScalar(index % 5 === 0 ? 1.55 : 1);
-    nodes.add(node);
+  const nodeGeo = new THREE.SphereGeometry(.055,16,16);
+  for (let i=0;i<18;i++) {
+    const n = new THREE.Mesh(nodeGeo, i%3===0 ? bright : gold);
+    const a=i/18*Math.PI*2, r=1.44+(i%4)*.16;
+    n.position.set(Math.cos(a)*r, Math.sin(a*1.7)*.63, Math.sin(a)*r);
+    n.userData.base=i%5===0?1.45:1;
+    n.userData.i=i;
+    nodes.add(n);
   }
-  sculpture.add(nodes);
+  root.add(nodes);
 
-  const particleCount = window.innerWidth < 700 ? 220 : 420;
-  const particlePositions = new Float32Array(particleCount * 3);
-  for (let index = 0; index < particleCount; index += 1) {
-    const radius = 2.2 + Math.random() * 1.7;
-    const theta = Math.random() * Math.PI * 2;
-    const phi = Math.acos(2 * Math.random() - 1);
-    particlePositions[index * 3] = radius * Math.sin(phi) * Math.cos(theta);
-    particlePositions[index * 3 + 1] = radius * Math.cos(phi) * 0.72;
-    particlePositions[index * 3 + 2] = radius * Math.sin(phi) * Math.sin(theta);
-  }
-  const particleGeometry = new THREE.BufferGeometry();
-  particleGeometry.setAttribute('position', new THREE.BufferAttribute(particlePositions, 3));
-  const particleMaterial = new THREE.PointsMaterial({
-    color: 0xeab553,
-    size: 0.019,
-    transparent: true,
-    opacity: 0.25,
-    sizeAttenuation: true
-  });
-  const particles = new THREE.Points(particleGeometry, particleMaterial);
-  sculpture.add(particles);
+  const particles = new THREE.Points(makeParticles(innerWidth<700?160:280), new THREE.PointsMaterial({ color:0xeab553,size:.017,transparent:true,opacity:.34,depthWrite:false }));
+  root.add(particles);
 
-  const pedestal = new THREE.Group();
-  pedestal.position.y = -2.15;
-  const pedestalParts = [
-    [1.52, 1.72, 0.18, -0.04],
-    [1.25, 1.52, 0.2, 0.13],
-    [0.98, 1.25, 0.18, 0.31]
+  const base = new THREE.Group();
+  const baseRing = new THREE.Mesh(new THREE.TorusGeometry(1.42,.1,16,160), new THREE.MeshBasicMaterial({color:0x55300a,transparent:true,opacity:.82}));
+  baseRing.rotation.x=Math.PI/2; baseRing.position.y=-2.06;
+  base.add(baseRing); root.add(base);
+
+  const comets = [
+    makeComet({rx:1.96,ry:.9,rz:1.58,speed:.94,tx:1.05,ty:.3,phase:0}),
+    makeComet({rx:1.76,ry:1.04,rz:1.78,speed:1.2,tx:.34,ty:1.04,phase:2.1}),
+    makeComet({rx:2.08,ry:.7,rz:1.4,speed:.86,tx:1.25,ty:.86,phase:4.2})
   ];
-  for (const [top, bottom, height, y] of pedestalParts) {
-    const part = new THREE.Mesh(new THREE.CylinderGeometry(top, bottom, height, 96), darkMetal);
-    part.position.y = y;
-    pedestal.add(part);
-    const trim = new THREE.Mesh(new THREE.TorusGeometry(top, 0.016, 12, 128), edgeGold);
-    trim.rotation.x = Math.PI / 2;
-    trim.position.y = y + height / 2;
-    pedestal.add(trim);
-  }
-  sculpture.add(pedestal);
+  comets.forEach(c=>root.add(c.group));
 
-  const hemisphere = new THREE.HemisphereLight(0xffe4aa, 0x101411, 1.02);
-  scene.add(hemisphere);
-  const keyLight = new THREE.DirectionalLight(0xffd27c, 3.8);
-  keyLight.position.set(4, 5, 6);
-  scene.add(keyLight);
-  const rimLight = new THREE.PointLight(0xc97916, 38, 14, 1.8);
-  rimLight.position.set(-3, 0.5, 3.5);
-  scene.add(rimLight);
-  const lowerGlow = new THREE.PointLight(0xf1a730, 30, 10, 2);
-  lowerGlow.position.set(0, -3, 2);
-  scene.add(lowerGlow);
+  scene.add(new THREE.HemisphereLight(0xf9ddb0,0x2d1607,1.05));
+  const key=new THREE.PointLight(0xffd99a,4.8,20,2); key.position.set(1.8,1.4,2.4); scene.add(key);
+  const rim=new THREE.PointLight(0xffad38,48,26,2); rim.position.set(-2.4,1.7,-1.3); scene.add(rim);
+  const low=new THREE.PointLight(0xea7d16,38,16,2); low.position.set(0,-3,2); scene.add(low);
 
-  const pointerTarget = new THREE.Vector2();
-  const pointerCurrent = new THREE.Vector2();
-  let targetProgress = 0;
-  let currentProgress = 0;
-  let motionEnabled = true;
-  let pageVisible = !document.hidden;
-  let stageVisible = true;
-  let rafId = 0;
-  let motionPhase = 0;
-  let lastFrameTime = performance.now();
+  const pointer=new THREE.Vector2(), pointerNow=new THREE.Vector2();
+  let target=0, progress=0, phase=0, last=performance.now(), visible=true, active=!document.hidden, boost=0, baseZ=7.7;
+  let enabled=true, composer=null, bloom=false;
+  try { enabled=localStorage.getItem('tbm-3d-motion-v2')!=='off'; } catch {}
 
-  try {
-    motionEnabled = localStorage.getItem('tbm-3d-motion-v2') !== 'off';
-  } catch {
-    motionEnabled = true;
-  }
-
-  const clamp = THREE.MathUtils.clamp;
-  const lerp = THREE.MathUtils.lerp;
-  const smooth = (min, max, value) => {
-    const x = clamp((value - min) / (max - min), 0, 1);
-    return x * x * (3 - 2 * x);
-  };
-
-  function setCardProgress(progress, scrollProgress) {
-    cards.forEach((card, index) => {
-      const local = smooth(0.22 + index * 0.1, 0.48 + index * 0.1, progress);
-      card.style.opacity = local.toFixed(3);
-      card.style.transform = `translate3d(0, ${(1 - local) * 20}px, 0) scale(${0.96 + local * 0.04})`;
-      card.style.pointerEvents = local > 0.9 ? 'auto' : 'none';
-    });
-    if (scrollCue) scrollCue.style.opacity = String(1 - smooth(0.08, 0.3, scrollProgress));
-  }
-
-  function applyScene(scrollProgress, phase) {
-    // Keep the sculpture at a premium, near-final scale from the first frame.
-    // Scrolling adds the last 30% of assembly, camera push and card choreography.
-    const progress = 0.7 + clamp(scrollProgress, 0, 1) * 0.3;
-    const accessibilityFactor = reducedMotion.matches ? 0.3 : 1;
-    const motionFactor = motionEnabled ? accessibilityFactor : 0;
-    const assembly = smooth(0.02, 0.78, progress);
-    const network = smooth(0.2, 0.82, progress);
-    const finish = smooth(0.62, 1, progress);
-
-    const breathe = Math.sin(phase * 0.72) * 0.024 * motionFactor;
-    const slowOrbit = phase * 0.105 * motionFactor;
-
-    sculpture.scale.setScalar(lerp(1.02, 1.1, assembly) + breathe);
-    sculpture.position.y = lerp(0.04, -0.08, assembly) + Math.sin(phase * 0.48) * 0.028 * motionFactor;
-    sculpture.position.z = lerp(0.02, -0.12, assembly);
-    sculpture.rotation.x = lerp(-0.18, -0.08, assembly) - pointerCurrent.y * 0.62 * accessibilityFactor + Math.sin(phase * 0.37) * 0.035 * motionFactor;
-    sculpture.rotation.y = lerp(-0.42, -0.2, assembly) + pointerCurrent.x * 0.82 * accessibilityFactor + slowOrbit;
-    sculpture.rotation.z = lerp(0.08, 0.02, assembly) + Math.sin(phase * 0.29) * 0.018 * motionFactor;
-
-    const corePulse = 1 + Math.sin(phase * 1.15) * 0.022 * motionFactor;
-    core.scale.setScalar(lerp(0.94, 1, smooth(0.02, 0.5, progress)) * corePulse);
-    core.rotation.y = -phase * 0.12 * motionFactor;
-    darkMetal.opacity = lerp(0.78, 1, smooth(0.02, 0.45, progress));
-
-    innerWire.scale.setScalar(lerp(0.94, 1.02, network));
-    innerWire.rotation.x = phase * 0.08 * motionFactor;
-    innerWire.rotation.y = -phase * 0.13 * motionFactor;
-    wireMaterial.opacity = lerp(0.1, 0.2, network);
-
-    rings.forEach((ring, index) => {
-      const ringProgress = smooth(0.02 + index * 0.045, 0.62 + index * 0.04, progress);
-      const revealAmount = 1 - ringProgress;
-      ring.position.copy(ring.userData.offset).multiplyScalar(revealAmount);
-      ring.scale.setScalar(lerp(0.96, 1, ringProgress));
-
-      const base = ring.userData.baseRotation;
-      const reveal = ring.userData.revealRotation;
-      const phaseOffset = ring.userData.phaseOffset;
-      const spin = phase * ring.userData.spinSpeed * motionFactor;
-      ring.rotation.x = lerp(reveal.x, base.x, ringProgress) + Math.sin(phase * (0.5 + index * 0.04) + phaseOffset) * 0.09 * motionFactor;
-      ring.rotation.y = lerp(reveal.y, base.y, ringProgress) + spin;
-      ring.rotation.z = lerp(reveal.z, base.z, ringProgress) + Math.cos(phase * (0.42 + index * 0.035) + phaseOffset) * 0.065 * motionFactor;
-    });
-
-    nodes.scale.setScalar(lerp(0.72, 1, network));
-    nodes.rotation.y = -phase * 0.22 * motionFactor + lerp(-0.3, 0, network);
-    nodes.rotation.x = Math.sin(phase * 0.31) * 0.08 * motionFactor;
-
-    particleMaterial.opacity = lerp(0.22, 0.68, network);
-    particles.rotation.y = phase * 0.035 * motionFactor + lerp(-0.18, 0.16, finish);
-    particles.rotation.x = Math.sin(phase * 0.17) * 0.07 * motionFactor + lerp(0.12, 0, finish);
-
-    pedestal.scale.setScalar(lerp(0.96, 1.02, finish));
-    pedestal.position.y = lerp(-2.28, -2.15, finish);
-
-    camera.position.z = lerp(7.25, 6.65, assembly);
-    camera.position.y = lerp(0.14, 0.07, assembly);
-
-    const lightPulse = Math.sin(phase * 1.05) * 3.5 * motionFactor;
-    keyLight.intensity = lerp(3.6, 4.5, assembly) + lightPulse * 0.12;
-    rimLight.intensity = lerp(34, 50, network) + lightPulse;
-    lowerGlow.intensity = lerp(26, 42, finish) + lightPulse * 0.7;
-    hemisphere.intensity = lerp(0.95, 1.22, assembly);
-
-    setCardProgress(progress, scrollProgress);
-  }
-
-  function updatePointer(event) {
-    if (!motionEnabled) return;
-    const rect = stage.getBoundingClientRect();
-    pointerTarget.x = ((event.clientX - rect.left) / rect.width - 0.5) * 0.34;
-    pointerTarget.y = ((event.clientY - rect.top) / rect.height - 0.5) * 0.22;
-  }
-
-  function resetPointer() {
-    pointerTarget.set(0, 0);
-  }
-
-  if (window.matchMedia('(pointer: fine)').matches) {
-    stage.addEventListener('pointermove', updatePointer, { passive: true });
-    stage.addEventListener('pointerleave', resetPointer);
-  }
-
-  function updateMotionButton() {
-    if (!motionToggle) return;
-    motionToggle.textContent = motionEnabled ? 'Pause ambient motion' : 'Resume ambient motion';
-    motionToggle.setAttribute('aria-pressed', String(motionEnabled));
-    document.documentElement.dataset.heroMotion = motionEnabled ? 'running' : 'paused';
-  }
-
-  motionToggle?.addEventListener('click', () => {
-    motionEnabled = !motionEnabled;
-    try {
-      localStorage.setItem('tbm-3d-motion-v2', motionEnabled ? 'on' : 'off');
-    } catch {
-      // Storage may be unavailable in strict privacy modes; animation still works.
+  function makeParticles(count){
+    const a=new Float32Array(count*3);
+    for(let i=0;i<count;i++){
+      const r=1.9+Math.random()*1.25, t=Math.random()*Math.PI*2, p=Math.acos(2*Math.random()-1);
+      a[i*3]=r*Math.sin(p)*Math.cos(t); a[i*3+1]=r*Math.cos(p)*.62; a[i*3+2]=r*Math.sin(p)*Math.sin(t);
     }
-    if (!motionEnabled) resetPointer();
-    updateMotionButton();
-  });
-  updateMotionButton();
-
-  function installGsapScroll() {
-    const gsap = window.gsap;
-    const ScrollTrigger = window.ScrollTrigger;
-    if (!gsap || !ScrollTrigger) return false;
-
-    gsap.registerPlugin(ScrollTrigger);
-    const media = gsap.matchMedia();
-
-    media.add('(min-width: 900px)', () => {
-      hero.classList.add('is-pinned');
-      const trigger = ScrollTrigger.create({
-        trigger: hero,
-        start: 'top top',
-        end: () => `+=${Math.max(window.innerHeight * 1.08, 820)}`,
-        pin: heroGrid,
-        pinSpacing: true,
-        scrub: 0.55,
-        anticipatePin: 1,
-        invalidateOnRefresh: true,
-        onUpdate(self) {
-          targetProgress = self.progress;
-        }
-      });
-      return () => {
-        trigger.kill();
-        hero.classList.remove('is-pinned');
-      };
-    });
-
-    media.add('(max-width: 899px)', () => {
-      const trigger = ScrollTrigger.create({
-        trigger: hero,
-        start: 'top 88%',
-        end: 'bottom 18%',
-        scrub: 0.4,
-        invalidateOnRefresh: true,
-        onUpdate(self) {
-          targetProgress = self.progress;
-        }
-      });
-      return () => trigger.kill();
-    });
-
-    return true;
+    const g=new THREE.BufferGeometry(); g.setAttribute('position',new THREE.BufferAttribute(a,3)); return g;
   }
 
-  function installNativeFallback() {
-    const update = () => {
-      const rect = hero.getBoundingClientRect();
-      const travel = Math.max(window.innerHeight * 0.9, 640);
-      targetProgress = clamp((-rect.top + window.innerHeight * 0.04) / travel, 0, 1);
-    };
-    update();
-    window.addEventListener('scroll', update, { passive: true });
-    window.addEventListener('resize', update, { passive: true });
+  function makeComet(c){
+    const group=new THREE.Group();
+    const head=new THREE.Mesh(new THREE.SphereGeometry(.085,16,16),new THREE.MeshBasicMaterial({color:0xffd477,toneMapped:false}));
+    const count=12, arr=new Float32Array(count*3), history=Array.from({length:count},()=>new THREE.Vector3());
+    const geo=new THREE.BufferGeometry(); geo.setAttribute('position',new THREE.BufferAttribute(arr,3));
+    const trail=new THREE.Points(geo,new THREE.PointsMaterial({color:0xffb84c,size:.05,transparent:true,opacity:.62,depthWrite:false,blending:THREE.AdditiveBlending}));
+    group.add(head,trail); return {...c,group,head,trail,geo,history};
   }
 
-  const installScrollDriver = () => {
-    if (!installGsapScroll()) installNativeFallback();
-  };
-  if (document.readyState === 'complete') installScrollDriver();
-  else window.addEventListener('load', installScrollDriver, { once: true });
-
-  const resize = () => {
-    const { width, height } = stage.getBoundingClientRect();
-    if (!width || !height) return;
-    renderer.setSize(width, height, false);
-    camera.aspect = width / height;
-    camera.updateProjectionMatrix();
-  };
-  const resizeObserver = new ResizeObserver(resize);
-  resizeObserver.observe(stage);
-  resize();
-
-  const visibilityObserver = new IntersectionObserver(entries => {
-    stageVisible = entries[0]?.isIntersecting ?? true;
-  }, { threshold: 0.01 });
-  visibilityObserver.observe(stage);
-
-  document.addEventListener('visibilitychange', () => {
-    pageVisible = !document.hidden;
-    lastFrameTime = performance.now();
-  });
-
-  canvas.addEventListener('webglcontextlost', event => {
-    event.preventDefault();
-    cancelAnimationFrame(rafId);
-    document.documentElement.classList.remove('webgl-ready');
-    document.documentElement.classList.add('webgl-fallback');
-  });
-
-  function frame(time) {
-    rafId = requestAnimationFrame(frame);
-    const deltaSeconds = Math.min(Math.max((time - lastFrameTime) / 1000, 0), 0.05);
-    lastFrameTime = time;
-    if (!pageVisible || !stageVisible) return;
-
-    if (motionEnabled) motionPhase += deltaSeconds;
-    const easing = reducedMotion.matches ? 0.16 : 0.1;
-    currentProgress += (targetProgress - currentProgress) * easing;
-    pointerCurrent.lerp(pointerTarget, reducedMotion.matches ? 0.12 : 0.055);
-    applyScene(currentProgress, motionPhase);
-    renderer.render(scene, camera);
+  function cometPos(c,a){
+    return new THREE.Vector3(Math.cos(a)*c.rx,Math.sin(a*1.26+c.phase*.5)*c.ry,Math.sin(a)*c.rz).applyEuler(new THREE.Euler(c.tx,c.ty,0));
   }
 
-  reducedMotion.addEventListener?.('change', updateMotionButton);
+  function fit(){
+    const box=new THREE.Box3().setFromObject(root).expandByScalar(.2), sphere=new THREE.Sphere(); box.getBoundingSphere(sphere);
+    const fy=THREE.MathUtils.degToRad(camera.fov), fx=2*Math.atan(Math.tan(fy/2)*camera.aspect);
+    baseZ=THREE.MathUtils.clamp((sphere.radius*1.13)/Math.sin(Math.min(fx,fy)/2),6.9,8.25);
+    camera.position.set(0,.08,baseZ); camera.lookAt(0,0,0); camera.updateProjectionMatrix();
+  }
 
-  document.documentElement.classList.add('webgl-ready');
-  document.documentElement.classList.remove('webgl-fallback');
-  applyScene(0, motionPhase);
-  renderer.render(scene, camera);
-  rafId = requestAnimationFrame(frame);
+  function setupBloom(w,h){
+    const should=w>=900&&!reduce.matches;
+    if(!should){ composer?.dispose?.(); composer=null; bloom=false; return; }
+    if(!composer){
+      try{
+        composer=new EffectComposer(renderer); composer.setPixelRatio(Math.min(devicePixelRatio||1,1.25));
+        composer.addPass(new RenderPass(scene,camera));
+        const pass=new UnrealBloomPass(new THREE.Vector2(w,h),.45,.25,.8); pass.threshold=.8; pass.strength=.45; pass.radius=.25;
+        composer.addPass(pass); composer.addPass(new OutputPass()); bloom=true;
+      }catch{ composer=null; bloom=false; }
+    }
+    composer?.setSize(w,h);
+  }
+
+  function cardsAt(p){
+    cards.forEach((card,i)=>{ const v=smooth(.18+i*.08,.42+i*.08,p); card.style.opacity=v; card.style.transform=`translate3d(0,${(1-v)*18}px,0) scale(${.965+v*.035})`; });
+    if(cue) cue.style.opacity=1-smooth(.08,.28,target);
+  }
+
+  function smooth(a,b,v){ const x=THREE.MathUtils.clamp((v-a)/(b-a),0,1); return x*x*(3-2*x); }
+
+  function renderScene(){
+    const p=.74+progress*.26, motion=enabled?(reduce.matches?.45:1):0, assemble=smooth(.05,.8,p), network=smooth(.22,.82,p);
+    root.scale.setScalar(.98+assemble*.04+Math.sin(phase*.92)*.016*motion);
+    root.rotation.set(-.15+assemble*.08-pointerNow.y*.5*motion,-.34+assemble*.18+pointerNow.x*.72*motion+phase*.14*motion,.04+Math.sin(phase*.31)*.014*motion);
+    root.position.y=-.02+Math.sin(phase*.52)*.02*motion;
+    core.scale.setScalar(1+Math.sin(phase*1.35)*.02*motion); core.rotation.y=-phase*.14*motion;
+    wire.rotation.set(phase*.1*motion,-phase*.16*motion,0); wireMat.opacity=.12+network*.12;
+    rings.forEach((r,i)=>{ const b=r.userData.base, q=r.userData.phase; r.rotation.x=b.x+Math.sin(phase*(.62+i*.05)+q)*.07*motion; r.rotation.y=b.y+phase*r.userData.speed*(1+boost*.15)*motion; r.rotation.z=b.z+Math.cos(phase*(.5+i*.035)+q)*.052*motion; });
+    nodes.rotation.set(Math.sin(phase*.35)*.06*motion,-phase*.26*motion,0);
+    nodes.children.forEach(n=>{ const w=(Math.sin(phase*1.8+n.userData.i*.52)+1)/2; n.scale.setScalar(n.userData.base*(1+w*.22*motion)); });
+    particles.rotation.set(Math.sin(phase*.2)*.05*motion,phase*.05*motion,0);
+    comets.forEach(c=>{ const pos=cometPos(c,phase*c.speed*(1+boost*.25)+c.phase); c.head.position.copy(pos); c.history.pop(); c.history.unshift(pos.clone()); const a=c.geo.attributes.position.array; c.history.forEach((v,i)=>{a[i*3]=v.x;a[i*3+1]=v.y;a[i*3+2]=v.z;}); c.geo.attributes.position.needsUpdate=true; });
+    camera.position.z=baseZ-.16*assemble; camera.lookAt(0,0,0);
+    const pulse=Math.sin(phase*1.2)*3*motion; key.intensity=4.4+pulse*.12; rim.intensity=46+pulse; low.intensity=36+pulse*.7;
+    cardsAt(p);
+  }
+
+  function updateButton(){ if(!toggle)return; toggle.textContent=enabled?'Pause ambient motion':'Resume ambient motion'; toggle.setAttribute('aria-pressed',String(enabled)); document.documentElement.dataset.heroMotion=enabled?'running':'paused'; }
+  toggle?.addEventListener('click',()=>{ enabled=!enabled; try{localStorage.setItem('tbm-3d-motion-v2',enabled?'on':'off')}catch{} if(!enabled)pointer.set(0,0); updateButton(); });
+  updateButton();
+
+  if(matchMedia('(pointer:fine)').matches){
+    stage.addEventListener('pointermove',e=>{ if(!enabled)return; const r=stage.getBoundingClientRect(); pointer.set(((e.clientX-r.left)/r.width-.5)*.28,((e.clientY-r.top)/r.height-.5)*.18); },{passive:true});
+    stage.addEventListener('pointerleave',()=>pointer.set(0,0));
+  }
+
+  function installScroll(){
+    if(window.gsap&&window.ScrollTrigger){
+      gsap.registerPlugin(ScrollTrigger);
+      gsap.matchMedia().add('(min-width:900px)',()=>{ hero.classList.add('is-pinned'); const t=ScrollTrigger.create({trigger:hero,start:'top top',end:()=>`+=${Math.max(innerHeight,760)}`,pin:grid,pinSpacing:true,scrub:.45,onUpdate:s=>{target=s.progress;boost=THREE.MathUtils.clamp(Math.abs(s.getVelocity())/2800,0,1)}}); return()=>{t.kill();hero.classList.remove('is-pinned')}; });
+      gsap.matchMedia().add('(max-width:899px)',()=>{ const t=ScrollTrigger.create({trigger:hero,start:'top 88%',end:'bottom 18%',scrub:.35,onUpdate:s=>{target=s.progress;boost=THREE.MathUtils.clamp(Math.abs(s.getVelocity())/3600,0,.65)}}); return()=>t.kill(); });
+    }else{
+      const u=()=>{ const r=hero.getBoundingClientRect(); target=THREE.MathUtils.clamp((-r.top+innerHeight*.06)/Math.max(innerHeight*.86,620),0,1); }; u(); addEventListener('scroll',u,{passive:true}); addEventListener('resize',u,{passive:true});
+    }
+  }
+  if(document.readyState==='complete')installScroll(); else addEventListener('load',installScroll,{once:true});
+
+  const resize=()=>{ const {width,height}=stage.getBoundingClientRect(); if(!width||!height)return; renderer.setSize(width,height,false); camera.aspect=width/height; fit(); setupBloom(width,height); };
+  new ResizeObserver(resize).observe(stage); resize();
+  new IntersectionObserver(e=>visible=e[0]?.isIntersecting??true,{threshold:.01}).observe(stage);
+  document.addEventListener('visibilitychange',()=>{active=!document.hidden;last=performance.now()});
+  canvas.addEventListener('webglcontextlost',e=>{e.preventDefault();document.documentElement.classList.remove('webgl-ready');document.documentElement.classList.add('webgl-fallback')});
+
+  function frame(now){
+    requestAnimationFrame(frame); const dt=Math.min(Math.max((now-last)/1000,0),.05); last=now; if(!active||!visible)return;
+    if(enabled)phase+=dt*(reduce.matches?.45:1); boost=Math.max(0,boost-dt*1.35); progress+=(target-progress)*(reduce.matches?.12:.09); pointerNow.lerp(pointer,reduce.matches?.1:.05);
+    renderScene(); bloom&&composer?composer.render(dt):renderer.render(scene,camera);
+  }
+  reduce.addEventListener?.('change',resize);
+  document.documentElement.classList.add('webgl-ready'); document.documentElement.classList.remove('webgl-fallback');
+  renderScene(); renderer.render(scene,camera); requestAnimationFrame(frame);
 }
