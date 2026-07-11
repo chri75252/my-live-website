@@ -29,11 +29,11 @@ async function initialiseHeroScene() {
   renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.5));
   renderer.outputColorSpace = THREE.SRGBColorSpace;
   renderer.toneMapping = THREE.ACESFilmicToneMapping;
-  renderer.toneMappingExposure = 1.18;
+  renderer.toneMappingExposure = 1.22;
 
   const scene = new THREE.Scene();
   const camera = new THREE.PerspectiveCamera(32, 1, 0.1, 100);
-  camera.position.set(0, 0.05, 8.8);
+  camera.position.set(0, 0.08, 7.25);
 
   const sculpture = new THREE.Group();
   scene.add(sculpture);
@@ -41,17 +41,17 @@ async function initialiseHeroScene() {
   const gold = new THREE.MeshPhysicalMaterial({
     color: 0xd59a32,
     metalness: 1,
-    roughness: 0.19,
+    roughness: 0.18,
     clearcoat: 1,
     clearcoatRoughness: 0.08,
     emissive: 0x241003,
-    emissiveIntensity: 0.38
+    emissiveIntensity: 0.4
   });
 
   const darkMetal = new THREE.MeshPhysicalMaterial({
     color: 0x111311,
     metalness: 0.94,
-    roughness: 0.23,
+    roughness: 0.22,
     clearcoat: 1,
     clearcoatRoughness: 0.14,
     transparent: true,
@@ -61,9 +61,9 @@ async function initialiseHeroScene() {
   const edgeGold = new THREE.MeshStandardMaterial({
     color: 0xf0bf58,
     metalness: 1,
-    roughness: 0.13,
+    roughness: 0.12,
     emissive: 0x3a1903,
-    emissiveIntensity: 0.75
+    emissiveIntensity: 0.78
   });
 
   const core = new THREE.Mesh(new THREE.SphereGeometry(1.08, 64, 64), darkMetal);
@@ -73,39 +73,41 @@ async function initialiseHeroScene() {
     color: 0xa76816,
     wireframe: true,
     transparent: true,
-    opacity: 0
+    opacity: 0.12
   });
   const innerWire = new THREE.Mesh(new THREE.IcosahedronGeometry(1.17, 2), wireMaterial);
   sculpture.add(innerWire);
 
   const ringData = [
-    [1.55, 0.025, 1.15, 0.00, 0.18],
-    [1.73, 0.021, 0.08, 1.18, 0.63],
-    [1.91, 0.018, 0.77, 0.54, 1.22],
-    [2.10, 0.016, 1.42, 0.83, 0.10],
-    [2.28, 0.014, 0.48, 1.38, 0.82]
+    [1.55, 0.025, 1.15, 0.00, 0.18, 0.23],
+    [1.73, 0.021, 0.08, 1.18, 0.63, -0.18],
+    [1.91, 0.018, 0.77, 0.54, 1.22, 0.15],
+    [2.10, 0.016, 1.42, 0.83, 0.10, -0.12],
+    [2.28, 0.014, 0.48, 1.38, 0.82, 0.10]
   ];
 
-  const explodedOffsets = [
-    new THREE.Vector3(-1.35, 0.78, -0.55),
-    new THREE.Vector3(1.1, -0.65, 0.45),
-    new THREE.Vector3(-0.75, -1.2, -0.25),
-    new THREE.Vector3(0.9, 1.1, 0.15),
-    new THREE.Vector3(0.15, -0.15, -1.45)
+  const revealOffsets = [
+    new THREE.Vector3(-0.48, 0.3, -0.22),
+    new THREE.Vector3(0.42, -0.24, 0.2),
+    new THREE.Vector3(-0.32, -0.4, -0.12),
+    new THREE.Vector3(0.36, 0.38, 0.08),
+    new THREE.Vector3(0.08, -0.08, -0.48)
   ];
 
-  const rings = ringData.map(([radius, tube, x, y, z], index) => {
+  const rings = ringData.map(([radius, tube, x, y, z, spinSpeed], index) => {
     const ring = new THREE.Mesh(
       new THREE.TorusGeometry(radius, tube, 18, 220),
       index < 2 ? edgeGold : gold
     );
     ring.userData.baseRotation = new THREE.Euler(x, y, z);
-    ring.userData.explodedRotation = new THREE.Euler(
-      x + (index % 2 ? -1.15 : 1.05),
-      y + (index % 2 ? 0.78 : -0.92),
-      z + (index - 2) * 0.22
+    ring.userData.revealRotation = new THREE.Euler(
+      x + (index % 2 ? -0.34 : 0.32),
+      y + (index % 2 ? 0.28 : -0.3),
+      z + (index - 2) * 0.08
     );
-    ring.userData.offset = explodedOffsets[index];
+    ring.userData.offset = revealOffsets[index];
+    ring.userData.spinSpeed = spinSpeed;
+    ring.userData.phaseOffset = index * 1.37;
     sculpture.add(ring);
     return ring;
   });
@@ -140,9 +142,9 @@ async function initialiseHeroScene() {
   particleGeometry.setAttribute('position', new THREE.BufferAttribute(particlePositions, 3));
   const particleMaterial = new THREE.PointsMaterial({
     color: 0xeab553,
-    size: 0.018,
+    size: 0.019,
     transparent: true,
-    opacity: 0,
+    opacity: 0.25,
     sizeAttenuation: true
   });
   const particles = new THREE.Points(particleGeometry, particleMaterial);
@@ -166,15 +168,15 @@ async function initialiseHeroScene() {
   }
   sculpture.add(pedestal);
 
-  const hemisphere = new THREE.HemisphereLight(0xffe4aa, 0x101411, 0.55);
+  const hemisphere = new THREE.HemisphereLight(0xffe4aa, 0x101411, 1.02);
   scene.add(hemisphere);
-  const keyLight = new THREE.DirectionalLight(0xffd27c, 1.4);
+  const keyLight = new THREE.DirectionalLight(0xffd27c, 3.8);
   keyLight.position.set(4, 5, 6);
   scene.add(keyLight);
-  const rimLight = new THREE.PointLight(0xc97916, 12, 14, 1.8);
+  const rimLight = new THREE.PointLight(0xc97916, 38, 14, 1.8);
   rimLight.position.set(-3, 0.5, 3.5);
   scene.add(rimLight);
-  const lowerGlow = new THREE.PointLight(0xf1a730, 8, 10, 2);
+  const lowerGlow = new THREE.PointLight(0xf1a730, 30, 10, 2);
   lowerGlow.position.set(0, -3, 2);
   scene.add(lowerGlow);
 
@@ -182,16 +184,18 @@ async function initialiseHeroScene() {
   const pointerCurrent = new THREE.Vector2();
   let targetProgress = 0;
   let currentProgress = 0;
-  let lastScrollAt = performance.now();
   let motionEnabled = true;
-  try {
-    motionEnabled = localStorage.getItem('tbm-3d-motion') !== 'off';
-  } catch {
-    motionEnabled = true;
-  }
   let pageVisible = !document.hidden;
   let stageVisible = true;
   let rafId = 0;
+  let motionPhase = 0;
+  let lastFrameTime = performance.now();
+
+  try {
+    motionEnabled = localStorage.getItem('tbm-3d-motion-v2') !== 'off';
+  } catch {
+    motionEnabled = true;
+  }
 
   const clamp = THREE.MathUtils.clamp;
   const lerp = THREE.MathUtils.lerp;
@@ -200,66 +204,86 @@ async function initialiseHeroScene() {
     return x * x * (3 - 2 * x);
   };
 
-  function setCardProgress(progress) {
+  function setCardProgress(progress, scrollProgress) {
     cards.forEach((card, index) => {
-      const local = smooth(0.48 + index * 0.085, 0.68 + index * 0.085, progress);
+      const local = smooth(0.22 + index * 0.1, 0.48 + index * 0.1, progress);
       card.style.opacity = local.toFixed(3);
-      card.style.transform = `translate3d(0, ${(1 - local) * 22}px, 0) scale(${0.96 + local * 0.04})`;
+      card.style.transform = `translate3d(0, ${(1 - local) * 20}px, 0) scale(${0.96 + local * 0.04})`;
       card.style.pointerEvents = local > 0.9 ? 'auto' : 'none';
     });
-    if (scrollCue) scrollCue.style.opacity = String(1 - smooth(0.06, 0.24, progress));
+    if (scrollCue) scrollCue.style.opacity = String(1 - smooth(0.08, 0.3, scrollProgress));
   }
 
-  function applyScene(progress, time) {
-    const intensity = reducedMotion.matches ? 0.38 : 1;
-    const assembly = smooth(0.03, 0.68, progress);
-    const network = smooth(0.36, 0.86, progress);
-    const finish = smooth(0.72, 1, progress);
-    const idleAllowed = motionEnabled && !reducedMotion.matches && progress > 0.975 && performance.now() - lastScrollAt > 180;
-    const idle = idleAllowed ? time * 0.000055 : 0;
+  function applyScene(scrollProgress, phase) {
+    // Keep the sculpture at a premium, near-final scale from the first frame.
+    // Scrolling adds the last 30% of assembly, camera push and card choreography.
+    const progress = 0.7 + clamp(scrollProgress, 0, 1) * 0.3;
+    const accessibilityFactor = reducedMotion.matches ? 0.3 : 1;
+    const motionFactor = motionEnabled ? accessibilityFactor : 0;
+    const assembly = smooth(0.02, 0.78, progress);
+    const network = smooth(0.2, 0.82, progress);
+    const finish = smooth(0.62, 1, progress);
 
-    sculpture.scale.setScalar(lerp(0.72, 1, assembly));
-    sculpture.position.y = lerp(0.5, -0.04, assembly) + (idleAllowed ? Math.sin(time * 0.00045) * 0.025 : 0);
-    sculpture.position.z = lerp(-0.7, 0, assembly);
-    sculpture.rotation.x = lerp(-0.52, -0.08, assembly) - pointerCurrent.y * 0.55 * intensity;
-    sculpture.rotation.y = lerp(-1.15, -0.22, assembly) + pointerCurrent.x * 0.72 * intensity + idle;
-    sculpture.rotation.z = lerp(0.22, 0.02, assembly);
+    const breathe = Math.sin(phase * 0.72) * 0.024 * motionFactor;
+    const slowOrbit = phase * 0.105 * motionFactor;
 
-    core.scale.setScalar(lerp(0.46, 1, smooth(0.12, 0.52, progress)));
-    darkMetal.opacity = lerp(0.35, 1, smooth(0.08, 0.46, progress));
-    innerWire.scale.setScalar(lerp(0.72, 1, network));
-    wireMaterial.opacity = lerp(0, 0.18, network);
+    sculpture.scale.setScalar(lerp(1.02, 1.1, assembly) + breathe);
+    sculpture.position.y = lerp(0.04, -0.08, assembly) + Math.sin(phase * 0.48) * 0.028 * motionFactor;
+    sculpture.position.z = lerp(0.02, -0.12, assembly);
+    sculpture.rotation.x = lerp(-0.18, -0.08, assembly) - pointerCurrent.y * 0.62 * accessibilityFactor + Math.sin(phase * 0.37) * 0.035 * motionFactor;
+    sculpture.rotation.y = lerp(-0.42, -0.2, assembly) + pointerCurrent.x * 0.82 * accessibilityFactor + slowOrbit;
+    sculpture.rotation.z = lerp(0.08, 0.02, assembly) + Math.sin(phase * 0.29) * 0.018 * motionFactor;
+
+    const corePulse = 1 + Math.sin(phase * 1.15) * 0.022 * motionFactor;
+    core.scale.setScalar(lerp(0.94, 1, smooth(0.02, 0.5, progress)) * corePulse);
+    core.rotation.y = -phase * 0.12 * motionFactor;
+    darkMetal.opacity = lerp(0.78, 1, smooth(0.02, 0.45, progress));
+
+    innerWire.scale.setScalar(lerp(0.94, 1.02, network));
+    innerWire.rotation.x = phase * 0.08 * motionFactor;
+    innerWire.rotation.y = -phase * 0.13 * motionFactor;
+    wireMaterial.opacity = lerp(0.1, 0.2, network);
 
     rings.forEach((ring, index) => {
-      const ringProgress = smooth(0.06 + index * 0.055, 0.58 + index * 0.045, progress);
-      ring.position.copy(ring.userData.offset).multiplyScalar((1 - ringProgress) * intensity);
-      ring.scale.setScalar(lerp(0.72, 1, ringProgress));
-      ring.rotation.x = lerp(ring.userData.explodedRotation.x, ring.userData.baseRotation.x, ringProgress);
-      ring.rotation.y = lerp(ring.userData.explodedRotation.y, ring.userData.baseRotation.y, ringProgress);
-      ring.rotation.z = lerp(ring.userData.explodedRotation.z, ring.userData.baseRotation.z, ringProgress);
-      if (idleAllowed) ring.rotation[index % 2 ? 'x' : 'y'] += idle * (index % 2 ? 1.4 : -1.15);
+      const ringProgress = smooth(0.02 + index * 0.045, 0.62 + index * 0.04, progress);
+      const revealAmount = 1 - ringProgress;
+      ring.position.copy(ring.userData.offset).multiplyScalar(revealAmount);
+      ring.scale.setScalar(lerp(0.96, 1, ringProgress));
+
+      const base = ring.userData.baseRotation;
+      const reveal = ring.userData.revealRotation;
+      const phaseOffset = ring.userData.phaseOffset;
+      const spin = phase * ring.userData.spinSpeed * motionFactor;
+      ring.rotation.x = lerp(reveal.x, base.x, ringProgress) + Math.sin(phase * (0.5 + index * 0.04) + phaseOffset) * 0.09 * motionFactor;
+      ring.rotation.y = lerp(reveal.y, base.y, ringProgress) + spin;
+      ring.rotation.z = lerp(reveal.z, base.z, ringProgress) + Math.cos(phase * (0.42 + index * 0.035) + phaseOffset) * 0.065 * motionFactor;
     });
 
-    nodes.scale.setScalar(network);
-    nodes.rotation.y = lerp(-0.9, 0, network) - idle * 0.8;
-    particleMaterial.opacity = lerp(0, 0.64, network);
-    particles.rotation.y = lerp(-0.45, 0.2, finish) + idle * 0.2;
-    particles.rotation.x = lerp(0.3, 0, finish);
-    pedestal.scale.setScalar(lerp(0.86, 1, finish));
-    pedestal.position.y = lerp(-2.55, -2.15, finish);
+    nodes.scale.setScalar(lerp(0.72, 1, network));
+    nodes.rotation.y = -phase * 0.22 * motionFactor + lerp(-0.3, 0, network);
+    nodes.rotation.x = Math.sin(phase * 0.31) * 0.08 * motionFactor;
 
-    camera.position.z = lerp(9.05, 7.4, assembly);
-    camera.position.y = lerp(0.34, 0.1, assembly);
-    keyLight.intensity = lerp(1.4, 4.2, assembly);
-    rimLight.intensity = lerp(10, 48, network);
-    lowerGlow.intensity = lerp(6, 40, finish);
-    hemisphere.intensity = lerp(0.55, 1.2, assembly);
+    particleMaterial.opacity = lerp(0.22, 0.68, network);
+    particles.rotation.y = phase * 0.035 * motionFactor + lerp(-0.18, 0.16, finish);
+    particles.rotation.x = Math.sin(phase * 0.17) * 0.07 * motionFactor + lerp(0.12, 0, finish);
 
-    setCardProgress(progress);
+    pedestal.scale.setScalar(lerp(0.96, 1.02, finish));
+    pedestal.position.y = lerp(-2.28, -2.15, finish);
+
+    camera.position.z = lerp(7.25, 6.65, assembly);
+    camera.position.y = lerp(0.14, 0.07, assembly);
+
+    const lightPulse = Math.sin(phase * 1.05) * 3.5 * motionFactor;
+    keyLight.intensity = lerp(3.6, 4.5, assembly) + lightPulse * 0.12;
+    rimLight.intensity = lerp(34, 50, network) + lightPulse;
+    lowerGlow.intensity = lerp(26, 42, finish) + lightPulse * 0.7;
+    hemisphere.intensity = lerp(0.95, 1.22, assembly);
+
+    setCardProgress(progress, scrollProgress);
   }
 
   function updatePointer(event) {
-    if (!motionEnabled || reducedMotion.matches) return;
+    if (!motionEnabled) return;
     const rect = stage.getBoundingClientRect();
     pointerTarget.x = ((event.clientX - rect.left) / rect.width - 0.5) * 0.34;
     pointerTarget.y = ((event.clientY - rect.top) / rect.height - 0.5) * 0.22;
@@ -276,14 +300,15 @@ async function initialiseHeroScene() {
 
   function updateMotionButton() {
     if (!motionToggle) return;
-    motionToggle.textContent = motionEnabled ? 'Pause 3D motion' : 'Enable 3D motion';
+    motionToggle.textContent = motionEnabled ? 'Pause ambient motion' : 'Resume ambient motion';
     motionToggle.setAttribute('aria-pressed', String(motionEnabled));
+    document.documentElement.dataset.heroMotion = motionEnabled ? 'running' : 'paused';
   }
 
   motionToggle?.addEventListener('click', () => {
     motionEnabled = !motionEnabled;
     try {
-      localStorage.setItem('tbm-3d-motion', motionEnabled ? 'on' : 'off');
+      localStorage.setItem('tbm-3d-motion-v2', motionEnabled ? 'on' : 'off');
     } catch {
       // Storage may be unavailable in strict privacy modes; animation still works.
     }
@@ -296,6 +321,7 @@ async function initialiseHeroScene() {
     const gsap = window.gsap;
     const ScrollTrigger = window.ScrollTrigger;
     if (!gsap || !ScrollTrigger) return false;
+
     gsap.registerPlugin(ScrollTrigger);
     const media = gsap.matchMedia();
 
@@ -304,15 +330,14 @@ async function initialiseHeroScene() {
       const trigger = ScrollTrigger.create({
         trigger: hero,
         start: 'top top',
-        end: () => `+=${Math.max(window.innerHeight * 1.18, 880)}`,
+        end: () => `+=${Math.max(window.innerHeight * 1.08, 820)}`,
         pin: heroGrid,
         pinSpacing: true,
-        scrub: 0.65,
+        scrub: 0.55,
         anticipatePin: 1,
         invalidateOnRefresh: true,
         onUpdate(self) {
           targetProgress = self.progress;
-          lastScrollAt = performance.now();
         }
       });
       return () => {
@@ -324,26 +349,25 @@ async function initialiseHeroScene() {
     media.add('(max-width: 899px)', () => {
       const trigger = ScrollTrigger.create({
         trigger: hero,
-        start: 'top 82%',
-        end: 'bottom 22%',
-        scrub: 0.45,
+        start: 'top 88%',
+        end: 'bottom 18%',
+        scrub: 0.4,
         invalidateOnRefresh: true,
         onUpdate(self) {
           targetProgress = self.progress;
-          lastScrollAt = performance.now();
         }
       });
       return () => trigger.kill();
     });
+
     return true;
   }
 
   function installNativeFallback() {
     const update = () => {
       const rect = hero.getBoundingClientRect();
-      const travel = Math.max(rect.height - window.innerHeight * 0.35, 1);
-      targetProgress = clamp((-rect.top + window.innerHeight * 0.08) / travel, 0, 1);
-      lastScrollAt = performance.now();
+      const travel = Math.max(window.innerHeight * 0.9, 640);
+      targetProgress = clamp((-rect.top + window.innerHeight * 0.04) / travel, 0, 1);
     };
     update();
     window.addEventListener('scroll', update, { passive: true });
@@ -374,6 +398,7 @@ async function initialiseHeroScene() {
 
   document.addEventListener('visibilitychange', () => {
     pageVisible = !document.hidden;
+    lastFrameTime = performance.now();
   });
 
   canvas.addEventListener('webglcontextlost', event => {
@@ -385,22 +410,23 @@ async function initialiseHeroScene() {
 
   function frame(time) {
     rafId = requestAnimationFrame(frame);
+    const deltaSeconds = Math.min(Math.max((time - lastFrameTime) / 1000, 0), 0.05);
+    lastFrameTime = time;
     if (!pageVisible || !stageVisible) return;
-    const easing = reducedMotion.matches ? 0.18 : 0.1;
+
+    if (motionEnabled) motionPhase += deltaSeconds;
+    const easing = reducedMotion.matches ? 0.16 : 0.1;
     currentProgress += (targetProgress - currentProgress) * easing;
-    pointerCurrent.lerp(pointerTarget, reducedMotion.matches ? 0.2 : 0.055);
-    const effectiveProgress = motionEnabled ? currentProgress : 1;
-    applyScene(effectiveProgress, time);
+    pointerCurrent.lerp(pointerTarget, reducedMotion.matches ? 0.12 : 0.055);
+    applyScene(currentProgress, motionPhase);
     renderer.render(scene, camera);
   }
 
-  reducedMotion.addEventListener?.('change', () => {
-    lastScrollAt = performance.now();
-  });
+  reducedMotion.addEventListener?.('change', updateMotionButton);
 
   document.documentElement.classList.add('webgl-ready');
   document.documentElement.classList.remove('webgl-fallback');
-  applyScene(0, performance.now());
+  applyScene(0, motionPhase);
   renderer.render(scene, camera);
   rafId = requestAnimationFrame(frame);
 }
