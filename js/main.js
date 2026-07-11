@@ -1,5 +1,16 @@
 document.documentElement.classList.add('js');
 
+// Load the focused secondary-page completion layer after the shared V2 styles.
+// Resolving from this script URL works for root pages and nested /blog/ pages.
+const currentScript = document.currentScript;
+if (currentScript && !document.querySelector('link[data-premium-legacy]')) {
+  const premiumStyles = document.createElement('link');
+  premiumStyles.rel = 'stylesheet';
+  premiumStyles.href = new URL('../css/premium-legacy.css', currentScript.src).href;
+  premiumStyles.dataset.premiumLegacy = 'true';
+  document.head.appendChild(premiumStyles);
+}
+
 const menuButton = document.getElementById('mobile-menu-btn');
 const mobileMenu = document.getElementById('mobile-menu');
 const header = document.querySelector('header');
