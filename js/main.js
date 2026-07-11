@@ -1,242 +1,109 @@
-// Main JavaScript for The Blacksmith Market
-
-// DOM Elements
-const mobileMenuBtn = document.getElementById('mobile-menu-btn');
-const mobileMenu = document.getElementById('mobile-menu');
-const header = document.querySelector('header');
-const cookieConsent = document.querySelector('.cookie-consent');
-const acceptCookiesBtn = document.getElementById('accept-cookies');
-const declineCookiesBtn = document.getElementById('decline-cookies');
-const contactForm = document.getElementById('contact-form');
-
-// Mobile Menu Toggle
-if (mobileMenuBtn && mobileMenu) {
-  mobileMenuBtn.addEventListener('click', () => {
-    mobileMenu.classList.toggle('active');
-  });
-
-  // Close mobile menu when clicking outside
-  document.addEventListener('click', (e) => {
-    if (!mobileMenu.contains(e.target) && !mobileMenuBtn.contains(e.target) && mobileMenu.classList.contains('active')) {
-      mobileMenu.classList.remove('active');
-    }
-  });
-}
-
-// Sticky Header on Scroll
-let lastScrollPosition = 0;
-window.addEventListener('scroll', () => {
-  const currentScrollPosition = window.pageYOffset;
-  
-  if (currentScrollPosition > 100) {
-    header.classList.add('scrolled');
-  } else {
-    header.classList.remove('scrolled');
+// Shared behaviour for legacy pages. The homepage uses js/home.js.
+(() => {
+  const currentScript = document.currentScript;
+  const prefix = currentScript?.src.includes('/blog/') ? '../' : '';
+  if (!document.querySelector('link[data-premium-ui]')) {
+    const style = document.createElement('link');
+    style.rel = 'stylesheet';
+    style.href = `${prefix}css/premium.css`;
+    style.dataset.premiumUi = 'true';
+    document.head.appendChild(style);
   }
-  
-  lastScrollPosition = currentScrollPosition;
-});
 
-// Smooth Scroll for Anchor Links
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-  anchor.addEventListener('click', function(e) {
-    e.preventDefault();
-    
-    const targetId = this.getAttribute('href');
-    if (targetId === '#') return;
-    
-    const targetElement = document.querySelector(targetId);
-    if (targetElement) {
-      const headerHeight = header.offsetHeight;
-      const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - headerHeight;
-      
-      window.scrollTo({
-        top: targetPosition,
-        behavior: 'smooth'
-      });
-      
-      // Close mobile menu if open
-      if (mobileMenu && mobileMenu.classList.contains('active')) {
+  const header = document.querySelector('header');
+  const menuButton = document.getElementById('mobile-menu-btn');
+  const mobileMenu = document.getElementById('mobile-menu');
+
+  if (menuButton && mobileMenu) {
+    menuButton.setAttribute('aria-controls', 'mobile-menu');
+    menuButton.setAttribute('aria-expanded', 'false');
+    menuButton.setAttribute('aria-label', 'Open navigation');
+    menuButton.addEventListener('click', () => {
+      const open = mobileMenu.classList.toggle('active');
+      menuButton.setAttribute('aria-expanded', String(open));
+      menuButton.setAttribute('aria-label', open ? 'Close navigation' : 'Open navigation');
+    });
+    document.addEventListener('click', event => {
+      if (!mobileMenu.contains(event.target) && !menuButton.contains(event.target)) {
         mobileMenu.classList.remove('active');
+        menuButton.setAttribute('aria-expanded', 'false');
       }
-    }
-  });
-});
-
-// Animation on Scroll
-const animateElements = document.querySelectorAll('.animate-on-scroll');
-
-const checkInView = () => {
-  const windowHeight = window.innerHeight;
-  const windowTopPosition = window.pageYOffset;
-  const windowBottomPosition = windowTopPosition + windowHeight;
-
-  animateElements.forEach(element => {
-    const elementHeight = element.offsetHeight;
-    const elementTopPosition = element.getBoundingClientRect().top + window.pageYOffset;
-    const elementBottomPosition = elementTopPosition + elementHeight;
-
-    // Check if element is in viewport
-    if (
-      (elementBottomPosition >= windowTopPosition && elementTopPosition <= windowBottomPosition) ||
-      (elementTopPosition <= windowBottomPosition && elementBottomPosition >= windowTopPosition)
-    ) {
-      element.classList.add('animate-fade-in');
-    }
-  });
-};
-
-window.addEventListener('scroll', checkInView);
-window.addEventListener('resize', checkInView);
-window.addEventListener('load', checkInView);
-
-// Cookie Consent
-const showCookieConsent = () => {
-  if (localStorage.getItem('cookieConsent') !== 'true' && cookieConsent) {
-    setTimeout(() => {
-      cookieConsent.classList.add('show');
-    }, 2000);
-  }
-};
-
-if (acceptCookiesBtn) {
-  acceptCookiesBtn.addEventListener('click', () => {
-    localStorage.setItem('cookieConsent', 'true');
-    cookieConsent.classList.remove('show');
-  });
-}
-
-if (declineCookiesBtn) {
-  declineCookiesBtn.addEventListener('click', () => {
-    cookieConsent.classList.remove('show');
-  });
-}
-
-// Form Submission
-if (contactForm) {
-  contactForm.addEventListener('submit', (e) => {
-    e.preventDefault();
-    
-    // Get form data
-    const formData = new FormData(contactForm);
-    const formValues = Object.fromEntries(formData.entries());
-    
-    // Here you would typically send the data to your server
-    // This is just a placeholder for demonstration
-    console.log('Form submitted with values:', formValues);
-    
-    // Show success message
-    const successMessage = document.createElement('div');
-    successMessage.className = 'form-success';
-    successMessage.textContent = 'Thank you for your inquiry! We will review your information and contact you shortly.';
-    
-    contactForm.innerHTML = '';
-    contactForm.appendChild(successMessage);
-  });
-}
-
-// Initialize
-document.addEventListener('DOMContentLoaded', () => {
-  showCookieConsent();
-});
-
-// Blog Search Functionality
-const blogSearchForm = document.getElementById('blog-search-form');
-if (blogSearchForm) {
-  blogSearchForm.addEventListener('submit', (e) => {
-    e.preventDefault();
-    const searchInput = blogSearchForm.querySelector('input').value.toLowerCase();
-    
-    // In a real implementation, this would redirect to search results
-    alert(`Search results for: ${searchInput}`);
-  });
-}
-
-// Testimonial Slider (if needed)
-class TestimonialSlider {
-  constructor(sliderSelector) {
-    this.slider = document.querySelector(sliderSelector);
-    if (!this.slider) return;
-    
-    this.slides = this.slider.querySelectorAll('.testimonial-card');
-    this.currentSlide = 0;
-    this.slideCount = this.slides.length;
-    this.slideInterval = null;
-    
-    this.init();
-  }
-  
-  init() {
-    if (this.slideCount <= 1) return;
-    
-    // Create navigation dots
-    const dotsContainer = document.createElement('div');
-    dotsContainer.className = 'slider-dots';
-    
-    for (let i = 0; i < this.slideCount; i++) {
-      const dot = document.createElement('button');
-      dot.className = 'slider-dot';
-      dot.setAttribute('aria-label', `Go to slide ${i + 1}`);
-      dot.addEventListener('click', () => this.goToSlide(i));
-      dotsContainer.appendChild(dot);
-    }
-    
-    this.slider.appendChild(dotsContainer);
-    this.dots = dotsContainer.querySelectorAll('.slider-dot');
-    
-    // Show first slide
-    this.goToSlide(0);
-    
-    // Auto-rotate slides
-    this.startSlideInterval();
-    
-    // Pause on hover
-    this.slider.addEventListener('mouseenter', () => this.stopSlideInterval());
-    this.slider.addEventListener('mouseleave', () => this.startSlideInterval());
-  }
-  
-  goToSlide(index) {
-    // Hide all slides
-    this.slides.forEach(slide => {
-      slide.classList.remove('active');
     });
-    
-    // Remove active class from all dots
-    this.dots.forEach(dot => {
-      dot.classList.remove('active');
+  }
+
+  const setHeaderState = () => header?.classList.toggle('scrolled', window.scrollY > 24);
+  setHeaderState();
+  addEventListener('scroll', setHeaderState, { passive: true });
+
+  document.querySelectorAll('a[href^="#"]').forEach(link => {
+    link.addEventListener('click', event => {
+      const selector = link.getAttribute('href');
+      if (!selector || selector === '#') return;
+      const target = document.querySelector(selector);
+      if (!target) return;
+      event.preventDefault();
+      const offset = header?.offsetHeight || 0;
+      const top = target.getBoundingClientRect().top + scrollY - offset - 12;
+      scrollTo({ top, behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });
+      mobileMenu?.classList.remove('active');
     });
-    
-    // Show current slide and activate dot
-    this.slides[index].classList.add('active');
-    this.dots[index].classList.add('active');
-    
-    this.currentSlide = index;
+  });
+
+  const revealItems = document.querySelectorAll('.animate-on-scroll');
+  if ('IntersectionObserver' in window) {
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('animate-fade-in');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -30px' });
+    revealItems.forEach(item => observer.observe(item));
+  } else {
+    revealItems.forEach(item => item.classList.add('animate-fade-in'));
   }
-  
-  nextSlide() {
-    const next = (this.currentSlide + 1) % this.slideCount;
-    this.goToSlide(next);
-  }
-  
-  prevSlide() {
-    const prev = (this.currentSlide - 1 + this.slideCount) % this.slideCount;
-    this.goToSlide(prev);
-  }
-  
-  startSlideInterval() {
-    this.stopSlideInterval();
-    this.slideInterval = setInterval(() => this.nextSlide(), 5000);
-  }
-  
-  stopSlideInterval() {
-    if (this.slideInterval) {
-      clearInterval(this.slideInterval);
-      this.slideInterval = null;
+
+  const cookie = document.querySelector('.cookie-consent');
+  const accept = document.getElementById('accept-cookies');
+  const decline = document.getElementById('decline-cookies');
+  const consent = localStorage.getItem('cookieConsent');
+  if (cookie && !consent) setTimeout(() => cookie.classList.add('show'), 700);
+  accept?.addEventListener('click', () => {
+    localStorage.setItem('cookieConsent', 'accepted');
+    cookie?.classList.remove('show');
+  });
+  decline?.addEventListener('click', () => {
+    localStorage.setItem('cookieConsent', 'declined');
+    cookie?.classList.remove('show');
+  });
+
+  const form = document.getElementById('contact-form');
+  if (form) {
+    const endpoint = form.getAttribute('action') || '';
+    const placeholderEndpoint = endpoint.includes('your-form-id');
+    if (placeholderEndpoint) {
+      form.addEventListener('submit', event => {
+        event.preventDefault();
+        let notice = form.querySelector('.form-endpoint-warning');
+        if (!notice) {
+          notice = document.createElement('div');
+          notice.className = 'form-endpoint-warning';
+          notice.setAttribute('role', 'alert');
+          notice.style.cssText = 'margin-top:16px;padding:14px;border:1px solid rgba(240,162,58,.35);border-radius:12px;background:rgba(240,162,58,.08);color:#ffd08a';
+          form.appendChild(notice);
+        }
+        notice.textContent = 'Online submission is being configured. Please contact the business using the published email address instead.';
+      });
     }
   }
-}
 
-// Initialize testimonial slider if exists
-document.addEventListener('DOMContentLoaded', () => {
-  new TestimonialSlider('.testimonials-slider');
-});
+  const searchForm = document.getElementById('blog-search-form');
+  searchForm?.addEventListener('submit', event => {
+    event.preventDefault();
+    const query = searchForm.querySelector('input')?.value.trim().toLowerCase();
+    document.querySelectorAll('.blog-card').forEach(card => {
+      card.hidden = Boolean(query) && !card.textContent.toLowerCase().includes(query);
+    });
+  });
+})();
