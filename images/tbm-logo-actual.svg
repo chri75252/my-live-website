@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000" role="img" aria-labelledby="title desc">
+  <title id="title">The Blacksmith Market logo</title>
+  <desc id="desc">Circular black and white TBM logo with an anvil.</desc>
+  <circle cx="500" cy="500" r="488" fill="#fff"/>
+  <circle cx="500" cy="500" r="455" fill="none" stroke="#080908" stroke-width="29"/>
+  <circle cx="500" cy="500" r="304" fill="none" stroke="#080908" stroke-width="27"/>
+  <defs>
+    <path id="topArc" d="M128.8 364.9 A395 395 0 0 1 871.2 364.9"/>
+    <path id="bottomArc" d="M128.8 635.1 A395 395 0 0 0 871.2 635.1"/>
+  </defs>
+  <text fill="#080908" font-family="Arial, Helvetica, sans-serif" font-size="72" font-weight="700" letter-spacing="3">
+    <textPath href="#topArc" startOffset="50%" text-anchor="middle">THE BLACKSMITH</textPath>
+  </text>
+  <text fill="#080908" font-family="Arial, Helvetica, sans-serif" font-size="88" font-weight="700" letter-spacing="5">
+    <textPath href="#bottomArc" startOffset="50%" text-anchor="middle">MARKET</textPath>
+  </text>
+  <path d="M146 414 A375 375 0 0 0 222 780" fill="none" stroke="#080908" stroke-width="29"/>
+  <path d="M854 414 A375 375 0 0 1 778 780" fill="none" stroke="#080908" stroke-width="29"/>
+  <text x="500" y="500" text-anchor="middle" fill="#080908" font-family="Arial Black, Arial, Helvetica, sans-serif" font-size="164" font-weight="900" letter-spacing="8">TBM</text>
+  <path fill="#080908" d="M315 530H685V563H628C603 563 584 572 565 590L542 612C524 630 521 656 536 676C547 692 566 701 586 701H611V783H545L500 807L455 783H389V701H414C434 701 453 692 464 676C479 656 476 630 458 612L435 590C416 572 397 563 372 563H315Z"/>
+</svg>
