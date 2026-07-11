@@ -183,7 +183,12 @@ async function initialiseHeroScene() {
   let targetProgress = 0;
   let currentProgress = 0;
   let lastScrollAt = performance.now();
-  let motionEnabled = localStorage.getItem('tbm-3d-motion') !== 'off';
+  let motionEnabled = true;
+  try {
+    motionEnabled = localStorage.getItem('tbm-3d-motion') !== 'off';
+  } catch {
+    motionEnabled = true;
+  }
   let pageVisible = !document.hidden;
   let stageVisible = true;
   let rafId = 0;
@@ -277,7 +282,11 @@ async function initialiseHeroScene() {
 
   motionToggle?.addEventListener('click', () => {
     motionEnabled = !motionEnabled;
-    localStorage.setItem('tbm-3d-motion', motionEnabled ? 'on' : 'off');
+    try {
+      localStorage.setItem('tbm-3d-motion', motionEnabled ? 'on' : 'off');
+    } catch {
+      // Storage may be unavailable in strict privacy modes; animation still works.
+    }
     if (!motionEnabled) resetPointer();
     updateMotionButton();
   });
