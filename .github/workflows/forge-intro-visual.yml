@@ -33,10 +33,11 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: read
+  contents: write
 
 jobs:
   visual-evidence:
+    if: ${{ github.event_name != 'push' || !contains(github.event.head_commit.message, '[forge-evidence]') }}
     runs-on: ubuntu-latest
     timeout-minutes: 30
     steps:
@@ -103,7 +104,6 @@ jobs:
         run: node scripts/capture-forge-intro.mjs
 
       - name: Upload complete review evidence
-        if: always()
         uses: actions/upload-artifact@v4
         with:
           name: forge-frame-sequence-evidence
@@ -112,3 +112,25 @@ jobs:
             artifacts/forge-intro/**
           if-no-files-found: error
           retention-days: 30
+
+      - name: Record successful evidence run on the PR branch
+        if: ${{ success() && github.event_name == 'push' }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          cat > artifacts/forge-frame-audit/workflow-status.json <<EOF
+          {
+            "status": "success",
+            "workflow": "Forge Frame Sequence Evidence",
+            "run_id": ${GITHUB_RUN_ID},
+            "run_number": ${GITHUB_RUN_NUMBER},
+            "tested_commit": "${GITHUB_SHA}",
+            "artifact": "forge-frame-sequence-evidence",
+            "recorded_at_utc": "$(date -u +%Y-%m-%dT%H:%M:%SZ)"
+          }
+          EOF
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add artifacts/forge-frame-audit/workflow-status.json
+          git commit -m "[forge-evidence] Record successful Forge evidence run"
+          git push origin HEAD:feature/forge-intro-reveal-v2
