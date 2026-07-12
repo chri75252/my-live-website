@@ -378,13 +378,14 @@ async function captureIsolatedHero(name, width, height, options = {}) {
 }
 
 for (const [name, width, height] of viewports) {
-  const record = !skipRecordings && (name === '1920x1080' || name === '390x844');
-  await captureRealHandoff(name, width, height, record);
+  const recordHero = !skipRecordings && (name === '1920x1080' || name === '390x844');
+  const recordForge = !skipRecordings && name === '390x844';
+  await captureRealHandoff(name, width, height, recordForge);
   await captureIsolatedHero(name, width, height, {
     label: width > 700 ? 'composer' : 'mobile-direct',
     forceComposer: width > 700,
     forceDirect: width <= 700,
-    recordVideo: record,
+    recordVideo: recordHero,
   });
 }
 
