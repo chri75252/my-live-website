@@ -34,6 +34,14 @@ async function startForgeGate() {
   if (mobileLayout.matches) document.documentElement.classList.add('forge-mobile');
   document.documentElement.classList.add('forge-active');
 
+  if (!shouldBypass) {
+    const navigation = performance.getEntriesByType('navigation')[0];
+    if (navigation?.type !== 'back_forward') {
+      history.scrollRestoration = 'manual';
+      window.scrollTo({ top: story.offsetTop, behavior: 'auto' });
+    }
+  }
+
   let scene;
   let currentProgress = shouldBypass ? 1 : 0;
   let targetProgress = currentProgress;
