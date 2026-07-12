@@ -1,5 +1,5 @@
 import { chromium } from 'playwright';
-import { mkdir } from 'node:fs/promises';
+import { mkdir,writeFile } from 'node:fs/promises';
 import path from 'node:path';
 
 const baseUrl=process.env.TBM_PREVIEW_URL || 'http://127.0.0.1:4173/index.html';
@@ -16,6 +16,7 @@ const phases=[
   { name:'passage',progress:.7 },
   { name:'homepage-exposed',progress:1 }
 ];
+const diagnostics=[];
 
 await mkdir(outputDirectory,{ recursive:true });
 const browser=await chromium.launch({ headless:true });
@@ -60,9 +61,22 @@ try{
         complete:intro?.classList.contains('is-complete') ?? false,
         pointerEvents:style?.pointerEvents,
         visibility:style?.visibility,
+        opacity:style?.opacity,
+        phase:intro?.dataset.phase,
+        progress:intro?.style.getPropertyValue('--forge-progress'),
+        release:intro?.style.getPropertyValue('--forge-release'),
+        scrollY:window.scrollY,
+        scrollHeight:document.documentElement.scrollHeight,
         horizontalOverflow:document.documentElement.scrollWidth-document.documentElement.clientWidth
       };
     });
+
+    diagnostics.push({ viewport:viewport.name,finalState,pageErrors });
+    await writeFile(
+      path.join(outputDirectory,'diagnostics.json'),
+      `${JSON.stringify(diagnostics,null,2)}\n`,
+      'utf8'
+    );
 
     if(!finalState.exists || !finalState.complete || finalState.pointerEvents!=='none'){
       throw new Error(`${viewport.name}: intro did not release correctly: ${JSON.stringify(finalState)}`);
