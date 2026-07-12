@@ -188,14 +188,24 @@ assert(releasedCta.pointerEvents!=='none' && releasedCta.tabIndex>=0,`${viewport
   const reverseOpening=await state(page);
   assert(reverseOpening.phase==='opening' && !reverseOpening.complete,`${viewport.name}: reverse scroll did not return deterministically to opening.`);
 
+  await page.mouse.move(viewport.width/2,viewport.height/2);
   await page.mouse.wheel(0,Math.max(1300,viewport.height*1.6));
-  await page.waitForTimeout(180);
+  await page.waitForFunction(
+    ()=>((window.__tbmForgeIntro?.getState()?.progress ?? 0)>.05),
+    undefined,
+    { timeout:3000 }
+  );
   const fastWheel=await state(page);
   assert((fastWheel.debug?.progress ?? 0)>.05,`${viewport.name}: fast wheel did not advance deterministic scroll progress.`);
 
   await setProgress(page,0);
+  await page.mouse.move(viewport.width/2,viewport.height/2);
   for(let index=0;index<10;index+=1) await page.mouse.wheel(0,36);
-  await page.waitForTimeout(180);
+  await page.waitForFunction(
+    ()=>((window.__tbmForgeIntro?.getState()?.progress ?? 0)>0),
+    undefined,
+    { timeout:3000 }
+  );
   const smallIncrements=await state(page);
   assert((smallIncrements.debug?.progress ?? 0)>0,`${viewport.name}: small wheel/touchpad increments did not advance the reveal.`);
 
