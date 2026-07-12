@@ -104,23 +104,26 @@ jobs:
         run: node scripts/capture-forge-intro.mjs
 
       - name: Upload complete review evidence
+        if: ${{ always() }}
         uses: actions/upload-artifact@v4
         with:
           name: forge-frame-sequence-evidence
           path: |
             artifacts/forge-frame-audit/*
             artifacts/forge-intro/**
-          if-no-files-found: error
+          if-no-files-found: warn
           retention-days: 30
 
-      - name: Record successful evidence run on the PR branch
-        if: ${{ success() && github.event_name == 'push' }}
+      - name: Record evidence run result on the PR branch
+        if: ${{ always() && github.event_name == 'push' }}
         shell: bash
+        env:
+          JOB_STATUS: ${{ job.status }}
         run: |
           set -euo pipefail
           cat > artifacts/forge-frame-audit/workflow-status.json <<EOF
           {
-            "status": "success",
+            "status": "${JOB_STATUS}",
             "workflow": "Forge Frame Sequence Evidence",
             "run_id": ${GITHUB_RUN_ID},
             "run_number": ${GITHUB_RUN_NUMBER},
@@ -132,5 +135,5 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add artifacts/forge-frame-audit/workflow-status.json
-          git commit -m "[forge-evidence] Record successful Forge evidence run"
+          git commit -m "[forge-evidence] Record ${JOB_STATUS} Forge evidence run"
           git push origin HEAD:feature/forge-intro-reveal-v2
