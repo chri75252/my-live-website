@@ -287,7 +287,7 @@ async function auditReducedMotion(){
   const context=await browser.newContext({ viewport:{width:1366,height:768},reducedMotion:'reduce' });
   const page=await context.newPage();
   await page.goto(baseUrl,{ waitUntil:'networkidle',timeout:90000 });
-  await page.waitForSelector('#forge-intro');
+  await page.waitForSelector('#forge-intro',{ state:'attached' });
   await page.waitForTimeout(250);
   const result=await page.evaluate(()=>({
     display:getComputedStyle(document.getElementById('forge-intro')).display,
