@@ -1,0 +1,283 @@
+--- a/js/hero-3d-reveal-match-v2.js
++++ b/js/hero-3d-reveal-match-v2.js
+@@ -44,12 +44,12 @@
+   renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, mobile.matches ? 1.25 : 1.5));
+   renderer.outputColorSpace = THREE.SRGBColorSpace;
+   renderer.toneMapping = THREE.AgXToneMapping;
+-  renderer.toneMappingExposure = 0.94;
++  renderer.toneMappingExposure = 0.9;
+   renderer.info.autoReset = false;
+ 
+   const scene = new THREE.Scene();
+-  const camera = new THREE.PerspectiveCamera(31, 1, 0.1, 100);
+-  camera.position.set(0, 0.03, 10.65);
++  const camera = new THREE.PerspectiveCamera(30, 1, 0.1, 100);
++  camera.position.set(0, 0.04, 9.95);
+ 
+   const pmrem = new THREE.PMREMGenerator(renderer);
+   pmrem.compileEquirectangularShader();
+@@ -60,7 +60,7 @@
+   pmrem.dispose();
+ 
+   const sculpture = new THREE.Group();
+-  sculpture.rotation.set(-0.055, -0.19, 0.018);
++  sculpture.rotation.set(-0.075, -0.265, -0.055);
+   scene.add(sculpture);
+ 
+   const bronzeRoughnessTexture = createRoughnessTexture(0x54424d32);
+@@ -68,43 +68,43 @@
+   const coreMaterial = new THREE.MeshPhysicalMaterial({
+     color: 0x080b0c,
+     metalness: 0.82,
+-    roughness: 0.16,
++    roughness: 0.21,
+     clearcoat: 1,
+     clearcoatRoughness: 0.075,
+-    envMapIntensity: 1.55
++    envMapIntensity: 1.28
+   });
+ 
+   const agedBronze = new THREE.MeshPhysicalMaterial({
+-    color: 0x725040,
++    color: 0x5d463b,
+     metalness: 1,
+-    roughness: 0.34,
++    roughness: 0.39,
+     clearcoat: 0.42,
+     clearcoatRoughness: 0.22,
+-    envMapIntensity: 1.05,
++    envMapIntensity: 0.94,
+     roughnessMap: bronzeRoughnessTexture,
+     anisotropy: 0.12,
+     anisotropyRotation: 0.35
+   });
+ 
+   const paleBronze = new THREE.MeshPhysicalMaterial({
+-    color: 0x9a7765,
++    color: 0x80665b,
+     metalness: 1,
+-    roughness: 0.28,
++    roughness: 0.34,
+     clearcoat: 0.5,
+     clearcoatRoughness: 0.18,
+-    envMapIntensity: 1.15,
++    envMapIntensity: 1.02,
+     roughnessMap: bronzeRoughnessTexture,
+     anisotropy: 0.16,
+     anisotropyRotation: -0.2
+   });
+ 
+   const jointMaterial = new THREE.MeshPhysicalMaterial({
+-    color: 0x8c6754,
++    color: 0x765649,
+     metalness: 1,
+-    roughness: 0.22,
++    roughness: 0.3,
+     clearcoat: 0.68,
+     clearcoatRoughness: 0.1,
+-    envMapIntensity: 1.2,
++    envMapIntensity: 1.05,
+     roughnessMap: bronzeRoughnessTexture,
+     anisotropy: 0.1
+   });
+@@ -112,7 +112,7 @@
+   const shellLineMaterial = new THREE.LineBasicMaterial({
+     color: 0x9d8b80,
+     transparent: true,
+-    opacity: 0.45,
++    opacity: 0.34,
+     depthWrite: false
+   });
+ 
+@@ -121,24 +121,27 @@
+     metalness: 0.9,
+     roughness: 0.38,
+     transparent: true,
+-    opacity: 0.72
++    opacity: 0.56
+   });
+ 
+-  const core = new THREE.Mesh(new THREE.SphereGeometry(0.82, 96, 96), coreMaterial);
++  const coreRadius = 0.78;
++  const outerRingRadius = 2.28;
++  const shellRadius = 1.26;
++  const core = new THREE.Mesh(new THREE.SphereGeometry(coreRadius, 96, 96), coreMaterial);
+   core.scale.y = 1.015;
+   sculpture.add(core);
+ 
+   const shellGroup = new THREE.Group();
+-  shellGroup.rotation.set(0.16, -0.24, 0.08);
++  shellGroup.rotation.set(0.23, -0.36, 0.14);
+   sculpture.add(shellGroup);
+ 
+-  const shellSourceGeometry = createIrregularShellGeometry(1.34, 2);
++  const shellSourceGeometry = createIrregularShellGeometry(shellRadius, 2);
+   const shellWireGeometry = new THREE.WireframeGeometry(shellSourceGeometry);
+   const shellLines = new THREE.LineSegments(shellWireGeometry, shellLineMaterial);
+   shellGroup.add(shellLines);
+ 
+   const uniqueShellVertices = collectUniqueVertices(shellSourceGeometry);
+-  const shellJointGeometry = new THREE.SphereGeometry(0.018, 7, 7);
++  const shellJointGeometry = new THREE.SphereGeometry(0.015, 7, 7);
+   const shellJoints = new THREE.InstancedMesh(
+     shellJointGeometry,
+     shellJointMaterial,
+@@ -155,45 +158,45 @@
+   const ringDefinitions = [
+     {
+       kind: 'torus',
+-      radius: 2.22,
+-      tube: 0.010,
+-      rotation: [0.065, 0.11, -0.025],
++      radius: outerRingRadius,
++      tube: 0.009,
++      rotation: [0.24, 0.31, -0.13],
+       speed: 0.006,
+       material: agedBronze,
+       nodes: [2.52, 5.63]
+     },
+     {
+       kind: 'torus',
+-      radius: 1.93,
+-      tube: 0.014,
+-      rotation: [0.05, 1.535, 0.06],
++      radius: 1.98,
++      tube: 0.011,
++      rotation: [0.11, 1.47, -0.18],
+       speed: -0.014,
+       material: paleBronze,
+       nodes: [3.82]
+     },
+     {
+       kind: 'torus',
+-      radius: 2.00,
+-      tube: 0.016,
+-      rotation: [1.14, 0.31, 0.68],
++      radius: 2.04,
++      tube: 0.013,
++      rotation: [0.92, 0.42, 0.91],
+       speed: 0.019,
+       material: agedBronze,
+       nodes: [0.18, 3.25]
+     },
+     {
+       kind: 'irregular',
+-      radius: 1.86,
+-      tube: 0.014,
+-      rotation: [1.03, -0.62, -0.72],
++      radius: 1.91,
++      tube: 0.011,
++      rotation: [1.08, -0.72, -0.48],
+       speed: -0.022,
+       material: paleBronze,
+       nodes: [5.84]
+     },
+     {
+       kind: 'torus',
+-      radius: 1.76,
+-      tube: 0.013,
+-      rotation: [1.39, 0.08, 0.16],
++      radius: 1.82,
++      tube: 0.010,
++      rotation: [1.34, 0.18, 0.51],
+       speed: 0.027,
+       material: agedBronze,
+       nodes: [2.92]
+@@ -247,25 +250,25 @@
+     count: mobile.matches ? 9 : 18
+   });
+ 
+-  const hemisphere = new THREE.HemisphereLight(0xc8d7d2, 0x120c09, 0.36);
++  const hemisphere = new THREE.HemisphereLight(0xc8d7d2, 0x120c09, 0.27);
+   scene.add(hemisphere);
+ 
+-  const key = new THREE.RectAreaLight(0xf2f1eb, 4.0, 3.5, 2.0);
++  const key = new THREE.RectAreaLight(0xe8ece9, 3.1, 3.8, 2.2);
+   key.position.set(-3.5, 3.25, 5.2);
+   key.lookAt(0, 0.2, 0);
+   scene.add(key);
+ 
+-  const fill = new THREE.RectAreaLight(0xd6ddda, 1.55, 2.1, 3.0);
++  const fill = new THREE.RectAreaLight(0xc8d3d1, 1.05, 2.3, 3.2);
+   fill.position.set(3.0, 1.0, 4.6);
+   fill.lookAt(0, 0, 0);
+   scene.add(fill);
+ 
+-  const warmRim = new THREE.RectAreaLight(0xb2683e, 1.45, 2.2, 1.15);
++  const warmRim = new THREE.RectAreaLight(0x8e573d, 0.92, 2.1, 1.1);
+   warmRim.position.set(2.25, -2.35, 3.15);
+   warmRim.lookAt(0, -0.25, 0);
+   scene.add(warmRim);
+ 
+-  const shellLight = new THREE.DirectionalLight(0xd4b7a1, 0.85);
++  const shellLight = new THREE.DirectionalLight(0xcab2a3, 0.58);
+   shellLight.position.set(-2.8, 3.8, 4.2);
+   scene.add(shellLight);
+ 
+@@ -337,23 +340,23 @@
+     const settle = smooth(0.04, 0.82, progress);
+     const breath = Math.sin(phase * 0.46) * 0.004 * motionFactor;
+ 
+-    sculpture.scale.setScalar(lerp(0.985, 1.015, settle) + breath);
++    sculpture.scale.setScalar(lerp(1.015, 1.045, settle) + breath);
+     sculpture.position.set(
+-      lerp(-0.035, 0.035, settle),
+-      lerp(0.085, -0.025, settle) + Math.sin(phase * 0.31) * 0.008 * motionFactor,
+-      lerp(0.02, -0.04, settle)
++      lerp(-0.015, 0.025, settle),
++      lerp(0.055, -0.015, settle) + Math.sin(phase * 0.31) * 0.008 * motionFactor,
++      lerp(0.015, -0.035, settle)
+     );
+-    sculpture.rotation.x = -0.055 - pointerCurrent.y * 0.9 + Math.sin(phase * 0.23) * 0.008 * motionFactor;
+-    sculpture.rotation.y = -0.19 + pointerCurrent.x * 1.05 + phase * 0.018 * motionFactor;
+-    sculpture.rotation.z = 0.018 + Math.sin(phase * 0.17) * 0.005 * motionFactor;
++    sculpture.rotation.x = -0.075 - pointerCurrent.y * 0.9 + Math.sin(phase * 0.23) * 0.008 * motionFactor;
++    sculpture.rotation.y = -0.265 + pointerCurrent.x * 1.05 + phase * 0.018 * motionFactor;
++    sculpture.rotation.z = -0.055 + Math.sin(phase * 0.17) * 0.005 * motionFactor;
+ 
+     core.rotation.y = -phase * 0.024 * motionFactor;
+     core.rotation.x = phase * 0.008 * motionFactor;
+ 
+-    shellGroup.rotation.x = 0.16 + phase * 0.012 * motionFactor;
+-    shellGroup.rotation.y = -0.24 - phase * 0.019 * motionFactor;
+-    shellGroup.rotation.z = 0.08 + Math.sin(phase * 0.21) * 0.009 * motionFactor;
+-    shellLineMaterial.opacity = lerp(0.39, 0.47, settle);
++    shellGroup.rotation.x = 0.23 + phase * 0.012 * motionFactor;
++    shellGroup.rotation.y = -0.36 - phase * 0.019 * motionFactor;
++    shellGroup.rotation.z = 0.14 + Math.sin(phase * 0.21) * 0.009 * motionFactor;
++    shellLineMaterial.opacity = lerp(0.29, 0.36, settle);
+ 
+     rings.forEach((ring, index) => {
+       const spin = phase * ring.userData.speed * motionFactor;
+@@ -369,13 +372,13 @@
+     dust.rotation.x = Math.sin(phase * 0.08) * 0.012 * motionFactor;
+     dustMaterial.opacity = lerp(0.2, 0.27, settle);
+ 
+-    camera.position.z = lerp(10.7, 10.38, settle);
+-    camera.position.y = lerp(0.075, 0.02, settle);
++    camera.position.z = lerp(9.95, 9.68, settle);
++    camera.position.y = lerp(0.055, 0.015, settle);
+ 
+     const lightBreath = Math.sin(phase * 0.4) * 0.035 * motionFactor;
+-    key.intensity = 4.0 + lightBreath;
+-    fill.intensity = 1.55 - lightBreath * 0.35;
+-    warmRim.intensity = 1.45 + lightBreath * 0.55;
++    key.intensity = 3.1 + lightBreath;
++    fill.intensity = 1.05 - lightBreath * 0.35;
++    warmRim.intensity = 0.92 + lightBreath * 0.55;
+ 
+     setCardProgress(progress, scrollProgress);
+   }
+@@ -597,6 +600,12 @@
+           textures: renderer.info.memory.textures,
+           programs: renderer.info.programs?.length ?? 0
+         },
++        geometry: {
++          coreRadius,
++          shellRadius,
++          outerRingRadius,
++          coreOuterDiameterRatio: coreRadius / outerRingRadius
++        },
+         frameTiming: {
+           samples: frameTiming.samples,
+           averageMs: frameTiming.samples ? frameTiming.totalMs / frameTiming.samples : 0,
