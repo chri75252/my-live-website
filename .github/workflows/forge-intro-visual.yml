@@ -1,0 +1,66 @@
+name: Forge Intro Visual Evidence
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - index.html
+      - css/forge-intro.css
+      - js/forge-intro.js
+      - js/forge-intro-scene.js
+      - scripts/capture-forge-intro.mjs
+      - .github/workflows/forge-intro-visual.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  visual-evidence:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Check out branch
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Verify protected hero and syntax
+        shell: pwsh
+        run: |
+          ./docs/tbm-3d-handoff/scripts/verify_reveal_did_not_modify_baseline.ps1 -Repo $PWD
+          node --check js/forge-intro.js
+          node --check js/forge-intro-scene.js
+
+      - name: Install Playwright
+        run: |
+          npm install --no-save playwright@1.53.2
+          npx playwright install --with-deps chromium
+
+      - name: Start static preview
+        run: |
+          python3 -m http.server 4173 --bind 127.0.0.1 > /tmp/tbm-preview.log 2>&1 &
+          echo $! > /tmp/tbm-preview.pid
+          for attempt in {1..30}; do
+            if curl --fail --silent http://127.0.0.1:4173/index.html > /dev/null; then
+              exit 0
+            fi
+            sleep 1
+          done
+          cat /tmp/tbm-preview.log
+          exit 1
+
+      - name: Capture required viewports and phases
+        run: node scripts/capture-forge-intro.mjs
+
+      - name: Upload visual evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: forge-intro-visual-evidence
+          path: artifacts/forge-intro/*.png
+          if-no-files-found: error
+          retention-days: 30
