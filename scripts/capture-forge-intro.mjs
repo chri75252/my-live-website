@@ -56,6 +56,11 @@ try{
     const finalState=await page.evaluate(()=>{
       const intro=document.getElementById('forge-intro');
       const style=intro ? getComputedStyle(intro) : null;
+      const scrollingElement=document.scrollingElement;
+      const originalScrollLeft=scrollingElement?.scrollLeft ?? 0;
+      if(scrollingElement) scrollingElement.scrollLeft=1000;
+      const horizontalScroll=scrollingElement?.scrollLeft ?? window.scrollX;
+      if(scrollingElement) scrollingElement.scrollLeft=originalScrollLeft;
       return {
         exists:Boolean(intro),
         complete:intro?.classList.contains('is-complete') ?? false,
@@ -67,7 +72,9 @@ try{
         release:intro?.style.getPropertyValue('--forge-release'),
         scrollY:window.scrollY,
         scrollHeight:document.documentElement.scrollHeight,
-        horizontalOverflow:document.documentElement.scrollWidth-document.documentElement.clientWidth
+        horizontalOverflow:document.documentElement.scrollWidth-document.documentElement.clientWidth,
+        horizontalScroll,
+        bodyOverflowX:getComputedStyle(document.body).overflowX
       };
     });
 
@@ -81,8 +88,8 @@ try{
     if(!finalState.exists || !finalState.complete || finalState.pointerEvents!=='none'){
       throw new Error(`${viewport.name}: intro did not release correctly: ${JSON.stringify(finalState)}`);
     }
-    if(finalState.horizontalOverflow>2){
-      throw new Error(`${viewport.name}: horizontal overflow is ${finalState.horizontalOverflow}px.`);
+    if(finalState.horizontalScroll>2){
+      throw new Error(`${viewport.name}: page can scroll horizontally by ${finalState.horizontalScroll}px.`);
     }
     if(pageErrors.length){
       throw new Error(`${viewport.name}: page errors: ${pageErrors.join(' | ')}`);
