@@ -1,9 +1,9 @@
 {
   "status": "failure",
   "workflow": "Forge Frame Sequence Evidence",
-  "run_id": 29191648543,
-  "run_number": 25,
-  "tested_commit": "a9749354072914f9b15e1501f0320e1af450b727",
+  "run_id": 29194121121,
+  "run_number": 28,
+  "tested_commit": "7bbb6341edf8e6d9771f9e1df085de5b2b9691f4",
   "artifact": "forge-frame-sequence-evidence",
-  "recorded_at_utc": "2026-07-12T11:55:13Z"
+  "recorded_at_utc": "2026-07-12T13:17:58Z"
 }
