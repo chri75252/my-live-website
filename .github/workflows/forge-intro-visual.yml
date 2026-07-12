@@ -1,4 +1,4 @@
-name: Forge Intro Visual Evidence
+name: Forge Frame Sequence Evidence
 
 on:
   pull_request:
@@ -7,7 +7,12 @@ on:
       - index.html
       - css/forge-intro.css
       - js/forge-intro.js
-      - js/forge-intro-scene.js
+      - js/forge-frame-sequence.js
+      - assets/forge-reveal/**
+      - artifacts/forge-frame-audit/**
+      - scripts/build-forge-frame-assets.py
+      - scripts/apply-forge-frame-integration.py
+      - scripts/validate-forge-frame-sequence.mjs
       - scripts/capture-forge-intro.mjs
       - .github/workflows/forge-intro-visual.yml
   workflow_dispatch:
@@ -18,33 +23,59 @@ permissions:
 jobs:
   visual-evidence:
     runs-on: ubuntu-latest
-    timeout-minutes: 15
+    timeout-minutes: 30
     steps:
-      - name: Check out branch
+      - name: Check out PR branch with full history
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
           node-version: '22'
 
-      - name: Verify protected hero and syntax
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+
+      - name: Install deterministic image tooling
+        run: python -m pip install --disable-pip-version-check pillow==12.2.0
+
+      - name: Rebuild and verify audited production assets
+        shell: bash
+        run: |
+          set -euo pipefail
+          python scripts/build-forge-frame-assets.py
+          git diff --exit-code -- assets/forge-reveal artifacts/forge-frame-audit/performance-report.json
+
+      - name: Verify protected homepage and implementation
         shell: pwsh
         run: |
+          ./REFERENCE/scripts/verify_reveal_did_not_modify_baseline.ps1 -Repo $PWD
           ./docs/tbm-3d-handoff/scripts/verify_reveal_did_not_modify_baseline.ps1 -Repo $PWD
-          node --check js/forge-intro.js
-          node --check js/forge-intro-scene.js
 
-      - name: Install Playwright
+      - name: Validate syntax and audited cutoff
+        shell: bash
+        run: |
+          set -euo pipefail
+          node --check js/forge-intro.js
+          node --check js/forge-frame-sequence.js
+          node --check scripts/capture-forge-intro.mjs
+          node --check scripts/validate-forge-frame-sequence.mjs
+          node scripts/validate-forge-frame-sequence.mjs
+
+      - name: Install Playwright Chromium
         run: |
           npm install --no-save playwright@1.53.2
           npx playwright install --with-deps chromium
 
-      - name: Start static preview
+      - name: Start HTTP preview
         run: |
           python3 -m http.server 4173 --bind 127.0.0.1 > /tmp/tbm-preview.log 2>&1 &
           echo $! > /tmp/tbm-preview.pid
-          for attempt in {1..30}; do
+          for attempt in {1..45}; do
             if curl --fail --silent http://127.0.0.1:4173/index.html > /dev/null; then
               exit 0
             fi
@@ -53,14 +84,16 @@ jobs:
           cat /tmp/tbm-preview.log
           exit 1
 
-      - name: Capture required viewports and phases
+      - name: Capture screenshots, reverse motion and diagnostics
         run: node scripts/capture-forge-intro.mjs
 
-      - name: Upload visual evidence
+      - name: Upload complete review evidence
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: forge-intro-visual-evidence
-          path: artifacts/forge-intro/*
+          name: forge-frame-sequence-evidence
+          path: |
+            artifacts/forge-frame-audit/*
+            artifacts/forge-intro/**
           if-no-files-found: error
           retention-days: 30
