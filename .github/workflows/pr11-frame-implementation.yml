@@ -1,0 +1,107 @@
+name: PR11 audited frame implementation
+
+on:
+  push:
+    branches:
+      - feature/forge-intro-reveal-v2
+    paths:
+      - .github/workflows/pr11-frame-implementation.yml
+      - artifacts/forge-frame-audit/frame-manifest.json
+      - scripts/build-forge-frame-assets.py
+      - scripts/apply-forge-frame-integration.py
+      - scripts/validate-forge-frame-sequence.mjs
+      - js/forge-frame-sequence.js
+      - js/forge-intro.js
+      - css/forge-intro.css
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: pr11-audited-frame-implementation
+  cancel-in-progress: false
+
+jobs:
+  build-and-commit:
+    if: ${{ github.event_name == 'workflow_dispatch' || !contains(github.event.head_commit.message, '[pr11-frame-build]') }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Check out the existing PR branch
+        uses: actions/checkout@v4
+        with:
+          ref: feature/forge-intro-reveal-v2
+          fetch-depth: 0
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+
+      - name: Install image tooling
+        run: python -m pip install --disable-pip-version-check pillow==12.2.0
+
+      - name: Validate source frames and generate production derivatives
+        run: python scripts/build-forge-frame-assets.py
+
+      - name: Apply only the permitted additive homepage integration
+        run: python scripts/apply-forge-frame-integration.py
+
+      - name: Finalize interaction test without viewport auto-scroll
+        shell: bash
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          path = Path("scripts/capture-forge-intro.mjs")
+          text = path.read_text(encoding="utf-8")
+          old = "  await page.locator('.hero-actions a').first().click({ trial:true,timeout:3000 });\n\n"
+          new = """  const releasedCta=await page.locator('.hero-actions a').first().evaluate(element=>({
+            pointerEvents:getComputedStyle(element).pointerEvents,
+            ariaHidden:element.getAttribute('aria-hidden'),
+            tabIndex:element.tabIndex
+          }));
+          assert(releasedCta.pointerEvents!=='none' && releasedCta.tabIndex>=0,`${viewport.name}: homepage controls were not restored after handoff.`);
+
+          """
+          if old not in text:
+              raise SystemExit("Expected released-CTA test anchor was not found.")
+          path.write_text(text.replace(old, new, 1), encoding="utf-8", newline="\n")
+          PY
+
+      - name: Remove the replaced procedural renderer and one-time builder
+        shell: bash
+        run: |
+          rm -f js/forge-intro-scene.js
+          rm -f .github/workflows/pr11-frame-implementation.yml
+
+      - name: Verify the protected real homepage and audited implementation
+        shell: bash
+        run: |
+          set -euo pipefail
+          node --check js/forge-intro.js
+          node --check js/forge-frame-sequence.js
+          node --check scripts/capture-forge-intro.mjs
+          node --check scripts/validate-forge-frame-sequence.mjs
+          node scripts/validate-forge-frame-sequence.mjs
+          pwsh -File REFERENCE/scripts/verify_reveal_did_not_modify_baseline.ps1 -Repo "$PWD"
+          pwsh -File docs/tbm-3d-handoff/scripts/verify_reveal_did_not_modify_baseline.ps1 -Repo "$PWD"
+
+      - name: Commit generated assets and completed integration to PR11
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          if git diff --cached --quiet; then
+            echo "No generated implementation changes were found."
+            exit 1
+          fi
+          git commit -m "[pr11-frame-build] Implement audited TEVEAL frame-sequence reveal"
+          git push origin HEAD:feature/forge-intro-reveal-v2
