@@ -48,13 +48,13 @@ async function initialiseRevealMatchHero() {
 
   const scene = new THREE.Scene();
   const camera = new THREE.PerspectiveCamera(30, 1, 0.1, 100);
-  camera.position.set(0, 0.025, 10.55);
+  camera.position.set(0, 0.025, 11.55);
 
   const environmentTarget = createStudioEnvironment(renderer);
   scene.environment = environmentTarget.texture;
 
   const sculpture = new THREE.Group();
-  sculpture.rotation.set(-0.035, -0.1, -0.018);
+  sculpture.rotation.set(-0.025, -0.075, -0.01);
   scene.add(sculpture);
 
   const bronzeRoughnessTexture = createRoughnessTexture(0x54424d32);
@@ -62,7 +62,7 @@ async function initialiseRevealMatchHero() {
   const coreMaterial = new THREE.MeshPhysicalMaterial({
     color: 0x06090a,
     metalness: 0.12,
-    roughness: 0.27,
+    roughness: 0.25,
     clearcoat: 1,
     clearcoatRoughness: 0.2,
     ior: 1.48,
@@ -72,66 +72,66 @@ async function initialiseRevealMatchHero() {
   });
 
   const agedBronze = new THREE.MeshPhysicalMaterial({
-    color: 0x6d4b3b,
+    color: 0x765140,
     metalness: 0.9,
-    roughness: 0.38,
-    clearcoat: 0.3,
-    clearcoatRoughness: 0.22,
-    envMapIntensity: 1.02,
+    roughness: 0.34,
+    clearcoat: 0.32,
+    clearcoatRoughness: 0.2,
+    envMapIntensity: 1.22,
     roughnessMap: bronzeRoughnessTexture,
     anisotropy: 0.08,
     anisotropyRotation: 0.3
   });
 
   const secondaryBronze = new THREE.MeshPhysicalMaterial({
-    color: 0x775343,
+    color: 0x805846,
     metalness: 0.9,
-    roughness: 0.36,
-    clearcoat: 0.32,
-    clearcoatRoughness: 0.2,
-    envMapIntensity: 1.06,
+    roughness: 0.34,
+    clearcoat: 0.34,
+    clearcoatRoughness: 0.19,
+    envMapIntensity: 1.24,
     roughnessMap: bronzeRoughnessTexture,
     anisotropy: 0.1,
     anisotropyRotation: -0.18
   });
 
   const jointMaterial = new THREE.MeshPhysicalMaterial({
-    color: 0x8b5c43,
+    color: 0x976248,
     metalness: 0.92,
-    roughness: 0.31,
-    clearcoat: 0.42,
-    clearcoatRoughness: 0.16,
-    envMapIntensity: 1.12,
+    roughness: 0.29,
+    clearcoat: 0.44,
+    clearcoatRoughness: 0.15,
+    envMapIntensity: 1.28,
     roughnessMap: bronzeRoughnessTexture,
     anisotropy: 0.06
   });
 
   const shellLineMaterial = new THREE.LineBasicMaterial({
-    color: 0x8b7770,
+    color: 0xa17d6c,
     transparent: true,
-    opacity: 0.15,
+    opacity: 0.18,
     depthWrite: false
   });
 
   const shellJointMaterial = new THREE.MeshStandardMaterial({
-    color: 0x74635b,
+    color: 0x8d6959,
     metalness: 0.72,
-    roughness: 0.5,
+    roughness: 0.48,
     transparent: true,
-    opacity: 0.26,
+    opacity: 0.28,
     depthWrite: false
   });
 
-  const coreRadius = 0.84;
+  const coreRadius = 0.88;
   const outerRingRadius = 2.2;
-  const shellRadius = 1.3;
+  const shellRadius = 1.22;
   const coreGeometry = new THREE.SphereGeometry(coreRadius, 96, 96);
   const core = new THREE.Mesh(coreGeometry, coreMaterial);
   core.scale.y = 1.012;
   sculpture.add(core);
 
   const shellGroup = new THREE.Group();
-  shellGroup.rotation.set(0.18, -0.29, 0.09);
+  shellGroup.rotation.set(0.14, -0.22, 0.07);
   sculpture.add(shellGroup);
 
   const shellSourceGeometry = createIrregularShellGeometry(shellRadius, 1);
@@ -159,46 +159,46 @@ async function initialiseRevealMatchHero() {
       kind: 'torus',
       radius: outerRingRadius,
       tube: 0.014,
-      rotation: [0.07, 0.14, -0.06],
+      rotation: [0.035, 0.075, -0.025],
       speed: 0.004,
       material: agedBronze,
       nodes: [2.31, 5.57]
     },
     {
       kind: 'torus',
-      radius: 1.91,
-      tube: 0.024,
-      rotation: [0.015, 1.49, 0.055],
+      radius: 1.86,
+      tube: 0.025,
+      rotation: [0.015, 1.5, 0.045],
       speed: -0.008,
       material: secondaryBronze,
-      nodes: [3.82]
+      nodes: [3.78]
     },
     {
       kind: 'torus',
-      radius: 1.99,
-      tube: 0.026,
-      rotation: [0.72, 0.62, 0.88],
+      radius: 1.92,
+      tube: 0.028,
+      rotation: [1.24, 0.34, -0.62],
       speed: 0.011,
       material: agedBronze,
-      nodes: [0.14, 3.28]
+      nodes: [0.16, 3.25]
     },
     {
       kind: 'irregular',
-      radius: 1.86,
-      tube: 0.016,
-      rotation: [1.16, -0.18, -0.72],
+      radius: 1.62,
+      tube: 0.017,
+      rotation: [1.02, -0.42, 0.76],
       speed: -0.009,
       material: secondaryBronze,
-      nodes: [5.74]
+      nodes: [5.68]
     },
     {
       kind: 'torus',
-      radius: 1.73,
+      radius: 1.48,
       tube: 0.013,
-      rotation: [1.34, 0.12, 0.24],
+      rotation: [0.78, 0.64, 0.18],
       speed: 0.013,
       material: agedBronze,
-      nodes: [2.9]
+      nodes: [2.82]
     }
   ];
 
@@ -346,18 +346,18 @@ async function initialiseRevealMatchHero() {
       lerp(0.025, -0.012, settle) + Math.sin(phase * 0.28) * 0.006 * motionFactor,
       lerp(0.01, -0.022, settle)
     );
-    sculpture.rotation.x = -0.035 - pointerCurrent.y * 0.55 + Math.sin(phase * 0.2) * 0.005 * motionFactor;
-    sculpture.rotation.y = -0.1 + pointerCurrent.x * 0.62 + phase * 0.012 * motionFactor;
-    sculpture.rotation.z = -0.018 + Math.sin(phase * 0.15) * 0.0035 * motionFactor;
+    sculpture.rotation.x = -0.025 - pointerCurrent.y * 0.55 + Math.sin(phase * 0.2) * 0.005 * motionFactor;
+    sculpture.rotation.y = -0.075 + pointerCurrent.x * 0.62 + phase * 0.012 * motionFactor;
+    sculpture.rotation.z = -0.01 + Math.sin(phase * 0.15) * 0.0035 * motionFactor;
 
     core.rotation.y = -phase * 0.015 * motionFactor;
     core.rotation.x = phase * 0.005 * motionFactor;
 
-    shellGroup.rotation.x = 0.18 + phase * 0.007 * motionFactor;
-    shellGroup.rotation.y = -0.29 - phase * 0.011 * motionFactor;
-    shellGroup.rotation.z = 0.09 + Math.sin(phase * 0.18) * 0.006 * motionFactor;
-    shellLineMaterial.opacity = lerp(0.135, 0.165, settle);
-    shellJointMaterial.opacity = lerp(0.22, 0.28, settle);
+    shellGroup.rotation.x = 0.14 + phase * 0.007 * motionFactor;
+    shellGroup.rotation.y = -0.22 - phase * 0.011 * motionFactor;
+    shellGroup.rotation.z = 0.07 + Math.sin(phase * 0.18) * 0.006 * motionFactor;
+    shellLineMaterial.opacity = lerp(0.16, 0.19, settle);
+    shellJointMaterial.opacity = lerp(0.24, 0.3, settle);
 
     rings.forEach((ring, index) => {
       const spin = phase * ring.userData.speed * motionFactor;
@@ -373,7 +373,7 @@ async function initialiseRevealMatchHero() {
     dust.rotation.x = Math.sin(phase * 0.07) * 0.009 * motionFactor;
     dustMaterial.opacity = lerp(0.17, 0.22, settle);
 
-    camera.position.z = lerp(10.55, 10.38, settle);
+    camera.position.z = lerp(11.55, 11.35, settle);
     camera.position.y = lerp(0.025, 0.005, settle);
 
     const lightBreath = Math.sin(phase * 0.34) * 0.022 * motionFactor;
