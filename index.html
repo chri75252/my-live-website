@@ -17,9 +17,31 @@
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/site-v2.css">
   <link rel="stylesheet" href="css/hero-scroll.css">
+  <link rel="stylesheet" href="css/forge-intro.css">
+  <link rel="preload" as="image" href="assets/forge-reveal/desktop/frame_0001.webp" type="image/webp" media="(min-width:701px)">
+  <link rel="preload" as="image" href="assets/forge-reveal/mobile/frame_0001.webp" type="image/webp" media="(max-width:700px)">
+  <noscript><style>
+    .forge-intro{display:none!important}
+    body.forge-intro-pending>.skip-link,
+    body.forge-intro-pending>.site-header,
+    body.forge-intro-pending>main,
+    body.forge-intro-pending>.site-footer{pointer-events:auto!important;user-select:auto!important}
+  </style></noscript>
 </head>
-<body class="home-v2">
+<body class="home-v2 forge-intro-pending">
 <a class="skip-link" href="#main-content">Skip to main content</a>
+<div class="forge-intro" id="forge-intro" data-phase="opening" data-load-state="loading" data-frame-count="32" role="img" aria-label="A forged bronze gate opens to reveal The Blacksmith Market homepage">
+  <div class="forge-intro__shade" aria-hidden="true"></div>
+  <div class="forge-intro__atmosphere" aria-hidden="true"></div>
+  <canvas class="forge-intro__canvas" id="forge-intro-canvas" aria-hidden="true"></canvas>
+  <div class="forge-intro__copy">
+    <p class="forge-intro__kicker">The Blacksmith Market</p>
+    <strong class="forge-intro__title">Forge the way forward.</strong>
+  </div>
+  <span class="forge-intro__instruction">Scroll to forge</span>
+  <span class="forge-intro__status" id="forge-intro-status" role="status" aria-live="polite">Preparing the forge</span>
+  <span class="forge-intro__meter" aria-hidden="true"></span>
+</div>
 <header class="site-header" id="site-header">
   <div class="shell header-shell">
     <a class="brand" href="index.html" aria-label="The Blacksmith Market home">
@@ -125,6 +147,7 @@
 </footer>
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js" defer></script>
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js" defer></script>
+<script type="module" src="js/forge-intro.js"></script>
 <script type="module" src="js/home-v2.js"></script>
 <script type="module" src="js/hero-3d.js"></script>
 </body>
