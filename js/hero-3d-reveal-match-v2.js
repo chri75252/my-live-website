@@ -1,5 +1,4 @@
 import * as THREE from 'three';
-import { RoomEnvironment } from 'three/addons/environments/RoomEnvironment.js';
 import { RectAreaLightUniformsLib } from 'three/addons/lights/RectAreaLightUniformsLib.js';
 import { EffectComposer } from 'three/addons/postprocessing/EffectComposer.js';
 import { RenderPass } from 'three/addons/postprocessing/RenderPass.js';
@@ -44,104 +43,104 @@ async function initialiseRevealMatchHero() {
   renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, mobile.matches ? 1.25 : 1.5));
   renderer.outputColorSpace = THREE.SRGBColorSpace;
   renderer.toneMapping = THREE.AgXToneMapping;
-  renderer.toneMappingExposure = 0.9;
+  renderer.toneMappingExposure = 0.86;
   renderer.info.autoReset = false;
 
   const scene = new THREE.Scene();
   const camera = new THREE.PerspectiveCamera(30, 1, 0.1, 100);
-  camera.position.set(0, 0.04, 9.95);
+  camera.position.set(0, 0.025, 10.9);
 
-  const pmrem = new THREE.PMREMGenerator(renderer);
-  pmrem.compileEquirectangularShader();
-  const room = new RoomEnvironment();
-  const environmentTarget = pmrem.fromScene(room, 0.04);
+  const environmentTarget = createStudioEnvironment(renderer);
   scene.environment = environmentTarget.texture;
-  room.dispose?.();
-  pmrem.dispose();
 
   const sculpture = new THREE.Group();
-  sculpture.rotation.set(-0.075, -0.265, -0.055);
+  sculpture.rotation.set(-0.035, -0.1, -0.018);
   scene.add(sculpture);
 
   const bronzeRoughnessTexture = createRoughnessTexture(0x54424d32);
 
   const coreMaterial = new THREE.MeshPhysicalMaterial({
-    color: 0x080b0c,
-    metalness: 0.82,
-    roughness: 0.21,
+    color: 0x06090a,
+    metalness: 0.08,
+    roughness: 0.31,
     clearcoat: 1,
-    clearcoatRoughness: 0.075,
-    envMapIntensity: 1.28
+    clearcoatRoughness: 0.14,
+    ior: 1.48,
+    specularIntensity: 0.92,
+    specularColor: new THREE.Color(0xdde5e2),
+    envMapIntensity: 0.76
   });
 
   const agedBronze = new THREE.MeshPhysicalMaterial({
-    color: 0x5d463b,
-    metalness: 1,
-    roughness: 0.39,
-    clearcoat: 0.42,
-    clearcoatRoughness: 0.22,
-    envMapIntensity: 0.94,
+    color: 0x4d382f,
+    metalness: 0.92,
+    roughness: 0.47,
+    clearcoat: 0.22,
+    clearcoatRoughness: 0.28,
+    envMapIntensity: 0.7,
     roughnessMap: bronzeRoughnessTexture,
-    anisotropy: 0.12,
-    anisotropyRotation: 0.35
+    anisotropy: 0.08,
+    anisotropyRotation: 0.3
   });
 
-  const paleBronze = new THREE.MeshPhysicalMaterial({
-    color: 0x80665b,
-    metalness: 1,
-    roughness: 0.34,
-    clearcoat: 0.5,
-    clearcoatRoughness: 0.18,
-    envMapIntensity: 1.02,
+  const secondaryBronze = new THREE.MeshPhysicalMaterial({
+    color: 0x604438,
+    metalness: 0.9,
+    roughness: 0.43,
+    clearcoat: 0.26,
+    clearcoatRoughness: 0.24,
+    envMapIntensity: 0.74,
     roughnessMap: bronzeRoughnessTexture,
-    anisotropy: 0.16,
-    anisotropyRotation: -0.2
+    anisotropy: 0.1,
+    anisotropyRotation: -0.18
   });
 
   const jointMaterial = new THREE.MeshPhysicalMaterial({
-    color: 0x765649,
-    metalness: 1,
-    roughness: 0.3,
-    clearcoat: 0.68,
-    clearcoatRoughness: 0.1,
-    envMapIntensity: 1.05,
+    color: 0x704b3a,
+    metalness: 0.92,
+    roughness: 0.36,
+    clearcoat: 0.38,
+    clearcoatRoughness: 0.18,
+    envMapIntensity: 0.8,
     roughnessMap: bronzeRoughnessTexture,
-    anisotropy: 0.1
+    anisotropy: 0.06
   });
 
   const shellLineMaterial = new THREE.LineBasicMaterial({
-    color: 0x9d8b80,
+    color: 0x8b817a,
     transparent: true,
-    opacity: 0.34,
+    opacity: 0.22,
     depthWrite: false
   });
 
   const shellJointMaterial = new THREE.MeshStandardMaterial({
-    color: 0x9b887c,
-    metalness: 0.9,
-    roughness: 0.38,
+    color: 0x766b64,
+    metalness: 0.72,
+    roughness: 0.5,
     transparent: true,
-    opacity: 0.56
+    opacity: 0.36,
+    depthWrite: false
   });
 
-  const coreRadius = 0.78;
-  const outerRingRadius = 2.28;
-  const shellRadius = 1.26;
-  const core = new THREE.Mesh(new THREE.SphereGeometry(coreRadius, 96, 96), coreMaterial);
-  core.scale.y = 1.015;
+  const coreRadius = 0.84;
+  const outerRingRadius = 2.2;
+  const shellRadius = 1.34;
+  const coreGeometry = new THREE.SphereGeometry(coreRadius, 96, 96);
+  const core = new THREE.Mesh(coreGeometry, coreMaterial);
+  core.scale.y = 1.012;
   sculpture.add(core);
 
   const shellGroup = new THREE.Group();
-  shellGroup.rotation.set(0.23, -0.36, 0.14);
+  shellGroup.rotation.set(0.18, -0.29, 0.09);
   sculpture.add(shellGroup);
 
-  const shellSourceGeometry = createIrregularShellGeometry(shellRadius, 2);
+  const shellSourceGeometry = createIrregularShellGeometry(shellRadius, 1);
   const shellWireGeometry = new THREE.WireframeGeometry(shellSourceGeometry);
   const shellLines = new THREE.LineSegments(shellWireGeometry, shellLineMaterial);
   shellGroup.add(shellLines);
 
   const uniqueShellVertices = collectUniqueVertices(shellSourceGeometry);
-  const shellJointGeometry = new THREE.SphereGeometry(0.015, 7, 7);
+  const shellJointGeometry = new THREE.SphereGeometry(0.011, 6, 6);
   const shellJoints = new THREE.InstancedMesh(
     shellJointGeometry,
     shellJointMaterial,
@@ -159,47 +158,47 @@ async function initialiseRevealMatchHero() {
     {
       kind: 'torus',
       radius: outerRingRadius,
-      tube: 0.009,
-      rotation: [0.24, 0.31, -0.13],
-      speed: 0.006,
+      tube: 0.012,
+      rotation: [0.07, 0.14, -0.06],
+      speed: 0.004,
       material: agedBronze,
-      nodes: [2.52, 5.63]
+      nodes: [2.31, 5.57]
     },
     {
       kind: 'torus',
-      radius: 1.98,
-      tube: 0.011,
-      rotation: [0.11, 1.47, -0.18],
-      speed: -0.014,
-      material: paleBronze,
+      radius: 1.91,
+      tube: 0.018,
+      rotation: [0.015, 1.49, 0.055],
+      speed: -0.008,
+      material: secondaryBronze,
       nodes: [3.82]
     },
     {
       kind: 'torus',
-      radius: 2.04,
-      tube: 0.013,
-      rotation: [0.92, 0.42, 0.91],
-      speed: 0.019,
+      radius: 1.99,
+      tube: 0.021,
+      rotation: [0.94, 0.48, 0.76],
+      speed: 0.011,
       material: agedBronze,
-      nodes: [0.18, 3.25]
+      nodes: [0.14, 3.28]
     },
     {
       kind: 'irregular',
-      radius: 1.91,
-      tube: 0.011,
-      rotation: [1.08, -0.72, -0.48],
-      speed: -0.022,
-      material: paleBronze,
-      nodes: [5.84]
+      radius: 1.86,
+      tube: 0.013,
+      rotation: [0.72, -0.82, -0.55],
+      speed: -0.009,
+      material: secondaryBronze,
+      nodes: [5.74]
     },
     {
       kind: 'torus',
-      radius: 1.82,
-      tube: 0.010,
-      rotation: [1.34, 0.18, 0.51],
-      speed: 0.027,
+      radius: 1.73,
+      tube: 0.011,
+      rotation: [1.28, 0.15, -0.25],
+      speed: 0.013,
       material: agedBronze,
-      nodes: [2.92]
+      nodes: [2.9]
     }
   ];
 
@@ -212,29 +211,29 @@ async function initialiseRevealMatchHero() {
 
   const random = mulberry32(0x54424d31);
   const dustTexture = createRadialTexture([
-    [0, 'rgba(220,231,227,0.92)'],
-    [0.22, 'rgba(176,193,188,0.55)'],
+    [0, 'rgba(220,231,227,0.9)'],
+    [0.22, 'rgba(176,193,188,0.5)'],
     [1, 'rgba(95,117,111,0)']
   ]);
   const dustCount = mobile.matches ? 95 : 180;
   const dustPositions = new Float32Array(dustCount * 3);
   for (let index = 0; index < dustCount; index += 1) {
-    const radius = 2.3 + random() * 2.65;
+    const radius = 2.35 + random() * 2.65;
     const theta = random() * Math.PI * 2;
-    const y = (random() - 0.5) * 4.9;
+    const y = (random() - 0.5) * 4.8;
     dustPositions[index * 3] = Math.cos(theta) * radius;
     dustPositions[index * 3 + 1] = y;
-    dustPositions[index * 3 + 2] = -1.4 + random() * 2.8;
+    dustPositions[index * 3 + 2] = -1.5 + random() * 3;
   }
   const dustGeometry = new THREE.BufferGeometry();
   dustGeometry.setAttribute('position', new THREE.BufferAttribute(dustPositions, 3));
   const dustMaterial = new THREE.PointsMaterial({
-    color: 0xa6b2af,
+    color: 0x9baaa6,
     map: dustTexture,
     alphaMap: dustTexture,
-    size: mobile.matches ? 0.035 : 0.028,
+    size: mobile.matches ? 0.033 : 0.026,
     transparent: true,
-    opacity: 0.25,
+    opacity: 0.2,
     depthWrite: false,
     blending: THREE.NormalBlending,
     sizeAttenuation: true
@@ -250,26 +249,26 @@ async function initialiseRevealMatchHero() {
     count: mobile.matches ? 9 : 18
   });
 
-  const hemisphere = new THREE.HemisphereLight(0xc8d7d2, 0x120c09, 0.27);
+  const hemisphere = new THREE.HemisphereLight(0xb9cbc8, 0x0c0908, 0.16);
   scene.add(hemisphere);
 
-  const key = new THREE.RectAreaLight(0xe8ece9, 3.1, 3.8, 2.2);
-  key.position.set(-3.5, 3.25, 5.2);
-  key.lookAt(0, 0.2, 0);
+  const key = new THREE.RectAreaLight(0xe4e9e7, 2.15, 4.4, 2.1);
+  key.position.set(-3.8, 3.35, 5.1);
+  key.lookAt(-0.18, 0.28, 0);
   scene.add(key);
 
-  const fill = new THREE.RectAreaLight(0xc8d3d1, 1.05, 2.3, 3.2);
-  fill.position.set(3.0, 1.0, 4.6);
-  fill.lookAt(0, 0, 0);
+  const fill = new THREE.RectAreaLight(0xb8ccca, 0.58, 2.1, 2.9);
+  fill.position.set(3.35, 1.75, 4.7);
+  fill.lookAt(0.2, 0.08, 0);
   scene.add(fill);
 
-  const warmRim = new THREE.RectAreaLight(0x8e573d, 0.92, 2.1, 1.1);
-  warmRim.position.set(2.25, -2.35, 3.15);
-  warmRim.lookAt(0, -0.25, 0);
+  const warmRim = new THREE.RectAreaLight(0x8b5035, 0.54, 2.35, 1.2);
+  warmRim.position.set(3.05, -2.7, 3.55);
+  warmRim.lookAt(0.25, -0.38, 0);
   scene.add(warmRim);
 
-  const shellLight = new THREE.DirectionalLight(0xcab2a3, 0.58);
-  shellLight.position.set(-2.8, 3.8, 4.2);
+  const shellLight = new THREE.DirectionalLight(0xbca79b, 0.24);
+  shellLight.position.set(-3.1, 3.7, 4.3);
   scene.add(shellLight);
 
   let composer = null;
@@ -279,7 +278,7 @@ async function initialiseRevealMatchHero() {
     composer = new EffectComposer(renderer);
     composer.addPass(new RenderPass(scene, camera));
 
-    bloomPass = new UnrealBloomPass(new THREE.Vector2(1, 1), 0.12, 0.18, 0.92);
+    bloomPass = new UnrealBloomPass(new THREE.Vector2(1, 1), 0.065, 0.1, 1.02);
     composer.addPass(bloomPass);
 
     smaaPass = new SMAAPass(1, 1);
@@ -326,9 +325,10 @@ async function initialiseRevealMatchHero() {
 
   function setCardProgress(progress, scrollProgress) {
     cards.forEach((card, index) => {
-      const local = smooth(0.18 + index * 0.09, 0.42 + index * 0.09, progress);
+      const start = mobile.matches ? 0.26 + index * 0.075 : 0.2 + index * 0.085;
+      const local = smooth(start, start + 0.24, progress);
       card.style.opacity = local.toFixed(3);
-      card.style.transform = `translate3d(0, ${(1 - local) * 16}px, 0) scale(${0.975 + local * 0.025})`;
+      card.style.transform = `translate3d(0, ${(1 - local) * 14}px, 0) scale(${0.98 + local * 0.02})`;
       card.style.pointerEvents = local > 0.92 ? 'auto' : 'none';
     });
     if (scrollCue) scrollCue.style.opacity = String(1 - smooth(0.08, 0.3, scrollProgress));
@@ -338,47 +338,48 @@ async function initialiseRevealMatchHero() {
     const progress = clamp(scrollProgress, 0, 1);
     const motionFactor = motionEnabled && !reducedMotion.matches ? 1 : 0;
     const settle = smooth(0.04, 0.82, progress);
-    const breath = Math.sin(phase * 0.46) * 0.004 * motionFactor;
+    const breath = Math.sin(phase * 0.42) * 0.003 * motionFactor;
 
-    sculpture.scale.setScalar(lerp(1.015, 1.045, settle) + breath);
+    sculpture.scale.setScalar(lerp(1.0, 1.022, settle) + breath);
     sculpture.position.set(
-      lerp(-0.015, 0.025, settle),
-      lerp(0.055, -0.015, settle) + Math.sin(phase * 0.31) * 0.008 * motionFactor,
-      lerp(0.015, -0.035, settle)
+      lerp(-0.012, 0.012, settle),
+      lerp(0.025, -0.012, settle) + Math.sin(phase * 0.28) * 0.006 * motionFactor,
+      lerp(0.01, -0.022, settle)
     );
-    sculpture.rotation.x = -0.075 - pointerCurrent.y * 0.9 + Math.sin(phase * 0.23) * 0.008 * motionFactor;
-    sculpture.rotation.y = -0.265 + pointerCurrent.x * 1.05 + phase * 0.018 * motionFactor;
-    sculpture.rotation.z = -0.055 + Math.sin(phase * 0.17) * 0.005 * motionFactor;
+    sculpture.rotation.x = -0.035 - pointerCurrent.y * 0.55 + Math.sin(phase * 0.2) * 0.005 * motionFactor;
+    sculpture.rotation.y = -0.1 + pointerCurrent.x * 0.62 + phase * 0.012 * motionFactor;
+    sculpture.rotation.z = -0.018 + Math.sin(phase * 0.15) * 0.0035 * motionFactor;
 
-    core.rotation.y = -phase * 0.024 * motionFactor;
-    core.rotation.x = phase * 0.008 * motionFactor;
+    core.rotation.y = -phase * 0.015 * motionFactor;
+    core.rotation.x = phase * 0.005 * motionFactor;
 
-    shellGroup.rotation.x = 0.23 + phase * 0.012 * motionFactor;
-    shellGroup.rotation.y = -0.36 - phase * 0.019 * motionFactor;
-    shellGroup.rotation.z = 0.14 + Math.sin(phase * 0.21) * 0.009 * motionFactor;
-    shellLineMaterial.opacity = lerp(0.29, 0.36, settle);
+    shellGroup.rotation.x = 0.18 + phase * 0.007 * motionFactor;
+    shellGroup.rotation.y = -0.29 - phase * 0.011 * motionFactor;
+    shellGroup.rotation.z = 0.09 + Math.sin(phase * 0.18) * 0.006 * motionFactor;
+    shellLineMaterial.opacity = lerp(0.2, 0.235, settle);
+    shellJointMaterial.opacity = lerp(0.32, 0.38, settle);
 
     rings.forEach((ring, index) => {
       const spin = phase * ring.userData.speed * motionFactor;
       ring.userData.spinQuaternion.setFromAxisAngle(ring.userData.localNormal, spin);
       ring.quaternion.copy(ring.userData.baseQuaternion).multiply(ring.userData.spinQuaternion);
 
-      const wobble = Math.sin(phase * (0.18 + index * 0.018) + ring.userData.phaseOffset);
-      ring.rotateX(wobble * 0.006 * motionFactor);
-      ring.rotateY(wobble * 0.004 * motionFactor);
+      const wobble = Math.sin(phase * (0.14 + index * 0.014) + ring.userData.phaseOffset);
+      ring.rotateX(wobble * 0.0035 * motionFactor);
+      ring.rotateY(wobble * 0.0025 * motionFactor);
     });
 
-    dust.rotation.y = phase * 0.009 * motionFactor;
-    dust.rotation.x = Math.sin(phase * 0.08) * 0.012 * motionFactor;
-    dustMaterial.opacity = lerp(0.2, 0.27, settle);
+    dust.rotation.y = phase * 0.006 * motionFactor;
+    dust.rotation.x = Math.sin(phase * 0.07) * 0.009 * motionFactor;
+    dustMaterial.opacity = lerp(0.17, 0.22, settle);
 
-    camera.position.z = lerp(9.95, 9.68, settle);
-    camera.position.y = lerp(0.055, 0.015, settle);
+    camera.position.z = lerp(10.9, 10.7, settle);
+    camera.position.y = lerp(0.025, 0.005, settle);
 
-    const lightBreath = Math.sin(phase * 0.4) * 0.035 * motionFactor;
-    key.intensity = 3.1 + lightBreath;
-    fill.intensity = 1.05 - lightBreath * 0.35;
-    warmRim.intensity = 0.92 + lightBreath * 0.55;
+    const lightBreath = Math.sin(phase * 0.34) * 0.022 * motionFactor;
+    key.intensity = 2.15 + lightBreath;
+    fill.intensity = 0.58 - lightBreath * 0.25;
+    warmRim.intensity = 0.54 + lightBreath * 0.4;
 
     setCardProgress(progress, scrollProgress);
   }
@@ -395,17 +396,16 @@ async function initialiseRevealMatchHero() {
       data.phase += deltaSeconds * data.flickerSpeed;
       ember.material.opacity = data.baseOpacity * (0.68 + Math.sin(data.phase) * 0.24);
 
-      if (ember.position.x > 4.0 || ember.position.y > 2.9) {
-        resetEmber(ember, random);
-      }
+      if (ember.position.x > 4 || ember.position.y > 2.9) resetEmber(ember, random);
     });
   }
 
   function updatePointer(event) {
     if (!motionEnabled || reducedMotion.matches) return;
-    const rect = stage.getBoundingClientRect();
-    pointerTarget.x = ((event.clientX - rect.left) / rect.width - 0.5) * 0.075;
-    pointerTarget.y = ((event.clientY - rect.top) / rect.height - 0.5) * 0.05;
+    const rect = canvas.getBoundingClientRect();
+    if (!rect.width || !rect.height) return;
+    pointerTarget.x = ((event.clientX - rect.left) / rect.width - 0.5) * 0.055;
+    pointerTarget.y = ((event.clientY - rect.top) / rect.height - 0.5) * 0.038;
   }
 
   function resetPointer() {
@@ -413,8 +413,8 @@ async function initialiseRevealMatchHero() {
   }
 
   if (window.matchMedia('(pointer: fine)').matches) {
-    stage.addEventListener('pointermove', updatePointer, { passive: true });
-    stage.addEventListener('pointerleave', resetPointer);
+    canvas.addEventListener('pointermove', updatePointer, { passive: true });
+    canvas.addEventListener('pointerleave', resetPointer);
   }
 
   function updateMotionButton() {
@@ -506,7 +506,7 @@ async function initialiseRevealMatchHero() {
   else window.addEventListener('load', installScrollDriver, { once: true });
 
   const resize = () => {
-    const { width, height } = stage.getBoundingClientRect();
+    const { width, height } = canvas.getBoundingClientRect();
     if (!width || !height) return;
     renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, mobile.matches ? 1.25 : 1.5));
     renderer.setSize(width, height, false);
@@ -519,7 +519,7 @@ async function initialiseRevealMatchHero() {
     camera.updateProjectionMatrix();
   };
   const resizeObserver = new ResizeObserver(resize);
-  resizeObserver.observe(stage);
+  resizeObserver.observe(canvas);
   resize();
 
   const visibilityObserver = new IntersectionObserver(entries => {
@@ -606,6 +606,20 @@ async function initialiseRevealMatchHero() {
           outerRingRadius,
           coreOuterDiameterRatio: coreRadius / outerRingRadius
         },
+        materials: {
+          core: {
+            metalness: coreMaterial.metalness,
+            roughness: coreMaterial.roughness,
+            clearcoat: coreMaterial.clearcoat,
+            clearcoatRoughness: coreMaterial.clearcoatRoughness,
+            envMapIntensity: coreMaterial.envMapIntensity
+          },
+          agedBronze: {
+            metalness: agedBronze.metalness,
+            roughness: agedBronze.roughness,
+            envMapIntensity: agedBronze.envMapIntensity
+          }
+        },
         frameTiming: {
           samples: frameTiming.samples,
           averageMs: frameTiming.samples ? frameTiming.totalMs / frameTiming.samples : 0,
@@ -624,7 +638,7 @@ async function initialiseRevealMatchHero() {
     mobile.removeEventListener?.('change', resize);
     composer?.dispose?.();
     environmentTarget.dispose();
-    core.geometry.dispose();
+    coreGeometry.dispose();
     coreMaterial.dispose();
     shellSourceGeometry.dispose();
     shellWireGeometry.dispose();
@@ -632,12 +646,16 @@ async function initialiseRevealMatchHero() {
     shellJointGeometry.dispose();
     shellJointMaterial.dispose();
     rings.forEach(ring => {
+      const disposed = new Set();
       ring.traverse(object => {
-        if (object.isMesh) object.geometry?.dispose?.();
+        if (object.isMesh && object.geometry && !disposed.has(object.geometry)) {
+          disposed.add(object.geometry);
+          object.geometry.dispose();
+        }
       });
     });
     agedBronze.dispose();
-    paleBronze.dispose();
+    secondaryBronze.dispose();
     jointMaterial.dispose();
     bronzeRoughnessTexture.dispose();
     dustGeometry.dispose();
@@ -648,6 +666,42 @@ async function initialiseRevealMatchHero() {
     renderer.dispose();
     delete window.__tbmRevealMatchHero;
   }, { once: true });
+}
+
+function createStudioEnvironment(renderer) {
+  const pmrem = new THREE.PMREMGenerator(renderer);
+  const studio = new THREE.Scene();
+  studio.background = new THREE.Color(0x050809);
+  const panelGeometry = new THREE.PlaneGeometry(1, 1);
+  const panelMaterials = [];
+  const target = new THREE.Vector3();
+  const panels = [
+    { position: [-4.4, 3.6, 5.2], scale: [4.5, 2.05], rgb: [3.1, 3.35, 3.28], lookAt: [-0.35, 0.42, 0] },
+    { position: [2.55, 4.25, 4.4], scale: [2.55, 1.15], rgb: [1.55, 1.78, 1.75], lookAt: [0.25, 0.5, 0] },
+    { position: [-4.8, -0.65, 1.9], scale: [1.1, 3.1], rgb: [0.38, 0.5, 0.5], lookAt: [-0.25, -0.1, 0] },
+    { position: [3.55, -2.8, 3.45], scale: [2.25, 1.05], rgb: [1.1, 0.46, 0.24], lookAt: [0.28, -0.42, 0] }
+  ];
+
+  panels.forEach(definition => {
+    const material = new THREE.MeshBasicMaterial({
+      color: new THREE.Color().setRGB(...definition.rgb),
+      side: THREE.DoubleSide,
+      toneMapped: false
+    });
+    panelMaterials.push(material);
+    const panel = new THREE.Mesh(panelGeometry, material);
+    panel.position.set(...definition.position);
+    panel.scale.set(definition.scale[0], definition.scale[1], 1);
+    target.set(...definition.lookAt);
+    panel.lookAt(target);
+    studio.add(panel);
+  });
+
+  const environmentTarget = pmrem.fromScene(studio, 0.07, 0.1, 50);
+  panelGeometry.dispose();
+  panelMaterials.forEach(material => material.dispose());
+  pmrem.dispose();
+  return environmentTarget;
 }
 
 function createOrbitalRing(definition, jointMaterial) {
@@ -664,9 +718,9 @@ function createOrbitalRing(definition, jointMaterial) {
   ring.add(mesh);
 
   const nodeGeometry = new THREE.SphereGeometry(
-    definition.radius > 2.1 ? 0.062 : 0.074,
-    22,
-    22
+    definition.radius > 2.1 ? 0.06 : 0.072,
+    20,
+    20
   );
   definition.nodes.forEach(angle => {
     const node = new THREE.Mesh(nodeGeometry, jointMaterial);
@@ -675,7 +729,7 @@ function createOrbitalRing(definition, jointMaterial) {
       Math.sin(angle) * definition.radius,
       0
     );
-    node.scale.setScalar(definition.radius > 2.1 ? 0.92 : 1);
+    node.scale.setScalar(definition.radius > 2.1 ? 0.94 : 1);
     ring.add(node);
   });
 
@@ -695,8 +749,8 @@ function createIrregularShellGeometry(radius, detail) {
   for (let index = 0; index < positions.count; index += 1) {
     point.fromBufferAttribute(positions, index).normalize();
     const variation =
-      Math.sin(point.x * 11.7 + point.y * 7.1) * 0.012 +
-      Math.sin(point.z * 13.3 - point.x * 5.4) * 0.009;
+      Math.sin(point.x * 11.7 + point.y * 7.1) * 0.014 +
+      Math.sin(point.z * 13.3 - point.x * 5.4) * 0.01;
     point.multiplyScalar(radius * (1 + variation));
     positions.setXYZ(index, point.x, point.y, point.z);
   }
@@ -712,11 +766,11 @@ function createIrregularOrbitGeometry(radius, tube) {
   const segments = window.innerWidth < 700 ? 72 : 112;
   for (let index = 0; index < segments; index += 1) {
     const angle = index / segments * Math.PI * 2;
-    const radialVariation = 1 + Math.sin(angle * 3 + 0.35) * 0.012 + Math.sin(angle * 7) * 0.006;
+    const radialVariation = 1 + Math.sin(angle * 3 + 0.35) * 0.015 + Math.sin(angle * 7) * 0.007;
     points.push(new THREE.Vector3(
       Math.cos(angle) * radius * radialVariation,
       Math.sin(angle) * radius * radialVariation,
-      Math.sin(angle * 5 + 0.4) * 0.018
+      Math.sin(angle * 5 + 0.4) * 0.021
     ));
   }
   const curve = new THREE.CatmullRomCurve3(points, true, 'centripetal', 0.5);
@@ -735,7 +789,7 @@ function createRoughnessTexture(seed) {
   const random = mulberry32(seed);
 
   for (let index = 0; index < size * size; index += 1) {
-    const value = Math.round(172 + random() * 64);
+    const value = Math.round(205 + random() * 43);
     const offset = index * 4;
     data[offset] = value;
     data[offset + 1] = value;
@@ -766,9 +820,9 @@ function collectUniqueVertices(geometry) {
   }
 
   const all = [...unique.values()];
-  if (all.length <= 72) return all;
-  const stride = Math.max(1, Math.floor(all.length / 64));
-  return all.filter((_, index) => index % stride === 0).slice(0, 72);
+  if (all.length <= 56) return all;
+  const stride = Math.max(1, Math.floor(all.length / 52));
+  return all.filter((_, index) => index % stride === 0).slice(0, 56);
 }
 
 function createRadialTexture(stops) {
@@ -803,9 +857,9 @@ function createEmberTexture() {
   const context = textureCanvas.getContext('2d');
   const gradient = context.createLinearGradient(0, 0, width, 0);
   gradient.addColorStop(0, 'rgba(255,198,122,0)');
-  gradient.addColorStop(0.22, 'rgba(255,174,87,0.22)');
-  gradient.addColorStop(0.58, 'rgba(245,130,49,0.95)');
-  gradient.addColorStop(0.86, 'rgba(255,211,150,0.4)');
+  gradient.addColorStop(0.22, 'rgba(255,174,87,0.18)');
+  gradient.addColorStop(0.58, 'rgba(235,120,47,0.82)');
+  gradient.addColorStop(0.86, 'rgba(255,202,142,0.32)');
   gradient.addColorStop(1, 'rgba(255,218,164,0)');
   context.fillStyle = gradient;
   context.fillRect(0, 0, width, height);
@@ -820,9 +874,9 @@ function createEmberSprites({ scene, texture, random, count }) {
   for (let index = 0; index < count; index += 1) {
     const material = new THREE.SpriteMaterial({
       map: texture,
-      color: index % 4 === 0 ? 0xe6a065 : 0xb95f2c,
+      color: index % 4 === 0 ? 0xd58b57 : 0x9f4f29,
       transparent: true,
-      opacity: 0.45,
+      opacity: 0.38,
       depthWrite: false,
       blending: THREE.AdditiveBlending,
       rotation: -0.45 + random() * 0.35
@@ -837,20 +891,20 @@ function createEmberSprites({ scene, texture, random, count }) {
 }
 
 function resetEmber(ember, random) {
-  const mostlyRight = random() < 0.78;
+  const mostlyRight = random() < 0.8;
   ember.position.set(
-    mostlyRight ? 0.95 + random() * 2.7 : -3.25 + random() * 1.1,
-    -2.3 + random() * 3.45,
-    -0.9 + random() * 2.0
+    mostlyRight ? 1.05 + random() * 2.55 : -3.15 + random() * 0.9,
+    -2.35 + random() * 3.3,
+    -0.9 + random() * 2
   );
-  const width = 0.08 + random() * 0.19;
-  ember.scale.set(width, width * (0.075 + random() * 0.055), 1);
-  ember.userData.velocityX = 0.08 + random() * 0.12;
-  ember.userData.velocityY = 0.045 + random() * 0.11;
-  ember.userData.velocityZ = (random() - 0.5) * 0.025;
-  ember.userData.baseOpacity = 0.18 + random() * 0.42;
+  const width = 0.07 + random() * 0.16;
+  ember.scale.set(width, width * (0.07 + random() * 0.05), 1);
+  ember.userData.velocityX = 0.07 + random() * 0.1;
+  ember.userData.velocityY = 0.04 + random() * 0.09;
+  ember.userData.velocityZ = (random() - 0.5) * 0.02;
+  ember.userData.baseOpacity = 0.14 + random() * 0.34;
   ember.userData.phase = random() * Math.PI * 2;
-  ember.userData.flickerSpeed = 0.7 + random() * 1.8;
+  ember.userData.flickerSpeed = 0.7 + random() * 1.6;
 }
 
 function mulberry32(seed) {
