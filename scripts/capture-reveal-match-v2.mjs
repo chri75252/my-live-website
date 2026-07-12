@@ -308,8 +308,16 @@ async function captureIsolatedHero(name, width, height, options = {}) {
     scenario.initial = await scrollHeroFraction(runtime.page, 0, 850);
     const primaryNames = label === 'composer' || label === 'mobile-direct';
     const prefix = primaryNames ? name : `${name}--${label}`;
-    await runtime.page.screenshot({ path: path.join(screenshotsDir, `${prefix}--hero-initial.png`) });
-    if (primaryNames) await captureStage(runtime.page, `${name}--hero-initial-stage.png`);
+    const initialScreenshotPath = path.join(screenshotsDir, `${prefix}--hero-initial.png`);
+    await runtime.page.screenshot({ path: initialScreenshotPath });
+    if (primaryNames) {
+      const initialStagePath = path.join(stagesDir, `${name}--hero-initial-stage.png`);
+      await captureStage(runtime.page, `${name}--hero-initial-stage.png`);
+      if (!options.hasRealHandoff) {
+        await fs.copyFile(initialScreenshotPath, path.join(screenshotsDir, `${name}--live-hero-handoff.png`));
+        await fs.copyFile(initialStagePath, path.join(stagesDir, `${name}--live-hero-handoff-stage.png`));
+      }
+    }
 
     scenario.progress25 = await scrollHeroFraction(runtime.page, 0.25);
     await runtime.page.screenshot({ path: path.join(screenshotsDir, `${prefix}--hero-progress-25.png`) });
@@ -381,13 +389,17 @@ async function captureIsolatedHero(name, width, height, options = {}) {
 
 for (const [name, width, height] of viewports) {
   const recordHero = !skipRecordings && (name === '1920x1080' || name === '390x844');
-  const recordForge = !skipRecordings && name === '390x844';
-  await captureRealHandoff(name, width, height, recordForge);
+  const hasRealHandoff = name === '1920x1080' || name === '390x844';
+  if (hasRealHandoff) {
+    const recordForge = !skipRecordings && name === '390x844';
+    await captureRealHandoff(name, width, height, recordForge);
+  }
   await captureIsolatedHero(name, width, height, {
     label: width > 700 ? 'composer' : 'mobile-direct',
     forceComposer: width > 700,
     forceDirect: width <= 700,
     recordVideo: recordHero,
+    hasRealHandoff,
   });
 }
 
