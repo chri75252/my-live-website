@@ -179,10 +179,11 @@
   }
   .hero-scroll-sequence .hero-stage{
     --armillary-canvas-size:min(88vw,400px);
+    --armillary-header-clearance:64px;
     width:min(100%,440px);
     aspect-ratio:auto;
     margin-inline:auto;
-    padding:var(--armillary-canvas-size) 8px 0;
+    padding:calc(var(--armillary-canvas-size) + var(--armillary-header-clearance)) 8px 0;
     display:grid;
     grid-template-columns:repeat(2,minmax(0,1fr));
     gap:8px;
@@ -191,11 +192,11 @@
   .hero-scroll-sequence .hero-stage::after{
     width:var(--armillary-canvas-size);
     height:var(--armillary-canvas-size);
-    inset:0 auto auto 50%;
+    inset:var(--armillary-header-clearance) auto auto 50%;
     transform:translateX(-50%);
   }
   .hero-scroll-sequence #hero-canvas{
-    inset:0 auto auto 50%;
+    inset:var(--armillary-header-clearance) auto auto 50%;
     width:var(--armillary-canvas-size);
     height:var(--armillary-canvas-size);
     transform:translateX(-50%);
@@ -234,6 +235,7 @@
 @media(max-width:560px){
   .hero-scroll-sequence .hero-stage{
     --armillary-canvas-size:min(90vw,380px);
+    --armillary-header-clearance:60px;
     width:100%;
     margin-left:0;
   }
@@ -245,7 +247,9 @@
 @media(max-width:390px){
   .hero-scroll-sequence .hero-stage{
     --armillary-canvas-size:88vw;
-    padding-inline:4px;
+    --armillary-header-clearance:58px;
+    padding-right:4px;
+    padding-left:4px;
     gap:6px;
   }
   .hero-scroll-sequence .float-card{
