@@ -94,6 +94,8 @@ async function launchScenario({ width, height, reducedMotion = false, recordVide
       : undefined,
   });
   const page = await context.newPage();
+  page.setDefaultTimeout(90000);
+  page.setDefaultNavigationTimeout(60000);
   return { browser, context, page, video: recordVideo ? page.video() : null };
 }
 
