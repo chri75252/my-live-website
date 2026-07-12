@@ -101,7 +101,11 @@ jobs:
           exit 1
 
       - name: Capture screenshots, reverse motion and diagnostics
-        run: node scripts/capture-forge-intro.mjs
+        shell: bash
+        run: |
+          set -o pipefail
+          mkdir -p artifacts/forge-intro
+          node scripts/capture-forge-intro.mjs 2>&1 | tee artifacts/forge-intro/capture.log
 
       - name: Upload complete review evidence
         if: ${{ always() }}
