@@ -1,0 +1,35 @@
+{
+  "status": "pass",
+  "checks": {
+    "new JS exists": true,
+    "new CSS exists": true,
+    "index loads V2 JS once": true,
+    "index does not load original JS": true,
+    "index loads V2 CSS once": true,
+    "import map exists once": true,
+    "three core mapping pinned": true,
+    "three addons mapping pinned": true,
+    "all addon imports use mapped prefix": true,
+    "original JS preserved": true,
+    "original CSS preserved": true,
+    "Forge intro preserved": true,
+    "Forge frame renderer preserved": true,
+    "Forge CSS preserved": true,
+    "five ring definitions": true,
+    "no pedestal geometry": true,
+    "composer path present": true,
+    "direct path present": true,
+    "reduced motion integrated": true,
+    "motion toggle integrated": true,
+    "performance diagnostics exposed": true
+  },
+  "protected_sha256": {
+    "js/hero-3d.js": "3efa5ffa9758d41211e67801d0a0eeb8a9b2caefc2d65c5ab33ac12e2db9a294",
+    "css/hero-scroll.css": "14a9a12715a43852b6a9ee8670fb1fc1257e5f98f0b660109035b98bdc75ec70",
+    "js/home-v2.js": "e16095b9eb14b22387ec23ba3be0247cf873a93517071f85124650dacf86db18",
+    "css/site-v2.css": "5ee67721d33f7a24fa19bf1e6044249a84478d83b4fc2dc943065eb295252f1d",
+    "js/forge-intro.js": "c7605563af46e71830b87a5d80ef30cc582b3303d3ebc003ec5194097c3af3da",
+    "js/forge-frame-sequence.js": "34f192b0e86b963b1519f44d3e776cc16f2c2135048cbd4f0e7e882222fb623d",
+    "css/forge-intro.css": "a704e94a888bf5a39fda3a028de947da22dbf886376f753ae5794e1aa5355923"
+  }
+}

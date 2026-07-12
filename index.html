@@ -15,8 +15,18 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <!-- TBM reveal-match Three.js import map -->
+  <script type="importmap" id="tbm-three-importmap">
+  {
+    "imports": {
+      "three": "https://cdn.jsdelivr.net/npm/three@0.180.0/build/three.module.js",
+      "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.180.0/examples/jsm/"
+    }
+  }
+  </script>
   <link rel="stylesheet" href="css/site-v2.css">
   <link rel="stylesheet" href="css/hero-scroll.css">
+  <link rel="stylesheet" href="css/hero-reveal-match-v2.css">
   <link rel="stylesheet" href="css/forge-intro.css">
   <link rel="preload" as="image" href="assets/forge-reveal/desktop/frame_0001.webp" type="image/webp" media="(min-width:701px)">
   <link rel="preload" as="image" href="assets/forge-reveal/mobile/frame_0001.webp" type="image/webp" media="(max-width:700px)">
@@ -149,6 +159,6 @@
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js" defer></script>
 <script type="module" src="js/forge-intro.js"></script>
 <script type="module" src="js/home-v2.js"></script>
-<script type="module" src="js/hero-3d.js"></script>
+<script type="module" src="js/hero-3d-reveal-match-v2.js"></script>
 </body>
 </html>

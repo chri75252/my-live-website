@@ -1,0 +1,139 @@
+/* Reveal-match visual layer for the live Three.js homepage component.
+   Loaded after hero-scroll.css so the original approved baseline remains available for rollback. */
+
+.hero-scroll-sequence .hero-visual{
+  isolation:isolate;
+}
+
+.hero-scroll-sequence .hero-visual::before{
+  content:"";
+  position:absolute;
+  inset:2% -4% 1%;
+  z-index:0;
+  border-radius:50%;
+  pointer-events:none;
+  background:
+    radial-gradient(circle at 46% 42%,rgba(64,82,81,.34),rgba(21,31,32,.42) 34%,rgba(8,13,14,.72) 62%,transparent 76%),
+    radial-gradient(circle at 20% 22%,rgba(129,151,145,.09),transparent 31%),
+    radial-gradient(circle at 86% 78%,rgba(133,72,40,.12),transparent 30%);
+  filter:blur(12px);
+  opacity:.96;
+}
+
+.hero-scroll-sequence .hero-visual::after{
+  content:"";
+  position:absolute;
+  inset:5% 0;
+  z-index:1;
+  border-radius:48%;
+  pointer-events:none;
+  background:
+    radial-gradient(circle at 50% 46%,transparent 48%,rgba(2,5,5,.18) 68%,rgba(2,4,4,.52) 100%),
+    linear-gradient(90deg,rgba(3,7,7,.2),transparent 22% 78%,rgba(49,25,16,.14));
+  mix-blend-mode:multiply;
+}
+
+.hero-scroll-sequence .hero-stage{
+  width:min(100%,720px);
+  max-width:none;
+  transform:none;
+  isolation:isolate;
+}
+
+.hero-scroll-sequence .hero-stage::before{
+  inset:7%;
+  z-index:0;
+  border-radius:50%;
+  background:
+    radial-gradient(circle at 45% 38%,rgba(142,157,151,.07),transparent 26%),
+    radial-gradient(circle at 50% 54%,rgba(45,60,59,.16),rgba(10,16,17,.08) 46%,transparent 72%);
+  filter:blur(20px);
+  opacity:.9;
+}
+
+.hero-scroll-sequence .hero-stage::after{
+  content:"";
+  position:absolute;
+  inset:4%;
+  z-index:3;
+  border-radius:50%;
+  pointer-events:none;
+  background:radial-gradient(circle,transparent 58%,rgba(1,3,3,.16) 77%,rgba(1,2,2,.44) 100%);
+}
+
+.hero-scroll-sequence #hero-canvas{
+  z-index:2;
+  filter:saturate(.82) contrast(.985) brightness(.96);
+}
+
+.hero-scroll-sequence .float-card{
+  width:154px;
+  border-color:rgba(163,125,91,.32);
+  background:linear-gradient(145deg,rgba(17,21,20,.88),rgba(8,12,12,.78));
+  box-shadow:0 18px 54px rgba(0,0,0,.34);
+}
+
+.hero-scroll-sequence .float-card-a{left:-3%;top:14%}
+.hero-scroll-sequence .float-card-b{right:-2%;top:20%}
+.hero-scroll-sequence .float-card-c{left:-4%;bottom:12%}
+.hero-scroll-sequence .float-card-d{right:-2%;bottom:9%}
+
+.hero-scroll-sequence .motion-toggle{
+  border-color:rgba(143,104,77,.42);
+  background:rgba(7,12,12,.82);
+}
+
+.hero-scroll-sequence .motion-toggle:disabled{
+  cursor:default;
+  opacity:.72;
+}
+
+.armillary-fallback .fallback-core{
+  width:34%;
+  background:
+    radial-gradient(circle at 31% 26%,rgba(230,231,224,.58),rgba(93,99,97,.24) 13%,transparent 27%),
+    radial-gradient(circle at 66% 31%,rgba(210,214,209,.36),transparent 19%),
+    radial-gradient(circle at 50% 62%,#111719,#050708 68%,#020303);
+  box-shadow:0 20px 60px rgba(0,0,0,.42);
+}
+
+.armillary-fallback .fallback-ring{
+  border-width:1px;
+  border-color:rgba(145,105,82,.72);
+  box-shadow:none;
+}
+
+@media(max-width:1320px){
+  .hero-scroll-sequence .hero-stage{width:min(100%,700px)}
+}
+
+@media(max-width:1180px){
+  .hero-scroll-sequence .hero-stage{width:min(100%,670px)}
+  .hero-scroll-sequence .float-card-a{left:0}
+  .hero-scroll-sequence .float-card-b{right:0}
+  .hero-scroll-sequence .float-card-c{left:0}
+  .hero-scroll-sequence .float-card-d{right:0}
+}
+
+@media(max-width:899px){
+  .hero-scroll-sequence .hero-stage{width:min(100%,660px)}
+  .hero-scroll-sequence .hero-visual::before{inset:8% -2% 4%}
+  .hero-scroll-sequence .hero-visual::after{inset:10% 1%}
+}
+
+@media(max-width:560px){
+  .hero-scroll-sequence .hero-stage{
+    width:104%;
+    margin-left:-2%;
+  }
+  .hero-scroll-sequence #hero-canvas{
+    filter:saturate(.8) contrast(.98) brightness(.95);
+  }
+}
+
+@media(prefers-reduced-motion:reduce){
+  .hero-scroll-sequence .hero-stage,
+  .hero-scroll-sequence #hero-canvas{
+    transition:none!important;
+  }
+}
