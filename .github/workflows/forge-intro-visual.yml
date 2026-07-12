@@ -1,6 +1,21 @@
 name: Forge Frame Sequence Evidence
 
 on:
+  push:
+    branches:
+      - feature/forge-intro-reveal-v2
+    paths:
+      - index.html
+      - css/forge-intro.css
+      - js/forge-intro.js
+      - js/forge-frame-sequence.js
+      - assets/forge-reveal/**
+      - artifacts/forge-frame-audit/**
+      - scripts/build-forge-frame-assets.py
+      - scripts/apply-forge-frame-integration.py
+      - scripts/validate-forge-frame-sequence.mjs
+      - scripts/capture-forge-intro.mjs
+      - .github/workflows/forge-intro-visual.yml
   pull_request:
     branches: [main]
     paths:
