@@ -1,0 +1,60 @@
+name: Apply Reveal-Matched Live Armillary V2
+
+on:
+  push:
+    branches:
+      - feature/reveal-matched-live-armillary-v2
+    paths:
+      - .github/workflows/reveal-match-v2-bootstrap.yml
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  apply:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: feature/reveal-matched-live-armillary-v2
+          fetch-depth: 0
+
+      - name: Reassemble and verify supplied patch package
+        shell: bash
+        run: |
+          set -euo pipefail
+          cat .github/reveal-match-bootstrap/payload.* | base64 --decode > /tmp/reveal-match-v2.tgz
+          echo "fe2b258a008c61d21bfea8d1df7f14ae068c4a4caa832b4367aa87b109e25b44  /tmp/reveal-match-v2.tgz" | sha256sum --check
+          mkdir -p /tmp/reveal-match-v2
+          tar -xzf /tmp/reveal-match-v2.tgz -C /tmp/reveal-match-v2
+
+      - name: Apply supplied implementation and install evidence harness
+        shell: bash
+        run: |
+          set -euo pipefail
+          python /tmp/reveal-match-v2/package/apply_patch.py .
+          mkdir -p scripts .github/workflows
+          cp /tmp/reveal-match-v2/final/scripts/* scripts/
+          cp /tmp/reveal-match-v2/final/.github/workflows/reveal-match-v2-evidence.yml .github/workflows/
+          rm -rf .tbm-patch-backups
+          node --check js/hero-3d-reveal-match-v2.js
+          python scripts/verify-reveal-match-v2.py .
+
+      - name: Commit applied patch
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add index.html \
+            js/hero-3d-reveal-match-v2.js \
+            css/hero-reveal-match-v2.css \
+            scripts/capture-reveal-match-v2.mjs \
+            scripts/verify-reveal-match-v2.py \
+            scripts/build-reveal-match-contact-sheets.py \
+            .github/workflows/reveal-match-v2-evidence.yml
+          git diff --cached --check
+          git commit -m "feat: apply reveal-matched live armillary V2"
+          git push origin HEAD:feature/reveal-matched-live-armillary-v2
