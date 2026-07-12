@@ -16,16 +16,9 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preconnect" href="https://esm.sh" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <script>
-    document.documentElement.classList.add('forge-capable');
-    try {
-      if (sessionStorage.getItem('tbm-forge-intro') === 'skip') {
-        document.documentElement.classList.add('forge-intro-skipped');
-      }
-    } catch {}
-  </script>
+  <script>document.documentElement.classList.add('forge-capable');</script>
   <link rel="stylesheet" href="css/site-v2.css">
-  <link rel="stylesheet" href="css/forge-gate.css?v=20260712-1">
+  <link rel="stylesheet" href="css/forge-gate.css?v=20260712-2">
 </head>
 <body class="home-v2">
 <a class="skip-link" href="#main-content">Skip to main content</a>
@@ -74,6 +67,7 @@
         <div class="forge-intro__controls">
           <span class="forge-scroll-cue" aria-hidden="true"><i></i>Scroll to forge</span>
           <button class="forge-skip" id="forge-skip" type="button">Skip intro</button>
+          <span class="forge-progress-track" aria-hidden="true"></span>
         </div>
       </div>
 
@@ -101,6 +95,7 @@
               <article class="float-card float-card-d" data-forge-card><small>Partnership style</small><strong>Clear terms</strong><span>Transparent communication from review onward</span></article>
             </div>
             <div class="hero-motion-ui" aria-label="3D animation controls">
+              <button class="forge-replay" id="forge-replay" type="button">Replay intro</button>
               <button class="motion-toggle" id="motion-toggle" type="button" aria-pressed="true">Pause ambient motion</button>
             </div>
           </div>
@@ -158,9 +153,7 @@
   </div>
   <div class="shell footer-bottom"><span>© <span id="current-year">2026</span> The Blacksmith Market.</span><span>Built for clear supplier conversations.</span></div>
 </footer>
-<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js" defer></script>
-<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js" defer></script>
 <script type="module" src="js/home-v2.js"></script>
-<script type="module" src="js/forge-gate.js?v=20260712-1"></script>
+<script type="module" src="js/forge-gate.js?v=20260712-2"></script>
 </body>
 </html>

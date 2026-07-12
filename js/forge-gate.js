@@ -1,6 +1,6 @@
-import { createForgeScene } from './forge-scene.js?v=20260712-1';
+import { createForgeScene } from './forge-scene.js?v=20260712-2';
 
-const BUILD = '2026-07-12-forge-gate-v1';
+const BUILD = '2026-07-12-forge-gate-v2';
 document.documentElement.dataset.forgeBuild = BUILD;
 
 const story = document.querySelector('[data-forge-story]');
@@ -9,11 +9,10 @@ const canvas = document.getElementById('forge-canvas');
 const target = document.querySelector('[data-forge-target]');
 const intro = document.querySelector('[data-forge-intro]');
 const finalLayer = document.querySelector('[data-forge-final]');
-const copy = document.querySelector('[data-forge-copy]');
-const proof = document.querySelector('[data-forge-proof]');
 const cards = [...document.querySelectorAll('[data-forge-card]')];
 const header = document.querySelector('[data-forge-header]');
 const skipButton = document.getElementById('forge-skip');
+const replayButton = document.getElementById('forge-replay');
 const motionButton = document.getElementById('motion-toggle');
 const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
 const mobileLayout = window.matchMedia('(max-width: 899px)');
@@ -26,7 +25,6 @@ if (!story || !viewport || !canvas || !target || !intro || !finalLayer) {
 
 async function startForgeGate() {
   const shouldBypass = Boolean(
-    document.documentElement.classList.contains('forge-intro-skipped') ||
     reduceMotion.matches ||
     mobileLayout.matches ||
     (window.location.hash && window.location.hash !== '#top')
@@ -36,14 +34,23 @@ async function startForgeGate() {
   if (mobileLayout.matches) document.documentElement.classList.add('forge-mobile');
   document.documentElement.classList.add('forge-active');
 
+  if (!shouldBypass) {
+    const navigation = performance.getEntriesByType('navigation')[0];
+    if (navigation?.type !== 'back_forward') {
+      history.scrollRestoration = 'manual';
+      window.scrollTo({ top: story.offsetTop, behavior: 'auto' });
+    }
+  }
+
   let scene;
   let currentProgress = shouldBypass ? 1 : 0;
+  let targetProgress = currentProgress;
   let ambientEnabled = true;
-  let nativeCleanup = null;
-  let scrollTrigger = null;
+  let progressFrame = 0;
+  let scrollScheduled = false;
 
   try {
-    ambientEnabled = localStorage.getItem('tbm-ambient-motion-v4') !== 'off';
+    ambientEnabled = localStorage.getItem('tbm-ambient-motion-v5') !== 'off';
   } catch {
     ambientEnabled = true;
   }
@@ -51,7 +58,6 @@ async function startForgeGate() {
   updateMotionButton();
   renderDom(currentProgress);
   syncCanvasBounds();
-  window.addEventListener('resize', onLayoutResize, { passive: true });
 
   try {
     scene = await createForgeScene({
@@ -63,6 +69,7 @@ async function startForgeGate() {
     scene.setAmbientEnabled(ambientEnabled);
     scene.setProgress(currentProgress);
     document.documentElement.classList.add('forge-webgl-ready');
+    document.documentElement.classList.remove('forge-fallback-active');
   } catch (error) {
     console.error('Forge Gate scene failed to initialise.', error);
     document.documentElement.classList.add('forge-fallback-active');
@@ -75,14 +82,16 @@ async function startForgeGate() {
     scene.setProgress(1);
     renderDom(1);
     releaseInteractiveContent();
+    syncCanvasBounds();
   } else {
-    installScrollDriver();
+    installNativeScrollDriver();
   }
 
   installPointerInteraction();
   installMotionControl();
-  installSkipControl();
+  installIntroControls();
 
+  window.addEventListener('resize', onLayoutResize, { passive: true });
   reduceMotion.addEventListener?.('change', onPreferenceChange);
   mobileLayout.addEventListener?.('change', onPreferenceChange);
   window.addEventListener('pagehide', destroy, { once: true });
@@ -95,17 +104,17 @@ async function startForgeGate() {
   function renderDom(progress) {
     currentProgress = Math.min(1, Math.max(0, Number(progress) || 0));
 
-    const introOpacity = 1 - smooth(0.08, 0.40, currentProgress);
-    const finalOpacity = smooth(0.58, 0.86, currentProgress);
-    const copyProgress = smooth(0.66, 0.86, currentProgress);
-    const proofProgress = smooth(0.78, 0.95, currentProgress);
-    const headerProgress = smooth(0.69, 0.84, currentProgress);
+    const introOpacity = 1 - smooth(0.10, 0.38, currentProgress);
+    const finalOpacity = smooth(0.55, 0.82, currentProgress);
+    const copyProgress = smooth(0.63, 0.84, currentProgress);
+    const proofProgress = smooth(0.76, 0.94, currentProgress);
+    const headerProgress = smooth(0.66, 0.82, currentProgress);
 
     document.documentElement.style.setProperty('--forge-progress', currentProgress.toFixed(4));
     document.documentElement.style.setProperty('--forge-intro-opacity', introOpacity.toFixed(4));
     document.documentElement.style.setProperty('--forge-final-opacity', finalOpacity.toFixed(4));
     document.documentElement.style.setProperty('--forge-copy-opacity', copyProgress.toFixed(4));
-    document.documentElement.style.setProperty('--forge-copy-y', `${((1 - copyProgress) * 28).toFixed(2)}px`);
+    document.documentElement.style.setProperty('--forge-copy-y', `${((1 - copyProgress) * 30).toFixed(2)}px`);
     document.documentElement.style.setProperty('--forge-proof-opacity', proofProgress.toFixed(4));
     document.documentElement.style.setProperty('--forge-header-opacity', headerProgress.toFixed(4));
 
@@ -114,20 +123,22 @@ async function startForgeGate() {
     finalLayer.style.pointerEvents = finalOpacity > 0.94 ? 'auto' : 'none';
 
     if (header) {
-      const headerLocked = headerProgress < 0.96;
-      header.toggleAttribute('inert', headerLocked);
-      header.setAttribute('aria-hidden', String(headerLocked));
-      header.style.pointerEvents = headerLocked ? 'none' : 'auto';
+      const locked = headerProgress < 0.96;
+      header.toggleAttribute('inert', locked);
+      header.setAttribute('aria-hidden', String(locked));
+      header.style.pointerEvents = locked ? 'none' : 'auto';
     }
 
     cards.forEach((card, index) => {
-      const cardProgress = smooth(0.70 + index * 0.035, 0.87 + index * 0.03, currentProgress);
+      const cardProgress = smooth(0.68 + index * 0.035, 0.84 + index * 0.03, currentProgress);
       card.style.opacity = cardProgress.toFixed(4);
-      card.style.transform = `translate3d(0, ${((1 - cardProgress) * 18).toFixed(2)}px, 0) scale(${(0.97 + cardProgress * 0.03).toFixed(4)})`;
+      card.style.transform = `translate3d(0, ${((1 - cardProgress) * 20).toFixed(2)}px, 0) scale(${(0.965 + cardProgress * 0.035).toFixed(4)})`;
       card.style.pointerEvents = cardProgress > 0.94 ? 'auto' : 'none';
     });
 
     scene?.setProgress(currentProgress);
+
+    if (currentProgress > 0.985) releaseInteractiveContent();
   }
 
   function releaseInteractiveContent() {
@@ -140,6 +151,52 @@ async function startForgeGate() {
     }
   }
 
+  function readScrollProgress() {
+    const start = story.offsetTop;
+    const distance = Math.max(1, story.offsetHeight - window.innerHeight);
+    return Math.min(1, Math.max(0, (window.scrollY - start) / distance));
+  }
+
+  function installNativeScrollDriver() {
+    targetProgress = readScrollProgress();
+    currentProgress = targetProgress;
+    renderDom(currentProgress);
+
+    const schedule = () => {
+      if (scrollScheduled) return;
+      scrollScheduled = true;
+      requestAnimationFrame(() => {
+        scrollScheduled = false;
+        targetProgress = readScrollProgress();
+        startProgressAnimation();
+      });
+    };
+
+    window.addEventListener('scroll', schedule, { passive: true });
+    window.addEventListener('resize', schedule, { passive: true });
+
+    startProgressAnimation();
+  }
+
+  function startProgressAnimation() {
+    if (progressFrame) return;
+
+    const tick = () => {
+      const difference = targetProgress - currentProgress;
+      currentProgress += difference * 0.16;
+      if (Math.abs(difference) < 0.00035) currentProgress = targetProgress;
+      renderDom(currentProgress);
+
+      if (currentProgress !== targetProgress) {
+        progressFrame = requestAnimationFrame(tick);
+      } else {
+        progressFrame = 0;
+      }
+    };
+
+    progressFrame = requestAnimationFrame(tick);
+  }
+
   function syncCanvasBounds() {
     if (!shouldBypass) {
       canvas.style.removeProperty('left');
@@ -148,6 +205,7 @@ async function startForgeGate() {
       canvas.style.removeProperty('bottom');
       canvas.style.removeProperty('width');
       canvas.style.removeProperty('height');
+      canvas.style.removeProperty('inset');
       return;
     }
 
@@ -165,65 +223,11 @@ async function startForgeGate() {
     scene?.resize();
   }
 
-  function installScrollDriver() {
-    const install = () => {
-      if (window.gsap && window.ScrollTrigger) {
-        window.gsap.registerPlugin(window.ScrollTrigger);
-        scrollTrigger = window.ScrollTrigger.create({
-          trigger: story,
-          start: 'top top',
-          end: 'bottom bottom',
-          scrub: 0.85,
-          invalidateOnRefresh: true,
-          onUpdate(self) {
-            renderDom(self.progress);
-          },
-          onRefresh(self) {
-            scene?.resize();
-            renderDom(self.progress);
-          }
-        });
-        renderDom(scrollTrigger.progress);
-        return;
-      }
-      nativeCleanup = installNativeProgressDriver();
-    };
-
-    if (document.readyState === 'complete') install();
-    else window.addEventListener('load', install, { once: true });
-  }
-
-  function installNativeProgressDriver() {
-    let scheduled = false;
-
-    const update = () => {
-      scheduled = false;
-      const start = story.offsetTop;
-      const distance = Math.max(1, story.offsetHeight - window.innerHeight);
-      renderDom((window.scrollY - start) / distance);
-    };
-
-    const schedule = () => {
-      if (scheduled) return;
-      scheduled = true;
-      requestAnimationFrame(update);
-    };
-
-    update();
-    window.addEventListener('scroll', schedule, { passive: true });
-    window.addEventListener('resize', schedule, { passive: true });
-
-    return () => {
-      window.removeEventListener('scroll', schedule);
-      window.removeEventListener('resize', schedule);
-    };
-  }
-
   function installPointerInteraction() {
     if (!window.matchMedia('(pointer: fine)').matches) return;
 
     target.addEventListener('pointermove', event => {
-      if (!ambientEnabled || currentProgress < 0.62) return;
+      if (!ambientEnabled || currentProgress < 0.72) return;
       const bounds = target.getBoundingClientRect();
       const x = ((event.clientX - bounds.left) / bounds.width - 0.5) * 2;
       const y = ((event.clientY - bounds.top) / bounds.height - 0.5) * 2;
@@ -237,9 +241,9 @@ async function startForgeGate() {
     motionButton?.addEventListener('click', () => {
       ambientEnabled = !ambientEnabled;
       try {
-        localStorage.setItem('tbm-ambient-motion-v4', ambientEnabled ? 'on' : 'off');
+        localStorage.setItem('tbm-ambient-motion-v5', ambientEnabled ? 'on' : 'off');
       } catch {
-        // The scene remains functional when storage is blocked.
+        // Storage is optional.
       }
       scene?.setAmbientEnabled(ambientEnabled);
       updateMotionButton();
@@ -253,18 +257,17 @@ async function startForgeGate() {
     document.documentElement.dataset.heroMotion = ambientEnabled ? 'running' : 'paused';
   }
 
-  function installSkipControl() {
-    skipButton?.addEventListener('click', () => {
-      try {
-        sessionStorage.setItem('tbm-forge-intro', 'skip');
-      } catch {
-        // Session persistence is optional.
-      }
-      const endPosition = story.offsetTop + story.offsetHeight - window.innerHeight;
-      window.scrollTo({
-        top: Math.max(0, endPosition),
-        behavior: reduceMotion.matches ? 'auto' : 'smooth'
-      });
+  function installIntroControls() {
+    skipButton?.addEventListener('click', () => scrollToProgress(1));
+    replayButton?.addEventListener('click', () => scrollToProgress(0));
+  }
+
+  function scrollToProgress(progress) {
+    const distance = Math.max(1, story.offsetHeight - window.innerHeight);
+    const top = story.offsetTop + distance * Math.min(1, Math.max(0, progress));
+    window.scrollTo({
+      top,
+      behavior: reduceMotion.matches ? 'auto' : 'smooth'
     });
   }
 
@@ -273,8 +276,7 @@ async function startForgeGate() {
   }
 
   function destroy() {
-    scrollTrigger?.kill?.();
-    nativeCleanup?.();
+    if (progressFrame) cancelAnimationFrame(progressFrame);
     scene?.destroy();
     reduceMotion.removeEventListener?.('change', onPreferenceChange);
     mobileLayout.removeEventListener?.('change', onPreferenceChange);
