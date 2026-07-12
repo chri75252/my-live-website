@@ -1,0 +1,24 @@
+name: Validate Forge Gate
+
+on:
+  pull_request:
+    paths:
+      - 'index.html'
+      - 'css/forge-gate.css'
+      - 'js/forge-*.js'
+      - 'js/home-v2.js'
+      - 'scripts/validate-forge-gate.mjs'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: node scripts/validate-forge-gate.mjs
