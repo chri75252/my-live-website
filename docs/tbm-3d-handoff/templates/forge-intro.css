@@ -1,0 +1,12 @@
+/* Starter architecture only. Tune visually on a feature branch. */
+.forge-sequence{position:relative;height:220svh;isolation:isolate;background:#040504}
+.forge-sequence__sticky{position:sticky;top:0;height:100svh;min-height:680px;overflow:hidden}
+.forge-intro{position:absolute;inset:0;z-index:20;display:grid;place-items:center;background:radial-gradient(circle at 50% 48%,rgba(154,84,12,.12),transparent 34%),#030403;opacity:1;pointer-events:auto;will-change:opacity,clip-path}
+.forge-intro__canvas,.forge-intro__veil{position:absolute;inset:0;width:100%;height:100%}
+.forge-intro__veil{background:radial-gradient(circle at 50% 50%,transparent 0 12%,rgba(3,4,3,.8) 40%,#030403 76%)}
+.forge-intro__copy{position:relative;z-index:2;text-align:center;text-transform:uppercase;letter-spacing:.24em}
+.forge-intro__copy p{color:var(--gold-300);font:700 .68rem/1 var(--sans)}
+.forge-intro__copy strong{display:block;margin-top:18px;color:var(--paper);font:600 clamp(3rem,7vw,7rem)/.9 var(--display);letter-spacing:.08em}
+.forge-intro__skip{position:absolute;right:28px;bottom:28px;z-index:3;padding:10px 16px;border:1px solid var(--line);border-radius:999px;background:rgba(6,7,6,.72);color:var(--paper)}
+.forge-sequence.is-complete .forge-intro{opacity:0;pointer-events:none;visibility:hidden}
+@media(max-width:899px),(prefers-reduced-motion:reduce){.forge-sequence{height:auto}.forge-sequence__sticky{position:relative;height:auto;min-height:0}.forge-intro{display:none}}
