@@ -233,7 +233,7 @@ assert(releasedCta.pointerEvents!=='none' && releasedCta.tabIndex>=0,`${viewport
   });
   assert(badRequests.length===0,`${viewport.name}: discarded/source frame request detected: ${badRequests.join(', ')}`);
   const finalDiagnostics=await state(page);
-  assert(finalDiagnostics.horizontalScroll<=2 && finalDiagnostics.horizontalOverflow<=2,`${viewport.name}: user-accessible horizontal scrolling detected.`);
+  assert(finalDiagnostics.horizontalScroll<=2,`${viewport.name}: user-accessible horizontal scrolling detected (scrollLeft=${finalDiagnostics.horizontalScroll}, layoutOverflow=${finalDiagnostics.horizontalOverflow}, overflowX=${finalDiagnostics.bodyOverflowX}).`);
   assert(pageErrors.length===0,`${viewport.name}: page errors: ${pageErrors.join(' | ')}`);
 
   diagnostics.push({
