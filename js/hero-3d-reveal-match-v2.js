@@ -43,12 +43,12 @@ async function initialiseRevealMatchHero() {
   renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, mobile.matches ? 1.25 : 1.5));
   renderer.outputColorSpace = THREE.SRGBColorSpace;
   renderer.toneMapping = THREE.AgXToneMapping;
-  renderer.toneMappingExposure = 0.86;
+  renderer.toneMappingExposure = 0.92;
   renderer.info.autoReset = false;
 
   const scene = new THREE.Scene();
   const camera = new THREE.PerspectiveCamera(30, 1, 0.1, 100);
-  camera.position.set(0, 0.025, 10.9);
+  camera.position.set(0, 0.025, 10.55);
 
   const environmentTarget = createStudioEnvironment(renderer);
   scene.environment = environmentTarget.texture;
@@ -61,70 +61,70 @@ async function initialiseRevealMatchHero() {
 
   const coreMaterial = new THREE.MeshPhysicalMaterial({
     color: 0x06090a,
-    metalness: 0.08,
-    roughness: 0.31,
+    metalness: 0.12,
+    roughness: 0.27,
     clearcoat: 1,
-    clearcoatRoughness: 0.14,
+    clearcoatRoughness: 0.2,
     ior: 1.48,
     specularIntensity: 0.92,
     specularColor: new THREE.Color(0xdde5e2),
-    envMapIntensity: 0.76
+    envMapIntensity: 0.94
   });
 
   const agedBronze = new THREE.MeshPhysicalMaterial({
-    color: 0x4d382f,
-    metalness: 0.92,
-    roughness: 0.47,
-    clearcoat: 0.22,
-    clearcoatRoughness: 0.28,
-    envMapIntensity: 0.7,
+    color: 0x6d4b3b,
+    metalness: 0.9,
+    roughness: 0.38,
+    clearcoat: 0.3,
+    clearcoatRoughness: 0.22,
+    envMapIntensity: 1.02,
     roughnessMap: bronzeRoughnessTexture,
     anisotropy: 0.08,
     anisotropyRotation: 0.3
   });
 
   const secondaryBronze = new THREE.MeshPhysicalMaterial({
-    color: 0x604438,
+    color: 0x775343,
     metalness: 0.9,
-    roughness: 0.43,
-    clearcoat: 0.26,
-    clearcoatRoughness: 0.24,
-    envMapIntensity: 0.74,
+    roughness: 0.36,
+    clearcoat: 0.32,
+    clearcoatRoughness: 0.2,
+    envMapIntensity: 1.06,
     roughnessMap: bronzeRoughnessTexture,
     anisotropy: 0.1,
     anisotropyRotation: -0.18
   });
 
   const jointMaterial = new THREE.MeshPhysicalMaterial({
-    color: 0x704b3a,
+    color: 0x8b5c43,
     metalness: 0.92,
-    roughness: 0.36,
-    clearcoat: 0.38,
-    clearcoatRoughness: 0.18,
-    envMapIntensity: 0.8,
+    roughness: 0.31,
+    clearcoat: 0.42,
+    clearcoatRoughness: 0.16,
+    envMapIntensity: 1.12,
     roughnessMap: bronzeRoughnessTexture,
     anisotropy: 0.06
   });
 
   const shellLineMaterial = new THREE.LineBasicMaterial({
-    color: 0x8b817a,
+    color: 0x8b7770,
     transparent: true,
-    opacity: 0.22,
+    opacity: 0.15,
     depthWrite: false
   });
 
   const shellJointMaterial = new THREE.MeshStandardMaterial({
-    color: 0x766b64,
+    color: 0x74635b,
     metalness: 0.72,
     roughness: 0.5,
     transparent: true,
-    opacity: 0.36,
+    opacity: 0.26,
     depthWrite: false
   });
 
   const coreRadius = 0.84;
   const outerRingRadius = 2.2;
-  const shellRadius = 1.34;
+  const shellRadius = 1.3;
   const coreGeometry = new THREE.SphereGeometry(coreRadius, 96, 96);
   const core = new THREE.Mesh(coreGeometry, coreMaterial);
   core.scale.y = 1.012;
@@ -140,7 +140,7 @@ async function initialiseRevealMatchHero() {
   shellGroup.add(shellLines);
 
   const uniqueShellVertices = collectUniqueVertices(shellSourceGeometry);
-  const shellJointGeometry = new THREE.SphereGeometry(0.011, 6, 6);
+  const shellJointGeometry = new THREE.SphereGeometry(0.01, 6, 6);
   const shellJoints = new THREE.InstancedMesh(
     shellJointGeometry,
     shellJointMaterial,
@@ -158,7 +158,7 @@ async function initialiseRevealMatchHero() {
     {
       kind: 'torus',
       radius: outerRingRadius,
-      tube: 0.012,
+      tube: 0.014,
       rotation: [0.07, 0.14, -0.06],
       speed: 0.004,
       material: agedBronze,
@@ -167,7 +167,7 @@ async function initialiseRevealMatchHero() {
     {
       kind: 'torus',
       radius: 1.91,
-      tube: 0.018,
+      tube: 0.024,
       rotation: [0.015, 1.49, 0.055],
       speed: -0.008,
       material: secondaryBronze,
@@ -176,8 +176,8 @@ async function initialiseRevealMatchHero() {
     {
       kind: 'torus',
       radius: 1.99,
-      tube: 0.021,
-      rotation: [0.94, 0.48, 0.76],
+      tube: 0.026,
+      rotation: [0.72, 0.62, 0.88],
       speed: 0.011,
       material: agedBronze,
       nodes: [0.14, 3.28]
@@ -185,8 +185,8 @@ async function initialiseRevealMatchHero() {
     {
       kind: 'irregular',
       radius: 1.86,
-      tube: 0.013,
-      rotation: [0.72, -0.82, -0.55],
+      tube: 0.016,
+      rotation: [1.16, -0.18, -0.72],
       speed: -0.009,
       material: secondaryBronze,
       nodes: [5.74]
@@ -194,8 +194,8 @@ async function initialiseRevealMatchHero() {
     {
       kind: 'torus',
       radius: 1.73,
-      tube: 0.011,
-      rotation: [1.28, 0.15, -0.25],
+      tube: 0.013,
+      rotation: [1.34, 0.12, 0.24],
       speed: 0.013,
       material: agedBronze,
       nodes: [2.9]
@@ -249,25 +249,25 @@ async function initialiseRevealMatchHero() {
     count: mobile.matches ? 9 : 18
   });
 
-  const hemisphere = new THREE.HemisphereLight(0xb9cbc8, 0x0c0908, 0.16);
+  const hemisphere = new THREE.HemisphereLight(0xb9cbc8, 0x0c0908, 0.2);
   scene.add(hemisphere);
 
-  const key = new THREE.RectAreaLight(0xe4e9e7, 2.15, 4.4, 2.1);
-  key.position.set(-3.8, 3.35, 5.1);
+  const key = new THREE.RectAreaLight(0xe4e9e7, 0.9, 5.8, 3.1);
+  key.position.set(-3.25, 3.0, 4.6);
   key.lookAt(-0.18, 0.28, 0);
   scene.add(key);
 
-  const fill = new THREE.RectAreaLight(0xb8ccca, 0.58, 2.1, 2.9);
+  const fill = new THREE.RectAreaLight(0xb8ccca, 0.28, 3.0, 3.2);
   fill.position.set(3.35, 1.75, 4.7);
   fill.lookAt(0.2, 0.08, 0);
   scene.add(fill);
 
-  const warmRim = new THREE.RectAreaLight(0x8b5035, 0.54, 2.35, 1.2);
+  const warmRim = new THREE.RectAreaLight(0xa45d38, 0.32, 3.0, 1.45);
   warmRim.position.set(3.05, -2.7, 3.55);
   warmRim.lookAt(0.25, -0.38, 0);
   scene.add(warmRim);
 
-  const shellLight = new THREE.DirectionalLight(0xbca79b, 0.24);
+  const shellLight = new THREE.DirectionalLight(0xbca79b, 0.34);
   shellLight.position.set(-3.1, 3.7, 4.3);
   scene.add(shellLight);
 
@@ -278,7 +278,7 @@ async function initialiseRevealMatchHero() {
     composer = new EffectComposer(renderer);
     composer.addPass(new RenderPass(scene, camera));
 
-    bloomPass = new UnrealBloomPass(new THREE.Vector2(1, 1), 0.065, 0.1, 1.02);
+    bloomPass = new UnrealBloomPass(new THREE.Vector2(1, 1), 0.07, 0.1, 1.04);
     composer.addPass(bloomPass);
 
     smaaPass = new SMAAPass(1, 1);
@@ -356,8 +356,8 @@ async function initialiseRevealMatchHero() {
     shellGroup.rotation.x = 0.18 + phase * 0.007 * motionFactor;
     shellGroup.rotation.y = -0.29 - phase * 0.011 * motionFactor;
     shellGroup.rotation.z = 0.09 + Math.sin(phase * 0.18) * 0.006 * motionFactor;
-    shellLineMaterial.opacity = lerp(0.2, 0.235, settle);
-    shellJointMaterial.opacity = lerp(0.32, 0.38, settle);
+    shellLineMaterial.opacity = lerp(0.135, 0.165, settle);
+    shellJointMaterial.opacity = lerp(0.22, 0.28, settle);
 
     rings.forEach((ring, index) => {
       const spin = phase * ring.userData.speed * motionFactor;
@@ -373,13 +373,13 @@ async function initialiseRevealMatchHero() {
     dust.rotation.x = Math.sin(phase * 0.07) * 0.009 * motionFactor;
     dustMaterial.opacity = lerp(0.17, 0.22, settle);
 
-    camera.position.z = lerp(10.9, 10.7, settle);
+    camera.position.z = lerp(10.55, 10.38, settle);
     camera.position.y = lerp(0.025, 0.005, settle);
 
     const lightBreath = Math.sin(phase * 0.34) * 0.022 * motionFactor;
-    key.intensity = 2.15 + lightBreath;
-    fill.intensity = 0.58 - lightBreath * 0.25;
-    warmRim.intensity = 0.54 + lightBreath * 0.4;
+    key.intensity = 0.9 + lightBreath;
+    fill.intensity = 0.28 - lightBreath * 0.2;
+    warmRim.intensity = 0.32 + lightBreath * 0.3;
 
     setCardProgress(progress, scrollProgress);
   }
@@ -676,10 +676,9 @@ function createStudioEnvironment(renderer) {
   const panelMaterials = [];
   const target = new THREE.Vector3();
   const panels = [
-    { position: [-4.4, 3.6, 5.2], scale: [4.5, 2.05], rgb: [3.1, 3.35, 3.28], lookAt: [-0.35, 0.42, 0] },
-    { position: [2.55, 4.25, 4.4], scale: [2.55, 1.15], rgb: [1.55, 1.78, 1.75], lookAt: [0.25, 0.5, 0] },
-    { position: [-4.8, -0.65, 1.9], scale: [1.1, 3.1], rgb: [0.38, 0.5, 0.5], lookAt: [-0.25, -0.1, 0] },
-    { position: [3.55, -2.8, 3.45], scale: [2.25, 1.05], rgb: [1.1, 0.46, 0.24], lookAt: [0.28, -0.42, 0] }
+    { position: [-2.7, 2.4, 3.4], scale: [5.6, 3.2], rgb: [4.6, 5.0, 4.9], lookAt: [-0.28, 0.34, 0] },
+    { position: [2.2, 3.4, 3.5], scale: [2.8, 1.6], rgb: [2.6, 3.0, 2.9], lookAt: [0.3, 0.42, 0] },
+    { position: [2.8, -2.2, 3.1], scale: [2.8, 1.3], rgb: [1.8, 0.75, 0.38], lookAt: [0.3, -0.4, 0] }
   ];
 
   panels.forEach(definition => {
@@ -697,7 +696,7 @@ function createStudioEnvironment(renderer) {
     studio.add(panel);
   });
 
-  const environmentTarget = pmrem.fromScene(studio, 0.07, 0.1, 50);
+  const environmentTarget = pmrem.fromScene(studio, 0.13, 0.1, 50);
   panelGeometry.dispose();
   panelMaterials.forEach(material => material.dispose());
   pmrem.dispose();
@@ -718,7 +717,7 @@ function createOrbitalRing(definition, jointMaterial) {
   ring.add(mesh);
 
   const nodeGeometry = new THREE.SphereGeometry(
-    definition.radius > 2.1 ? 0.06 : 0.072,
+    definition.radius > 2.1 ? 0.075 : 0.086,
     20,
     20
   );
@@ -789,7 +788,7 @@ function createRoughnessTexture(seed) {
   const random = mulberry32(seed);
 
   for (let index = 0; index < size * size; index += 1) {
-    const value = Math.round(205 + random() * 43);
+    const value = Math.round(220 + random() * 32);
     const offset = index * 4;
     data[offset] = value;
     data[offset + 1] = value;
