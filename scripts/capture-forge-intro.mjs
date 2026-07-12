@@ -43,44 +43,60 @@ async function waitForForge(page,{ allowFailure=false }={}){
 }
 
 async function setProgress(page,progress){
-  const targetY=await page.evaluate(async value=>{
-    const range=window.__tbmForgeIntro?.getRange();
-    if(!range) throw new Error('Forge range is unavailable.');
-    const root=document.documentElement;
-    const body=document.body;
-    const scrollingElement=document.scrollingElement || root;
-    const maxScroll=Math.max(0,scrollingElement.scrollHeight-window.innerHeight);
-    const target=Math.min(maxScroll,Math.max(0,range.start+(range.end-range.start)*value));
-    const rootValue=root.style.getPropertyValue('scroll-behavior');
-    const rootPriority=root.style.getPropertyPriority('scroll-behavior');
-    const bodyValue=body.style.getPropertyValue('scroll-behavior');
-    const bodyPriority=body.style.getPropertyPriority('scroll-behavior');
-    root.style.setProperty('scroll-behavior','auto','important');
-    body.style.setProperty('scroll-behavior','auto','important');
-    scrollingElement.scrollTop=target;
-    window.scrollTo({ top:target,left:0,behavior:'auto' });
-    window.dispatchEvent(new Event('scroll'));
-    await new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(()=>requestAnimationFrame(resolve))));
-    if(rootValue) root.style.setProperty('scroll-behavior',rootValue,rootPriority);
-    else root.style.removeProperty('scroll-behavior');
-    if(bodyValue) body.style.setProperty('scroll-behavior',bodyValue,bodyPriority);
-    else body.style.removeProperty('scroll-behavior');
-    return target;
-  },progress);
-  await page.waitForFunction(
-    target=>{
-      const controller=window.__tbmForgeIntro;
-      const debug=controller?.getState();
-      const range=controller?.getRange();
-      if(!debug || !range) return false;
-      const denominator=Math.max(1,range.end-range.start);
-      const effectiveProgress=Math.min(1,Math.max(0,(window.scrollY-range.start)/denominator));
-      return Math.abs(window.scrollY-target)<=3
-        && Math.abs((debug.progress ?? -1)-effectiveProgress)<=.012;
-    },
-    targetY,
-    { timeout:5000 }
-  );
+  let lastState=null;
+  for(let attempt=0;attempt<4;attempt+=1){
+    const targetY=await page.evaluate(async value=>{
+      const range=window.__tbmForgeIntro?.getRange();
+      if(!range) throw new Error('Forge range is unavailable.');
+      const root=document.documentElement;
+      const body=document.body;
+      const scrollingElement=document.scrollingElement || root;
+      const maxScroll=Math.max(0,scrollingElement.scrollHeight-window.innerHeight);
+      const target=Math.min(maxScroll,Math.max(0,range.start+(range.end-range.start)*value));
+      const rootValue=root.style.getPropertyValue('scroll-behavior');
+      const rootPriority=root.style.getPropertyPriority('scroll-behavior');
+      const bodyValue=body.style.getPropertyValue('scroll-behavior');
+      const bodyPriority=body.style.getPropertyPriority('scroll-behavior');
+      root.style.setProperty('scroll-behavior','auto','important');
+      body.style.setProperty('scroll-behavior','auto','important');
+      for(let frame=0;frame<4;frame+=1){
+        scrollingElement.scrollTop=target;
+        window.scrollTo({ top:target,left:0,behavior:'auto' });
+        window.dispatchEvent(new Event('scroll'));
+        await new Promise(resolve=>requestAnimationFrame(resolve));
+      }
+      if(rootValue) root.style.setProperty('scroll-behavior',rootValue,rootPriority);
+      else root.style.removeProperty('scroll-behavior');
+      if(bodyValue) body.style.setProperty('scroll-behavior',bodyValue,bodyPriority);
+      else body.style.removeProperty('scroll-behavior');
+      return target;
+    },progress);
+    try{
+      await page.waitForFunction(
+        target=>{
+          const controller=window.__tbmForgeIntro;
+          const debug=controller?.getState();
+          const range=controller?.getRange();
+          if(!debug || !range) return false;
+          const denominator=Math.max(1,range.end-range.start);
+          const effectiveProgress=Math.min(1,Math.max(0,(window.scrollY-range.start)/denominator));
+          return Math.abs(window.scrollY-target)<=4
+            && Math.abs((debug.progress ?? -1)-effectiveProgress)<=.02;
+        },
+        targetY,
+        { timeout:1200 }
+      );
+      return;
+    }catch(error){
+      lastState=await page.evaluate(target=>({
+        target,
+        scrollY:window.scrollY,
+        controller:window.__tbmForgeIntro?.getState() ?? null,
+        range:window.__tbmForgeIntro?.getRange() ?? null
+      }),targetY);
+      if(attempt===3) throw new Error(`Unable to synchronize Forge progress ${progress}: ${JSON.stringify(lastState)}`,{ cause:error });
+    }
+  }
 }
 
 async function state(page){
