@@ -1,0 +1,53 @@
+{
+  "audit_source": "User-uploaded TEVEAL ZIP, visually inspected at full 1280x720 resolution",
+  "repository_source_verification": "All 48 repository JPEGs byte-match the uploaded-ZIP SHA-256 manifest",
+  "SOURCE_FRAME_COUNT": 48,
+  "SELECTED_FRAME_COUNT": 32,
+  "LAST_CLEAN_FRAME": 32,
+  "FIRST_SYNTHETIC_HOMEPAGE_FRAME": 33,
+  "source_dimensions": {
+    "width": 1280,
+    "height": 720
+  },
+  "total_source_bytes": 1285464,
+  "selected_source_bytes": 893759,
+  "largest_source_frame": {
+    "file": "ezgif-frame-004.jpg",
+    "index": 4,
+    "bytes": 85440
+  },
+  "desktop": {
+    "asset_count": 32,
+    "total_bytes": 1020956,
+    "largest_asset": {
+      "file": "frame_0004.webp",
+      "bytes": 42280
+    },
+    "decoded_rgba_bytes_all_frames": 117964800,
+    "decoded_rgba_bytes_initial_10": 36864000,
+    "dimensions": {
+      "width": 1280,
+      "height": 720
+    }
+  },
+  "mobile": {
+    "asset_count": 32,
+    "total_bytes": 603348,
+    "largest_asset": {
+      "file": "frame_0004.webp",
+      "bytes": 22470
+    },
+    "decoded_rgba_bytes_all_frames": 46080000,
+    "decoded_rgba_bytes_initial_10": 14400000,
+    "dimensions": {
+      "width": 800,
+      "height": 450
+    }
+  },
+  "renderer": {
+    "interpolation": "fractional two-frame alpha blending",
+    "generated_intermediate_frames": 0,
+    "initial_preload_frames": 10,
+    "background_preload_concurrency": 4
+  }
+}

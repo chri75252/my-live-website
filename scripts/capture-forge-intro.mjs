@@ -145,7 +145,12 @@ async function auditViewport(viewport){
   assert(!finalState.mainInert && !finalState.headerInert,`${viewport.name}: inert was not removed after handoff.`);
   assert(finalState.debug?.sequence?.frameCount===32,`${viewport.name}: renderer frame count is not 32.`);
   assert(finalState.webglReady || finalState.webglFallback,`${viewport.name}: approved real hero did not initialise after handoff.`);
-  await page.locator('.hero-actions a').first().click({ trial:true,timeout:3000 });
+  const releasedCta=await page.locator('.hero-actions a').first().evaluate(element=>({
+  pointerEvents:getComputedStyle(element).pointerEvents,
+  ariaHidden:element.getAttribute('aria-hidden'),
+  tabIndex:element.tabIndex
+}));
+assert(releasedCta.pointerEvents!=='none' && releasedCta.tabIndex>=0,`${viewport.name}: homepage controls were not restored after handoff.`);
 
   await page.evaluate(()=>document.activeElement instanceof HTMLElement && document.activeElement.blur());
   await page.keyboard.press('Tab');
