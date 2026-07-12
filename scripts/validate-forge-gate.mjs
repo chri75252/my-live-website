@@ -8,25 +8,19 @@ const scene = read('js/forge-scene.js');
 const css = read('css/forge-gate.css');
 
 const checks = [
-  ['Forge stylesheet v2 is loaded', index.includes('css/forge-gate.css?v=20260712-2')],
-  ['Forge runtime v2 is loaded', index.includes('js/forge-gate.js?v=20260712-2')],
-  ['Retired hero runtime is not loaded', !index.includes('js/hero-3d.js')],
-  ['Retired hero stylesheet is not loaded', !index.includes('css/hero-scroll.css')],
-  ['Native sticky story exists', css.includes('position: sticky')],
-  ['No ScrollTrigger pinning remains', !/\bpin\s*:/.test(gate) && !gate.includes('ScrollTrigger')],
-  ['No scroll velocity acceleration remains', !gate.includes('getVelocity') && !scene.includes('scrollBoost')],
-  ['No forge comet implementation remains', !scene.includes('createForgeComet') && !scene.includes('cometConfigs')],
-  ['No energy halo remains', !scene.includes('createEnergyHalo') && !scene.includes('Fresnel')],
-  ['No pedestal ring remains', !scene.includes('const pedestal =') && !scene.includes('const baseRing =')],
+  ['Direct hero stylesheet v3 is loaded', index.includes('css/forge-gate.css?v=20260712-3')],
+  ['Direct hero runtime v3 is loaded', index.includes('js/forge-gate.js?v=20260712-3')],
+  ['Intro markup is parked', !index.includes('data-forge-intro') && !index.includes('forge-replay')],
+  ['No GSAP reveal runtime is loaded', !index.includes('gsap.min.js') && !index.includes('ScrollTrigger')],
+  ['Normal-flow hero is used', css.includes('.forge-story { position: relative; height: auto;') && css.includes('.forge-story__sticky { position: relative;')],
+  ['No scroll driver remains', !gate.includes('scrollToProgress') && !gate.includes('readScrollProgress') && !gate.includes('ScrollTrigger')],
+  ['No comet implementation remains', !scene.includes('createForgeComet') && !scene.includes('cometConfigs')],
+  ['No energy halo or pedestal remains', !scene.includes('createEnergyHalo') && !scene.includes('baseRing')],
   ['No RoomEnvironment chrome reflections remain', !scene.includes('RoomEnvironment') && !scene.includes('scene.environment')],
-  ['No sprite-based external glints remain', !scene.includes('SpriteMaterial') && !scene.includes('new THREE.Sprite')],
-  ['Six node coordinates are declared', (scene.match(/nodeCoordinates\s*=\s*\[/) && (scene.match(/^\s*\[[^\]]+\],?$/gm) || []).length >= 6)],
-  ['Exactly three shader reflection longitudes are used', scene.includes('uGlintLongitudes') && scene.includes('g1 + g2 + g3')],
-  ['Skip control does not persist across reloads', index.includes('id="forge-skip"') && !gate.includes('sessionStorage') && !index.includes('forge-intro-skipped')],
-  ['Replay intro control exists', index.includes('id="forge-replay"') && gate.includes('replayButton')],
-  ['Visible intro progress indicator exists', index.includes('forge-progress-track') && css.includes('scaleX(var(--forge-progress))')],
-  ['Mobile bypass rules exist', css.includes('@media (max-width: 899px)')],
-  ['Reduced-motion bypass rules exist', css.includes('@media (prefers-reduced-motion: reduce)')]
+  ['Six restrained node coordinates exist', (scene.match(/^\s*\[[^\]]+\],?$/gm) || []).length >= 6],
+  ['Exactly three surface glint configurations exist', (scene.match(/xRadius:/g) || []).length === 3],
+  ['Pointer interaction remains', gate.includes("target.addEventListener('pointermove'")],
+  ['Pause/resume remains', gate.includes('tbm-ambient-motion-v5')]
 ];
 
 let failed = false;
@@ -46,4 +40,4 @@ for (const file of ['js/forge-scene.js', 'js/forge-gate.js', 'js/home-v2.js']) {
 }
 
 if (failed) process.exit(1);
-console.log('\nForge Gate v2 static validation completed successfully.');
+console.log('\nDirect premium hero v3 validation completed successfully.');
