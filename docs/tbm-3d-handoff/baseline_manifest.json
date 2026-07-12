@@ -1,0 +1,22 @@
+{
+  "prepared": "2026-07-12",
+  "repository": "chri75252/my-live-website",
+  "restore_source_commit": "e234618f8dcc8283b69368b73f5b4537d228d0cb",
+  "restore_files": {
+    "index.html": "2d61fadc8a55124f32dd75dc599eb69b21244498",
+    "css/hero-scroll.css": "82070a5ead77c7d7926beb486553b8a657f872ed",
+    "js/hero-3d.js": "8aa1390dc9fbb1a4ff06dcf2e796d17601de6f4b",
+    "js/home-v2.js": "89b4ad5aa06cf425d71789c1917106c439ebe594",
+    "css/site-v2.css": "730c2a3abf3e850a155287264d7107a37a4975a7"
+  },
+  "remove_files": [
+    "css/forge-gate.css",
+    "js/forge-gate.js",
+    "js/forge-scene.js",
+    "scripts/validate-forge-gate.mjs",
+    ".github/workflows/validate-forge-gate.yml"
+  ],
+  "backup_branch": "backup/pre-exact-pre-pr5-restore-2026-07-12",
+  "feature_branch": "feature/restore-exact-pre-pr5-hero-and-handoff",
+  "primary_reference_image": "reference_1_desired_pre_pr5.png"
+}
