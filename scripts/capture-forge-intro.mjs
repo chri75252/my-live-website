@@ -99,6 +99,20 @@ async function setProgress(page,progress){
   }
 }
 
+async function setMotionProgress(page,progress){
+  await page.evaluate(value=>{
+    const range=window.__tbmForgeIntro?.getRange();
+    if(!range) throw new Error('Forge range is unavailable.');
+    const scrollingElement=document.scrollingElement || document.documentElement;
+    const maxScroll=Math.max(0,scrollingElement.scrollHeight-window.innerHeight);
+    const target=Math.min(maxScroll,Math.max(0,range.start+(range.end-range.start)*value));
+    scrollingElement.scrollTop=target;
+    window.scrollTo({ top:target,left:0,behavior:'auto' });
+    window.dispatchEvent(new Event('scroll'));
+  },progress);
+  await page.waitForTimeout(20);
+}
+
 async function state(page){
   return page.evaluate(()=>{
     const intro=document.getElementById('forge-intro');
@@ -304,15 +318,18 @@ async function recordMotion(name,viewport,direction){
   const page=await context.newPage();
   await page.goto(baseUrl,{ waitUntil:'networkidle',timeout:90000 });
   await waitForForge(page);
+  await page.evaluate(()=>{
+    document.documentElement.style.setProperty('scroll-behavior','auto','important');
+    document.body.style.setProperty('scroll-behavior','auto','important');
+  });
   const video=page.video();
-  if(direction==='up') await setProgress(page,1);
-  else await setProgress(page,0);
+  if(direction==='up') await setMotionProgress(page,1);
+  else await setMotionProgress(page,0);
   await page.waitForTimeout(450);
   const steps=96;
   for(let step=0;step<=steps;step+=1){
     const fraction=step/steps;
-    await setProgress(page,direction==='up' ? 1-fraction : fraction);
-    await page.waitForTimeout(12);
+    await setMotionProgress(page,direction==='up' ? 1-fraction : fraction);
   }
   await page.waitForTimeout(650);
   await page.close();
