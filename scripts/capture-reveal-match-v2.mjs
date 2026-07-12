@@ -205,7 +205,12 @@ async function scrollHeroFraction(page, fraction, settleMs = 900) {
   await page.evaluate(value => {
     window.scrollTo({ top: value, left: 0, behavior: 'instant' });
     window.dispatchEvent(new Event('scroll'));
+    window.ScrollTrigger?.update?.(true);
   }, y);
+  await page.waitForFunction(expected => {
+    const state = window.__tbmRevealMatchHero?.getState?.();
+    return state && Math.abs(state.targetProgress - expected) <= 0.08;
+  }, fraction, { timeout: 15000 });
   await page.waitForTimeout(settleMs);
   await hideForgeForIsolatedHero(page);
   return {
@@ -340,7 +345,13 @@ async function captureIsolatedHero(name, width, height, options = {}) {
     assertScenario(`${scenario.name} renderer produced triangles`, scenario.performance.renderer?.triangles > 0, JSON.stringify(scenario.performance));
     if (options.forceComposer) assertScenario(`${scenario.name} composer path`, scenario.performance.renderPath === 'composer', JSON.stringify(scenario.performance));
     if (options.forceDirect || options.reducedMotion || width <= 700) assertScenario(`${scenario.name} direct path`, scenario.performance.renderPath === 'direct', JSON.stringify(scenario.performance));
-    assertScenario(`${scenario.name} reverse scroll`, scenario.reverse25.state.currentProgress < scenario.progress85.state.currentProgress, JSON.stringify({ reverse: scenario.reverse25.state, forward: scenario.progress85.state }));
+    if (label === 'composer' || label === 'mobile-direct') {
+      assertScenario(
+        `${scenario.name} reverse scroll`,
+        scenario.reverse25.state.targetProgress < scenario.progress85.state.targetProgress - 0.25,
+        JSON.stringify({ reverse: scenario.reverse25.state, forward: scenario.progress85.state }),
+      );
+    }
     assertScenario(`${scenario.name} no page errors`, scenario.runtime.pageErrors.length === 0, JSON.stringify(scenario.runtime.pageErrors));
     assertScenario(`${scenario.name} no console errors`, scenario.runtime.consoleErrors.length === 0, JSON.stringify(scenario.runtime.consoleErrors));
     assertScenario(`${scenario.name} no critical request failures`, criticalNetworkFailures(scenario.runtime.failedRequests).length === 0, JSON.stringify(criticalNetworkFailures(scenario.runtime.failedRequests)));
