@@ -47,7 +47,7 @@ const updateHeader = () => header?.classList.toggle('is-scrolled', window.scroll
 updateHeader();
 window.addEventListener('scroll', updateHeader, { passive: true });
 
-const revealElements = [...document.querySelectorAll('.reveal:not([data-forge-managed])')];
+const revealElements = [...document.querySelectorAll('.reveal')];
 for (const element of revealElements) {
     const delay = Number(element.dataset.delay || 0);
     element.style.setProperty('--delay', `${delay}ms`);
