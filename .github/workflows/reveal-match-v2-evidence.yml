@@ -1,0 +1,131 @@
+name: Reveal-Matched Live Armillary V2 Evidence
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - index.html
+      - js/hero-3d-reveal-match-v2.js
+      - css/hero-reveal-match-v2.css
+      - scripts/capture-reveal-match-v2.mjs
+      - scripts/verify-reveal-match-v2.py
+      - scripts/build-reveal-match-contact-sheets.py
+      - .github/workflows/reveal-match-v2-evidence.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate-and-capture:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    env:
+      PR11_MAIN_SHA: 2b56fe29e3e5d4a059c0bbfa025243c77f6b49ce
+    steps:
+      - name: Check out implementation with full history
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.head_ref || github.ref_name }}
+          fetch-depth: 0
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+
+      - name: Verify patch structure and protected files
+        shell: bash
+        run: |
+          set -euo pipefail
+          python scripts/verify-reveal-match-v2.py .
+          node --check js/hero-3d-reveal-match-v2.js
+          node --check scripts/capture-reveal-match-v2.mjs
+          git diff --exit-code "$PR11_MAIN_SHA" -- \
+            js/hero-3d.js \
+            css/hero-scroll.css \
+            js/home-v2.js \
+            css/site-v2.css \
+            js/forge-intro.js \
+            js/forge-frame-sequence.js \
+            css/forge-intro.css \
+            assets/forge-reveal \
+            TEVEAL
+          test "$(find assets/forge-reveal/desktop -maxdepth 1 -name 'frame_*.webp' | wc -l)" -eq 32
+          test "$(find assets/forge-reveal/mobile -maxdepth 1 -name 'frame_*.webp' | wc -l)" -eq 32
+
+      - name: Install deterministic browser and image tooling
+        run: |
+          python -m pip install --disable-pip-version-check pillow==12.2.0
+          npm install --no-save playwright@1.53.2
+          npx playwright install --with-deps chromium
+
+      - name: Start local HTTP preview
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p artifacts/reveal-match-v2
+          python3 -m http.server 4173 --bind 127.0.0.1 > artifacts/reveal-match-v2/http-server.log 2>&1 &
+          echo $! > /tmp/tbm-preview.pid
+          for attempt in {1..60}; do
+            if curl --fail --silent http://127.0.0.1:4173/index.html > /dev/null; then
+              exit 0
+            fi
+            sleep 1
+          done
+          cat artifacts/reveal-match-v2/http-server.log
+          exit 1
+
+      - name: Capture five viewports, handoff, render paths and motion evidence
+        shell: bash
+        env:
+          TBM_PREVIEW_URL: http://127.0.0.1:4173/
+          TBM_CAPTURE_DIR: artifacts/reveal-match-v2
+        run: |
+          set -o pipefail
+          node scripts/capture-reveal-match-v2.mjs 2>&1 | tee artifacts/reveal-match-v2/capture.log
+
+      - name: Build frame 029-031 comparison sheets
+        run: python scripts/build-reveal-match-contact-sheets.py .
+
+      - name: Publish evidence summary
+        if: always()
+        shell: bash
+        run: |
+          {
+            echo '## Reveal-Matched Live Armillary V2'
+            echo
+            echo '- Viewports: 1920×1080, 1680×900, 1366×768, 390×844, 430×932'
+            echo '- Real Forge final-frame, handoff, release and reverse-scroll captures on representative desktop and mobile viewports'
+            echo '- Live Three.js initial, forward and reverse states captured at all five required viewports'
+            echo '- Composer, forced-direct, mobile-direct and reduced-motion paths'
+            echo '- Motion-toggle, WebGL draw-call/triangle and frame-timing diagnostics'
+            echo '- Reference comparison sheets against frames 029–031'
+            echo
+            if test -f artifacts/reveal-match-v2/diagnostics.json; then
+              python - <<'PY'
+          import json
+          from pathlib import Path
+          data = json.loads(Path('artifacts/reveal-match-v2/diagnostics.json').read_text())
+          failed = [item for item in data.get('assertions', []) if not item.get('pass')]
+          print(f"Assertions: {len(data.get('assertions', [])) - len(failed)} passed, {len(failed)} failed")
+          print(f"Fatal scenarios: {len(data.get('fatalErrors', []))}")
+          PY
+            else
+              echo 'Diagnostics were not produced.'
+            fi
+          } >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Upload screenshots, recordings, comparisons and metrics
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: reveal-matched-live-armillary-v2-evidence
+          path: artifacts/reveal-match-v2/**
+          if-no-files-found: error
+          retention-days: 30

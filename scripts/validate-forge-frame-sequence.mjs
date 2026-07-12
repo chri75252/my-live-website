@@ -69,10 +69,23 @@ const applyExpectedIntegration=text=>text
     '<script type="module" src="js/home-v2.js"></script>',
     '<script type="module" src="js/forge-intro.js"></script>\n<script type="module" src="js/home-v2.js"></script>'
   );
+const applyExpectedLiveHeroV2=text=>text
+  .replace(
+    '  <link rel="stylesheet" href="css/site-v2.css">',
+    `  <!-- TBM reveal-match Three.js import map -->\n  <script type="importmap" id="tbm-three-importmap">\n  {\n    "imports": {\n      "three": "https://cdn.jsdelivr.net/npm/three@0.180.0/build/three.module.js",\n      "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.180.0/examples/jsm/"\n    }\n  }\n  </script>\n  <link rel="stylesheet" href="css/site-v2.css">`
+  )
+  .replace(
+    '  <link rel="stylesheet" href="css/hero-scroll.css">',
+    '  <link rel="stylesheet" href="css/hero-scroll.css">\n  <link rel="stylesheet" href="css/hero-reveal-match-v2.css">'
+  )
+  .replace(
+    '<script type="module" src="js/hero-3d.js"></script>',
+    '<script type="module" src="js/hero-3d-reveal-match-v2.js"></script>'
+  );
 const currentIndex=await read('index.html');
-const expectedIndex=applyExpectedIntegration(baseline).replace(/\r\n/g,'\n');
+const expectedIndex=applyExpectedLiveHeroV2(applyExpectedIntegration(baseline)).replace(/\r\n/g,'\n');
 if(currentIndex.replace(/\r\n/g,'\n')!==expectedIndex){
-  fail('index.html is not the exact approved pre-PR5 baseline plus the permitted additive frame-intro integration.');
+  fail('index.html is not the exact approved pre-PR5 baseline plus the permitted Forge intro and reveal-matched live-hero integrations.');
 }
 
-console.log('Frame-sequence validation passed: protected homepage is intact and only audited frames 001..032 are deployable.');
+console.log('Frame-sequence validation passed: protected homepage and Forge assets are intact, audited frames 001..032 are deployable, and only the approved live-hero V2 additions are present.');
