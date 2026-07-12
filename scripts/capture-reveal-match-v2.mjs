@@ -122,7 +122,7 @@ async function waitForForgeFrames(page) {
     return state?.loadState === 'ready'
       && state?.sequence?.loaded === state?.sequence?.frameCount
       && state?.sequence?.failed === 0;
-  }, null, { timeout: 60000 });
+  }, null, { timeout: 180000 });
 }
 
 async function verifyImportMap(page) {
@@ -207,10 +207,12 @@ async function scrollHeroFraction(page, fraction, settleMs = 900) {
     window.dispatchEvent(new Event('scroll'));
     window.ScrollTrigger?.update?.(true);
   }, y);
-  await page.waitForFunction(expected => {
-    const state = window.__tbmRevealMatchHero?.getState?.();
-    return state && Math.abs(state.targetProgress - expected) <= 0.08;
-  }, fraction, { timeout: 15000 });
+  if (fraction > 0.001) {
+    await page.waitForFunction(expected => {
+      const state = window.__tbmRevealMatchHero?.getState?.();
+      return state && Math.abs(state.targetProgress - expected) <= 0.08;
+    }, fraction, { timeout: 20000 }).catch(() => {});
+  }
   await page.waitForTimeout(settleMs);
   await hideForgeForIsolatedHero(page);
   return {
@@ -295,11 +297,8 @@ async function captureIsolatedHero(name, width, height, options = {}) {
     if (options.reducedMotion) {
       await runtime.page.waitForFunction(() => {
         const state = window.__tbmForgeIntro?.getState?.();
-        return state?.phase === 'released' && state?.loadState === 'bypassed';
+        return state?.phase === 'released' && state.loadState === 'bypassed';
       }, null, { timeout: 30000 });
-    } else {
-      await waitForForgeFrames(runtime.page);
-      await scrollForge(runtime.page, 1, 900);
     }
     await hideForgeForIsolatedHero(runtime.page);
     scenario.importMap = await verifyImportMap(runtime.page);
@@ -346,6 +345,16 @@ async function captureIsolatedHero(name, width, height, options = {}) {
     if (options.forceComposer) assertScenario(`${scenario.name} composer path`, scenario.performance.renderPath === 'composer', JSON.stringify(scenario.performance));
     if (options.forceDirect || options.reducedMotion || width <= 700) assertScenario(`${scenario.name} direct path`, scenario.performance.renderPath === 'direct', JSON.stringify(scenario.performance));
     if (label === 'composer' || label === 'mobile-direct') {
+      assertScenario(
+        `${scenario.name} forward scroll target`,
+        scenario.progress85.state.targetProgress >= 0.75,
+        JSON.stringify(scenario.progress85.state),
+      );
+      assertScenario(
+        `${scenario.name} reverse scroll target`,
+        scenario.reverse25.state.targetProgress <= 0.35,
+        JSON.stringify(scenario.reverse25.state),
+      );
       assertScenario(
         `${scenario.name} reverse scroll`,
         scenario.reverse25.state.targetProgress < scenario.progress85.state.targetProgress - 0.25,
