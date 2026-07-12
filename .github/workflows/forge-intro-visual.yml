@@ -61,6 +61,6 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: forge-intro-visual-evidence
-          path: artifacts/forge-intro/*.png
+          path: artifacts/forge-intro/*
           if-no-files-found: error
           retention-days: 30
