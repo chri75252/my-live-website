@@ -14,15 +14,13 @@
   <link rel="icon" href="images/tbm-logo-actual.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="preconnect" href="https://esm.sh" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <script>document.documentElement.classList.add('forge-capable');</script>
   <link rel="stylesheet" href="css/site-v2.css">
-  <link rel="stylesheet" href="css/forge-gate.css?v=20260712-3">
+  <link rel="stylesheet" href="css/hero-scroll.css">
 </head>
 <body class="home-v2">
 <a class="skip-link" href="#main-content">Skip to main content</a>
-<header class="site-header" id="site-header" data-forge-header>
+<header class="site-header" id="site-header">
   <div class="shell header-shell">
     <a class="brand" href="index.html" aria-label="The Blacksmith Market home">
       <span class="brand-mark brand-mark--actual"><img src="images/tbm-logo-actual.svg" alt="" width="58" height="58"></span>
@@ -44,55 +42,45 @@
   </nav>
 </header>
 <main id="main-content">
-  <section class="forge-story" id="top" aria-labelledby="hero-title" data-forge-story>
-    <div class="forge-story__sticky" data-forge-viewport>
-      <canvas class="forge-canvas" id="forge-canvas" aria-hidden="true"></canvas>
-      <div class="forge-fallback" aria-hidden="true">
-        <span class="forge-fallback__core"></span>
-        <span class="forge-fallback__arc forge-fallback__arc--a"></span>
-        <span class="forge-fallback__arc forge-fallback__arc--b"></span>
-        <span class="forge-fallback__arc forge-fallback__arc--c"></span>
-      </div>
-
-      <div class="hero forge-final-hero" data-forge-final data-forge-managed>
-        <div class="hero-grid shell">
-          <div class="hero-copy" data-forge-copy>
-            <p class="eyebrow"><span></span>Premium wholesale partnerships</p>
-            <h1 id="hero-title">We forge value.<br>You grow <em>together.</em></h1>
-            <p class="hero-lead">A focused UK wholesale buyer for branded and excess consumer stock. Clear evaluation, commercially grounded offers and a straightforward supplier process.</p>
-            <div class="hero-actions">
-              <a class="button button-gold" href="contact.html"><span>Sell to Us</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-              <a class="button button-outline" href="#product-focus"><span>Explore Product Focus</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-            </div>
-            <ul class="hero-promises" aria-label="Supplier process highlights">
-              <li><span class="promise-icon">✓</span><span><strong>Clear review</strong><small>Structured product evaluation</small></span></li>
-              <li><span class="promise-icon">£</span><span><strong>Commercial focus</strong><small>Data-led buying decisions</small></span></li>
-              <li><span class="promise-icon">↗</span><span><strong>Direct process</strong><small>One clear supplier route</small></span></li>
-            </ul>
-          </div>
-          <div class="hero-visual" data-forge-visual>
-            <div class="hero-stage" id="hero-stage" data-forge-target>
-              <article class="float-card float-card-a" data-forge-card><small>Product focus</small><strong>Selected sectors</strong><span>Consumer categories with clear resale demand</span></article>
-              <article class="float-card float-card-b" data-forge-card><small>Supplier route</small><strong>Direct review</strong><span>One structured submission process</span></article>
-              <article class="float-card float-card-c" data-forge-card><small>Commercial lens</small><strong>Data-led</strong><span>Demand, margin and operational fit</span></article>
-              <article class="float-card float-card-d" data-forge-card><small>Partnership style</small><strong>Clear terms</strong><span>Transparent communication from review onward</span></article>
-            </div>
-            <div class="hero-motion-ui" aria-label="3D animation controls">
-              <button class="motion-toggle" id="motion-toggle" type="button" aria-pressed="true">Pause ambient motion</button>
-            </div>
-          </div>
+  <section class="hero hero-scroll-sequence" id="top" aria-labelledby="hero-title">
+    <div class="hero-grid shell">
+      <div class="hero-copy reveal">
+        <p class="eyebrow"><span></span>Premium wholesale partnerships</p>
+        <h1 id="hero-title">We forge value.<br>You grow <em>together.</em></h1>
+        <p class="hero-lead">A focused UK wholesale buyer for branded and excess consumer stock. Clear evaluation, commercially grounded offers and a straightforward supplier process.</p>
+        <div class="hero-actions">
+          <a class="button button-gold" href="contact.html"><span>Sell to Us</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          <a class="button button-outline" href="#product-focus"><span>Explore Product Focus</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
         </div>
-        <div class="proof-strip shell" data-forge-proof aria-label="Operating principles">
-          <span class="proof-label">Built for practical supplier conversations</span>
-          <div class="proof-item"><strong>UK-focused</strong><small>Consumer stock sourcing</small></div>
-          <div class="proof-item"><strong>Multi-category</strong><small>Selected product sectors</small></div>
-          <div class="proof-item"><strong>Data-led</strong><small>Commercial evaluation</small></div>
-          <div class="proof-item"><strong>Direct contact</strong><small>Supplier-first process</small></div>
+        <ul class="hero-promises" aria-label="Supplier process highlights">
+          <li><span class="promise-icon">✓</span><span><strong>Clear review</strong><small>Structured product evaluation</small></span></li>
+          <li><span class="promise-icon">£</span><span><strong>Commercial focus</strong><small>Data-led buying decisions</small></span></li>
+          <li><span class="promise-icon">↗</span><span><strong>Direct process</strong><small>One clear supplier route</small></span></li>
+        </ul>
+      </div>
+      <div class="hero-visual reveal" data-delay="120">
+        <div class="hero-stage" id="hero-stage">
+          <canvas id="hero-canvas" aria-hidden="true"></canvas>
+          <div class="armillary-fallback" aria-hidden="true"><span class="fallback-core"></span><span class="fallback-ring ring-a"></span><span class="fallback-ring ring-b"></span><span class="fallback-ring ring-c"></span><span class="fallback-ring ring-d"></span></div>
+          <article class="float-card float-card-a"><small>Product focus</small><strong>Selected sectors</strong><span>Consumer categories with clear resale demand</span></article>
+          <article class="float-card float-card-b"><small>Supplier route</small><strong>Direct review</strong><span>One structured submission process</span></article>
+          <article class="float-card float-card-c"><small>Commercial lens</small><strong>Data-led</strong><span>Demand, margin and operational fit</span></article>
+          <article class="float-card float-card-d"><small>Partnership style</small><strong>Clear terms</strong><span>Transparent communication from review onward</span></article>
+        </div>
+        <div class="hero-motion-ui" aria-label="3D animation controls">
+          <span class="scroll-cue" aria-hidden="true">Scroll to forge the network</span>
+          <button class="motion-toggle" id="motion-toggle" type="button" aria-pressed="true">Pause 3D motion</button>
         </div>
       </div>
     </div>
+    <div class="proof-strip shell reveal" aria-label="Operating principles">
+      <span class="proof-label">Built for practical supplier conversations</span>
+      <div class="proof-item"><strong>UK-focused</strong><small>Consumer stock sourcing</small></div>
+      <div class="proof-item"><strong>Multi-category</strong><small>Selected product sectors</small></div>
+      <div class="proof-item"><strong>Data-led</strong><small>Commercial evaluation</small></div>
+      <div class="proof-item"><strong>Direct contact</strong><small>Supplier-first process</small></div>
+    </div>
   </section>
-
   <section class="section" id="how-we-buy" aria-labelledby="how-title">
     <div class="shell">
       <header class="section-heading reveal"><p class="eyebrow centred"><span></span>How we buy<span></span></p><h2 id="how-title">Simple. Transparent. Built for suppliers.</h2><p>Four clear stages from initial product information to a commercially grounded decision.</p></header>
@@ -135,7 +123,9 @@
   </div>
   <div class="shell footer-bottom"><span>© <span id="current-year">2026</span> The Blacksmith Market.</span><span>Built for clear supplier conversations.</span></div>
 </footer>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js" defer></script>
 <script type="module" src="js/home-v2.js"></script>
-<script type="module" src="js/forge-gate.js?v=20260712-3"></script>
+<script type="module" src="js/hero-3d.js"></script>
 </body>
 </html>
