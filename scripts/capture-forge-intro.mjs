@@ -14,7 +14,7 @@ const phases=[
   { name:'opening',progress:0 },
   { name:'formation',progress:.34 },
   { name:'passage',progress:.7 },
-  { name:'homepage-exposed',progress:.999 }
+  { name:'homepage-exposed',progress:1 }
 ];
 
 await mkdir(outputDirectory,{ recursive:true });
