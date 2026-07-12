@@ -10,55 +10,14 @@ on:
       - scripts/capture-reveal-match-v2.mjs
       - scripts/verify-reveal-match-v2.py
       - scripts/build-reveal-match-contact-sheets.py
-      - .github/capture-representative-handoffs.*
       - .github/workflows/reveal-match-v2-evidence.yml
   workflow_dispatch:
 
 permissions:
-  contents: write
+  contents: read
 
 jobs:
-  materialize-representative-harness:
-    runs-on: ubuntu-latest
-    timeout-minutes: 5
-    steps:
-      - uses: actions/checkout@v4
-        with:
-          ref: ${{ github.head_ref || github.ref_name }}
-          fetch-depth: 0
-      - name: Decode and verify staged harness
-        if: ${{ hashFiles('.github/capture-representative-handoffs.01') != '' }}
-        shell: bash
-        run: |
-          set -euo pipefail
-          cat \
-            .github/capture-representative-handoffs.01 \
-            .github/capture-representative-handoffs.02 \
-            .github/capture-representative-handoffs.03 \
-            | base64 --decode | gzip --decompress > scripts/capture-reveal-match-v2.mjs
-          echo '0556cbc527d4abe2c7e8f40f9f3230e6f25b29c438884d740b3f3637df678f63  scripts/capture-reveal-match-v2.mjs' | sha256sum --check
-          node --check scripts/capture-reveal-match-v2.mjs
-      - name: Commit verified harness
-        if: ${{ hashFiles('.github/capture-representative-handoffs.01') != '' }}
-        shell: bash
-        run: |
-          set -euo pipefail
-          git config user.name 'github-actions[bot]'
-          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git rm \
-            .github/capture-representative-handoffs.01 \
-            .github/capture-representative-handoffs.02 \
-            .github/capture-representative-handoffs.03
-          git add scripts/capture-reveal-match-v2.mjs
-          git diff --cached --check
-          git commit -m 'test: use representative desktop and mobile Forge handoffs'
-          git push origin HEAD:${{ github.head_ref || github.ref_name }}
-      - name: Confirm no staged payload remains
-        if: ${{ hashFiles('.github/capture-representative-handoffs.01') == '' }}
-        run: echo 'No staged harness payload; materialization is already complete.'
-
   validate-and-capture:
-    needs: materialize-representative-harness
     runs-on: ubuntu-latest
     timeout-minutes: 40
     env:
