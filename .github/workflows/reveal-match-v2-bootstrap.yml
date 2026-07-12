@@ -43,11 +43,10 @@ jobs:
         run: |
           set -euo pipefail
           python /tmp/reveal-match-v2/package/apply_patch.py .
-          mkdir -p scripts .github/workflows
+          mkdir -p scripts
           cp /tmp/reveal-match-v2/final/scripts/capture-reveal-match-v2.mjs scripts/
           cp /tmp/reveal-match-v2/final/scripts/verify-reveal-match-v2.py scripts/
           cp /tmp/reveal-match-v2/final/scripts/build-reveal-match-contact-sheets.py scripts/
-          cp /tmp/reveal-match-v2/final/.github/workflows/reveal-match-v2-evidence.yml .github/workflows/
           base64 --decode .github/reveal-match-bootstrap/capture-final.b64 \
             | gzip --decompress > scripts/capture-reveal-match-v2.mjs
           git apply --check .github/reveal-match-bootstrap/tuning.patch
@@ -82,6 +81,7 @@ jobs:
         run: |
           set -euo pipefail
           rm -rf .github/reveal-match-bootstrap .github/workflows/reveal-match-v2-bootstrap.yml
+          rm -f .github/workflows/reveal-match-v2-evidence.yml
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
           git add -A
