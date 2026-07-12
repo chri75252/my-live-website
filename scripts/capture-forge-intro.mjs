@@ -43,12 +43,32 @@ async function waitForForge(page,{ allowFailure=false }={}){
 }
 
 async function setProgress(page,progress){
-  await page.evaluate(value=>{
+  const targetY=await page.evaluate(async value=>{
     const range=window.__tbmForgeIntro?.getRange();
     if(!range) throw new Error('Forge range is unavailable.');
-    window.scrollTo(0,range.start+(range.end-range.start)*value);
+    const target=range.start+(range.end-range.start)*value;
+    const root=document.documentElement;
+    const body=document.body;
+    const rootScrollBehavior=root.style.scrollBehavior;
+    const bodyScrollBehavior=body.style.scrollBehavior;
+    root.style.scrollBehavior='auto';
+    body.style.scrollBehavior='auto';
+    window.scrollTo({ top:target,left:0,behavior:'auto' });
+    await new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve)));
+    root.style.scrollBehavior=rootScrollBehavior;
+    body.style.scrollBehavior=bodyScrollBehavior;
+    return target;
   },progress);
-  await page.waitForTimeout(180);
+  await page.waitForFunction(
+    ({ expected,target })=>{
+      const debug=window.__tbmForgeIntro?.getState();
+      return Boolean(debug)
+        && Math.abs((debug.progress ?? -1)-expected)<=.006
+        && Math.abs(window.scrollY-target)<=2;
+    },
+    { expected:progress,target:targetY },
+    { timeout:3000 }
+  );
 }
 
 async function state(page){
