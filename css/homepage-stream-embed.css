@@ -1,0 +1,49 @@
+.stream-embed-section {
+  padding-top: clamp(4rem, 8vw, 7rem);
+  padding-bottom: clamp(4rem, 8vw, 7rem);
+}
+
+.stream-embed-shell {
+  display: grid;
+  gap: 1.75rem;
+}
+
+.stream-embed-heading {
+  max-width: 760px;
+}
+
+.stream-embed-heading h2 {
+  margin: 0.55rem 0 0;
+}
+
+.stream-embed-frame {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  border: 1px solid rgba(205, 159, 91, 0.35);
+  border-radius: 20px;
+  background: #050605;
+  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.38);
+  aspect-ratio: 16 / 9;
+}
+
+.stream-embed-frame iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+.stream-embed-note {
+  margin: 0;
+  font-size: 0.84rem;
+  line-height: 1.6;
+  opacity: 0.68;
+}
+
+@media (max-width: 700px) {
+  .stream-embed-frame {
+    border-radius: 14px;
+  }
+}
