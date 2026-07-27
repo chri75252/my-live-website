@@ -1,3 +1,5 @@
+# Specific groups below take precedence over User-agent: *.
+# Any future Disallow rule intended for every listed bot must be repeated in each specific group.
 User-agent: *
 Allow: /
 
@@ -19,6 +21,7 @@ Allow: /
 User-agent: ClaudeBot
 Allow: /
 
+# Google-Extended is a control token rather than a crawler. This explicit Allow records the current policy.
 User-agent: Google-Extended
 Allow: /
 
