@@ -1,0 +1,65 @@
+{
+  "name": "TBM Unified Live 3D V8",
+  "fps": 24,
+  "frameStart": 1,
+  "frameEnd": 192,
+  "revealEndProgress": 0.84,
+  "heroCopyStartProgress": 0.76,
+  "heroIdleStartProgress": 0.92,
+  "render": {
+    "approval": [1600, 900],
+    "approvalMobile": [900, 1600],
+    "posterDesktop": [1920, 1080],
+    "posterMobile": [900, 1600],
+    "approvalSamples": 32,
+    "previewSamples": 8,
+    "approvalFrames": [1, 34, 78, 110, 150, 178, 192]
+  },
+  "desktop": {
+    "stageHeightSvh": 420,
+    "dprCap": 1.5,
+    "settledWidthVw": [46, 52],
+    "settledCentreX": [73, 76],
+    "settledCentreY": [49, 54],
+    "copySafeBoundaryVw": 46
+  },
+  "mobile": {
+    "stageHeightSvh": 360,
+    "dprCap": 1.25
+  },
+  "palette": {
+    "void": "#030403",
+    "atmosphere": "#071011",
+    "core": "#0b1113",
+    "coreReflection": "#9ec7cb",
+    "forgedCopper": "#63351f",
+    "polishedBrass": "#efad68",
+    "gold": "#d89138",
+    "energy": "#ffd3a0",
+    "smoke": "#122022"
+  },
+  "worldStrength": 0.045,
+  "toneMappingExposure": 1.08,
+  "cameraDesktop": [
+    {"frame": 1, "location": [0.0, -15.4, 1.28], "target": [0.0, 0.0, 0.18], "lens": 46},
+    {"frame": 34, "location": [-0.18, -14.1, 1.18], "target": [0.0, 0.0, 0.2], "lens": 45},
+    {"frame": 78, "location": [0.12, -12.85, 1.02], "target": [0.02, 0.0, 0.2], "lens": 44},
+    {"frame": 110, "location": [-0.32, -11.65, 1.05], "target": [0.12, 0.0, 0.22], "lens": 44},
+    {"frame": 150, "location": [0.4, -13.3, 1.0], "target": [-0.34, 0.0, 0.2], "lens": 45},
+    {"frame": 178, "location": [0.86, -15.25, 0.96], "target": [-1.02, 0.0, 0.18], "lens": 46},
+    {"frame": 192, "location": [0.94, -15.7, 0.95], "target": [-1.22, 0.0, 0.18], "lens": 46}
+  ],
+  "cameraMobile": [
+    {"frame": 1, "location": [0.0, -17.8, 1.4], "target": [0.0, 0.0, 0.25], "lens": 52},
+    {"frame": 78, "location": [0.0, -15.2, 1.15], "target": [0.0, 0.0, 0.2], "lens": 50},
+    {"frame": 110, "location": [-0.18, -14.1, 1.08], "target": [0.0, 0.0, 0.15], "lens": 50},
+    {"frame": 150, "location": [0.16, -16.0, 1.02], "target": [0.0, 0.0, -0.05], "lens": 51},
+    {"frame": 192, "location": [0.24, -18.4, 0.98], "target": [0.0, 0.0, -0.38], "lens": 52}
+  ],
+  "web": {
+    "root": "assets/tbm-live-v8",
+    "glb": "assets/tbm-live-v8/tbm-armillary-v8.optimized.glb",
+    "desktopPoster": "assets/tbm-live-v8/poster-desktop.webp",
+    "mobilePoster": "assets/tbm-live-v8/poster-mobile.webp"
+  }
+}

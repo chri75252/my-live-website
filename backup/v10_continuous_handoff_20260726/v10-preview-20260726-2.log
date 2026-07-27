@@ -1,0 +1,123 @@
+00:02.344  cycles           | WARNING HIPEW initialization failed: Error opening HIP dynamic library
+00:46.250  render           | Saved: 'C:\idrive -carlo\Cloud-Drive_carloboul57@gmail.com\Cloud-Drive\Full\TBM\my-live-website\artifacts\reference-match-v9\cycles-delivery-preview\desktop-opening.webp'
+01:08.094  render           | Saved: 'C:\idrive -carlo\Cloud-Drive_carloboul57@gmail.com\Cloud-Drive\Full\TBM\my-live-website\artifacts\reference-match-v9\cycles-delivery-preview\desktop-contact.webp'
+01:31.875  render           | Saved: 'C:\idrive -carlo\Cloud-Drive_carloboul57@gmail.com\Cloud-Drive\Full\TBM\my-live-website\artifacts\reference-match-v9\cycles-delivery-preview\desktop-close.webp'
+01:32.360  cycles           | WARNING Topology differs, disabling motion blur for object Network_Edge_022
+01:32.375  cycles           | WARNING Topology differs, disabling motion blur for object Network_Edge_024
+01:32.375  cycles           | WARNING Topology differs, disabling motion blur for object Network_Edge_029
+01:32.375  cycles           | WARNING Topology differs, disabling motion blur for object Network_Edge_076
+01:32.375  cycles           | WARNING Topology differs, disabling motion blur for object Network_Edge_078
+01:32.375  cycles           | WARNING Topology differs, disabling motion blur for object Network_Edge_083
+01:32.375  cycles           | WARNING Topology differs, disabling motion blur for object Network_Edge_130
+01:32.375  cycles           | WARNING Topology differs, disabling motion blur for object Network_Edge_132
+01:32.375  cycles           | WARNING Topology differs, disabling motion blur for object Network_Edge_137
+01:32.375  cycles           | WARNING Topology differs, disabling motion blur for object Network_Edge_184
+01:32.375  cycles           | WARNING Topology differs, disabling motion blur for object Network_Edge_186
+01:32.375  cycles           | WARNING Topology differs, disabling motion blur for object Network_Edge_191
+01:32.375  cycles           | WARNING Topology differs, disabling motion blur for object Network_Edge_238
+01:32.375  cycles           | WARNING Topology differs, disabling motion blur for object Network_Edge_240
+01:32.375  cycles           | WARNING Topology differs, disabling motion blur for object Network_Edge_245
+01:32.375  cycles           | WARNING Topology differs, disabling motion blur for object Network_Edge_292
+01:32.375  cycles           | WARNING Topology differs, disabling motion blur for object Network_Edge_294
+01:32.375  cycles           | WARNING Topology differs, disabling motion blur for object Network_Edge_299
+01:32.391  cycles           | WARNING Topology differs, disabling motion blur for object Network_Edge_346
+01:32.391  cycles           | WARNING Topology differs, disabling motion blur for object Network_Edge_348
+01:32.391  cycles           | WARNING Topology differs, disabling motion blur for object Network_Edge_353
+01:32.391  cycles           | WARNING Topology differs, disabling motion blur for object Network_Edge_400
+01:32.391  cycles           | WARNING Topology differs, disabling motion blur for object Network_Edge_402
+01:32.391  cycles           | WARNING Topology differs, disabling motion blur for object Network_Edge_407
+01:32.391  cycles           | WARNING Topology differs, disabling motion blur for object Network_Edge_454
+01:32.391  cycles           | WARNING Topology differs, disabling motion blur for object Network_Edge_456
+01:32.391  cycles           | WARNING Topology differs, disabling motion blur for object Network_Edge_461
+01:32.406  cycles           | WARNING Topology differs, discarding motion blur for object Network_Edge_025 at time 1
+01:32.422  cycles           | WARNING Topology differs, discarding motion blur for object Network_Edge_030 at time 1
+01:32.422  cycles           | WARNING Topology differs, discarding motion blur for object Network_Edge_032 at time 1
+01:32.422  cycles           | WARNING Topology differs, discarding motion blur for object Network_Edge_079 at time 1
+01:32.422  cycles           | WARNING Topology differs, discarding motion blur for object Network_Edge_084 at time 1
+01:32.422  cycles           | WARNING Topology differs, discarding motion blur for object Network_Edge_086 at time 1
+01:32.422  cycles           | WARNING Topology differs, discarding motion blur for object Network_Edge_133 at time 1
+01:32.422  cycles           | WARNING Topology differs, discarding motion blur for object Network_Edge_138 at time 1
+01:32.422  cycles           | WARNING Topology differs, discarding motion blur for object Network_Edge_140 at time 1
+01:32.422  cycles           | WARNING Topology differs, discarding motion blur for object Network_Edge_187 at time 1
+01:32.422  cycles           | WARNING Topology differs, discarding motion blur for object Network_Edge_192 at time 1
+01:32.422  cycles           | WARNING Topology differs, discarding motion blur for object Network_Edge_194 at time 1
+01:32.422  cycles           | WARNING Topology differs, discarding motion blur for object Network_Edge_241 at time 1
+01:32.422  cycles           | WARNING Topology differs, discarding motion blur for object Network_Edge_246 at time 1
+01:32.422  cycles           | WARNING Topology differs, discarding motion blur for object Network_Edge_248 at time 1
+01:32.422  cycles           | WARNING Topology differs, discarding motion blur for object Network_Edge_295 at time 1
+01:32.422  cycles           | WARNING Topology differs, discarding motion blur for object Network_Edge_300 at time 1
+01:32.422  cycles           | WARNING Topology differs, discarding motion blur for object Network_Edge_302 at time 1
+01:32.422  cycles           | WARNING Topology differs, discarding motion blur for object Network_Edge_349 at time 1
+01:32.422  cycles           | WARNING Topology differs, discarding motion blur for object Network_Edge_354 at time 1
+01:32.422  cycles           | WARNING Topology differs, discarding motion blur for object Network_Edge_356 at time 1
+01:32.438  cycles           | WARNING Topology differs, discarding motion blur for object Network_Edge_403 at time 1
+01:32.438  cycles           | WARNING Topology differs, discarding motion blur for object Network_Edge_408 at time 1
+01:32.438  cycles           | WARNING Topology differs, discarding motion blur for object Network_Edge_410 at time 1
+01:32.438  cycles           | WARNING Topology differs, discarding motion blur for object Network_Edge_457 at time 1
+01:32.438  cycles           | WARNING Topology differs, discarding motion blur for object Network_Edge_462 at time 1
+01:32.438  cycles           | WARNING Topology differs, discarding motion blur for object Network_Edge_464 at time 1
+01:55.875  render           | Saved: 'C:\idrive -carlo\Cloud-Drive_carloboul57@gmail.com\Cloud-Drive\Full\TBM\my-live-website\artifacts\reference-match-v9\cycles-delivery-preview\desktop-network.webp'
+02:18.422  render           | Saved: 'C:\idrive -carlo\Cloud-Drive_carloboul57@gmail.com\Cloud-Drive\Full\TBM\my-live-website\artifacts\reference-match-v9\cycles-delivery-preview\desktop-handoff.webp'
+02:38.500  render           | Saved: 'C:\idrive -carlo\Cloud-Drive_carloboul57@gmail.com\Cloud-Drive\Full\TBM\my-live-website\artifacts\reference-match-v9\cycles-delivery-preview\mobile-opening.webp'
+03:02.453  render           | Saved: 'C:\idrive -carlo\Cloud-Drive_carloboul57@gmail.com\Cloud-Drive\Full\TBM\my-live-website\artifacts\reference-match-v9\cycles-delivery-preview\mobile-contact.webp'
+03:24.531  render           | Saved: 'C:\idrive -carlo\Cloud-Drive_carloboul57@gmail.com\Cloud-Drive\Full\TBM\my-live-website\artifacts\reference-match-v9\cycles-delivery-preview\mobile-close.webp'
+03:24.969  cycles           | WARNING Topology differs, disabling motion blur for object Network_Edge_022
+03:24.969  cycles           | WARNING Topology differs, disabling motion blur for object Network_Edge_024
+03:24.969  cycles           | WARNING Topology differs, disabling motion blur for object Network_Edge_029
+03:24.969  cycles           | WARNING Topology differs, disabling motion blur for object Network_Edge_076
+03:24.969  cycles           | WARNING Topology differs, disabling motion blur for object Network_Edge_078
+03:24.969  cycles           | WARNING Topology differs, disabling motion blur for object Network_Edge_083
+03:24.969  cycles           | WARNING Topology differs, disabling motion blur for object Network_Edge_130
+03:24.969  cycles           | WARNING Topology differs, disabling motion blur for object Network_Edge_132
+03:24.969  cycles           | WARNING Topology differs, disabling motion blur for object Network_Edge_137
+03:24.969  cycles           | WARNING Topology differs, disabling motion blur for object Network_Edge_184
+03:24.969  cycles           | WARNING Topology differs, disabling motion blur for object Network_Edge_186
+03:24.969  cycles           | WARNING Topology differs, disabling motion blur for object Network_Edge_191
+03:24.969  cycles           | WARNING Topology differs, disabling motion blur for object Network_Edge_238
+03:24.969  cycles           | WARNING Topology differs, disabling motion blur for object Network_Edge_240
+03:24.969  cycles           | WARNING Topology differs, disabling motion blur for object Network_Edge_245
+03:24.969  cycles           | WARNING Topology differs, disabling motion blur for object Network_Edge_292
+03:24.985  cycles           | WARNING Topology differs, disabling motion blur for object Network_Edge_294
+03:24.985  cycles           | WARNING Topology differs, disabling motion blur for object Network_Edge_299
+03:24.985  cycles           | WARNING Topology differs, disabling motion blur for object Network_Edge_346
+03:24.985  cycles           | WARNING Topology differs, disabling motion blur for object Network_Edge_348
+03:24.985  cycles           | WARNING Topology differs, disabling motion blur for object Network_Edge_353
+03:24.985  cycles           | WARNING Topology differs, disabling motion blur for object Network_Edge_400
+03:24.985  cycles           | WARNING Topology differs, disabling motion blur for object Network_Edge_402
+03:24.985  cycles           | WARNING Topology differs, disabling motion blur for object Network_Edge_407
+03:24.985  cycles           | WARNING Topology differs, disabling motion blur for object Network_Edge_454
+03:24.985  cycles           | WARNING Topology differs, disabling motion blur for object Network_Edge_456
+03:24.985  cycles           | WARNING Topology differs, disabling motion blur for object Network_Edge_461
+03:25.016  cycles           | WARNING Topology differs, discarding motion blur for object Network_Edge_025 at time 1
+03:25.016  cycles           | WARNING Topology differs, discarding motion blur for object Network_Edge_030 at time 1
+03:25.016  cycles           | WARNING Topology differs, discarding motion blur for object Network_Edge_032 at time 1
+03:25.016  cycles           | WARNING Topology differs, discarding motion blur for object Network_Edge_079 at time 1
+03:25.016  cycles           | WARNING Topology differs, discarding motion blur for object Network_Edge_084 at time 1
+03:25.016  cycles           | WARNING Topology differs, discarding motion blur for object Network_Edge_086 at time 1
+03:25.016  cycles           | WARNING Topology differs, discarding motion blur for object Network_Edge_133 at time 1
+03:25.016  cycles           | WARNING Topology differs, discarding motion blur for object Network_Edge_138 at time 1
+03:25.016  cycles           | WARNING Topology differs, discarding motion blur for object Network_Edge_140 at time 1
+03:25.016  cycles           | WARNING Topology differs, discarding motion blur for object Network_Edge_187 at time 1
+03:25.016  cycles           | WARNING Topology differs, discarding motion blur for object Network_Edge_192 at time 1
+03:25.016  cycles           | WARNING Topology differs, discarding motion blur for object Network_Edge_194 at time 1
+03:25.016  cycles           | WARNING Topology differs, discarding motion blur for object Network_Edge_241 at time 1
+03:25.016  cycles           | WARNING Topology differs, discarding motion blur for object Network_Edge_246 at time 1
+03:25.016  cycles           | WARNING Topology differs, discarding motion blur for object Network_Edge_248 at time 1
+03:25.016  cycles           | WARNING Topology differs, discarding motion blur for object Network_Edge_295 at time 1
+03:25.016  cycles           | WARNING Topology differs, discarding motion blur for object Network_Edge_300 at time 1
+03:25.016  cycles           | WARNING Topology differs, discarding motion blur for object Network_Edge_302 at time 1
+03:25.016  cycles           | WARNING Topology differs, discarding motion blur for object Network_Edge_349 at time 1
+03:25.031  cycles           | WARNING Topology differs, discarding motion blur for object Network_Edge_354 at time 1
+03:25.031  cycles           | WARNING Topology differs, discarding motion blur for object Network_Edge_356 at time 1
+03:25.031  cycles           | WARNING Topology differs, discarding motion blur for object Network_Edge_403 at time 1
+03:25.031  cycles           | WARNING Topology differs, discarding motion blur for object Network_Edge_408 at time 1
+03:25.031  cycles           | WARNING Topology differs, discarding motion blur for object Network_Edge_410 at time 1
+03:25.031  cycles           | WARNING Topology differs, discarding motion blur for object Network_Edge_457 at time 1
+03:25.031  cycles           | WARNING Topology differs, discarding motion blur for object Network_Edge_462 at time 1
+03:25.031  cycles           | WARNING Topology differs, discarding motion blur for object Network_Edge_464 at time 1
+03:46.047  render           | Saved: 'C:\idrive -carlo\Cloud-Drive_carloboul57@gmail.com\Cloud-Drive\Full\TBM\my-live-website\artifacts\reference-match-v9\cycles-delivery-preview\mobile-network.webp'
+04:06.766  render           | Saved: 'C:\idrive -carlo\Cloud-Drive_carloboul57@gmail.com\Cloud-Drive\Full\TBM\my-live-website\artifacts\reference-match-v9\cycles-delivery-preview\mobile-handoff.webp'
+Info: Saved as "TBM_REFERENCE_MATCH_V10.blend"
+Blender 5.2.0 LTS (hash fbe6228777e7 built 2026-07-14 01:35:40)
+
+Blender quit

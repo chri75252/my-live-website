@@ -3,18 +3,21 @@ name: Forge Frame Sequence Evidence
 on:
   push:
     branches:
-      - feature/forge-intro-reveal-v2
+      - codex/final-forge-hero-recovery-v3
     paths:
       - index.html
       - css/forge-intro.css
       - js/forge-intro.js
       - js/forge-frame-sequence.js
+      - js/hero-3d-reveal-match-v3.js
+      - css/hero-reveal-match-v3.css
       - assets/forge-reveal/**
       - artifacts/forge-frame-audit/**
       - scripts/build-forge-frame-assets.py
       - scripts/apply-forge-frame-integration.py
       - scripts/validate-forge-frame-sequence.mjs
       - scripts/capture-forge-intro.mjs
+      - scripts/verify-reveal-match-v3.py
       - .github/workflows/forge-intro-visual.yml
   pull_request:
     branches: [main]
@@ -59,12 +62,12 @@ jobs:
       - name: Install deterministic image tooling
         run: python -m pip install --disable-pip-version-check pillow==12.2.0
 
-      - name: Rebuild and verify audited production assets
+      - name: Verify committed video-derived production assets
         shell: bash
         run: |
           set -euo pipefail
-          python scripts/build-forge-frame-assets.py
-          git diff --exit-code -- assets/forge-reveal artifacts/forge-frame-audit/performance-report.json
+          python scripts/verify-reveal-match-v3.py
+          node scripts/validate-forge-frame-sequence.mjs
 
       - name: Verify protected homepage and implementation
         shell: pwsh
@@ -78,9 +81,11 @@ jobs:
           set -euo pipefail
           node --check js/forge-intro.js
           node --check js/forge-frame-sequence.js
+          node --check js/hero-3d-reveal-match-v3.js
           node --check scripts/capture-forge-intro.mjs
           node --check scripts/validate-forge-frame-sequence.mjs
           node scripts/validate-forge-frame-sequence.mjs
+          python scripts/verify-reveal-match-v3.py
 
       - name: Install Playwright Chromium
         run: |
@@ -100,12 +105,12 @@ jobs:
           cat /tmp/tbm-preview.log
           exit 1
 
-      - name: Capture screenshots, reverse motion and diagnostics
+      - name: Capture V3 screenshots, reverse motion and diagnostics
         shell: bash
         run: |
           set -o pipefail
-          mkdir -p artifacts/forge-intro
-          node scripts/capture-forge-intro.mjs 2>&1 | tee artifacts/forge-intro/capture.log
+          mkdir -p artifacts/reveal-match-v3
+          node scripts/capture-reveal-match-v3.mjs 2>&1 | tee artifacts/reveal-match-v3/capture.log
 
       - name: Upload complete review evidence
         if: ${{ always() }}
@@ -114,7 +119,7 @@ jobs:
           name: forge-frame-sequence-evidence
           path: |
             artifacts/forge-frame-audit/*
-            artifacts/forge-intro/**
+            artifacts/reveal-match-v3/**
           if-no-files-found: warn
           retention-days: 30
 
@@ -140,4 +145,4 @@ jobs:
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add artifacts/forge-frame-audit/workflow-status.json
           git commit -m "[forge-evidence] Record ${JOB_STATUS} Forge evidence run"
-          git push origin HEAD:feature/forge-intro-reveal-v2
+          git push origin HEAD:codex/final-forge-hero-recovery-v3

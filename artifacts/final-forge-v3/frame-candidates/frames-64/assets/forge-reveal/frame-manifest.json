@@ -1,0 +1,604 @@
+{
+  "version": 1,
+  "source": {
+    "file": "Master_Execution_Prompt_\u2014_TBM.mp4",
+    "sha256": "3eb0ffa03aa261677087f781354429373240bf48cea34fae10307a618384bb95",
+    "width": 1280,
+    "height": 720,
+    "fps": 24,
+    "totalFrames": 240
+  },
+  "selection": {
+    "lastCleanSourceFrame": 159,
+    "firstContaminatedSourceFrame": 160,
+    "sampleCount": 64
+  },
+  "variants": {
+    "desktop": {
+      "width": 1280,
+      "height": 720
+    },
+    "mobile": {
+      "width": 800,
+      "height": 450
+    }
+  },
+  "frames": [
+    {
+      "productionIndex": 0,
+      "desktop": "artifacts/final-forge-v3/frame-candidates/frames-64/assets/forge-reveal/desktop/frame_0001.webp",
+      "mobile": "artifacts/final-forge-v3/frame-candidates/frames-64/assets/forge-reveal/mobile/frame_0001.webp",
+      "desktopSha256": "95d1066379b96abadf63f713a47e462766a37cf6d370cf2d4b6d4c25b0c2551c",
+      "mobileSha256": "87c289503c982ce2fec4031e396c17de192cb028f87ed6350eb508a1f35a99f1",
+      "sourceFrame": 0,
+      "sourceTimeSeconds": 0.0
+    },
+    {
+      "productionIndex": 1,
+      "desktop": "artifacts/final-forge-v3/frame-candidates/frames-64/assets/forge-reveal/desktop/frame_0002.webp",
+      "mobile": "artifacts/final-forge-v3/frame-candidates/frames-64/assets/forge-reveal/mobile/frame_0002.webp",
+      "desktopSha256": "af661dcafb0ee08717d64f1ac76522f0df53805fee82b6b23f1b5e54781dab95",
+      "mobileSha256": "e67cfb7a4cd8d59a121f29395acfbb437801ed37754a6a3a1d2db14dc2fc489a",
+      "sourceFrame": 3,
+      "sourceTimeSeconds": 0.125
+    },
+    {
+      "productionIndex": 2,
+      "desktop": "artifacts/final-forge-v3/frame-candidates/frames-64/assets/forge-reveal/desktop/frame_0003.webp",
+      "mobile": "artifacts/final-forge-v3/frame-candidates/frames-64/assets/forge-reveal/mobile/frame_0003.webp",
+      "desktopSha256": "143b9940ca2fcd21ef1faf3207294e409ddb9e8c19dd9ae89fbe6e3db06d2817",
+      "mobileSha256": "bbe90afb826a1dcd9a1d95b85cb8bd2e8dabd92eee9b5b79f9ea1eb16dcea4a0",
+      "sourceFrame": 5,
+      "sourceTimeSeconds": 0.208333
+    },
+    {
+      "productionIndex": 3,
+      "desktop": "artifacts/final-forge-v3/frame-candidates/frames-64/assets/forge-reveal/desktop/frame_0004.webp",
+      "mobile": "artifacts/final-forge-v3/frame-candidates/frames-64/assets/forge-reveal/mobile/frame_0004.webp",
+      "desktopSha256": "7b55592c334017ab247954ac9353b239fb785cc7e6feacb85690eed9dac7efc3",
+      "mobileSha256": "42bebfcde6eb1228e5b741e9eac28990da30ed0a1049c4631bb8282c4c39ddb5",
+      "sourceFrame": 8,
+      "sourceTimeSeconds": 0.333333
+    },
+    {
+      "productionIndex": 4,
+      "desktop": "artifacts/final-forge-v3/frame-candidates/frames-64/assets/forge-reveal/desktop/frame_0005.webp",
+      "mobile": "artifacts/final-forge-v3/frame-candidates/frames-64/assets/forge-reveal/mobile/frame_0005.webp",
+      "desktopSha256": "f096b4712d8bbbea281e65f549619750752ae39359e55d790b5516325220113a",
+      "mobileSha256": "283933ac7483a1d4e7c3d161bba93b38a878597fbaa35aea7c3c1b860b061cbc",
+      "sourceFrame": 10,
+      "sourceTimeSeconds": 0.416667
+    },
+    {
+      "productionIndex": 5,
+      "desktop": "artifacts/final-forge-v3/frame-candidates/frames-64/assets/forge-reveal/desktop/frame_0006.webp",
+      "mobile": "artifacts/final-forge-v3/frame-candidates/frames-64/assets/forge-reveal/mobile/frame_0006.webp",
+      "desktopSha256": "69b95488a11d170edc981b0ecad2274d708e23f244bbdd0140f12df757e95345",
+      "mobileSha256": "a53fdb44fc4957d62da3a6c6ba31c79c48b2e71e8ec5dbf155f90958363e0c73",
+      "sourceFrame": 13,
+      "sourceTimeSeconds": 0.541667
+    },
+    {
+      "productionIndex": 6,
+      "desktop": "artifacts/final-forge-v3/frame-candidates/frames-64/assets/forge-reveal/desktop/frame_0007.webp",
+      "mobile": "artifacts/final-forge-v3/frame-candidates/frames-64/assets/forge-reveal/mobile/frame_0007.webp",
+      "desktopSha256": "82dd81e856e87e28e6d5106688cd54c723870427a37cb4da821cb76e9e38dc5f",
+      "mobileSha256": "fcab38a7f929d831624cc73ee44d7e486cb8226fa2f4ec8ca815a3c63ba15871",
+      "sourceFrame": 15,
+      "sourceTimeSeconds": 0.625
+    },
+    {
+      "productionIndex": 7,
+      "desktop": "artifacts/final-forge-v3/frame-candidates/frames-64/assets/forge-reveal/desktop/frame_0008.webp",
+      "mobile": "artifacts/final-forge-v3/frame-candidates/frames-64/assets/forge-reveal/mobile/frame_0008.webp",
+      "desktopSha256": "00f1dd8c5e12c86046de2f96d54a3669f6c58dfd5bc6b4f2f050a152515b67f4",
+      "mobileSha256": "a6d5c0e225a60f7adef899d5feb9c83b91bdae8d2ac1c03194b043e0445949ba",
+      "sourceFrame": 18,
+      "sourceTimeSeconds": 0.75
+    },
+    {
+      "productionIndex": 8,
+      "desktop": "artifacts/final-forge-v3/frame-candidates/frames-64/assets/forge-reveal/desktop/frame_0009.webp",
+      "mobile": "artifacts/final-forge-v3/frame-candidates/frames-64/assets/forge-reveal/mobile/frame_0009.webp",
+      "desktopSha256": "00011e92e0c4664955bb3dc3b3d1a7d7f599dc27c55e2aa0e5215eb76495fd84",
+      "mobileSha256": "c5e4898d3f80055f5338be993610209c06d263aaee3e4c93645b1940f3aee9bc",
+      "sourceFrame": 20,
+      "sourceTimeSeconds": 0.833333
+    },
+    {
+      "productionIndex": 9,
+      "desktop": "artifacts/final-forge-v3/frame-candidates/frames-64/assets/forge-reveal/desktop/frame_0010.webp",
+      "mobile": "artifacts/final-forge-v3/frame-candidates/frames-64/assets/forge-reveal/mobile/frame_0010.webp",
+      "desktopSha256": "ff947a83b36864a60df236f082522e53c0a227bb477f9f19109a836a53adad6e",
+      "mobileSha256": "b35a4782eea49c4c7cbe7add4cd790d029f7cf0b9e1f9aab1f1b1e1174917e54",
+      "sourceFrame": 23,
+      "sourceTimeSeconds": 0.958333
+    },
+    {
+      "productionIndex": 10,
+      "desktop": "artifacts/final-forge-v3/frame-candidates/frames-64/assets/forge-reveal/desktop/frame_0011.webp",
+      "mobile": "artifacts/final-forge-v3/frame-candidates/frames-64/assets/forge-reveal/mobile/frame_0011.webp",
+      "desktopSha256": "5401ea615ac204b050da9108f4fcac05fb4bb708c97e9bdfbf698393dba62783",
+      "mobileSha256": "7d7521b646fb3e8a50c8b261a9c787f985b97d6fcf1980cae83ffe6c5cbe73ac",
+      "sourceFrame": 25,
+      "sourceTimeSeconds": 1.041667
+    },
+    {
+      "productionIndex": 11,
+      "desktop": "artifacts/final-forge-v3/frame-candidates/frames-64/assets/forge-reveal/desktop/frame_0012.webp",
+      "mobile": "artifacts/final-forge-v3/frame-candidates/frames-64/assets/forge-reveal/mobile/frame_0012.webp",
+      "desktopSha256": "ab0c1a461bb2a9bd09edccb8841b996900a14c5bee2bc81f87426a176e45675f",
+      "mobileSha256": "0770664b65739c0e7bc4272bc7ca4079c5fbb67e26569cc29220161f52ddefaf",
+      "sourceFrame": 28,
+      "sourceTimeSeconds": 1.166667
+    },
+    {
+      "productionIndex": 12,
+      "desktop": "artifacts/final-forge-v3/frame-candidates/frames-64/assets/forge-reveal/desktop/frame_0013.webp",
+      "mobile": "artifacts/final-forge-v3/frame-candidates/frames-64/assets/forge-reveal/mobile/frame_0013.webp",
+      "desktopSha256": "f3b8d31bb8ebb05f9af6f3547b3081278b7374537ca3c55f83cbdcadcef8f5dc",
+      "mobileSha256": "993ce6f3fc153235c8ac8de68442f56ad17796faa9e405a1599fc2f8175aeeef",
+      "sourceFrame": 30,
+      "sourceTimeSeconds": 1.25
+    },
+    {
+      "productionIndex": 13,
+      "desktop": "artifacts/final-forge-v3/frame-candidates/frames-64/assets/forge-reveal/desktop/frame_0014.webp",
+      "mobile": "artifacts/final-forge-v3/frame-candidates/frames-64/assets/forge-reveal/mobile/frame_0014.webp",
+      "desktopSha256": "fe1f50d56b72601caacc13af2401400c49b5bf014371ae69e5629b3b9c260c6f",
+      "mobileSha256": "d8d529d26f0ed50b706a31e7ed87271da08bd4a745374b95264e74d91cbfbec5",
+      "sourceFrame": 33,
+      "sourceTimeSeconds": 1.375
+    },
+    {
+      "productionIndex": 14,
+      "desktop": "artifacts/final-forge-v3/frame-candidates/frames-64/assets/forge-reveal/desktop/frame_0015.webp",
+      "mobile": "artifacts/final-forge-v3/frame-candidates/frames-64/assets/forge-reveal/mobile/frame_0015.webp",
+      "desktopSha256": "90169202e54a8a76801be38ad697d099010ef1bbc32908099cf5f3275d54581b",
+      "mobileSha256": "20cd4dfc45eca455fcd9ee9891c6fe5138bc525b3bba8e80b5dc49757e8545ac",
+      "sourceFrame": 35,
+      "sourceTimeSeconds": 1.458333
+    },
+    {
+      "productionIndex": 15,
+      "desktop": "artifacts/final-forge-v3/frame-candidates/frames-64/assets/forge-reveal/desktop/frame_0016.webp",
+      "mobile": "artifacts/final-forge-v3/frame-candidates/frames-64/assets/forge-reveal/mobile/frame_0016.webp",
+      "desktopSha256": "c2b9e0808745cb2e9c07f267f529e7b2e81082caa1f0ad4c626fe6fc1d79c0ad",
+      "mobileSha256": "e2771762ac17ead36dab623a4523abcc5f93488dbf294cf1a087f67910f6683c",
+      "sourceFrame": 38,
+      "sourceTimeSeconds": 1.583333
+    },
+    {
+      "productionIndex": 16,
+      "desktop": "artifacts/final-forge-v3/frame-candidates/frames-64/assets/forge-reveal/desktop/frame_0017.webp",
+      "mobile": "artifacts/final-forge-v3/frame-candidates/frames-64/assets/forge-reveal/mobile/frame_0017.webp",
+      "desktopSha256": "f970aa6cb9fd6188a8cf4c8f81595d87d0cf4169f2bd7de5567a2dbd887faf52",
+      "mobileSha256": "2d3550bbedf7502c5cef72bd32bfee399e4d0eb667b7c361f5dffdb39fcf96ff",
+      "sourceFrame": 40,
+      "sourceTimeSeconds": 1.666667
+    },
+    {
+      "productionIndex": 17,
+      "desktop": "artifacts/final-forge-v3/frame-candidates/frames-64/assets/forge-reveal/desktop/frame_0018.webp",
+      "mobile": "artifacts/final-forge-v3/frame-candidates/frames-64/assets/forge-reveal/mobile/frame_0018.webp",
+      "desktopSha256": "1cc48ab3d4a191b17f109ea9c2b1574670bf7bb438ac44d11824a1611ad756a2",
+      "mobileSha256": "c0ac82aeffa3d5ce3077b1dc4575dc21a57ad3712768f55493023b633d6ea783",
+      "sourceFrame": 43,
+      "sourceTimeSeconds": 1.791667
+    },
+    {
+      "productionIndex": 18,
+      "desktop": "artifacts/final-forge-v3/frame-candidates/frames-64/assets/forge-reveal/desktop/frame_0019.webp",
+      "mobile": "artifacts/final-forge-v3/frame-candidates/frames-64/assets/forge-reveal/mobile/frame_0019.webp",
+      "desktopSha256": "b2aa8b2ca644a6071cd51ed93cdbefcb1ce0a1956381981ccab7b93eb404d45a",
+      "mobileSha256": "23723ace305807c72a19d9e5e10e513727c6935d06d89177278ca7329e161e1e",
+      "sourceFrame": 45,
+      "sourceTimeSeconds": 1.875
+    },
+    {
+      "productionIndex": 19,
+      "desktop": "artifacts/final-forge-v3/frame-candidates/frames-64/assets/forge-reveal/desktop/frame_0020.webp",
+      "mobile": "artifacts/final-forge-v3/frame-candidates/frames-64/assets/forge-reveal/mobile/frame_0020.webp",
+      "desktopSha256": "7c941fc1cf60864248163115641afb25d30eb541d3f6f25d648bb99212477538",
+      "mobileSha256": "76cb988ad158b4aea27f6afabe37ce6aba1d849d09597c293d54ff98a7d52ea4",
+      "sourceFrame": 48,
+      "sourceTimeSeconds": 2.0
+    },
+    {
+      "productionIndex": 20,
+      "desktop": "artifacts/final-forge-v3/frame-candidates/frames-64/assets/forge-reveal/desktop/frame_0021.webp",
+      "mobile": "artifacts/final-forge-v3/frame-candidates/frames-64/assets/forge-reveal/mobile/frame_0021.webp",
+      "desktopSha256": "a621bef4d537f836bd41c10491905b412725d3d9baf282ecadb1729c956777ba",
+      "mobileSha256": "f960ad02e0245dd9ca4dc0ec90bab8b52cd5e79832929558dab5f29f45911cf6",
+      "sourceFrame": 50,
+      "sourceTimeSeconds": 2.083333
+    },
+    {
+      "productionIndex": 21,
+      "desktop": "artifacts/final-forge-v3/frame-candidates/frames-64/assets/forge-reveal/desktop/frame_0022.webp",
+      "mobile": "artifacts/final-forge-v3/frame-candidates/frames-64/assets/forge-reveal/mobile/frame_0022.webp",
+      "desktopSha256": "86d6d44aba76be147a9b7762de3e266b8c04de5d006159421d9181071945f730",
+      "mobileSha256": "01da4897f1f05ab552ae4a010cb3eb98267f71c1c115ba54a7c470ccd5f99107",
+      "sourceFrame": 53,
+      "sourceTimeSeconds": 2.208333
+    },
+    {
+      "productionIndex": 22,
+      "desktop": "artifacts/final-forge-v3/frame-candidates/frames-64/assets/forge-reveal/desktop/frame_0023.webp",
+      "mobile": "artifacts/final-forge-v3/frame-candidates/frames-64/assets/forge-reveal/mobile/frame_0023.webp",
+      "desktopSha256": "2b9f5358b992794a74a1ad3a000fe5aa602693ff1a58d3201a26a25feca49a6e",
+      "mobileSha256": "27de9d96fdc22ed0849900b4ebe6d2586abc6cb5b361fee7884a32b8ca31d4ea",
+      "sourceFrame": 56,
+      "sourceTimeSeconds": 2.333333
+    },
+    {
+      "productionIndex": 23,
+      "desktop": "artifacts/final-forge-v3/frame-candidates/frames-64/assets/forge-reveal/desktop/frame_0024.webp",
+      "mobile": "artifacts/final-forge-v3/frame-candidates/frames-64/assets/forge-reveal/mobile/frame_0024.webp",
+      "desktopSha256": "98e2cf5d06a04fa5898adc92107737675d5773132870529d35fac435f7995ec2",
+      "mobileSha256": "df8152b6137719cc0336efff7820331b61d1e3817a4935308c9c4e6ab7dda862",
+      "sourceFrame": 58,
+      "sourceTimeSeconds": 2.416667
+    },
+    {
+      "productionIndex": 24,
+      "desktop": "artifacts/final-forge-v3/frame-candidates/frames-64/assets/forge-reveal/desktop/frame_0025.webp",
+      "mobile": "artifacts/final-forge-v3/frame-candidates/frames-64/assets/forge-reveal/mobile/frame_0025.webp",
+      "desktopSha256": "ef540b5de347f35718b0265bd17813259316453dde97dd54d0f16299c2e527c3",
+      "mobileSha256": "ef27800a2a72d763b87079bc9966e469b866ea985b8ac4a6cecbdf71d6f457af",
+      "sourceFrame": 61,
+      "sourceTimeSeconds": 2.541667
+    },
+    {
+      "productionIndex": 25,
+      "desktop": "artifacts/final-forge-v3/frame-candidates/frames-64/assets/forge-reveal/desktop/frame_0026.webp",
+      "mobile": "artifacts/final-forge-v3/frame-candidates/frames-64/assets/forge-reveal/mobile/frame_0026.webp",
+      "desktopSha256": "b671ad2318e50534449a6050f66de26df93802dd24187009e1584c4f2cfb745f",
+      "mobileSha256": "54a5b99f7c6ea4ccc835af37095aba0290068200db35fb28ac58dcac8a3a2ebe",
+      "sourceFrame": 63,
+      "sourceTimeSeconds": 2.625
+    },
+    {
+      "productionIndex": 26,
+      "desktop": "artifacts/final-forge-v3/frame-candidates/frames-64/assets/forge-reveal/desktop/frame_0027.webp",
+      "mobile": "artifacts/final-forge-v3/frame-candidates/frames-64/assets/forge-reveal/mobile/frame_0027.webp",
+      "desktopSha256": "59faf04444852a52825360b9868bf6dc3e2d3c1ba1e99e27caa3f961521d0a3a",
+      "mobileSha256": "3545bf69a42d5d7e8b4cbc2c45db0f036b4425f7cd8e0b15f2d85558cf112047",
+      "sourceFrame": 66,
+      "sourceTimeSeconds": 2.75
+    },
+    {
+      "productionIndex": 27,
+      "desktop": "artifacts/final-forge-v3/frame-candidates/frames-64/assets/forge-reveal/desktop/frame_0028.webp",
+      "mobile": "artifacts/final-forge-v3/frame-candidates/frames-64/assets/forge-reveal/mobile/frame_0028.webp",
+      "desktopSha256": "6914301e4225f0aa5f2611c7c4f70b52c17948f44729cea6200c605ebc0b45d6",
+      "mobileSha256": "1d88007cef7012bfdefdb0162514b76b75adaeff7cd029d1c15a97e3e74a1bc5",
+      "sourceFrame": 68,
+      "sourceTimeSeconds": 2.833333
+    },
+    {
+      "productionIndex": 28,
+      "desktop": "artifacts/final-forge-v3/frame-candidates/frames-64/assets/forge-reveal/desktop/frame_0029.webp",
+      "mobile": "artifacts/final-forge-v3/frame-candidates/frames-64/assets/forge-reveal/mobile/frame_0029.webp",
+      "desktopSha256": "49353a3227472c90005d1f988036d3834d727ba1ebb821d160922900b6196b19",
+      "mobileSha256": "d0df9ba6c719d7b5de9fb54c907563033c698e7de85c5d33e0da648d8aaba34f",
+      "sourceFrame": 71,
+      "sourceTimeSeconds": 2.958333
+    },
+    {
+      "productionIndex": 29,
+      "desktop": "artifacts/final-forge-v3/frame-candidates/frames-64/assets/forge-reveal/desktop/frame_0030.webp",
+      "mobile": "artifacts/final-forge-v3/frame-candidates/frames-64/assets/forge-reveal/mobile/frame_0030.webp",
+      "desktopSha256": "f3b14d16933bc403df1555938b5d9de982c7e3927c2e83da7455f5853a124965",
+      "mobileSha256": "77636515e85f4886648ee158eed5ca05052501f851984dda55c4b3f10ae58b8c",
+      "sourceFrame": 73,
+      "sourceTimeSeconds": 3.041667
+    },
+    {
+      "productionIndex": 30,
+      "desktop": "artifacts/final-forge-v3/frame-candidates/frames-64/assets/forge-reveal/desktop/frame_0031.webp",
+      "mobile": "artifacts/final-forge-v3/frame-candidates/frames-64/assets/forge-reveal/mobile/frame_0031.webp",
+      "desktopSha256": "3771eed9e7fea630f38467a687d790b2dec2725d72685d107469cea70c1d20bd",
+      "mobileSha256": "a0c3596f4c00779cb66016c99543da50fd6e8cb5c793117330a2685f103015f8",
+      "sourceFrame": 76,
+      "sourceTimeSeconds": 3.166667
+    },
+    {
+      "productionIndex": 31,
+      "desktop": "artifacts/final-forge-v3/frame-candidates/frames-64/assets/forge-reveal/desktop/frame_0032.webp",
+      "mobile": "artifacts/final-forge-v3/frame-candidates/frames-64/assets/forge-reveal/mobile/frame_0032.webp",
+      "desktopSha256": "b0e52defb3509fd8b45e2c69c81d3ed8297cff775bc332cf6f4b9d0cf27a90b0",
+      "mobileSha256": "25e4275b742879411e2695148dc236f467319632279241b1b4355a97c376d20b",
+      "sourceFrame": 78,
+      "sourceTimeSeconds": 3.25
+    },
+    {
+      "productionIndex": 32,
+      "desktop": "artifacts/final-forge-v3/frame-candidates/frames-64/assets/forge-reveal/desktop/frame_0033.webp",
+      "mobile": "artifacts/final-forge-v3/frame-candidates/frames-64/assets/forge-reveal/mobile/frame_0033.webp",
+      "desktopSha256": "609e8520949237dc20b6a9a7c27c5f4c3645959fb720ab953fb71de98fcfe9dd",
+      "mobileSha256": "0ece2f20f8fc73feea8a372c587bdfd22a7d45168e5c418fb6f6f007ee659de3",
+      "sourceFrame": 81,
+      "sourceTimeSeconds": 3.375
+    },
+    {
+      "productionIndex": 33,
+      "desktop": "artifacts/final-forge-v3/frame-candidates/frames-64/assets/forge-reveal/desktop/frame_0034.webp",
+      "mobile": "artifacts/final-forge-v3/frame-candidates/frames-64/assets/forge-reveal/mobile/frame_0034.webp",
+      "desktopSha256": "5cf7e2425b3869338d69275fa26d1ebaafdcee75a169e6986df86d8e6398ba37",
+      "mobileSha256": "e3ed8daba42682e578d63441aaeaefbf38f09e38a0e1b213d51a1e7df5aeb393",
+      "sourceFrame": 83,
+      "sourceTimeSeconds": 3.458333
+    },
+    {
+      "productionIndex": 34,
+      "desktop": "artifacts/final-forge-v3/frame-candidates/frames-64/assets/forge-reveal/desktop/frame_0035.webp",
+      "mobile": "artifacts/final-forge-v3/frame-candidates/frames-64/assets/forge-reveal/mobile/frame_0035.webp",
+      "desktopSha256": "3188bb3009eef34498018de44ae543b05086f6f46d5cfba8ef5d5e92eacda032",
+      "mobileSha256": "00d28295957b49d377989c5b101e2cb5076d2502bb678291c19f8b1b3c14a297",
+      "sourceFrame": 86,
+      "sourceTimeSeconds": 3.583333
+    },
+    {
+      "productionIndex": 35,
+      "desktop": "artifacts/final-forge-v3/frame-candidates/frames-64/assets/forge-reveal/desktop/frame_0036.webp",
+      "mobile": "artifacts/final-forge-v3/frame-candidates/frames-64/assets/forge-reveal/mobile/frame_0036.webp",
+      "desktopSha256": "54e51317731453325eec095e69cd7cf18e104414f1e15e491993b5356e9562b8",
+      "mobileSha256": "9c99fdfe0f9c1602b28dc0c3d261e5f4d4d4287536e40c19135cbaa4d6e0b128",
+      "sourceFrame": 88,
+      "sourceTimeSeconds": 3.666667
+    },
+    {
+      "productionIndex": 36,
+      "desktop": "artifacts/final-forge-v3/frame-candidates/frames-64/assets/forge-reveal/desktop/frame_0037.webp",
+      "mobile": "artifacts/final-forge-v3/frame-candidates/frames-64/assets/forge-reveal/mobile/frame_0037.webp",
+      "desktopSha256": "2a4a1925aa4c08fc6dab5db83de14755de11823531ac9e19b172680688197a0a",
+      "mobileSha256": "8b56a3c0377056166218d14f55cf66090c80006e6cdcc0f3c4948d4fa3528a89",
+      "sourceFrame": 91,
+      "sourceTimeSeconds": 3.791667
+    },
+    {
+      "productionIndex": 37,
+      "desktop": "artifacts/final-forge-v3/frame-candidates/frames-64/assets/forge-reveal/desktop/frame_0038.webp",
+      "mobile": "artifacts/final-forge-v3/frame-candidates/frames-64/assets/forge-reveal/mobile/frame_0038.webp",
+      "desktopSha256": "c07892b7ff6bdb71d1f3bd5d7a3b82681177b68b4d2c624fa79b7bb9be61424a",
+      "mobileSha256": "06c877f02f541661fdd41e7f71e2863cae640f44f75ef0da555fc18cea8449db",
+      "sourceFrame": 93,
+      "sourceTimeSeconds": 3.875
+    },
+    {
+      "productionIndex": 38,
+      "desktop": "artifacts/final-forge-v3/frame-candidates/frames-64/assets/forge-reveal/desktop/frame_0039.webp",
+      "mobile": "artifacts/final-forge-v3/frame-candidates/frames-64/assets/forge-reveal/mobile/frame_0039.webp",
+      "desktopSha256": "51ad6cadee53b8ecd9565ee2f49b2e64edb15a1d594cfe68dec9b63660d906a8",
+      "mobileSha256": "afbb7008a2778ab71cad597d226e17e4d0a8bcb483dc82db631d455d8d511543",
+      "sourceFrame": 96,
+      "sourceTimeSeconds": 4.0
+    },
+    {
+      "productionIndex": 39,
+      "desktop": "artifacts/final-forge-v3/frame-candidates/frames-64/assets/forge-reveal/desktop/frame_0040.webp",
+      "mobile": "artifacts/final-forge-v3/frame-candidates/frames-64/assets/forge-reveal/mobile/frame_0040.webp",
+      "desktopSha256": "82d35d805121ae3d4ec71f35fc2b2d94104dbaba50c4270e550b3bdb0c3a0fc2",
+      "mobileSha256": "47314f2e849909d50a065c01ffd476d2286473335aacadc02b14314b81f8bdee",
+      "sourceFrame": 98,
+      "sourceTimeSeconds": 4.083333
+    },
+    {
+      "productionIndex": 40,
+      "desktop": "artifacts/final-forge-v3/frame-candidates/frames-64/assets/forge-reveal/desktop/frame_0041.webp",
+      "mobile": "artifacts/final-forge-v3/frame-candidates/frames-64/assets/forge-reveal/mobile/frame_0041.webp",
+      "desktopSha256": "ee2c527696ee1385e01588d76ff36a03b0c0e65f332ef7d87bf55f4991b88928",
+      "mobileSha256": "71c20f8dda2cdcedfb691950d5e4a02c6ff12aa65e8eafd99bc399aa062f992d",
+      "sourceFrame": 101,
+      "sourceTimeSeconds": 4.208333
+    },
+    {
+      "productionIndex": 41,
+      "desktop": "artifacts/final-forge-v3/frame-candidates/frames-64/assets/forge-reveal/desktop/frame_0042.webp",
+      "mobile": "artifacts/final-forge-v3/frame-candidates/frames-64/assets/forge-reveal/mobile/frame_0042.webp",
+      "desktopSha256": "0527e37a7793e3fb572554d8df4f22e065ba8ae1b7e80e058a5f7aa3abf64927",
+      "mobileSha256": "3a1d332aa5cb3f2787fa4e2c6436736dccca86b545a7277352a071310d78c50a",
+      "sourceFrame": 103,
+      "sourceTimeSeconds": 4.291667
+    },
+    {
+      "productionIndex": 42,
+      "desktop": "artifacts/final-forge-v3/frame-candidates/frames-64/assets/forge-reveal/desktop/frame_0043.webp",
+      "mobile": "artifacts/final-forge-v3/frame-candidates/frames-64/assets/forge-reveal/mobile/frame_0043.webp",
+      "desktopSha256": "e1b16b379729708d564cf3a8c6afff897b939d3db136fea5b732e9bdadf08299",
+      "mobileSha256": "7b43e9beadf8bbd172aaac033416b6e84e06ea1f2053c7602e90dfcffdb18c1c",
+      "sourceFrame": 106,
+      "sourceTimeSeconds": 4.416667
+    },
+    {
+      "productionIndex": 43,
+      "desktop": "artifacts/final-forge-v3/frame-candidates/frames-64/assets/forge-reveal/desktop/frame_0044.webp",
+      "mobile": "artifacts/final-forge-v3/frame-candidates/frames-64/assets/forge-reveal/mobile/frame_0044.webp",
+      "desktopSha256": "d2363fea7774b0f92668d1203b55d3cf22959b387c5009553d7dd84dca97ca6d",
+      "mobileSha256": "511c8bffa534ed3a32cfe3fab3e6a76d9fa8af6fe2f942bd5663d81914c1af1b",
+      "sourceFrame": 109,
+      "sourceTimeSeconds": 4.541667
+    },
+    {
+      "productionIndex": 44,
+      "desktop": "artifacts/final-forge-v3/frame-candidates/frames-64/assets/forge-reveal/desktop/frame_0045.webp",
+      "mobile": "artifacts/final-forge-v3/frame-candidates/frames-64/assets/forge-reveal/mobile/frame_0045.webp",
+      "desktopSha256": "78505c063ff340370a9cece2b12d7f8f1fee532081af89ad03b53ed63af6a35c",
+      "mobileSha256": "4905e4496d89113643cb44ac794500d6a8fb511b4ff7b74a89f56fb935d1d06d",
+      "sourceFrame": 111,
+      "sourceTimeSeconds": 4.625
+    },
+    {
+      "productionIndex": 45,
+      "desktop": "artifacts/final-forge-v3/frame-candidates/frames-64/assets/forge-reveal/desktop/frame_0046.webp",
+      "mobile": "artifacts/final-forge-v3/frame-candidates/frames-64/assets/forge-reveal/mobile/frame_0046.webp",
+      "desktopSha256": "b5e9e0762584de55fb1a40039f98e7149968dbda72a20173ef74c94a08bc37da",
+      "mobileSha256": "3cc73469ee0c6df8429bb8e6766a4a81bff0469ea63b09abaf21663e78a54784",
+      "sourceFrame": 114,
+      "sourceTimeSeconds": 4.75
+    },
+    {
+      "productionIndex": 46,
+      "desktop": "artifacts/final-forge-v3/frame-candidates/frames-64/assets/forge-reveal/desktop/frame_0047.webp",
+      "mobile": "artifacts/final-forge-v3/frame-candidates/frames-64/assets/forge-reveal/mobile/frame_0047.webp",
+      "desktopSha256": "e6a83981d9783d5432060208d2e0352a349da7deecfa8cde930ad19e246bf515",
+      "mobileSha256": "bc12dc037d4a69d389db93641c4990a7e63f9b832bc4368fe8f530015371140e",
+      "sourceFrame": 116,
+      "sourceTimeSeconds": 4.833333
+    },
+    {
+      "productionIndex": 47,
+      "desktop": "artifacts/final-forge-v3/frame-candidates/frames-64/assets/forge-reveal/desktop/frame_0048.webp",
+      "mobile": "artifacts/final-forge-v3/frame-candidates/frames-64/assets/forge-reveal/mobile/frame_0048.webp",
+      "desktopSha256": "3e06441e786e3f384c61b66e13699d66734f7d5b6e061ecfe81a8a5ee2c45d38",
+      "mobileSha256": "cc7a2667aee5c63726225774299b43f1ba8544770ceb948ce4f6df7628e40c4c",
+      "sourceFrame": 119,
+      "sourceTimeSeconds": 4.958333
+    },
+    {
+      "productionIndex": 48,
+      "desktop": "artifacts/final-forge-v3/frame-candidates/frames-64/assets/forge-reveal/desktop/frame_0049.webp",
+      "mobile": "artifacts/final-forge-v3/frame-candidates/frames-64/assets/forge-reveal/mobile/frame_0049.webp",
+      "desktopSha256": "487c6688dffe6be71e047b5f9920c95a7b85a2c6e8a408fae1e5833a3ac931f1",
+      "mobileSha256": "87c8c2c17ebdea4a6f243b23b787cfbd2f6f318507b5676697fe13e28bc6176d",
+      "sourceFrame": 121,
+      "sourceTimeSeconds": 5.041667
+    },
+    {
+      "productionIndex": 49,
+      "desktop": "artifacts/final-forge-v3/frame-candidates/frames-64/assets/forge-reveal/desktop/frame_0050.webp",
+      "mobile": "artifacts/final-forge-v3/frame-candidates/frames-64/assets/forge-reveal/mobile/frame_0050.webp",
+      "desktopSha256": "e870a8613f1cd6d8f9dc79a31f561a65cf4aee643762d4391ad1d989f0bda98a",
+      "mobileSha256": "fc48d78573d320cff0d85c2bda97f8207a851869e350fa1fa0411e4b33a4903f",
+      "sourceFrame": 124,
+      "sourceTimeSeconds": 5.166667
+    },
+    {
+      "productionIndex": 50,
+      "desktop": "artifacts/final-forge-v3/frame-candidates/frames-64/assets/forge-reveal/desktop/frame_0051.webp",
+      "mobile": "artifacts/final-forge-v3/frame-candidates/frames-64/assets/forge-reveal/mobile/frame_0051.webp",
+      "desktopSha256": "3bd12db2264d3daa46fb9a3a0a8907f9d6cc2f3267c1729f195a9cc353caf5ff",
+      "mobileSha256": "581c86d45dcf5a8eef9cafcfbb0835d1521b7d2b7e2418316b2b6fef0f41faaf",
+      "sourceFrame": 126,
+      "sourceTimeSeconds": 5.25
+    },
+    {
+      "productionIndex": 51,
+      "desktop": "artifacts/final-forge-v3/frame-candidates/frames-64/assets/forge-reveal/desktop/frame_0052.webp",
+      "mobile": "artifacts/final-forge-v3/frame-candidates/frames-64/assets/forge-reveal/mobile/frame_0052.webp",
+      "desktopSha256": "bb6fabd69c969aab3438bbf499be607a81bb751e01e9e65e3f67f723e9c1e24a",
+      "mobileSha256": "a8c2856582c7729c76eb0a7c69d2bc1a7f7d661c8a58e91301fbb9b59d467617",
+      "sourceFrame": 129,
+      "sourceTimeSeconds": 5.375
+    },
+    {
+      "productionIndex": 52,
+      "desktop": "artifacts/final-forge-v3/frame-candidates/frames-64/assets/forge-reveal/desktop/frame_0053.webp",
+      "mobile": "artifacts/final-forge-v3/frame-candidates/frames-64/assets/forge-reveal/mobile/frame_0053.webp",
+      "desktopSha256": "63a2bfc0abb81202f8b48e96ebe236a11b2d140204e1b03bc8478d3951bb60b5",
+      "mobileSha256": "729d9b29de49f82d1cf3b15660dc34f111ca0a97a74b2ceba5b88a9b28afa9ad",
+      "sourceFrame": 131,
+      "sourceTimeSeconds": 5.458333
+    },
+    {
+      "productionIndex": 53,
+      "desktop": "artifacts/final-forge-v3/frame-candidates/frames-64/assets/forge-reveal/desktop/frame_0054.webp",
+      "mobile": "artifacts/final-forge-v3/frame-candidates/frames-64/assets/forge-reveal/mobile/frame_0054.webp",
+      "desktopSha256": "c37d59206356ef42427babcf225c7de89c05ffa272632fa8720e337793ea3e22",
+      "mobileSha256": "30432adf0d63a7d5c7745562645afdeeb1d659695b3e358d70572378d17a2019",
+      "sourceFrame": 134,
+      "sourceTimeSeconds": 5.583333
+    },
+    {
+      "productionIndex": 54,
+      "desktop": "artifacts/final-forge-v3/frame-candidates/frames-64/assets/forge-reveal/desktop/frame_0055.webp",
+      "mobile": "artifacts/final-forge-v3/frame-candidates/frames-64/assets/forge-reveal/mobile/frame_0055.webp",
+      "desktopSha256": "cc973260763ff9b7303e31a238868b35c59867804a22fc033459a1db2c83fcf8",
+      "mobileSha256": "32d707fa8a82cf62ebbdc0bf6d5c225acedaa682be6760bf5c4d94f3e1291b6b",
+      "sourceFrame": 136,
+      "sourceTimeSeconds": 5.666667
+    },
+    {
+      "productionIndex": 55,
+      "desktop": "artifacts/final-forge-v3/frame-candidates/frames-64/assets/forge-reveal/desktop/frame_0056.webp",
+      "mobile": "artifacts/final-forge-v3/frame-candidates/frames-64/assets/forge-reveal/mobile/frame_0056.webp",
+      "desktopSha256": "20d69fcac610cb25991624e141a5f16d9985038577811a5e290ff4a8f4b6d1d4",
+      "mobileSha256": "45d8f34042dbe1c9d4a1a30b45971cb0a670ca1eb80402d4175f10315dc4f7ed",
+      "sourceFrame": 139,
+      "sourceTimeSeconds": 5.791667
+    },
+    {
+      "productionIndex": 56,
+      "desktop": "artifacts/final-forge-v3/frame-candidates/frames-64/assets/forge-reveal/desktop/frame_0057.webp",
+      "mobile": "artifacts/final-forge-v3/frame-candidates/frames-64/assets/forge-reveal/mobile/frame_0057.webp",
+      "desktopSha256": "720bf0ca1f2e308fe58f3d5907c661b968f68b403a223ea1c6efa914c8498b2c",
+      "mobileSha256": "148bcdb59da54bdb1120c9805d4a04cffcd762b98e6456a2910f2cfe727e083f",
+      "sourceFrame": 141,
+      "sourceTimeSeconds": 5.875
+    },
+    {
+      "productionIndex": 57,
+      "desktop": "artifacts/final-forge-v3/frame-candidates/frames-64/assets/forge-reveal/desktop/frame_0058.webp",
+      "mobile": "artifacts/final-forge-v3/frame-candidates/frames-64/assets/forge-reveal/mobile/frame_0058.webp",
+      "desktopSha256": "e097bef6a696bb6cc9c29a00b2650dd1520fd342a199a0f0d9e8bd2328587ab1",
+      "mobileSha256": "9dd5caa9b0e6df12322d0bd9782ee471d0624a0724486432c84fb286200e9418",
+      "sourceFrame": 144,
+      "sourceTimeSeconds": 6.0
+    },
+    {
+      "productionIndex": 58,
+      "desktop": "artifacts/final-forge-v3/frame-candidates/frames-64/assets/forge-reveal/desktop/frame_0059.webp",
+      "mobile": "artifacts/final-forge-v3/frame-candidates/frames-64/assets/forge-reveal/mobile/frame_0059.webp",
+      "desktopSha256": "ea5285b914a6057e4a90ef07cf5c8e660a05fe81dbb5e6e8ca24f88d9a115795",
+      "mobileSha256": "5e6b9b24440e1183536c18c4deb9ac4c7da1cb70180b3f69e6a39122081c1253",
+      "sourceFrame": 146,
+      "sourceTimeSeconds": 6.083333
+    },
+    {
+      "productionIndex": 59,
+      "desktop": "artifacts/final-forge-v3/frame-candidates/frames-64/assets/forge-reveal/desktop/frame_0060.webp",
+      "mobile": "artifacts/final-forge-v3/frame-candidates/frames-64/assets/forge-reveal/mobile/frame_0060.webp",
+      "desktopSha256": "0df87ebfd6a9831f933273633ce49205d704dd236a138d34721a68bee352f3e4",
+      "mobileSha256": "0831d7ae2c922e2deb47f04998b4c9e3540b8119d678eafd26b26630425655c7",
+      "sourceFrame": 149,
+      "sourceTimeSeconds": 6.208333
+    },
+    {
+      "productionIndex": 60,
+      "desktop": "artifacts/final-forge-v3/frame-candidates/frames-64/assets/forge-reveal/desktop/frame_0061.webp",
+      "mobile": "artifacts/final-forge-v3/frame-candidates/frames-64/assets/forge-reveal/mobile/frame_0061.webp",
+      "desktopSha256": "b30ad49491aa02d0397db3700aaf8e9378ff0acb49286e513678d11b576618cf",
+      "mobileSha256": "7cfd00269e9c212272e44d56f8e9f05491f105b88ca3523981d1cd6907678cd6",
+      "sourceFrame": 151,
+      "sourceTimeSeconds": 6.291667
+    },
+    {
+      "productionIndex": 61,
+      "desktop": "artifacts/final-forge-v3/frame-candidates/frames-64/assets/forge-reveal/desktop/frame_0062.webp",
+      "mobile": "artifacts/final-forge-v3/frame-candidates/frames-64/assets/forge-reveal/mobile/frame_0062.webp",
+      "desktopSha256": "08076cb56d2191016586682ad6df6e8eee5dfe3901facd1a700fd768d694c82b",
+      "mobileSha256": "d5236d9a7bcdf56608a9f1bac5aa7ef0c93943958c947688b9958af6e6e11a39",
+      "sourceFrame": 154,
+      "sourceTimeSeconds": 6.416667
+    },
+    {
+      "productionIndex": 62,
+      "desktop": "artifacts/final-forge-v3/frame-candidates/frames-64/assets/forge-reveal/desktop/frame_0063.webp",
+      "mobile": "artifacts/final-forge-v3/frame-candidates/frames-64/assets/forge-reveal/mobile/frame_0063.webp",
+      "desktopSha256": "66e80fefb278c6f5eff5f9ab526b06b1798f27cbda5d9da4cb6cb267c55b57e5",
+      "mobileSha256": "e7e63023ce618493a1a091da8eac8641ec2fa7a1f2544098345d57c0793a860d",
+      "sourceFrame": 156,
+      "sourceTimeSeconds": 6.5
+    },
+    {
+      "productionIndex": 63,
+      "desktop": "artifacts/final-forge-v3/frame-candidates/frames-64/assets/forge-reveal/desktop/frame_0064.webp",
+      "mobile": "artifacts/final-forge-v3/frame-candidates/frames-64/assets/forge-reveal/mobile/frame_0064.webp",
+      "desktopSha256": "a91642f10e906b28d9d7a053a6d64282350e3bf243864fc90817455fb826ad03",
+      "mobileSha256": "b053b4fd2bb4ad2323feb131707369c87bb638f3ffa07d6a7d7de8dcc566bed3",
+      "sourceFrame": 159,
+      "sourceTimeSeconds": 6.625
+    }
+  ]
+}

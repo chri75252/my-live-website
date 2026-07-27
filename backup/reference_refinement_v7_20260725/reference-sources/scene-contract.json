@@ -1,0 +1,31 @@
+{
+  "name": "TBM Reference Match V6",
+  "fps": 24,
+  "frameStart": 1,
+  "frameEnd": 108,
+  "render": {
+    "keyframes": [1280, 720],
+    "reveal": [960, 540],
+    "cards": [640, 820],
+    "keyframeSamples": 96,
+    "sequenceSamples": 8,
+    "cardSamples": 48,
+    "revealFrameCount": 24
+  },
+  "palette": {
+    "void": "#030403",
+    "iron": "#080b0d",
+    "ironHighlight": "#2b3336",
+    "brass": "#7a3e1e",
+    "brassHighlight": "#f0a353",
+    "amber": "#ff9a2e",
+    "smoke": "#18201e"
+  },
+  "web": {
+    "root": "assets/tbm-cinematic-v6",
+    "desktopReveal": "assets/tbm-cinematic-v6/reveal-desktop",
+    "mobileReveal": "assets/tbm-cinematic-v6/reveal-mobile",
+    "posters": "assets/tbm-cinematic-v6/posters",
+    "productFocus": "assets/tbm-cinematic-v6/product-focus"
+  }
+}

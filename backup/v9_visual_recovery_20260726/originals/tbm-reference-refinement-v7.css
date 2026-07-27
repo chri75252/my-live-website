@@ -1,0 +1,192 @@
+/* V7-R07A: reversible reveal stage and brighter, sharper settled plate. */
+.tbm-reveal-v7-stage {
+  position: relative;
+  height: 320svh;
+  background: #020302;
+}
+
+.tbm-reveal-v7-stage .tbm-reveal-v6 {
+  position: sticky;
+  top: 92px;
+  z-index: 60;
+  width: 100%;
+  height: calc(100svh - 92px);
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+.tbm-reveal-v7-stage .tbm-reveal-v6__canvas {
+  width: 100%;
+  height: 100%;
+}
+
+.tbm-reveal-v7-stage .tbm-reveal-v6__shade {
+  background: radial-gradient(ellipse at 52% 55%, transparent 22%, rgba(2,3,2,.08) 58%, rgba(2,3,2,.56) 100%);
+}
+
+.tbm-reveal-v7-stage .tbm-reveal-v6__meter:before {
+  width: calc(var(--forge-progress, 0) * 100%);
+}
+
+.hero-v6__plate img {
+  filter: saturate(.96) contrast(1.07) brightness(.94);
+}
+
+@media (max-width: 840px) {
+  .tbm-reveal-v7-stage .tbm-reveal-v6 {
+    top: 76px;
+    height: calc(100svh - 76px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tbm-reveal-v7-stage {
+    display: none;
+  }
+}
+
+/* V7-R07B: shallow asymmetric Product Focus constellation. */
+@media (min-width: 1001px) and (min-height: 800px) {
+  #product-focus {
+    min-height: calc(100svh - 92px);
+    padding: 10px 0 16px;
+  }
+
+  #product-focus .v6-heading {
+    margin-bottom: 8px;
+  }
+
+  #product-focus .v6-heading h2 {
+    max-width: 560px;
+    font-size: clamp(2.85rem, 3.6vw, 4rem);
+    line-height: .82;
+  }
+
+  #product-focus .v6-heading__body {
+    padding-top: 8px;
+    font-size: .82rem;
+  }
+
+  #product-focus .v6-heading__link {
+    display: flex;
+    width: fit-content;
+    margin-top: 14px;
+  }
+
+  #product-focus .sector-filters {
+    width: min(690px, 52%);
+    margin: 12px 0 20px auto;
+  }
+
+  #product-focus .sector-network {
+    padding: 34px 0 0;
+  }
+
+  #product-focus .sector-cards {
+    display: grid;
+    grid-template-columns: repeat(10, minmax(0, 1fr));
+    gap: 12px;
+    align-items: start;
+    min-height: 280px;
+  }
+
+  #product-focus .sector-card {
+    --slot-y: 0px;
+    --interaction-y: 0px;
+    grid-column: span 2;
+    min-height: 260px;
+    aspect-ratio: auto;
+    transform: translateY(calc(var(--slot-y) + var(--interaction-y))) scale(var(--card-scale, 1));
+    transition: transform 420ms cubic-bezier(.22,.72,.18,1), border-color 280ms ease, box-shadow 280ms ease;
+  }
+
+  #product-focus .sector-card:nth-child(1) { --slot-y: 14px; }
+  #product-focus .sector-card:nth-child(2) { --slot-y: -18px; }
+  #product-focus .sector-card:nth-child(3) { --slot-y: 4px; }
+  #product-focus .sector-card:nth-child(4) { --slot-y: -28px; }
+  #product-focus .sector-card:nth-child(5) { --slot-y: 12px; }
+
+  #product-focus .sector-card:hover,
+  #product-focus .sector-card:focus-visible {
+    --interaction-y: -8px;
+  }
+
+  #product-focus .sector-card.is-near {
+    --interaction-y: -4px;
+  }
+
+  #product-focus .sector-card.is-selected {
+    --interaction-y: -16px;
+    --card-scale: 1.025;
+    min-height: 280px;
+  }
+
+  #product-focus .sector-network__svg {
+    top: 0;
+    height: calc(100% - 18px);
+  }
+
+  #product-focus .sector-detail {
+    min-height: 112px;
+    max-height: 112px;
+    margin-top: 76px;
+    padding: 12px 20px;
+    overflow: hidden;
+  }
+
+  #product-focus .sector-detail strong {
+    margin-bottom: 6px;
+    font-size: 1.25rem;
+  }
+
+  #product-focus .sector-detail span {
+    display: inline-block;
+    width: 32.6%;
+    vertical-align: top;
+    border-top: 0;
+    padding: 4px 8px;
+    font-size: .61rem;
+    line-height: 1.25;
+  }
+
+  #product-focus .sector-card h3 {
+    margin-bottom: 20px;
+    font-size: clamp(1.55rem, 2.1vw, 2.3rem);
+  }
+
+  #product-focus .sector-network__callout {
+    position: absolute;
+    left: 0;
+    bottom: 12px;
+    width: 360px;
+    margin: 0;
+    padding: 9px 12px;
+    max-height: 62px;
+    overflow: hidden;
+    font-size: .61rem;
+    line-height: 1.2;
+  }
+
+  #product-focus .sector-network__legend {
+    bottom: 22px;
+  }
+
+  #product-focus .sr-only {
+    position: absolute !important;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+}
+
+@media (max-width: 1000px), (max-height: 799px) {
+  #product-focus .sector-card {
+    --slot-y: 0px;
+  }
+}

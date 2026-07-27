@@ -1,0 +1,812 @@
+[
+  {
+    "viewport": "desktop-1366x768",
+    "errors": [],
+    "snapshots": [
+      {
+        "label": "opening",
+        "state": {
+          "intro": {
+            "progress": 0,
+            "release": 0,
+            "phase": "opening",
+            "loadState": "ready",
+            "interactionSuppressed": true,
+            "firstFrameReady": true,
+            "scrubReady": true,
+            "fatalFailure": false,
+            "heroLifecycle": "suspended",
+            "range": {
+              "start": 0,
+              "end": 829.44
+            },
+            "sequence": {
+              "frameCount": 64,
+              "loaded": 64,
+              "failed": 0,
+              "firstFrameReady": true,
+              "variant": "desktop",
+              "requestedProgress": 0,
+              "requestedIndex": 0,
+              "renderedIndex": 0,
+              "fallbackUsed": false,
+              "contiguousDecodedThrough": 63,
+              "scrubReady": true,
+              "pixelRatio": 1,
+              "canvasWidth": 1366,
+              "canvasHeight": 768
+            }
+          },
+          "hero": {
+            "lifecycle": "suspended",
+            "stageVisible": false,
+            "pageVisible": true,
+            "motionEnabled": true,
+            "rendering": false
+          },
+          "cards": "0"
+        }
+      },
+      {
+        "label": "reveal-mid",
+        "state": {
+          "intro": {
+            "progress": 0.5003375771604938,
+            "release": 0,
+            "phase": "progression",
+            "loadState": "ready",
+            "interactionSuppressed": true,
+            "firstFrameReady": true,
+            "scrubReady": true,
+            "fatalFailure": false,
+            "heroLifecycle": "suspended",
+            "range": {
+              "start": 0,
+              "end": 829.44
+            },
+            "sequence": {
+              "frameCount": 64,
+              "loaded": 64,
+              "failed": 0,
+              "firstFrameReady": true,
+              "variant": "desktop",
+              "requestedProgress": 0.6414584322570432,
+              "requestedIndex": 40,
+              "renderedIndex": 40,
+              "fallbackUsed": false,
+              "contiguousDecodedThrough": 63,
+              "scrubReady": true,
+              "pixelRatio": 1,
+              "canvasWidth": 1366,
+              "canvasHeight": 768
+            }
+          },
+          "hero": {
+            "lifecycle": "suspended",
+            "stageVisible": true,
+            "pageVisible": true,
+            "motionEnabled": true,
+            "rendering": false
+          },
+          "cards": "0"
+        }
+      },
+      {
+        "label": "prewarm",
+        "state": {
+          "intro": {
+            "progress": 0.7800443672839505,
+            "release": 0,
+            "phase": "final-clean-hold",
+            "loadState": "ready",
+            "interactionSuppressed": true,
+            "firstFrameReady": true,
+            "scrubReady": true,
+            "fatalFailure": false,
+            "heroLifecycle": "prewarming",
+            "range": {
+              "start": 0,
+              "end": 829.44
+            },
+            "sequence": {
+              "frameCount": 64,
+              "loaded": 64,
+              "failed": 0,
+              "firstFrameReady": true,
+              "variant": "desktop",
+              "requestedProgress": 1,
+              "requestedIndex": 63,
+              "renderedIndex": 63,
+              "fallbackUsed": false,
+              "contiguousDecodedThrough": 63,
+              "scrubReady": true,
+              "pixelRatio": 1,
+              "canvasWidth": 1366,
+              "canvasHeight": 768
+            }
+          },
+          "hero": {
+            "lifecycle": "prewarming",
+            "stageVisible": true,
+            "pageVisible": true,
+            "motionEnabled": true,
+            "rendering": true
+          },
+          "cards": "0"
+        }
+      },
+      {
+        "label": "handoff",
+        "state": {
+          "intro": {
+            "progress": 0.8994020061728395,
+            "release": 0.31116102575621113,
+            "phase": "dom-handoff",
+            "loadState": "ready",
+            "interactionSuppressed": true,
+            "firstFrameReady": true,
+            "scrubReady": true,
+            "fatalFailure": false,
+            "heroLifecycle": "handoff-ready",
+            "range": {
+              "start": 0,
+              "end": 829.44
+            },
+            "sequence": {
+              "frameCount": 64,
+              "loaded": 64,
+              "failed": 0,
+              "firstFrameReady": true,
+              "variant": "desktop",
+              "requestedProgress": 1,
+              "requestedIndex": 63,
+              "renderedIndex": 63,
+              "fallbackUsed": false,
+              "contiguousDecodedThrough": 63,
+              "scrubReady": true,
+              "pixelRatio": 1,
+              "canvasWidth": 1366,
+              "canvasHeight": 768
+            }
+          },
+          "hero": {
+            "lifecycle": "handoff-ready",
+            "stageVisible": true,
+            "pageVisible": true,
+            "motionEnabled": true,
+            "rendering": true
+          },
+          "cards": "0"
+        }
+      },
+      {
+        "label": "active",
+        "state": {
+          "intro": {
+            "progress": 0.9994695216049382,
+            "release": 0.9999670954696666,
+            "phase": "dom-handoff",
+            "loadState": "ready",
+            "interactionSuppressed": false,
+            "firstFrameReady": true,
+            "scrubReady": true,
+            "fatalFailure": false,
+            "heroLifecycle": "active",
+            "range": {
+              "start": 0,
+              "end": 829.44
+            },
+            "sequence": {
+              "frameCount": 64,
+              "loaded": 64,
+              "failed": 0,
+              "firstFrameReady": true,
+              "variant": "desktop",
+              "requestedProgress": 1,
+              "requestedIndex": 63,
+              "renderedIndex": 63,
+              "fallbackUsed": false,
+              "contiguousDecodedThrough": 63,
+              "scrubReady": true,
+              "pixelRatio": 1,
+              "canvasWidth": 1366,
+              "canvasHeight": 768
+            }
+          },
+          "hero": {
+            "lifecycle": "active",
+            "stageVisible": true,
+            "pageVisible": true,
+            "motionEnabled": true,
+            "rendering": true
+          },
+          "cards": "1"
+        }
+      },
+      {
+        "label": "reverse",
+        "state": {
+          "intro": {
+            "progress": 0.5003375771604938,
+            "release": 0,
+            "phase": "progression",
+            "loadState": "ready",
+            "interactionSuppressed": true,
+            "firstFrameReady": true,
+            "scrubReady": true,
+            "fatalFailure": false,
+            "heroLifecycle": "suspended",
+            "range": {
+              "start": 0,
+              "end": 829.44
+            },
+            "sequence": {
+              "frameCount": 64,
+              "loaded": 64,
+              "failed": 0,
+              "firstFrameReady": true,
+              "variant": "desktop",
+              "requestedProgress": 0.6414584322570432,
+              "requestedIndex": 40,
+              "renderedIndex": 40,
+              "fallbackUsed": false,
+              "contiguousDecodedThrough": 63,
+              "scrubReady": true,
+              "pixelRatio": 1,
+              "canvasWidth": 1366,
+              "canvasHeight": 768
+            }
+          },
+          "hero": {
+            "lifecycle": "suspended",
+            "stageVisible": true,
+            "pageVisible": true,
+            "motionEnabled": true,
+            "rendering": false
+          },
+          "cards": "0"
+        }
+      }
+    ]
+  },
+  {
+    "viewport": "mobile-390x844",
+    "errors": [],
+    "snapshots": [
+      {
+        "label": "opening",
+        "state": {
+          "intro": {
+            "progress": 0,
+            "release": 0,
+            "phase": "opening",
+            "loadState": "ready",
+            "interactionSuppressed": true,
+            "firstFrameReady": true,
+            "scrubReady": true,
+            "fatalFailure": false,
+            "heroLifecycle": "suspended",
+            "range": {
+              "start": 0,
+              "end": 776.48
+            },
+            "sequence": {
+              "frameCount": 64,
+              "loaded": 64,
+              "failed": 0,
+              "firstFrameReady": true,
+              "variant": "mobile",
+              "requestedProgress": 0,
+              "requestedIndex": 0,
+              "renderedIndex": 0,
+              "fallbackUsed": false,
+              "contiguousDecodedThrough": 63,
+              "scrubReady": true,
+              "pixelRatio": 1,
+              "canvasWidth": 390,
+              "canvasHeight": 844
+            }
+          },
+          "hero": {
+            "lifecycle": "suspended",
+            "stageVisible": false,
+            "pageVisible": true,
+            "motionEnabled": true,
+            "rendering": false
+          },
+          "cards": "0"
+        }
+      },
+      {
+        "label": "reveal-mid",
+        "state": {
+          "intro": {
+            "progress": 0.4996909128374201,
+            "release": 0,
+            "phase": "progression",
+            "loadState": "ready",
+            "interactionSuppressed": true,
+            "firstFrameReady": true,
+            "scrubReady": true,
+            "fatalFailure": false,
+            "heroLifecycle": "suspended",
+            "range": {
+              "start": 0,
+              "end": 776.48
+            },
+            "sequence": {
+              "frameCount": 64,
+              "loaded": 64,
+              "failed": 0,
+              "firstFrameReady": true,
+              "variant": "mobile",
+              "requestedProgress": 0.6406293754325899,
+              "requestedIndex": 40,
+              "renderedIndex": 40,
+              "fallbackUsed": false,
+              "contiguousDecodedThrough": 63,
+              "scrubReady": true,
+              "pixelRatio": 1,
+              "canvasWidth": 390,
+              "canvasHeight": 844
+            }
+          },
+          "hero": {
+            "lifecycle": "suspended",
+            "stageVisible": false,
+            "pageVisible": true,
+            "motionEnabled": true,
+            "rendering": false
+          },
+          "cards": "0"
+        }
+      },
+      {
+        "label": "prewarm",
+        "state": {
+          "intro": {
+            "progress": 0.780445085514115,
+            "release": 0,
+            "phase": "final-clean-hold",
+            "loadState": "ready",
+            "interactionSuppressed": true,
+            "firstFrameReady": true,
+            "scrubReady": true,
+            "fatalFailure": false,
+            "heroLifecycle": "prewarming",
+            "range": {
+              "start": 0,
+              "end": 776.48
+            },
+            "sequence": {
+              "frameCount": 64,
+              "loaded": 64,
+              "failed": 0,
+              "firstFrameReady": true,
+              "variant": "mobile",
+              "requestedProgress": 1,
+              "requestedIndex": 63,
+              "renderedIndex": 63,
+              "fallbackUsed": false,
+              "contiguousDecodedThrough": 63,
+              "scrubReady": true,
+              "pixelRatio": 1,
+              "canvasWidth": 390,
+              "canvasHeight": 844
+            }
+          },
+          "hero": {
+            "lifecycle": "prewarming",
+            "stageVisible": false,
+            "pageVisible": true,
+            "motionEnabled": true,
+            "rendering": false
+          },
+          "cards": "0"
+        }
+      },
+      {
+        "label": "handoff",
+        "state": {
+          "intro": {
+            "progress": 0.9002163610138059,
+            "release": 0.31830922697533826,
+            "phase": "dom-handoff",
+            "loadState": "ready",
+            "interactionSuppressed": true,
+            "firstFrameReady": true,
+            "scrubReady": true,
+            "fatalFailure": false,
+            "heroLifecycle": "handoff-ready",
+            "range": {
+              "start": 0,
+              "end": 776.48
+            },
+            "sequence": {
+              "frameCount": 64,
+              "loaded": 64,
+              "failed": 0,
+              "firstFrameReady": true,
+              "variant": "mobile",
+              "requestedProgress": 1,
+              "requestedIndex": 63,
+              "renderedIndex": 63,
+              "fallbackUsed": false,
+              "contiguousDecodedThrough": 63,
+              "scrubReady": true,
+              "pixelRatio": 1,
+              "canvasWidth": 390,
+              "canvasHeight": 844
+            }
+          },
+          "hero": {
+            "lifecycle": "handoff-ready",
+            "stageVisible": false,
+            "pageVisible": true,
+            "motionEnabled": true,
+            "rendering": false
+          },
+          "cards": "0"
+        }
+      },
+      {
+        "label": "active",
+        "state": {
+          "intro": {
+            "progress": 0.9993818256748402,
+            "release": 0.999955333373885,
+            "phase": "dom-handoff",
+            "loadState": "ready",
+            "interactionSuppressed": false,
+            "firstFrameReady": true,
+            "scrubReady": true,
+            "fatalFailure": false,
+            "heroLifecycle": "active",
+            "range": {
+              "start": 0,
+              "end": 776.48
+            },
+            "sequence": {
+              "frameCount": 64,
+              "loaded": 64,
+              "failed": 0,
+              "firstFrameReady": true,
+              "variant": "mobile",
+              "requestedProgress": 1,
+              "requestedIndex": 63,
+              "renderedIndex": 63,
+              "fallbackUsed": false,
+              "contiguousDecodedThrough": 63,
+              "scrubReady": true,
+              "pixelRatio": 1,
+              "canvasWidth": 390,
+              "canvasHeight": 844
+            }
+          },
+          "hero": {
+            "lifecycle": "active",
+            "stageVisible": false,
+            "pageVisible": true,
+            "motionEnabled": true,
+            "rendering": false
+          },
+          "cards": "1"
+        }
+      },
+      {
+        "label": "reverse",
+        "state": {
+          "intro": {
+            "progress": 0.4996909128374201,
+            "release": 0,
+            "phase": "progression",
+            "loadState": "ready",
+            "interactionSuppressed": true,
+            "firstFrameReady": true,
+            "scrubReady": true,
+            "fatalFailure": false,
+            "heroLifecycle": "suspended",
+            "range": {
+              "start": 0,
+              "end": 776.48
+            },
+            "sequence": {
+              "frameCount": 64,
+              "loaded": 64,
+              "failed": 0,
+              "firstFrameReady": true,
+              "variant": "mobile",
+              "requestedProgress": 0.6406293754325899,
+              "requestedIndex": 40,
+              "renderedIndex": 40,
+              "fallbackUsed": false,
+              "contiguousDecodedThrough": 63,
+              "scrubReady": true,
+              "pixelRatio": 1,
+              "canvasWidth": 390,
+              "canvasHeight": 844
+            }
+          },
+          "hero": {
+            "lifecycle": "suspended",
+            "stageVisible": false,
+            "pageVisible": true,
+            "motionEnabled": true,
+            "rendering": false
+          },
+          "cards": "0"
+        }
+      }
+    ]
+  },
+  {
+    "viewport": "mobile-430x932",
+    "errors": [],
+    "snapshots": [
+      {
+        "label": "opening",
+        "state": {
+          "intro": {
+            "progress": 0,
+            "release": 0,
+            "phase": "opening",
+            "loadState": "ready",
+            "interactionSuppressed": true,
+            "firstFrameReady": true,
+            "scrubReady": true,
+            "fatalFailure": false,
+            "heroLifecycle": "suspended",
+            "range": {
+              "start": 0,
+              "end": 857.44
+            },
+            "sequence": {
+              "frameCount": 64,
+              "loaded": 64,
+              "failed": 0,
+              "firstFrameReady": true,
+              "variant": "mobile",
+              "requestedProgress": 0,
+              "requestedIndex": 0,
+              "renderedIndex": 0,
+              "fallbackUsed": false,
+              "contiguousDecodedThrough": 63,
+              "scrubReady": true,
+              "pixelRatio": 1,
+              "canvasWidth": 430,
+              "canvasHeight": 932
+            }
+          },
+          "hero": {
+            "lifecycle": "suspended",
+            "stageVisible": false,
+            "pageVisible": true,
+            "motionEnabled": true,
+            "rendering": false
+          },
+          "cards": "0"
+        }
+      },
+      {
+        "label": "reveal-mid",
+        "state": {
+          "intro": {
+            "progress": 0.5003265534614667,
+            "release": 0,
+            "phase": "progression",
+            "loadState": "ready",
+            "interactionSuppressed": true,
+            "firstFrameReady": true,
+            "scrubReady": true,
+            "fatalFailure": false,
+            "heroLifecycle": "suspended",
+            "range": {
+              "start": 0,
+              "end": 857.44
+            },
+            "sequence": {
+              "frameCount": 64,
+              "loaded": 64,
+              "failed": 0,
+              "firstFrameReady": true,
+              "variant": "mobile",
+              "requestedProgress": 0.6414442993095727,
+              "requestedIndex": 40,
+              "renderedIndex": 40,
+              "fallbackUsed": false,
+              "contiguousDecodedThrough": 63,
+              "scrubReady": true,
+              "pixelRatio": 1,
+              "canvasWidth": 430,
+              "canvasHeight": 932
+            }
+          },
+          "hero": {
+            "lifecycle": "suspended",
+            "stageVisible": false,
+            "pageVisible": true,
+            "motionEnabled": true,
+            "rendering": false
+          },
+          "cards": "0"
+        }
+      },
+      {
+        "label": "prewarm",
+        "state": {
+          "intro": {
+            "progress": 0.7802295204329165,
+            "release": 0,
+            "phase": "final-clean-hold",
+            "loadState": "ready",
+            "interactionSuppressed": true,
+            "firstFrameReady": true,
+            "scrubReady": true,
+            "fatalFailure": false,
+            "heroLifecycle": "prewarming",
+            "range": {
+              "start": 0,
+              "end": 857.44
+            },
+            "sequence": {
+              "frameCount": 64,
+              "loaded": 64,
+              "failed": 0,
+              "firstFrameReady": true,
+              "variant": "mobile",
+              "requestedProgress": 1,
+              "requestedIndex": 63,
+              "renderedIndex": 63,
+              "fallbackUsed": false,
+              "contiguousDecodedThrough": 63,
+              "scrubReady": true,
+              "pixelRatio": 1,
+              "canvasWidth": 430,
+              "canvasHeight": 932
+            }
+          },
+          "hero": {
+            "lifecycle": "prewarming",
+            "stageVisible": false,
+            "pageVisible": true,
+            "motionEnabled": true,
+            "rendering": false
+          },
+          "cards": "0"
+        }
+      },
+      {
+        "label": "handoff",
+        "state": {
+          "intro": {
+            "progress": 0.9003545437581638,
+            "release": 0.3195260181430338,
+            "phase": "dom-handoff",
+            "loadState": "ready",
+            "interactionSuppressed": true,
+            "firstFrameReady": true,
+            "scrubReady": true,
+            "fatalFailure": false,
+            "heroLifecycle": "handoff-ready",
+            "range": {
+              "start": 0,
+              "end": 857.44
+            },
+            "sequence": {
+              "frameCount": 64,
+              "loaded": 64,
+              "failed": 0,
+              "firstFrameReady": true,
+              "variant": "mobile",
+              "requestedProgress": 1,
+              "requestedIndex": 63,
+              "renderedIndex": 63,
+              "fallbackUsed": false,
+              "contiguousDecodedThrough": 63,
+              "scrubReady": true,
+              "pixelRatio": 1,
+              "canvasWidth": 430,
+              "canvasHeight": 932
+            }
+          },
+          "hero": {
+            "lifecycle": "handoff-ready",
+            "stageVisible": false,
+            "pageVisible": true,
+            "motionEnabled": true,
+            "rendering": false
+          },
+          "cards": "0"
+        }
+      },
+      {
+        "label": "active",
+        "state": {
+          "intro": {
+            "progress": 0.9994868445605523,
+            "release": 0.999969207171507,
+            "phase": "dom-handoff",
+            "loadState": "ready",
+            "interactionSuppressed": false,
+            "firstFrameReady": true,
+            "scrubReady": true,
+            "fatalFailure": false,
+            "heroLifecycle": "active",
+            "range": {
+              "start": 0,
+              "end": 857.44
+            },
+            "sequence": {
+              "frameCount": 64,
+              "loaded": 64,
+              "failed": 0,
+              "firstFrameReady": true,
+              "variant": "mobile",
+              "requestedProgress": 1,
+              "requestedIndex": 63,
+              "renderedIndex": 63,
+              "fallbackUsed": false,
+              "contiguousDecodedThrough": 63,
+              "scrubReady": true,
+              "pixelRatio": 1,
+              "canvasWidth": 430,
+              "canvasHeight": 932
+            }
+          },
+          "hero": {
+            "lifecycle": "active",
+            "stageVisible": true,
+            "pageVisible": true,
+            "motionEnabled": true,
+            "rendering": true
+          },
+          "cards": "1"
+        }
+      },
+      {
+        "label": "reverse",
+        "state": {
+          "intro": {
+            "progress": 0.5003265534614667,
+            "release": 0,
+            "phase": "progression",
+            "loadState": "ready",
+            "interactionSuppressed": true,
+            "firstFrameReady": true,
+            "scrubReady": true,
+            "fatalFailure": false,
+            "heroLifecycle": "suspended",
+            "range": {
+              "start": 0,
+              "end": 857.44
+            },
+            "sequence": {
+              "frameCount": 64,
+              "loaded": 64,
+              "failed": 0,
+              "firstFrameReady": true,
+              "variant": "mobile",
+              "requestedProgress": 0.6414442993095727,
+              "requestedIndex": 40,
+              "renderedIndex": 40,
+              "fallbackUsed": false,
+              "contiguousDecodedThrough": 63,
+              "scrubReady": true,
+              "pixelRatio": 1,
+              "canvasWidth": 430,
+              "canvasHeight": 932
+            }
+          },
+          "hero": {
+            "lifecycle": "suspended",
+            "stageVisible": false,
+            "pageVisible": true,
+            "motionEnabled": true,
+            "rendering": false
+          },
+          "cards": "0"
+        }
+      }
+    ]
+  }
+]

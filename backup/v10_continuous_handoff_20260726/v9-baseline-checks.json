@@ -1,0 +1,22 @@
+[
+  {
+    "Check": "v9-node-syntax",
+    "ExitCode": 0
+  },
+  {
+    "Check": "v9-python-compile",
+    "ExitCode": 0
+  },
+  {
+    "Check": "v9-visual-test",
+    "ExitCode": 0
+  },
+  {
+    "Check": "v9-manifest-json",
+    "ExitCode": 0
+  },
+  {
+    "Check": "v9-product-guard",
+    "ExitCode": 0
+  }
+]

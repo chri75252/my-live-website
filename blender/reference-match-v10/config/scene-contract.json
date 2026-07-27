@@ -1,0 +1,77 @@
+{
+  "name": "TBM V10 Continuous Cinematic Handoff",
+  "sourceBaseline": "reference-match-v9",
+  "fps": 24,
+  "frameStart": 1,
+  "frameEnd": 240,
+  "revealFrameCount": 132,
+  "idle": {
+    "frameStart": 241,
+    "frameEnd": 336,
+    "frameCount": 72,
+    "durationSeconds": 4,
+    "loopSeamTolerance": 0.008
+  },
+  "approvalFrames": {
+    "opening": 18,
+    "contactPush": 76,
+    "materialClose": 116,
+    "networkOrbit": 178,
+    "handoff": 240,
+    "idleQuarter": 264,
+    "idleHalf": 288,
+    "idleEnd": 336
+  },
+  "handoff": {
+    "contentRevealStart": 0.88,
+    "contentRevealEnd": 1.0,
+    "canvasReleaseAfterHero": 1.0
+  },
+  "render": {
+    "keyframes": [1920, 1080],
+    "revealDesktop": [1600, 900],
+    "revealMobile": [900, 1600],
+    "idleDesktop": [1600, 900],
+    "idleMobile": [900, 1600],
+    "keyframeSamples": 64,
+    "cyclesSamples": 32,
+    "webpQuality": 88,
+    "motionBlurShutter": 0.32
+  },
+  "palette": {
+    "void": "#030403",
+    "iron": "#0a0e10",
+    "ironHighlight": "#3a464a",
+    "brass": "#8f4f27",
+    "brassHighlight": "#ffbd70",
+    "amber": "#ffad48",
+    "smoke": "#233330"
+  },
+  "frozenAppearance": {
+    "materials": [
+      "M_Black_Lacquered_Core",
+      "M_Forged_Outer_Brass",
+      "M_Polished_Bronze",
+      "M_Fine_Network_Bronze"
+    ],
+    "lights": ["Key_Cool", "Rim_Warm", "Rim_Amber", "Ground_Graze"],
+    "finalCompositionSource": "reference-match-v9/frame-216"
+  },
+  "composition": {
+    "finalObjectViewportWidthMin": 0.44,
+    "finalObjectViewportWidthMax": 0.52,
+    "copySafeRight": 0.46
+  },
+  "handoffTolerance": {
+    "centerViewport": 0.015,
+    "sizeViewport": 0.03,
+    "silhouetteOverlap": 0.97
+  },
+  "web": {
+    "root": "assets/tbm-cinematic-v10",
+    "revealDesktop": "assets/tbm-cinematic-v10/reveal-desktop",
+    "revealMobile": "assets/tbm-cinematic-v10/reveal-mobile",
+    "idleDesktop": "assets/tbm-cinematic-v10/idle-desktop",
+    "idleMobile": "assets/tbm-cinematic-v10/idle-mobile"
+  }
+}

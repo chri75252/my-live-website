@@ -1,27 +1,26 @@
 #!/usr/bin/env python3
-"""Validate TEVEAL against the uploaded-ZIP audit and build production frame assets."""
+"""Build deterministic Forge-reveal WebP sequences from the approved MP4."""
 from __future__ import annotations
 
+import argparse
 import hashlib
 import json
 import math
 import shutil
+import subprocess
+import tempfile
 from pathlib import Path
 
-from PIL import Image, ImageDraw, ImageFont, ImageOps
+from PIL import Image, ImageDraw, ImageFont
 
 ROOT = Path(__file__).resolve().parents[1]
-SOURCE_DIR = ROOT / "TEVEAL"
-AUDIT_DIR = ROOT / "artifacts" / "forge-frame-audit"
-MANIFEST_PATH = AUDIT_DIR / "frame-manifest.json"
-DESKTOP_DIR = ROOT / "assets" / "forge-reveal" / "desktop"
-MOBILE_DIR = ROOT / "assets" / "forge-reveal" / "mobile"
-
-EXPECTED_SOURCE_COUNT = 48
-EXPECTED_LAST_CLEAN = 32
-EXPECTED_FIRST_SYNTHETIC = 33
-DESKTOP_SIZE = (1280, 720)
+DEFAULT_VIDEO = ROOT / "Master_Execution_Prompt_—_TBM.mp4"
+APPROVED_VIDEO_SHA256 = "3eb0ffa03aa261677087f781354429373240bf48cea34fae10307a618384bb95"
+SOURCE_FPS = 24
+SOURCE_SIZE = (1280, 720)
 MOBILE_SIZE = (800, 450)
+SOURCE_FRAME_COUNT = 240
+SUPPORTED_SAMPLE_COUNTS = (48, 64, 80)
 
 
 def file_sha256(path: Path) -> str:
@@ -32,12 +31,78 @@ def file_sha256(path: Path) -> str:
     return digest.hexdigest()
 
 
-def frame_path(index: int) -> Path:
-    return SOURCE_DIR / f"ezgif-frame-{index:03d}.jpg"
+def run(command: list[str]) -> None:
+    subprocess.run(command, check=True)
+
+
+def reset_directory(directory: Path) -> None:
+    if directory.exists():
+        shutil.rmtree(directory)
+    directory.mkdir(parents=True, exist_ok=True)
+
+
+def probe_video(video: Path) -> dict:
+    output = subprocess.check_output(
+        [
+            "ffprobe", "-v", "error", "-select_streams", "v:0",
+            "-show_entries", "stream=codec_name,width,height,avg_frame_rate,nb_frames",
+            "-of", "json", str(video),
+        ],
+        text=True,
+    )
+    return json.loads(output)
+
+
+def selected_source_frames(exclusive_cutoff: int, sample_count: int) -> list[int]:
+    if exclusive_cutoff < sample_count:
+        raise ValueError("The exclusive cutoff must be at least the selected sample count.")
+    if exclusive_cutoff > SOURCE_FRAME_COUNT:
+        raise ValueError(f"The exclusive cutoff cannot exceed {SOURCE_FRAME_COUNT}.")
+    last_clean = exclusive_cutoff - 1
+    selected = [round(position * last_clean / (sample_count - 1)) for position in range(sample_count)]
+    if selected[0] != 0 or selected[-1] != last_clean or len(set(selected)) != sample_count:
+        raise ValueError("Selected source frames are not a unique inclusive clean-frame range.")
+    return selected
+
+
+def extract_lossless_frames(video: Path, source_frames: list[int], destination: Path) -> list[Path]:
+    expression = "+".join(f"eq(n\\,{index})" for index in source_frames)
+    output_pattern = destination / "source_%04d.png"
+    run([
+        "ffmpeg", "-hide_banner", "-loglevel", "error", "-y", "-i", str(video),
+        "-vf", f"select='{expression}'", "-vsync", "0", str(output_pattern),
+    ])
+    files = sorted(destination.glob("source_*.png"))
+    if len(files) != len(source_frames):
+        raise RuntimeError(f"Expected {len(source_frames)} extracted frames, received {len(files)}.")
+    return files
 
 
 def output_path(directory: Path, index: int) -> Path:
     return directory / f"frame_{index:04d}.webp"
+
+
+def build_derivatives(lossless_frames: list[Path], desktop_dir: Path, mobile_dir: Path) -> list[dict]:
+    reset_directory(desktop_dir)
+    reset_directory(mobile_dir)
+    records: list[dict] = []
+    for production_index, source_path in enumerate(lossless_frames, start=1):
+        desktop_path = output_path(desktop_dir, production_index)
+        mobile_path = output_path(mobile_dir, production_index)
+        with Image.open(source_path) as source:
+            image = source.convert("RGB")
+            if image.size != SOURCE_SIZE:
+                raise RuntimeError(f"Source frame {production_index:04d} has unexpected dimensions {image.size}.")
+            image.save(desktop_path, "WEBP", quality=88, method=6)
+            image.resize(MOBILE_SIZE, Image.Resampling.LANCZOS).save(mobile_path, "WEBP", quality=86, method=6)
+        records.append({
+            "productionIndex": production_index - 1,
+            "desktop": desktop_path.relative_to(ROOT).as_posix(),
+            "mobile": mobile_path.relative_to(ROOT).as_posix(),
+            "desktopSha256": file_sha256(desktop_path),
+            "mobileSha256": file_sha256(mobile_path),
+        })
+    return records
 
 
 def load_font(size: int):
@@ -47,139 +112,114 @@ def load_font(size: int):
         return ImageFont.load_default()
 
 
-def make_contact_sheet(records: list[dict], destination: Path, columns: int = 4) -> None:
-    thumb_width = 640
-    label_height = 46
-    thumb_height = round(thumb_width * 720 / 1280)
-    rows = math.ceil(len(records) / columns)
-    sheet = Image.new("RGB", (columns * thumb_width, rows * (thumb_height + label_height)), "#080706")
+def make_contact_sheet(lossless_frames: list[Path], source_frames: list[int], destination: Path) -> None:
+    columns = 4
+    thumb_width = 400
+    thumb_height = round(thumb_width * SOURCE_SIZE[1] / SOURCE_SIZE[0])
+    label_height = 34
+    rows = math.ceil(len(lossless_frames) / columns)
+    sheet = Image.new("RGB", (columns * thumb_width, rows * (thumb_height + label_height)), "#071011")
     draw = ImageDraw.Draw(sheet)
-    font = load_font(30)
-
-    for position, record in enumerate(records):
-        source = ROOT / record["source"]
-        with Image.open(source) as image:
-            frame = ImageOps.fit(image.convert("RGB"), (thumb_width, thumb_height), method=Image.Resampling.LANCZOS)
-        column = position % columns
-        row = position // columns
-        x = column * thumb_width
-        y = row * (thumb_height + label_height)
+    font = load_font(18)
+    for position, (path, source_frame) in enumerate(zip(lossless_frames, source_frames, strict=True)):
+        with Image.open(path) as source:
+            frame = source.convert("RGB").resize((thumb_width, thumb_height), Image.Resampling.LANCZOS)
+        x = (position % columns) * thumb_width
+        y = (position // columns) * (thumb_height + label_height)
         sheet.paste(frame, (x, y + label_height))
-        draw.rectangle((x, y, x + thumb_width, y + label_height), fill="#080706")
-        state = "SELECTED" if record["selected"] else "EXCLUDED"
-        draw.text((14, y + 7), f"FRAME {record['index']:03d}  {state}", fill="#f2c078", font=font)
-
+        draw.text((10 + x, 8 + y), f"PROD {position + 1:04d} / SOURCE {source_frame:03d}", fill="#e3b874", font=font)
     destination.parent.mkdir(parents=True, exist_ok=True)
-    sheet.save(destination, quality=92, optimize=True, progressive=True)
+    sheet.save(destination, quality=90)
 
 
-def reset_directory(directory: Path) -> None:
-    if directory.exists():
-        shutil.rmtree(directory)
-    directory.mkdir(parents=True, exist_ok=True)
-
-
-def build_derivatives(selected_records: list[dict]) -> None:
-    reset_directory(DESKTOP_DIR)
-    reset_directory(MOBILE_DIR)
-    for record in selected_records:
-        index = record["index"]
-        with Image.open(ROOT / record["source"]) as source:
-            image = source.convert("RGB")
-            if image.size != DESKTOP_SIZE:
-                raise SystemExit(f"Frame {index:03d} has unexpected dimensions {image.size}.")
-            image.save(output_path(DESKTOP_DIR, index), "WEBP", quality=84, method=6)
-            mobile = image.resize(MOBILE_SIZE, Image.Resampling.LANCZOS)
-            mobile.save(output_path(MOBILE_DIR, index), "WEBP", quality=82, method=6)
-
-
-def directory_report(directory: Path, decoded_size: tuple[int, int]) -> dict:
+def directory_report(directory: Path, dimensions: tuple[int, int]) -> dict:
     files = sorted(directory.glob("frame_*.webp"))
     sizes = {path.name: path.stat().st_size for path in files}
-    largest_name = max(sizes, key=sizes.get)
     return {
-        "asset_count": len(files),
-        "total_bytes": sum(sizes.values()),
-        "largest_asset": {"file": largest_name, "bytes": sizes[largest_name]},
-        "decoded_rgba_bytes_all_frames": decoded_size[0] * decoded_size[1] * 4 * len(files),
-        "decoded_rgba_bytes_initial_10": decoded_size[0] * decoded_size[1] * 4 * min(10, len(files)),
-        "dimensions": {"width": decoded_size[0], "height": decoded_size[1]},
+        "assetCount": len(files),
+        "totalBytes": sum(sizes.values()),
+        "largestAsset": {"file": max(sizes, key=sizes.get), "bytes": max(sizes.values())},
+        "decodedRgbaBytes": dimensions[0] * dimensions[1] * 4 * len(files),
+        "dimensions": {"width": dimensions[0], "height": dimensions[1]},
     }
+
+
+def parse_args() -> argparse.Namespace:
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--video", type=Path, default=DEFAULT_VIDEO)
+    parser.add_argument("--exclusive-cutoff", type=int, required=True,
+                        help="First contaminated source-frame index; clean frames end at this value minus one.")
+    parser.add_argument("--sample-count", type=int, choices=SUPPORTED_SAMPLE_COUNTS, default=64)
+    parser.add_argument("--output-root", type=Path, default=ROOT,
+                        help="Repository root for production assets, or an artifact subdirectory for a candidate build.")
+    return parser.parse_args()
 
 
 def main() -> None:
-    manifest = json.loads(MANIFEST_PATH.read_text(encoding="utf-8"))
-    records = manifest["frames"]
-    if manifest["SOURCE_FRAME_COUNT"] != EXPECTED_SOURCE_COUNT or len(records) != EXPECTED_SOURCE_COUNT:
-        raise SystemExit("The audit manifest must contain exactly 48 source-frame records.")
-    if manifest["LAST_CLEAN_FRAME"] != EXPECTED_LAST_CLEAN:
-        raise SystemExit("LAST_CLEAN_FRAME must remain 32 unless a new full-size visual audit is committed.")
-    if manifest["FIRST_SYNTHETIC_HOMEPAGE_FRAME"] != EXPECTED_FIRST_SYNTHETIC:
-        raise SystemExit("FIRST_SYNTHETIC_HOMEPAGE_FRAME must remain 33 unless a new visual audit is committed.")
+    args = parse_args()
+    video = args.video.resolve()
+    output_root = args.output_root.resolve()
+    if not video.is_file():
+        raise SystemExit(f"Source video not found: {video}")
+    if not output_root.is_relative_to(ROOT):
+        raise SystemExit("--output-root must remain inside this repository.")
+    if file_sha256(video) != APPROVED_VIDEO_SHA256:
+        raise SystemExit("Source video SHA-256 does not match the approved user asset.")
 
-    expected_names = [f"ezgif-frame-{index:03d}.jpg" for index in range(1, EXPECTED_SOURCE_COUNT + 1)]
-    actual_names = sorted(path.name for path in SOURCE_DIR.glob("ezgif-frame-*.jpg"))
-    if actual_names != expected_names:
-        raise SystemExit(f"TEVEAL must contain the contiguous 001..048 source sequence; got {actual_names}.")
+    stream = probe_video(video)["streams"][0]
+    if (
+        stream["width"], stream["height"], stream["avg_frame_rate"], int(stream["nb_frames"])
+    ) != (*SOURCE_SIZE, "24/1", SOURCE_FRAME_COUNT):
+        raise SystemExit("Source video metadata does not match the approved 1280x720, 24fps, 240-frame asset.")
 
-    source_total = 0
-    for expected_index, record in enumerate(records, start=1):
-        if record["index"] != expected_index:
-            raise SystemExit(f"Manifest record order is not contiguous at {expected_index}.")
-        path = frame_path(expected_index)
-        if record["source"] != path.relative_to(ROOT).as_posix():
-            raise SystemExit(f"Manifest source mismatch for frame {expected_index:03d}.")
-        actual_bytes = path.stat().st_size
-        actual_hash = file_sha256(path)
-        with Image.open(path) as image:
-            actual_size = image.size
-            image.verify()
-        if actual_hash != record["sha256"] or actual_bytes != record["bytes"] or list(actual_size) != [record["width"], record["height"]]:
-            raise SystemExit(
-                f"Repository frame {expected_index:03d} does not byte-match the user-uploaded ZIP audit. "
-                f"Expected sha256={record['sha256']} bytes={record['bytes']} size={record['width']}x{record['height']}; "
-                f"got sha256={actual_hash} bytes={actual_bytes} size={actual_size[0]}x{actual_size[1]}."
-            )
-        source_total += actual_bytes
+    source_frames = selected_source_frames(args.exclusive_cutoff, args.sample_count)
+    desktop_dir = output_root / "assets" / "forge-reveal" / "desktop"
+    mobile_dir = output_root / "assets" / "forge-reveal" / "mobile"
+    manifest_path = output_root / "assets" / "forge-reveal" / "frame-manifest.json"
+    with tempfile.TemporaryDirectory(prefix="tbm-forge-reveal-") as temporary:
+        lossless_frames = extract_lossless_frames(video, source_frames, Path(temporary))
+        records = build_derivatives(lossless_frames, desktop_dir, mobile_dir)
+        contact_sheet = output_root / "source-selection-contact-sheet.jpg"
+        make_contact_sheet(lossless_frames, source_frames, contact_sheet)
 
-    selected = [record for record in records if record["selected"]]
-    if [record["index"] for record in selected] != list(range(1, EXPECTED_LAST_CLEAN + 1)):
-        raise SystemExit("Selected production frames must be the contiguous prefix 001..032.")
-    if any(record["selected"] for record in records[EXPECTED_LAST_CLEAN:]):
-        raise SystemExit("No frame from 033 onward may be selected.")
+    for record, source_frame in zip(records, source_frames, strict=True):
+        record["sourceFrame"] = source_frame
+        record["sourceTimeSeconds"] = round(source_frame / SOURCE_FPS, 6)
 
-    build_derivatives(selected)
-    make_contact_sheet(records, AUDIT_DIR / "all-48-contact-sheet.jpg")
-    make_contact_sheet(selected, AUDIT_DIR / "selected-range-contact-sheet.jpg")
-
-    desktop = directory_report(DESKTOP_DIR, DESKTOP_SIZE)
-    mobile = directory_report(MOBILE_DIR, MOBILE_SIZE)
-    selected_source_bytes = sum(record["bytes"] for record in selected)
-    report = {
-        "audit_source": "User-uploaded TEVEAL ZIP, visually inspected at full 1280x720 resolution",
-        "repository_source_verification": "All 48 repository JPEGs byte-match the uploaded-ZIP SHA-256 manifest",
-        "SOURCE_FRAME_COUNT": EXPECTED_SOURCE_COUNT,
-        "SELECTED_FRAME_COUNT": len(selected),
-        "LAST_CLEAN_FRAME": EXPECTED_LAST_CLEAN,
-        "FIRST_SYNTHETIC_HOMEPAGE_FRAME": EXPECTED_FIRST_SYNTHETIC,
-        "source_dimensions": {"width": DESKTOP_SIZE[0], "height": DESKTOP_SIZE[1]},
-        "total_source_bytes": source_total,
-        "selected_source_bytes": selected_source_bytes,
-        "largest_source_frame": max(
-            ({"file": Path(record["source"]).name, "index": record["index"], "bytes": record["bytes"]} for record in records),
-            key=lambda item: item["bytes"],
-        ),
-        "desktop": desktop,
-        "mobile": mobile,
-        "renderer": {
-            "interpolation": "fractional two-frame alpha blending",
-            "generated_intermediate_frames": 0,
-            "initial_preload_frames": 10,
-            "background_preload_concurrency": 4,
+    manifest = {
+        "version": 1,
+        "source": {
+            "file": video.name,
+            "sha256": APPROVED_VIDEO_SHA256,
+            "width": SOURCE_SIZE[0],
+            "height": SOURCE_SIZE[1],
+            "fps": SOURCE_FPS,
+            "totalFrames": SOURCE_FRAME_COUNT,
         },
+        "selection": {
+            "lastCleanSourceFrame": args.exclusive_cutoff - 1,
+            "firstContaminatedSourceFrame": args.exclusive_cutoff,
+            "sampleCount": args.sample_count,
+        },
+        "variants": {
+            "desktop": {"width": SOURCE_SIZE[0], "height": SOURCE_SIZE[1]},
+            "mobile": {"width": MOBILE_SIZE[0], "height": MOBILE_SIZE[1]},
+        },
+        "frames": records,
     }
-    (AUDIT_DIR / "performance-report.json").write_text(json.dumps(report, indent=2) + "\n", encoding="utf-8")
-    print(json.dumps(report, indent=2))
+    manifest_path.parent.mkdir(parents=True, exist_ok=True)
+    manifest_path.write_text(json.dumps(manifest, indent=2) + "\n", encoding="utf-8")
+
+    report = {
+        "sourceAudit": "Approved MP4 inspected through source frame 166; 160 is the first homepage-contaminated frame.",
+        "manifest": manifest,
+        "desktop": directory_report(desktop_dir, SOURCE_SIZE),
+        "mobile": directory_report(mobile_dir, MOBILE_SIZE),
+        "outputRoot": output_root.relative_to(ROOT).as_posix() or ".",
+    }
+    report_path = output_root / "performance-report.json"
+    report_path.write_text(json.dumps(report, indent=2) + "\n", encoding="utf-8")
+    print(json.dumps({"manifest": str(manifest_path), "report": str(report_path), "sampleCount": args.sample_count}, indent=2))
 
 
 if __name__ == "__main__":

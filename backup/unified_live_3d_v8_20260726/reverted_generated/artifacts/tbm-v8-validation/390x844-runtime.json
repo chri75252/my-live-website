@@ -1,0 +1,801 @@
+[
+  {
+    "progress": 0,
+    "state": "reveal",
+    "fallback": null,
+    "canvasCount": 1,
+    "legacyCanvasCount": 0,
+    "legacyPlateCount": 0,
+    "heroOpacity": 0,
+    "proofOpacity": 0,
+    "canvasRect": {
+      "x": 0,
+      "y": 76,
+      "width": 390,
+      "height": 768,
+      "top": 76,
+      "right": 390,
+      "bottom": 844,
+      "left": 0
+    },
+    "horizontalOverflow": 0,
+    "scrollTriggers": [
+      "tbm-v8-unified-owner"
+    ],
+    "debug": {
+      "state": "reveal",
+      "progress": 0,
+      "renderer": {
+        "calls": 325,
+        "triangles": 351606,
+        "textures": 5,
+        "geometries": 154,
+        "pixelRatio": 1
+      },
+      "frameIntervals": [
+        50
+      ]
+    }
+  },
+  {
+    "progress": 0.15,
+    "state": "reveal",
+    "fallback": null,
+    "canvasCount": 1,
+    "legacyCanvasCount": 0,
+    "legacyPlateCount": 0,
+    "heroOpacity": 0,
+    "proofOpacity": 0,
+    "canvasRect": {
+      "x": 0,
+      "y": 76,
+      "width": 390,
+      "height": 768,
+      "top": 76,
+      "right": 390,
+      "bottom": 844,
+      "left": 0
+    },
+    "horizontalOverflow": 0,
+    "scrollTriggers": [
+      "tbm-v8-unified-owner"
+    ],
+    "debug": {
+      "state": "reveal",
+      "progress": 0.1502202643171806,
+      "renderer": {
+        "calls": 341,
+        "triangles": 362310,
+        "textures": 5,
+        "geometries": 162,
+        "pixelRatio": 1
+      },
+      "frameIntervals": [
+        50,
+        50
+      ]
+    }
+  },
+  {
+    "progress": 0.34,
+    "state": "reveal",
+    "fallback": null,
+    "canvasCount": 1,
+    "legacyCanvasCount": 0,
+    "legacyPlateCount": 0,
+    "heroOpacity": 0,
+    "proofOpacity": 0,
+    "canvasRect": {
+      "x": 0,
+      "y": 76,
+      "width": 390,
+      "height": 768,
+      "top": 76,
+      "right": 390,
+      "bottom": 844,
+      "left": 0
+    },
+    "horizontalOverflow": 0,
+    "scrollTriggers": [
+      "tbm-v8-unified-owner"
+    ],
+    "debug": {
+      "state": "reveal",
+      "progress": 0.34008810572687226,
+      "renderer": {
+        "calls": 331,
+        "triangles": 356902,
+        "textures": 5,
+        "geometries": 162,
+        "pixelRatio": 1
+      },
+      "frameIntervals": [
+        50,
+        50,
+        50
+      ]
+    }
+  },
+  {
+    "progress": 0.53,
+    "state": "reveal",
+    "fallback": null,
+    "canvasCount": 1,
+    "legacyCanvasCount": 0,
+    "legacyPlateCount": 0,
+    "heroOpacity": 0,
+    "proofOpacity": 0,
+    "canvasRect": {
+      "x": 0,
+      "y": 76,
+      "width": 390,
+      "height": 768,
+      "top": 76,
+      "right": 390,
+      "bottom": 844,
+      "left": 0
+    },
+    "horizontalOverflow": 0,
+    "scrollTriggers": [
+      "tbm-v8-unified-owner"
+    ],
+    "debug": {
+      "state": "reveal",
+      "progress": 0.5299559471365639,
+      "renderer": {
+        "calls": 257,
+        "triangles": 236058,
+        "textures": 5,
+        "geometries": 163,
+        "pixelRatio": 1
+      },
+      "frameIntervals": [
+        50,
+        50,
+        50,
+        50
+      ]
+    }
+  },
+  {
+    "progress": 0.69,
+    "state": "reveal",
+    "fallback": null,
+    "canvasCount": 1,
+    "legacyCanvasCount": 0,
+    "legacyPlateCount": 0,
+    "heroOpacity": 0,
+    "proofOpacity": 0,
+    "canvasRect": {
+      "x": 0,
+      "y": 76,
+      "width": 390,
+      "height": 768,
+      "top": 76,
+      "right": 390,
+      "bottom": 844,
+      "left": 0
+    },
+    "horizontalOverflow": 0,
+    "scrollTriggers": [
+      "tbm-v8-unified-owner"
+    ],
+    "debug": {
+      "state": "reveal",
+      "progress": 0.6898678414096916,
+      "renderer": {
+        "calls": 194,
+        "triangles": 224214,
+        "textures": 5,
+        "geometries": 165,
+        "pixelRatio": 1
+      },
+      "frameIntervals": [
+        50,
+        50,
+        50,
+        50,
+        50
+      ]
+    }
+  },
+  {
+    "progress": 0.84,
+    "state": "handoff",
+    "fallback": null,
+    "canvasCount": 1,
+    "legacyCanvasCount": 0,
+    "legacyPlateCount": 0,
+    "heroOpacity": 0.4177,
+    "proofOpacity": 0,
+    "canvasRect": {
+      "x": 0,
+      "y": 76,
+      "width": 390,
+      "height": 768,
+      "top": 76,
+      "right": 390,
+      "bottom": 844,
+      "left": 0
+    },
+    "horizontalOverflow": 0,
+    "scrollTriggers": [
+      "tbm-v8-unified-owner"
+    ],
+    "debug": {
+      "state": "handoff",
+      "progress": 0.8400881057268722,
+      "renderer": {
+        "calls": 199,
+        "triangles": 225054,
+        "textures": 5,
+        "geometries": 171,
+        "pixelRatio": 1
+      },
+      "frameIntervals": [
+        50,
+        50,
+        50,
+        50,
+        50,
+        50
+      ]
+    }
+  },
+  {
+    "progress": 0.92,
+    "state": "handoff",
+    "fallback": null,
+    "canvasCount": 1,
+    "legacyCanvasCount": 0,
+    "legacyPlateCount": 0,
+    "heroOpacity": 0.9651,
+    "proofOpacity": 0.4141,
+    "canvasRect": {
+      "x": 0,
+      "y": 76,
+      "width": 390,
+      "height": 768,
+      "top": 76,
+      "right": 390,
+      "bottom": 844,
+      "left": 0
+    },
+    "horizontalOverflow": 0,
+    "scrollTriggers": [
+      "tbm-v8-unified-owner"
+    ],
+    "debug": {
+      "state": "handoff",
+      "progress": 0.9198237885462555,
+      "renderer": {
+        "calls": 199,
+        "triangles": 225054,
+        "textures": 5,
+        "geometries": 171,
+        "pixelRatio": 1
+      },
+      "frameIntervals": [
+        50,
+        50,
+        50,
+        50,
+        50,
+        50,
+        50
+      ]
+    }
+  },
+  {
+    "progress": 1,
+    "state": "hero-idle",
+    "fallback": null,
+    "canvasCount": 1,
+    "legacyCanvasCount": 0,
+    "legacyPlateCount": 0,
+    "heroOpacity": 1,
+    "proofOpacity": 1,
+    "canvasRect": {
+      "x": 0,
+      "y": 76,
+      "width": 390,
+      "height": 768,
+      "top": 76,
+      "right": 390,
+      "bottom": 844,
+      "left": 0
+    },
+    "horizontalOverflow": 0,
+    "scrollTriggers": [
+      "tbm-v8-unified-owner"
+    ],
+    "debug": {
+      "state": "hero-idle",
+      "progress": 1,
+      "renderer": {
+        "calls": 200,
+        "triangles": 225082,
+        "textures": 5,
+        "geometries": 172,
+        "pixelRatio": 1
+      },
+      "frameIntervals": [
+        50,
+        50,
+        50,
+        50,
+        50,
+        50,
+        50,
+        50,
+        50,
+        50,
+        50,
+        50,
+        50
+      ]
+    }
+  },
+  {
+    "reverse": 0.92,
+    "state": "handoff",
+    "fallback": null,
+    "canvasCount": 1,
+    "legacyCanvasCount": 0,
+    "legacyPlateCount": 0,
+    "heroOpacity": 0.9651,
+    "proofOpacity": 0.4141,
+    "canvasRect": {
+      "x": 0,
+      "y": 76,
+      "width": 390,
+      "height": 768,
+      "top": 76,
+      "right": 390,
+      "bottom": 844,
+      "left": 0
+    },
+    "horizontalOverflow": 0,
+    "scrollTriggers": [
+      "tbm-v8-unified-owner"
+    ],
+    "debug": {
+      "state": "handoff",
+      "progress": 0.9198237885462555,
+      "renderer": {
+        "calls": 200,
+        "triangles": 225082,
+        "textures": 5,
+        "geometries": 172,
+        "pixelRatio": 1
+      },
+      "frameIntervals": [
+        50,
+        50,
+        50,
+        50,
+        50,
+        50,
+        50,
+        50,
+        50,
+        50,
+        50,
+        50,
+        50,
+        50,
+        50,
+        50,
+        50,
+        50,
+        50,
+        50,
+        50,
+        50,
+        50,
+        50,
+        50,
+        50
+      ]
+    }
+  },
+  {
+    "reverse": 0.84,
+    "state": "handoff",
+    "fallback": null,
+    "canvasCount": 1,
+    "legacyCanvasCount": 0,
+    "legacyPlateCount": 0,
+    "heroOpacity": 0.4177,
+    "proofOpacity": 0,
+    "canvasRect": {
+      "x": 0,
+      "y": 76,
+      "width": 390,
+      "height": 768,
+      "top": 76,
+      "right": 390,
+      "bottom": 844,
+      "left": 0
+    },
+    "horizontalOverflow": 0,
+    "scrollTriggers": [
+      "tbm-v8-unified-owner"
+    ],
+    "debug": {
+      "state": "handoff",
+      "progress": 0.8400881057268722,
+      "renderer": {
+        "calls": 198,
+        "triangles": 225026,
+        "textures": 5,
+        "geometries": 172,
+        "pixelRatio": 1
+      },
+      "frameIntervals": [
+        50,
+        50,
+        50,
+        50,
+        50,
+        50,
+        50,
+        50,
+        50,
+        50,
+        50,
+        50,
+        50,
+        50,
+        50,
+        50,
+        50,
+        50,
+        50,
+        50,
+        50,
+        50,
+        50,
+        50,
+        50,
+        50,
+        50
+      ]
+    }
+  },
+  {
+    "reverse": 0.69,
+    "state": "reveal",
+    "fallback": null,
+    "canvasCount": 1,
+    "legacyCanvasCount": 0,
+    "legacyPlateCount": 0,
+    "heroOpacity": 0,
+    "proofOpacity": 0,
+    "canvasRect": {
+      "x": 0,
+      "y": 76,
+      "width": 390,
+      "height": 768,
+      "top": 76,
+      "right": 390,
+      "bottom": 844,
+      "left": 0
+    },
+    "horizontalOverflow": 0,
+    "scrollTriggers": [
+      "tbm-v8-unified-owner"
+    ],
+    "debug": {
+      "state": "reveal",
+      "progress": 0.6898678414096916,
+      "renderer": {
+        "calls": 195,
+        "triangles": 224242,
+        "textures": 5,
+        "geometries": 172,
+        "pixelRatio": 1
+      },
+      "frameIntervals": [
+        50,
+        50,
+        50,
+        50,
+        50,
+        50,
+        50,
+        50,
+        50,
+        50,
+        50,
+        50,
+        50,
+        50,
+        50,
+        50,
+        50,
+        50,
+        50,
+        50,
+        50,
+        50,
+        50,
+        50,
+        50,
+        50,
+        50,
+        50
+      ]
+    }
+  },
+  {
+    "reverse": 0.53,
+    "state": "reveal",
+    "fallback": null,
+    "canvasCount": 1,
+    "legacyCanvasCount": 0,
+    "legacyPlateCount": 0,
+    "heroOpacity": 0,
+    "proofOpacity": 0,
+    "canvasRect": {
+      "x": 0,
+      "y": 76,
+      "width": 390,
+      "height": 768,
+      "top": 76,
+      "right": 390,
+      "bottom": 844,
+      "left": 0
+    },
+    "horizontalOverflow": 0,
+    "scrollTriggers": [
+      "tbm-v8-unified-owner"
+    ],
+    "debug": {
+      "state": "reveal",
+      "progress": 0.5299559471365639,
+      "renderer": {
+        "calls": 253,
+        "triangles": 235946,
+        "textures": 5,
+        "geometries": 172,
+        "pixelRatio": 1
+      },
+      "frameIntervals": [
+        50,
+        50,
+        50,
+        50,
+        50,
+        50,
+        50,
+        50,
+        50,
+        50,
+        50,
+        50,
+        50,
+        50,
+        50,
+        50,
+        50,
+        50,
+        50,
+        50,
+        50,
+        50,
+        50,
+        50,
+        50,
+        50,
+        50,
+        50,
+        50
+      ]
+    }
+  },
+  {
+    "reverse": 0.34,
+    "state": "reveal",
+    "fallback": null,
+    "canvasCount": 1,
+    "legacyCanvasCount": 0,
+    "legacyPlateCount": 0,
+    "heroOpacity": 0,
+    "proofOpacity": 0,
+    "canvasRect": {
+      "x": 0,
+      "y": 76,
+      "width": 390,
+      "height": 768,
+      "top": 76,
+      "right": 390,
+      "bottom": 844,
+      "left": 0
+    },
+    "horizontalOverflow": 0,
+    "scrollTriggers": [
+      "tbm-v8-unified-owner"
+    ],
+    "debug": {
+      "state": "reveal",
+      "progress": 0.34008810572687226,
+      "renderer": {
+        "calls": 329,
+        "triangles": 353102,
+        "textures": 5,
+        "geometries": 172,
+        "pixelRatio": 1
+      },
+      "frameIntervals": [
+        50,
+        50,
+        50,
+        50,
+        50,
+        50,
+        50,
+        50,
+        50,
+        50,
+        50,
+        50,
+        50,
+        50,
+        50,
+        50,
+        50,
+        50,
+        50,
+        50,
+        50,
+        50,
+        50,
+        50,
+        50,
+        50,
+        50,
+        50,
+        50,
+        50
+      ]
+    }
+  },
+  {
+    "reverse": 0.15,
+    "state": "reveal",
+    "fallback": null,
+    "canvasCount": 1,
+    "legacyCanvasCount": 0,
+    "legacyPlateCount": 0,
+    "heroOpacity": 0,
+    "proofOpacity": 0,
+    "canvasRect": {
+      "x": 0,
+      "y": 76,
+      "width": 390,
+      "height": 768,
+      "top": 76,
+      "right": 390,
+      "bottom": 844,
+      "left": 0
+    },
+    "horizontalOverflow": 0,
+    "scrollTriggers": [
+      "tbm-v8-unified-owner"
+    ],
+    "debug": {
+      "state": "reveal",
+      "progress": 0.1502202643171806,
+      "renderer": {
+        "calls": 343,
+        "triangles": 362366,
+        "textures": 5,
+        "geometries": 172,
+        "pixelRatio": 1
+      },
+      "frameIntervals": [
+        50,
+        50,
+        50,
+        50,
+        50,
+        50,
+        50,
+        50,
+        50,
+        50,
+        50,
+        50,
+        50,
+        50,
+        50,
+        50,
+        50,
+        50,
+        50,
+        50,
+        50,
+        50,
+        50,
+        50,
+        50,
+        50,
+        50,
+        50,
+        50,
+        50,
+        50
+      ]
+    }
+  },
+  {
+    "reverse": 0,
+    "state": "reveal",
+    "fallback": null,
+    "canvasCount": 1,
+    "legacyCanvasCount": 0,
+    "legacyPlateCount": 0,
+    "heroOpacity": 0,
+    "proofOpacity": 0,
+    "canvasRect": {
+      "x": 0,
+      "y": 76,
+      "width": 390,
+      "height": 768,
+      "top": 76,
+      "right": 390,
+      "bottom": 844,
+      "left": 0
+    },
+    "horizontalOverflow": 0,
+    "scrollTriggers": [
+      "tbm-v8-unified-owner"
+    ],
+    "debug": {
+      "state": "reveal",
+      "progress": 0,
+      "renderer": {
+        "calls": 317,
+        "triangles": 347638,
+        "textures": 5,
+        "geometries": 172,
+        "pixelRatio": 1
+      },
+      "frameIntervals": [
+        50,
+        50,
+        50,
+        50,
+        50,
+        50,
+        50,
+        50,
+        50,
+        50,
+        50,
+        50,
+        50,
+        50,
+        50,
+        50,
+        50,
+        50,
+        50,
+        50,
+        50,
+        50,
+        50,
+        50,
+        50,
+        50,
+        50,
+        50,
+        50,
+        50,
+        50,
+        50
+      ]
+    }
+  }
+]

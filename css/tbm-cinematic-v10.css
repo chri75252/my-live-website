@@ -1,0 +1,226 @@
+/* V10 owns one sticky viewport for both the reveal and the first hero state. */
+.tbm-cinematic-v10-stage {
+  --handoff-progress: 0;
+  position: relative;
+  height: 480svh;
+  isolation: isolate;
+  background: #020302;
+}
+
+.tbm-cinematic-v10-visual {
+  position: sticky;
+  top: 92px;
+  z-index: 1;
+  height: calc(100svh - 92px);
+  overflow: hidden;
+  background: #020302;
+}
+
+.tbm-cinematic-v10__canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: #020302;
+}
+
+.tbm-cinematic-v10__shade {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(ellipse at 58% 55%, transparent 28%, rgba(2, 3, 2, .04) 64%, rgba(2, 3, 2, .20) 100%);
+}
+
+.tbm-cinematic-v10__hud {
+  position: absolute;
+  right: clamp(20px, 3vw, 54px);
+  bottom: clamp(20px, 4vh, 42px);
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  z-index: 2;
+  color: #f9dfb4;
+  font: 600 11px/1.2 Manrope, sans-serif;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  transition: opacity .28s ease, visibility .28s ease;
+}
+
+.tbm-cinematic-v10__skip {
+  border: 1px solid rgba(255, 189, 112, .46);
+  background: rgba(2, 3, 2, .62);
+  color: #f9dfb4;
+  padding: 10px 13px;
+  font: inherit;
+  cursor: pointer;
+}
+
+.hero-v10 {
+  position: sticky;
+  top: 92px;
+  z-index: 2;
+  height: calc(100svh - 92px);
+  min-height: 0;
+  margin-top: calc(-1 * (100svh - 92px));
+  overflow: hidden;
+  background: transparent;
+  pointer-events: none;
+}
+
+.hero-v10::before,
+.hero-v10 .hero-v9__plate {
+  display: none;
+}
+
+.hero-v10__fallback {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  opacity: 1;
+  transition: opacity .2s ease, visibility .2s ease;
+}
+
+.hero-v10__fallback img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+}
+
+.tbm-cinematic-v10-stage[data-ready="true"] .hero-v10__fallback {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.hero-v10 .hero-grid,
+.hero-v10 .proof-strip,
+.hero-v10 .hero-v6__phase {
+  position: relative;
+  z-index: 3;
+  opacity: var(--handoff-progress);
+  transform: translateY(calc((1 - var(--handoff-progress)) * 34px));
+  transition: opacity .08s linear, transform .08s linear;
+}
+
+.hero-v10 .hero-copy,
+.hero-v10 .proof-strip,
+.hero-v10 .hero-v6__phase,
+.hero-v10 a,
+.hero-v10 button {
+  pointer-events: auto;
+}
+
+.tbm-cinematic-v10-stage[data-mode="idle-playing"] .tbm-cinematic-v10__hud {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.tbm-cinematic-v10-stage[data-fallback="true"] {
+  height: auto;
+}
+
+.tbm-cinematic-v10-stage[data-fallback="true"] .tbm-cinematic-v10-visual {
+  display: none;
+}
+
+.tbm-cinematic-v10-stage[data-fallback="true"] .hero-v10 {
+  position: relative;
+  top: auto;
+  height: auto;
+  min-height: 850px;
+  margin-top: 0;
+  background: #020302;
+}
+
+.tbm-cinematic-v10-stage[data-fallback="true"] .hero-v10 .hero-grid,
+.tbm-cinematic-v10-stage[data-fallback="true"] .hero-v10 .proof-strip,
+.tbm-cinematic-v10-stage[data-fallback="true"] .hero-v10 .hero-v6__phase {
+  opacity: 1;
+  transform: none;
+}
+
+@media (max-width: 840px) {
+  .tbm-cinematic-v10-visual,
+  .hero-v10 {
+    top: 76px;
+    height: calc(100svh - 76px);
+  }
+
+  .hero-v10 {
+    margin-top: calc(-1 * (100svh - 76px));
+  }
+}
+
+@media (max-width: 640px) {
+  .tbm-cinematic-v10-stage {
+    height: 430svh;
+  }
+
+  .tbm-cinematic-v10__hud {
+    right: 16px;
+    bottom: 16px;
+    gap: 10px;
+    font-size: 9px;
+  }
+
+  .hero-v10 .hero-grid {
+    min-height: calc(100svh - 76px);
+    align-content: start;
+    padding-top: 15vh;
+  }
+
+  .hero-v10 .hero-copy {
+    max-width: min(53vw, 235px);
+    padding: 0;
+  }
+
+  .hero-v10 h1 {
+    max-width: 225px;
+    font-size: clamp(3.15rem, 13.2vw, 4.25rem);
+    line-height: .80;
+  }
+
+  .hero-v10 .hero-lead {
+    max-width: 225px;
+    margin-top: 18px;
+    font-size: .82rem;
+    line-height: 1.55;
+  }
+
+  .hero-v10 .hero-actions,
+  .hero-v10 .hero-promises {
+    display: none;
+  }
+
+  .hero-v10 .eyebrow {
+    max-width: 205px;
+    margin-bottom: 14px;
+    font-size: .56rem;
+    line-height: 1.5;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tbm-cinematic-v10-stage {
+    height: auto;
+  }
+
+  .tbm-cinematic-v10-visual {
+    display: none;
+  }
+
+  .hero-v10 {
+    position: relative;
+    top: auto;
+    height: auto;
+    min-height: 850px;
+    margin-top: 0;
+    background: #020302;
+  }
+
+  .hero-v10 .hero-grid,
+  .hero-v10 .proof-strip,
+  .hero-v10 .hero-v6__phase {
+    opacity: 1;
+    transform: none;
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "image": {
+    "width": 686,
+    "height": 686
+  },
+  "target": {
+    "x": 74,
+    "y": 66,
+    "width": 553,
+    "height": 557,
+    "centerX": 350.5,
+    "centerY": 344.5
+  },
+  "v4": {
+    "x": 70,
+    "y": 83,
+    "width": 564,
+    "height": 542,
+    "centerX": 352.0,
+    "centerY": 354.0
+  },
+  "differences": {
+    "centerXPercentOfStage": 0.21865889212827988,
+    "centerYPercentOfStage": 1.3848396501457727,
+    "widthPercent": 1.9891500904159132,
+    "heightPercent": 2.6929982046678633,
+    "meanAbsolutePixelDifference": 25.09033721776924
+  },
+  "acceptance": {
+    "centerMaxPercentOfStage": 2,
+    "sizeMaxPercent": 5
+  },
+  "method": "Union of central bronze-highlight connected components with area at least 2000 pixels; verify with saved masks and overlay."
+}

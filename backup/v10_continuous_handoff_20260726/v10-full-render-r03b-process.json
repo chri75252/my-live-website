@@ -1,0 +1,9 @@
+{
+  "Started": "2026-07-26T23:48:45.0303044+04:00",
+  "ProcessId": 19892,
+  "Launch": "direct Start-Process Blender due to wrapper working-directory failure",
+  "Mode": "all-r03b-short-contact-arcs",
+  "Log": "",
+  "WrapperPath": "backup/v10_continuous_handoff_20260726/start-v10-full-render-r03b.ps1 (not used)",
+  "ErrorLog": ""
+}

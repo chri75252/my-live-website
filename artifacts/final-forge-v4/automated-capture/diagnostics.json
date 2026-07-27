@@ -1,0 +1,4052 @@
+[
+  {
+    "viewport": {
+      "name": "1920x1080",
+      "width": 1920,
+      "height": 1080
+    },
+    "errors": [],
+    "samples": [
+      {
+        "intro": {
+          "progress": 0,
+          "release": 0,
+          "phase": "opening",
+          "loadState": "ready",
+          "interactionSuppressed": true,
+          "firstFrameReady": true,
+          "scrubReady": true,
+          "fatalFailure": false,
+          "heroLifecycle": "suspended",
+          "handoff": {
+            "progress": 0,
+            "geometry": {
+              "left": 933.59375,
+              "top": 1351.140625,
+              "width": 686.40625,
+              "height": 686.40625
+            },
+            "opacity": "0"
+          },
+          "range": {
+            "start": 0,
+            "end": 1166.4
+          },
+          "sequence": {
+            "frameCount": 64,
+            "loaded": 64,
+            "failed": 0,
+            "firstFrameReady": true,
+            "variant": "desktop",
+            "requestedProgress": 0,
+            "requestedIndex": 0,
+            "renderedIndex": 0,
+            "fallbackUsed": false,
+            "contiguousDecodedThrough": 63,
+            "scrubReady": true,
+            "pixelRatio": 1,
+            "canvasWidth": 1920,
+            "canvasHeight": 1080
+          }
+        },
+        "hero": {
+          "targetProgress": 0,
+          "currentProgress": 0,
+          "motionEnabled": true,
+          "lifecycleMotionAllowed": false,
+          "lifecycleSettled": false,
+          "heroLifecycle": "suspended",
+          "handoffProgress": 0,
+          "reducedMotion": false,
+          "ringCount": 5,
+          "shellJointCount": 42,
+          "emberCount": 18,
+          "postProcessing": true,
+          "renderPath": "composer",
+          "lowPowerDevice": false,
+          "forceDirectRenderer": false,
+          "forceComposer": false,
+          "pixelRatio": 1,
+          "renderer": {
+            "calls": 50,
+            "triangles": 47635,
+            "points": 180,
+            "lines": 120,
+            "geometries": 16,
+            "textures": 21,
+            "programs": 18
+          },
+          "geometry": {
+            "coreRadius": 0.96,
+            "shellRadius": 1.22,
+            "outerRingRadius": 2.1,
+            "coreOuterDiameterRatio": 0.45714285714285713
+          },
+          "materials": {
+            "core": {
+              "metalness": 0.12,
+              "roughness": 0.25,
+              "clearcoat": 1,
+              "clearcoatRoughness": 0.2,
+              "envMapIntensity": 0.94
+            },
+            "agedBronze": {
+              "metalness": 0.9,
+              "roughness": 0.34,
+              "envMapIntensity": 1.22
+            }
+          },
+          "frameTiming": {
+            "samples": 182,
+            "averageMs": 7.35824175824176,
+            "minMs": 5.5,
+            "maxMs": 187.79999999999973
+          }
+        },
+        "pinSpacerCount": 0,
+        "mainTop": 1259,
+        "phase": "opening"
+      },
+      {
+        "intro": {
+          "progress": 0.4998285322359396,
+          "release": 0,
+          "phase": "progression",
+          "loadState": "ready",
+          "interactionSuppressed": true,
+          "firstFrameReady": true,
+          "scrubReady": true,
+          "fatalFailure": false,
+          "heroLifecycle": "suspended",
+          "handoff": {
+            "progress": 0,
+            "geometry": {
+              "left": 933.59375,
+              "top": 792.140625,
+              "width": 686.40625,
+              "height": 686.40625
+            },
+            "opacity": "0"
+          },
+          "range": {
+            "start": 0,
+            "end": 1166.4
+          },
+          "sequence": {
+            "frameCount": 64,
+            "loaded": 64,
+            "failed": 0,
+            "firstFrameReady": true,
+            "variant": "desktop",
+            "requestedProgress": 0.6408058105588968,
+            "requestedIndex": 40,
+            "renderedIndex": 40,
+            "fallbackUsed": false,
+            "contiguousDecodedThrough": 63,
+            "scrubReady": true,
+            "pixelRatio": 1,
+            "canvasWidth": 1920,
+            "canvasHeight": 1080
+          }
+        },
+        "hero": {
+          "targetProgress": 0,
+          "currentProgress": 0,
+          "motionEnabled": true,
+          "lifecycleMotionAllowed": false,
+          "lifecycleSettled": false,
+          "heroLifecycle": "suspended",
+          "handoffProgress": 0,
+          "reducedMotion": false,
+          "ringCount": 5,
+          "shellJointCount": 42,
+          "emberCount": 18,
+          "postProcessing": true,
+          "renderPath": "composer",
+          "lowPowerDevice": false,
+          "forceDirectRenderer": false,
+          "forceComposer": false,
+          "pixelRatio": 1,
+          "renderer": {
+            "calls": 50,
+            "triangles": 47635,
+            "points": 180,
+            "lines": 120,
+            "geometries": 16,
+            "textures": 23,
+            "programs": 18
+          },
+          "geometry": {
+            "coreRadius": 0.96,
+            "shellRadius": 1.22,
+            "outerRingRadius": 2.1,
+            "coreOuterDiameterRatio": 0.45714285714285713
+          },
+          "materials": {
+            "core": {
+              "metalness": 0.12,
+              "roughness": 0.25,
+              "clearcoat": 1,
+              "clearcoatRoughness": 0.2,
+              "envMapIntensity": 0.94
+            },
+            "agedBronze": {
+              "metalness": 0.9,
+              "roughness": 0.34,
+              "envMapIntensity": 1.22
+            }
+          },
+          "frameTiming": {
+            "samples": 260,
+            "averageMs": 6.968846153846155,
+            "minMs": 5.5,
+            "maxMs": 187.79999999999973
+          }
+        },
+        "pinSpacerCount": 0,
+        "mainTop": 676,
+        "phase": "mid-reveal"
+      },
+      {
+        "intro": {
+          "progress": 0.7801783264746227,
+          "release": 0,
+          "phase": "final-clean-hold",
+          "loadState": "ready",
+          "interactionSuppressed": true,
+          "firstFrameReady": true,
+          "scrubReady": true,
+          "fatalFailure": false,
+          "heroLifecycle": "prewarming",
+          "handoff": {
+            "progress": 0,
+            "geometry": {
+              "left": 933.59375,
+              "top": 441.14111328125,
+              "width": 686.40625,
+              "height": 686.40625
+            },
+            "opacity": "0"
+          },
+          "range": {
+            "start": 0,
+            "end": 1166.4
+          },
+          "sequence": {
+            "frameCount": 64,
+            "loaded": 64,
+            "failed": 0,
+            "firstFrameReady": true,
+            "variant": "desktop",
+            "requestedProgress": 1,
+            "requestedIndex": 63,
+            "renderedIndex": 63,
+            "fallbackUsed": false,
+            "contiguousDecodedThrough": 63,
+            "scrubReady": true,
+            "pixelRatio": 1,
+            "canvasWidth": 1920,
+            "canvasHeight": 1080
+          }
+        },
+        "hero": {
+          "targetProgress": 0,
+          "currentProgress": 0,
+          "motionEnabled": true,
+          "lifecycleMotionAllowed": false,
+          "lifecycleSettled": false,
+          "heroLifecycle": "prewarming",
+          "handoffProgress": 0,
+          "reducedMotion": false,
+          "ringCount": 5,
+          "shellJointCount": 42,
+          "emberCount": 18,
+          "postProcessing": true,
+          "renderPath": "composer",
+          "lowPowerDevice": false,
+          "forceDirectRenderer": false,
+          "forceComposer": false,
+          "pixelRatio": 1,
+          "renderer": {
+            "calls": 50,
+            "triangles": 47635,
+            "points": 180,
+            "lines": 120,
+            "geometries": 16,
+            "textures": 23,
+            "programs": 18
+          },
+          "geometry": {
+            "coreRadius": 0.96,
+            "shellRadius": 1.22,
+            "outerRingRadius": 2.1,
+            "coreOuterDiameterRatio": 0.45714285714285713
+          },
+          "materials": {
+            "core": {
+              "metalness": 0.12,
+              "roughness": 0.25,
+              "clearcoat": 1,
+              "clearcoatRoughness": 0.2,
+              "envMapIntensity": 0.94
+            },
+            "agedBronze": {
+              "metalness": 0.9,
+              "roughness": 0.34,
+              "envMapIntensity": 1.22
+            }
+          },
+          "frameTiming": {
+            "samples": 351,
+            "averageMs": 7.648148148148147,
+            "minMs": 5,
+            "maxMs": 187.79999999999973
+          }
+        },
+        "pinSpacerCount": 0,
+        "mainTop": 349,
+        "phase": "final-hold"
+      },
+      {
+        "intro": {
+          "progress": 0.9302126200274348,
+          "release": 0.595223219086066,
+          "phase": "dom-handoff",
+          "loadState": "ready",
+          "interactionSuppressed": true,
+          "firstFrameReady": true,
+          "scrubReady": true,
+          "fatalFailure": false,
+          "heroLifecycle": "handoff-ready",
+          "handoff": {
+            "progress": 0.5301,
+            "geometry": {
+              "left": 933.59375,
+              "top": 266.140625,
+              "width": 686.40625,
+              "height": 686.40625
+            },
+            "opacity": "1.0000"
+          },
+          "range": {
+            "start": 0,
+            "end": 1166.4
+          },
+          "sequence": {
+            "frameCount": 64,
+            "loaded": 64,
+            "failed": 0,
+            "firstFrameReady": true,
+            "variant": "desktop",
+            "requestedProgress": 1,
+            "requestedIndex": 63,
+            "renderedIndex": 63,
+            "fallbackUsed": false,
+            "contiguousDecodedThrough": 63,
+            "scrubReady": true,
+            "pixelRatio": 1,
+            "canvasWidth": 1920,
+            "canvasHeight": 1080
+          }
+        },
+        "hero": {
+          "targetProgress": 0,
+          "currentProgress": 0,
+          "motionEnabled": true,
+          "lifecycleMotionAllowed": false,
+          "lifecycleSettled": false,
+          "heroLifecycle": "handoff-ready",
+          "handoffProgress": 0.5301239971207169,
+          "reducedMotion": false,
+          "ringCount": 5,
+          "shellJointCount": 42,
+          "emberCount": 18,
+          "postProcessing": true,
+          "renderPath": "composer",
+          "lowPowerDevice": false,
+          "forceDirectRenderer": false,
+          "forceComposer": false,
+          "pixelRatio": 1,
+          "renderer": {
+            "calls": 50,
+            "triangles": 47635,
+            "points": 180,
+            "lines": 120,
+            "geometries": 16,
+            "textures": 23,
+            "programs": 18
+          },
+          "geometry": {
+            "coreRadius": 0.96,
+            "shellRadius": 1.22,
+            "outerRingRadius": 2.1,
+            "coreOuterDiameterRatio": 0.45714285714285713
+          },
+          "materials": {
+            "core": {
+              "metalness": 0.12,
+              "roughness": 0.25,
+              "clearcoat": 1,
+              "clearcoatRoughness": 0.2,
+              "envMapIntensity": 0.94
+            },
+            "agedBronze": {
+              "metalness": 0.9,
+              "roughness": 0.34,
+              "envMapIntensity": 1.22
+            }
+          },
+          "frameTiming": {
+            "samples": 469,
+            "averageMs": 7.519616204690832,
+            "minMs": 5,
+            "maxMs": 187.79999999999973
+          }
+        },
+        "pinSpacerCount": 0,
+        "mainTop": 174,
+        "phase": "spatial-midpoint"
+      },
+      {
+        "intro": {
+          "progress": 0.9919410150891632,
+          "release": 0.9926445662788244,
+          "phase": "dom-handoff",
+          "loadState": "ready",
+          "interactionSuppressed": true,
+          "firstFrameReady": true,
+          "scrubReady": true,
+          "fatalFailure": false,
+          "heroLifecycle": "handoff-ready",
+          "handoff": {
+            "progress": 0.9985,
+            "geometry": {
+              "left": 933.59375,
+              "top": 194.140625,
+              "width": 686.40625,
+              "height": 686.40625
+            },
+            "opacity": "0.0003"
+          },
+          "range": {
+            "start": 0,
+            "end": 1166.4
+          },
+          "sequence": {
+            "frameCount": 64,
+            "loaded": 64,
+            "failed": 0,
+            "firstFrameReady": true,
+            "variant": "desktop",
+            "requestedProgress": 1,
+            "requestedIndex": 63,
+            "renderedIndex": 63,
+            "fallbackUsed": false,
+            "contiguousDecodedThrough": 63,
+            "scrubReady": true,
+            "pixelRatio": 1,
+            "canvasWidth": 1920,
+            "canvasHeight": 1080
+          }
+        },
+        "hero": {
+          "targetProgress": 0,
+          "currentProgress": 0,
+          "motionEnabled": true,
+          "lifecycleMotionAllowed": false,
+          "lifecycleSettled": false,
+          "heroLifecycle": "handoff-ready",
+          "handoffProgress": 0.9984829571932199,
+          "reducedMotion": false,
+          "ringCount": 5,
+          "shellJointCount": 42,
+          "emberCount": 18,
+          "postProcessing": true,
+          "renderPath": "composer",
+          "lowPowerDevice": false,
+          "forceDirectRenderer": false,
+          "forceComposer": false,
+          "pixelRatio": 1,
+          "renderer": {
+            "calls": 50,
+            "triangles": 47635,
+            "points": 180,
+            "lines": 120,
+            "geometries": 16,
+            "textures": 23,
+            "programs": 18
+          },
+          "geometry": {
+            "coreRadius": 0.96,
+            "shellRadius": 1.22,
+            "outerRingRadius": 2.1,
+            "coreOuterDiameterRatio": 0.45714285714285713
+          },
+          "materials": {
+            "core": {
+              "metalness": 0.12,
+              "roughness": 0.25,
+              "clearcoat": 1,
+              "clearcoatRoughness": 0.2,
+              "envMapIntensity": 0.94
+            },
+            "agedBronze": {
+              "metalness": 0.9,
+              "roughness": 0.34,
+              "envMapIntensity": 1.22
+            }
+          },
+          "frameTiming": {
+            "samples": 636,
+            "averageMs": 7.565094339622641,
+            "minMs": 5,
+            "maxMs": 187.79999999999973
+          }
+        },
+        "pinSpacerCount": 0,
+        "mainTop": 102,
+        "phase": "swap"
+      },
+      {
+        "intro": {
+          "progress": 0.9996570644718792,
+          "release": 0.999986237883061,
+          "phase": "dom-handoff",
+          "loadState": "ready",
+          "interactionSuppressed": false,
+          "firstFrameReady": true,
+          "scrubReady": true,
+          "fatalFailure": false,
+          "heroLifecycle": "active",
+          "handoff": {
+            "progress": 1,
+            "geometry": {
+              "left": 933.59375,
+              "top": 185.140625,
+              "width": 686.40625,
+              "height": 686.40625
+            },
+            "opacity": "0.0000"
+          },
+          "range": {
+            "start": 0,
+            "end": 1166.4
+          },
+          "sequence": {
+            "frameCount": 64,
+            "loaded": 64,
+            "failed": 0,
+            "firstFrameReady": true,
+            "variant": "desktop",
+            "requestedProgress": 1,
+            "requestedIndex": 63,
+            "renderedIndex": 63,
+            "fallbackUsed": false,
+            "contiguousDecodedThrough": 63,
+            "scrubReady": true,
+            "pixelRatio": 1,
+            "canvasWidth": 1920,
+            "canvasHeight": 1080
+          }
+        },
+        "hero": {
+          "targetProgress": 0,
+          "currentProgress": 0,
+          "motionEnabled": true,
+          "lifecycleMotionAllowed": true,
+          "lifecycleSettled": true,
+          "heroLifecycle": "active",
+          "handoffProgress": 1,
+          "reducedMotion": false,
+          "ringCount": 5,
+          "shellJointCount": 42,
+          "emberCount": 18,
+          "postProcessing": true,
+          "renderPath": "composer",
+          "lowPowerDevice": false,
+          "forceDirectRenderer": false,
+          "forceComposer": false,
+          "pixelRatio": 1,
+          "renderer": {
+            "calls": 50,
+            "triangles": 47635,
+            "points": 180,
+            "lines": 120,
+            "geometries": 16,
+            "textures": 23,
+            "programs": 18
+          },
+          "geometry": {
+            "coreRadius": 0.96,
+            "shellRadius": 1.22,
+            "outerRingRadius": 2.1,
+            "coreOuterDiameterRatio": 0.45714285714285713
+          },
+          "materials": {
+            "core": {
+              "metalness": 0.12,
+              "roughness": 0.25,
+              "clearcoat": 1,
+              "clearcoatRoughness": 0.2,
+              "envMapIntensity": 0.94
+            },
+            "agedBronze": {
+              "metalness": 0.9,
+              "roughness": 0.34,
+              "envMapIntensity": 1.22
+            }
+          },
+          "frameTiming": {
+            "samples": 847,
+            "averageMs": 7.719362455726094,
+            "minMs": 5,
+            "maxMs": 187.79999999999973
+          }
+        },
+        "pinSpacerCount": 0,
+        "mainTop": 93,
+        "phase": "settled"
+      },
+      {
+        "intro": {
+          "progress": 0.4998285322359396,
+          "release": 0,
+          "phase": "progression",
+          "loadState": "ready",
+          "interactionSuppressed": true,
+          "firstFrameReady": true,
+          "scrubReady": true,
+          "fatalFailure": false,
+          "heroLifecycle": "suspended",
+          "handoff": {
+            "progress": 0,
+            "geometry": {
+              "left": 933.59375,
+              "top": 768.140625,
+              "width": 686.40625,
+              "height": 686.40625
+            },
+            "opacity": "0"
+          },
+          "range": {
+            "start": 0,
+            "end": 1166.4
+          },
+          "sequence": {
+            "frameCount": 64,
+            "loaded": 64,
+            "failed": 0,
+            "firstFrameReady": true,
+            "variant": "desktop",
+            "requestedProgress": 0.6408058105588968,
+            "requestedIndex": 40,
+            "renderedIndex": 40,
+            "fallbackUsed": false,
+            "contiguousDecodedThrough": 63,
+            "scrubReady": true,
+            "pixelRatio": 1,
+            "canvasWidth": 1920,
+            "canvasHeight": 1080
+          }
+        },
+        "hero": {
+          "targetProgress": 0,
+          "currentProgress": 0,
+          "motionEnabled": true,
+          "lifecycleMotionAllowed": false,
+          "lifecycleSettled": false,
+          "heroLifecycle": "suspended",
+          "handoffProgress": 0,
+          "reducedMotion": false,
+          "ringCount": 5,
+          "shellJointCount": 42,
+          "emberCount": 18,
+          "postProcessing": true,
+          "renderPath": "composer",
+          "lowPowerDevice": false,
+          "forceDirectRenderer": false,
+          "forceComposer": false,
+          "pixelRatio": 1,
+          "renderer": {
+            "calls": 50,
+            "triangles": 47635,
+            "points": 180,
+            "lines": 120,
+            "geometries": 16,
+            "textures": 23,
+            "programs": 18
+          },
+          "geometry": {
+            "coreRadius": 0.96,
+            "shellRadius": 1.22,
+            "outerRingRadius": 2.1,
+            "coreOuterDiameterRatio": 0.45714285714285713
+          },
+          "materials": {
+            "core": {
+              "metalness": 0.12,
+              "roughness": 0.25,
+              "clearcoat": 1,
+              "clearcoatRoughness": 0.2,
+              "envMapIntensity": 0.94
+            },
+            "agedBronze": {
+              "metalness": 0.9,
+              "roughness": 0.34,
+              "envMapIntensity": 1.22
+            }
+          },
+          "frameTiming": {
+            "samples": 966,
+            "averageMs": 7.7409937888198765,
+            "minMs": 5,
+            "maxMs": 187.79999999999973
+          }
+        },
+        "pinSpacerCount": 0,
+        "mainTop": 676,
+        "phase": "reverse"
+      },
+      {
+        "intro": {
+          "progress": 0,
+          "release": 0,
+          "phase": "opening",
+          "loadState": "ready",
+          "interactionSuppressed": true,
+          "firstFrameReady": true,
+          "scrubReady": true,
+          "fatalFailure": false,
+          "heroLifecycle": "suspended",
+          "handoff": {
+            "progress": 0,
+            "geometry": {
+              "left": 933.59375,
+              "top": 1351.140625,
+              "width": 686.40625,
+              "height": 686.40625
+            },
+            "opacity": "0"
+          },
+          "range": {
+            "start": 0,
+            "end": 1166.4
+          },
+          "sequence": {
+            "frameCount": 64,
+            "loaded": 64,
+            "failed": 0,
+            "firstFrameReady": true,
+            "variant": "desktop",
+            "requestedProgress": 0,
+            "requestedIndex": 0,
+            "renderedIndex": 0,
+            "fallbackUsed": false,
+            "contiguousDecodedThrough": 63,
+            "scrubReady": true,
+            "pixelRatio": 1,
+            "canvasWidth": 1920,
+            "canvasHeight": 1080
+          }
+        },
+        "hero": {
+          "targetProgress": 0,
+          "currentProgress": 0,
+          "motionEnabled": true,
+          "lifecycleMotionAllowed": false,
+          "lifecycleSettled": false,
+          "heroLifecycle": "suspended",
+          "handoffProgress": 0,
+          "reducedMotion": false,
+          "ringCount": 5,
+          "shellJointCount": 42,
+          "emberCount": 18,
+          "postProcessing": true,
+          "renderPath": "composer",
+          "lowPowerDevice": false,
+          "forceDirectRenderer": false,
+          "forceComposer": false,
+          "pixelRatio": 1,
+          "renderer": {
+            "calls": 50,
+            "triangles": 47635,
+            "points": 180,
+            "lines": 120,
+            "geometries": 16,
+            "textures": 23,
+            "programs": 18
+          },
+          "geometry": {
+            "coreRadius": 0.96,
+            "shellRadius": 1.22,
+            "outerRingRadius": 2.1,
+            "coreOuterDiameterRatio": 0.45714285714285713
+          },
+          "materials": {
+            "core": {
+              "metalness": 0.12,
+              "roughness": 0.25,
+              "clearcoat": 1,
+              "clearcoatRoughness": 0.2,
+              "envMapIntensity": 0.94
+            },
+            "agedBronze": {
+              "metalness": 0.9,
+              "roughness": 0.34,
+              "envMapIntensity": 1.22
+            }
+          },
+          "frameTiming": {
+            "samples": 1122,
+            "averageMs": 7.534046345811053,
+            "minMs": 5,
+            "maxMs": 187.79999999999973
+          }
+        },
+        "pinSpacerCount": 0,
+        "mainTop": 1259,
+        "phase": "rewound"
+      }
+    ]
+  },
+  {
+    "viewport": {
+      "name": "1680x900",
+      "width": 1680,
+      "height": 900
+    },
+    "errors": [],
+    "samples": [
+      {
+        "intro": {
+          "progress": 0,
+          "release": 0,
+          "phase": "opening",
+          "loadState": "ready",
+          "interactionSuppressed": true,
+          "firstFrameReady": true,
+          "scrubReady": true,
+          "fatalFailure": false,
+          "heroLifecycle": "suspended",
+          "handoff": {
+            "progress": 0,
+            "geometry": {
+              "left": 810.953125,
+              "top": 1143.014892578125,
+              "width": 689.046875,
+              "height": 689.046875
+            },
+            "opacity": "0"
+          },
+          "range": {
+            "start": 0,
+            "end": 972.0000000000001
+          },
+          "sequence": {
+            "frameCount": 64,
+            "loaded": 64,
+            "failed": 0,
+            "firstFrameReady": true,
+            "variant": "desktop",
+            "requestedProgress": 0,
+            "requestedIndex": 0,
+            "renderedIndex": 0,
+            "fallbackUsed": false,
+            "contiguousDecodedThrough": 63,
+            "scrubReady": true,
+            "pixelRatio": 1,
+            "canvasWidth": 1680,
+            "canvasHeight": 900
+          }
+        },
+        "hero": {
+          "targetProgress": 0,
+          "currentProgress": 0,
+          "motionEnabled": true,
+          "lifecycleMotionAllowed": false,
+          "lifecycleSettled": false,
+          "heroLifecycle": "suspended",
+          "handoffProgress": 0,
+          "reducedMotion": false,
+          "ringCount": 5,
+          "shellJointCount": 42,
+          "emberCount": 18,
+          "postProcessing": true,
+          "renderPath": "composer",
+          "lowPowerDevice": false,
+          "forceDirectRenderer": false,
+          "forceComposer": false,
+          "pixelRatio": 1,
+          "renderer": {
+            "calls": 50,
+            "triangles": 47635,
+            "points": 180,
+            "lines": 120,
+            "geometries": 16,
+            "textures": 17,
+            "programs": 18
+          },
+          "geometry": {
+            "coreRadius": 0.96,
+            "shellRadius": 1.22,
+            "outerRingRadius": 2.1,
+            "coreOuterDiameterRatio": 0.45714285714285713
+          },
+          "materials": {
+            "core": {
+              "metalness": 0.12,
+              "roughness": 0.25,
+              "clearcoat": 1,
+              "clearcoatRoughness": 0.2,
+              "envMapIntensity": 0.94
+            },
+            "agedBronze": {
+              "metalness": 0.9,
+              "roughness": 0.34,
+              "envMapIntensity": 1.22
+            }
+          },
+          "frameTiming": {
+            "samples": 161,
+            "averageMs": 6.059627329192548,
+            "minMs": 5.800000000000182,
+            "maxMs": 6.2999999999999545
+          }
+        },
+        "pinSpacerCount": 0,
+        "mainTop": 1065,
+        "phase": "opening"
+      },
+      {
+        "intro": {
+          "progress": 0.49999999999999994,
+          "release": 0,
+          "phase": "progression",
+          "loadState": "ready",
+          "interactionSuppressed": true,
+          "firstFrameReady": true,
+          "scrubReady": true,
+          "fatalFailure": false,
+          "heroLifecycle": "suspended",
+          "handoff": {
+            "progress": 0,
+            "geometry": {
+              "left": 810.953125,
+              "top": 649,
+              "width": 689.046875,
+              "height": 689.046875
+            },
+            "opacity": "0"
+          },
+          "range": {
+            "start": 0,
+            "end": 972.0000000000001
+          },
+          "sequence": {
+            "frameCount": 64,
+            "loaded": 64,
+            "failed": 0,
+            "firstFrameReady": true,
+            "variant": "desktop",
+            "requestedProgress": 0.641025641025641,
+            "requestedIndex": 40,
+            "renderedIndex": 40,
+            "fallbackUsed": false,
+            "contiguousDecodedThrough": 63,
+            "scrubReady": true,
+            "pixelRatio": 1,
+            "canvasWidth": 1680,
+            "canvasHeight": 900
+          }
+        },
+        "hero": {
+          "targetProgress": 0,
+          "currentProgress": 0,
+          "motionEnabled": true,
+          "lifecycleMotionAllowed": false,
+          "lifecycleSettled": false,
+          "heroLifecycle": "suspended",
+          "handoffProgress": 0,
+          "reducedMotion": false,
+          "ringCount": 5,
+          "shellJointCount": 42,
+          "emberCount": 18,
+          "postProcessing": true,
+          "renderPath": "composer",
+          "lowPowerDevice": false,
+          "forceDirectRenderer": false,
+          "forceComposer": false,
+          "pixelRatio": 1,
+          "renderer": {
+            "calls": 50,
+            "triangles": 47635,
+            "points": 180,
+            "lines": 120,
+            "geometries": 16,
+            "textures": 23,
+            "programs": 18
+          },
+          "geometry": {
+            "coreRadius": 0.96,
+            "shellRadius": 1.22,
+            "outerRingRadius": 2.1,
+            "coreOuterDiameterRatio": 0.45714285714285713
+          },
+          "materials": {
+            "core": {
+              "metalness": 0.12,
+              "roughness": 0.25,
+              "clearcoat": 1,
+              "clearcoatRoughness": 0.2,
+              "envMapIntensity": 0.94
+            },
+            "agedBronze": {
+              "metalness": 0.9,
+              "roughness": 0.34,
+              "envMapIntensity": 1.22
+            }
+          },
+          "frameTiming": {
+            "samples": 219,
+            "averageMs": 6.059360730593609,
+            "minMs": 5.799999999999727,
+            "maxMs": 6.300000000000182
+          }
+        },
+        "pinSpacerCount": 0,
+        "mainTop": 579,
+        "phase": "mid-reveal"
+      },
+      {
+        "intro": {
+          "progress": 0.779835390946502,
+          "release": 0,
+          "phase": "progression",
+          "loadState": "ready",
+          "interactionSuppressed": true,
+          "firstFrameReady": true,
+          "scrubReady": true,
+          "fatalFailure": false,
+          "heroLifecycle": "prewarming",
+          "handoff": {
+            "progress": 0,
+            "geometry": {
+              "left": 810.953125,
+              "top": 353.1234130859375,
+              "width": 689.046875,
+              "height": 689.046875
+            },
+            "opacity": "0"
+          },
+          "range": {
+            "start": 0,
+            "end": 972.0000000000001
+          },
+          "sequence": {
+            "frameCount": 64,
+            "loaded": 64,
+            "failed": 0,
+            "firstFrameReady": true,
+            "variant": "desktop",
+            "requestedProgress": 0.9997889627519256,
+            "requestedIndex": 63,
+            "renderedIndex": 63,
+            "fallbackUsed": false,
+            "contiguousDecodedThrough": 63,
+            "scrubReady": true,
+            "pixelRatio": 1,
+            "canvasWidth": 1680,
+            "canvasHeight": 900
+          }
+        },
+        "hero": {
+          "targetProgress": 0,
+          "currentProgress": 0,
+          "motionEnabled": true,
+          "lifecycleMotionAllowed": false,
+          "lifecycleSettled": false,
+          "heroLifecycle": "prewarming",
+          "handoffProgress": 0,
+          "reducedMotion": false,
+          "ringCount": 5,
+          "shellJointCount": 42,
+          "emberCount": 18,
+          "postProcessing": true,
+          "renderPath": "composer",
+          "lowPowerDevice": false,
+          "forceDirectRenderer": false,
+          "forceComposer": false,
+          "pixelRatio": 1,
+          "renderer": {
+            "calls": 50,
+            "triangles": 47635,
+            "points": 180,
+            "lines": 120,
+            "geometries": 16,
+            "textures": 23,
+            "programs": 18
+          },
+          "geometry": {
+            "coreRadius": 0.96,
+            "shellRadius": 1.22,
+            "outerRingRadius": 2.1,
+            "coreOuterDiameterRatio": 0.45714285714285713
+          },
+          "materials": {
+            "core": {
+              "metalness": 0.12,
+              "roughness": 0.25,
+              "clearcoat": 1,
+              "clearcoatRoughness": 0.2,
+              "envMapIntensity": 0.94
+            },
+            "agedBronze": {
+              "metalness": 0.9,
+              "roughness": 0.34,
+              "envMapIntensity": 1.22
+            }
+          },
+          "frameTiming": {
+            "samples": 305,
+            "averageMs": 7.172459016393444,
+            "minMs": 5.799999999999727,
+            "maxMs": 163.5
+          }
+        },
+        "pinSpacerCount": 0,
+        "mainTop": 307,
+        "phase": "final-hold"
+      },
+      {
+        "intro": {
+          "progress": 0.9300411522633744,
+          "release": 0.5936414682142679,
+          "phase": "dom-handoff",
+          "loadState": "ready",
+          "interactionSuppressed": true,
+          "firstFrameReady": true,
+          "scrubReady": true,
+          "fatalFailure": false,
+          "heroLifecycle": "handoff-ready",
+          "handoff": {
+            "progress": 0.5282,
+            "geometry": {
+              "left": 810.953125,
+              "top": 207,
+              "width": 689.046875,
+              "height": 689.046875
+            },
+            "opacity": "1.0000"
+          },
+          "range": {
+            "start": 0,
+            "end": 972.0000000000001
+          },
+          "sequence": {
+            "frameCount": 64,
+            "loaded": 64,
+            "failed": 0,
+            "firstFrameReady": true,
+            "variant": "desktop",
+            "requestedProgress": 1,
+            "requestedIndex": 63,
+            "renderedIndex": 63,
+            "fallbackUsed": false,
+            "contiguousDecodedThrough": 63,
+            "scrubReady": true,
+            "pixelRatio": 1,
+            "canvasWidth": 1680,
+            "canvasHeight": 900
+          }
+        },
+        "hero": {
+          "targetProgress": 0,
+          "currentProgress": 0,
+          "motionEnabled": true,
+          "lifecycleMotionAllowed": false,
+          "lifecycleSettled": false,
+          "heroLifecycle": "handoff-ready",
+          "handoffProgress": 0.5282216862259229,
+          "reducedMotion": false,
+          "ringCount": 5,
+          "shellJointCount": 42,
+          "emberCount": 18,
+          "postProcessing": true,
+          "renderPath": "composer",
+          "lowPowerDevice": false,
+          "forceDirectRenderer": false,
+          "forceComposer": false,
+          "pixelRatio": 1,
+          "renderer": {
+            "calls": 50,
+            "triangles": 47635,
+            "points": 180,
+            "lines": 120,
+            "geometries": 16,
+            "textures": 23,
+            "programs": 18
+          },
+          "geometry": {
+            "coreRadius": 0.96,
+            "shellRadius": 1.22,
+            "outerRingRadius": 2.1,
+            "coreOuterDiameterRatio": 0.45714285714285713
+          },
+          "materials": {
+            "core": {
+              "metalness": 0.12,
+              "roughness": 0.25,
+              "clearcoat": 1,
+              "clearcoatRoughness": 0.2,
+              "envMapIntensity": 0.94
+            },
+            "agedBronze": {
+              "metalness": 0.9,
+              "roughness": 0.34,
+              "envMapIntensity": 1.22
+            }
+          },
+          "frameTiming": {
+            "samples": 382,
+            "averageMs": 6.979842931937174,
+            "minMs": 5.699999999999818,
+            "maxMs": 163.5
+          }
+        },
+        "pinSpacerCount": 0,
+        "mainTop": 161,
+        "phase": "spatial-midpoint"
+      },
+      {
+        "intro": {
+          "progress": 0.9917695473251028,
+          "release": 0.9923339108686117,
+          "phase": "dom-handoff",
+          "loadState": "ready",
+          "interactionSuppressed": true,
+          "firstFrameReady": true,
+          "scrubReady": true,
+          "fatalFailure": false,
+          "heroLifecycle": "handoff-ready",
+          "handoff": {
+            "progress": 0.9983,
+            "geometry": {
+              "left": 810.953125,
+              "top": 147,
+              "width": 689.046875,
+              "height": 689.046875
+            },
+            "opacity": "0.0003"
+          },
+          "range": {
+            "start": 0,
+            "end": 972.0000000000001
+          },
+          "sequence": {
+            "frameCount": 64,
+            "loaded": 64,
+            "failed": 0,
+            "firstFrameReady": true,
+            "variant": "desktop",
+            "requestedProgress": 1,
+            "requestedIndex": 63,
+            "renderedIndex": 63,
+            "fallbackUsed": false,
+            "contiguousDecodedThrough": 63,
+            "scrubReady": true,
+            "pixelRatio": 1,
+            "canvasWidth": 1680,
+            "canvasHeight": 900
+          }
+        },
+        "hero": {
+          "targetProgress": 0,
+          "currentProgress": 0,
+          "motionEnabled": true,
+          "lifecycleMotionAllowed": false,
+          "lifecycleSettled": false,
+          "heroLifecycle": "handoff-ready",
+          "handoffProgress": 0.9983095731170732,
+          "reducedMotion": false,
+          "ringCount": 5,
+          "shellJointCount": 42,
+          "emberCount": 18,
+          "postProcessing": true,
+          "renderPath": "composer",
+          "lowPowerDevice": false,
+          "forceDirectRenderer": false,
+          "forceComposer": false,
+          "pixelRatio": 1,
+          "renderer": {
+            "calls": 50,
+            "triangles": 47635,
+            "points": 180,
+            "lines": 120,
+            "geometries": 16,
+            "textures": 23,
+            "programs": 18
+          },
+          "geometry": {
+            "coreRadius": 0.96,
+            "shellRadius": 1.22,
+            "outerRingRadius": 2.1,
+            "coreOuterDiameterRatio": 0.45714285714285713
+          },
+          "materials": {
+            "core": {
+              "metalness": 0.12,
+              "roughness": 0.25,
+              "clearcoat": 1,
+              "clearcoatRoughness": 0.2,
+              "envMapIntensity": 0.94
+            },
+            "agedBronze": {
+              "metalness": 0.9,
+              "roughness": 0.34,
+              "envMapIntensity": 1.22
+            }
+          },
+          "frameTiming": {
+            "samples": 514,
+            "averageMs": 7.309338521400779,
+            "minMs": 5.600000000000364,
+            "maxMs": 199.89999999999964
+          }
+        },
+        "pinSpacerCount": 0,
+        "mainTop": 101,
+        "phase": "swap"
+      },
+      {
+        "intro": {
+          "progress": 0.9999999999999999,
+          "release": 1,
+          "phase": "dom-handoff",
+          "loadState": "ready",
+          "interactionSuppressed": false,
+          "firstFrameReady": true,
+          "scrubReady": true,
+          "fatalFailure": false,
+          "heroLifecycle": "active",
+          "handoff": {
+            "progress": 1,
+            "geometry": {
+              "left": 810.953125,
+              "top": 139,
+              "width": 689.046875,
+              "height": 689.046875
+            },
+            "opacity": "0.0000"
+          },
+          "range": {
+            "start": 0,
+            "end": 972.0000000000001
+          },
+          "sequence": {
+            "frameCount": 64,
+            "loaded": 64,
+            "failed": 0,
+            "firstFrameReady": true,
+            "variant": "desktop",
+            "requestedProgress": 1,
+            "requestedIndex": 63,
+            "renderedIndex": 63,
+            "fallbackUsed": false,
+            "contiguousDecodedThrough": 63,
+            "scrubReady": true,
+            "pixelRatio": 1,
+            "canvasWidth": 1680,
+            "canvasHeight": 900
+          }
+        },
+        "hero": {
+          "targetProgress": 0,
+          "currentProgress": 0,
+          "motionEnabled": true,
+          "lifecycleMotionAllowed": true,
+          "lifecycleSettled": true,
+          "heroLifecycle": "active",
+          "handoffProgress": 1,
+          "reducedMotion": false,
+          "ringCount": 5,
+          "shellJointCount": 42,
+          "emberCount": 18,
+          "postProcessing": true,
+          "renderPath": "composer",
+          "lowPowerDevice": false,
+          "forceDirectRenderer": false,
+          "forceComposer": false,
+          "pixelRatio": 1,
+          "renderer": {
+            "calls": 50,
+            "triangles": 47635,
+            "points": 180,
+            "lines": 120,
+            "geometries": 16,
+            "textures": 23,
+            "programs": 18
+          },
+          "geometry": {
+            "coreRadius": 0.96,
+            "shellRadius": 1.22,
+            "outerRingRadius": 2.1,
+            "coreOuterDiameterRatio": 0.45714285714285713
+          },
+          "materials": {
+            "core": {
+              "metalness": 0.12,
+              "roughness": 0.25,
+              "clearcoat": 1,
+              "clearcoatRoughness": 0.2,
+              "envMapIntensity": 0.94
+            },
+            "agedBronze": {
+              "metalness": 0.9,
+              "roughness": 0.34,
+              "envMapIntensity": 1.22
+            }
+          },
+          "frameTiming": {
+            "samples": 719,
+            "averageMs": 7.264812239221142,
+            "minMs": 5.600000000000364,
+            "maxMs": 199.89999999999964
+          }
+        },
+        "pinSpacerCount": 0,
+        "mainTop": 93,
+        "phase": "settled"
+      },
+      {
+        "intro": {
+          "progress": 0.49999999999999994,
+          "release": 0,
+          "phase": "progression",
+          "loadState": "ready",
+          "interactionSuppressed": true,
+          "firstFrameReady": true,
+          "scrubReady": true,
+          "fatalFailure": false,
+          "heroLifecycle": "suspended",
+          "handoff": {
+            "progress": 0,
+            "geometry": {
+              "left": 810.953125,
+              "top": 625,
+              "width": 689.046875,
+              "height": 689.046875
+            },
+            "opacity": "0"
+          },
+          "range": {
+            "start": 0,
+            "end": 972.0000000000001
+          },
+          "sequence": {
+            "frameCount": 64,
+            "loaded": 64,
+            "failed": 0,
+            "firstFrameReady": true,
+            "variant": "desktop",
+            "requestedProgress": 0.641025641025641,
+            "requestedIndex": 40,
+            "renderedIndex": 40,
+            "fallbackUsed": false,
+            "contiguousDecodedThrough": 63,
+            "scrubReady": true,
+            "pixelRatio": 1,
+            "canvasWidth": 1680,
+            "canvasHeight": 900
+          }
+        },
+        "hero": {
+          "targetProgress": 0,
+          "currentProgress": 0,
+          "motionEnabled": true,
+          "lifecycleMotionAllowed": false,
+          "lifecycleSettled": false,
+          "heroLifecycle": "suspended",
+          "handoffProgress": 0,
+          "reducedMotion": false,
+          "ringCount": 5,
+          "shellJointCount": 42,
+          "emberCount": 18,
+          "postProcessing": true,
+          "renderPath": "composer",
+          "lowPowerDevice": false,
+          "forceDirectRenderer": false,
+          "forceComposer": false,
+          "pixelRatio": 1,
+          "renderer": {
+            "calls": 50,
+            "triangles": 47635,
+            "points": 180,
+            "lines": 120,
+            "geometries": 16,
+            "textures": 23,
+            "programs": 18
+          },
+          "geometry": {
+            "coreRadius": 0.96,
+            "shellRadius": 1.22,
+            "outerRingRadius": 2.1,
+            "coreOuterDiameterRatio": 0.45714285714285713
+          },
+          "materials": {
+            "core": {
+              "metalness": 0.12,
+              "roughness": 0.25,
+              "clearcoat": 1,
+              "clearcoatRoughness": 0.2,
+              "envMapIntensity": 0.94
+            },
+            "agedBronze": {
+              "metalness": 0.9,
+              "roughness": 0.34,
+              "envMapIntensity": 1.22
+            }
+          },
+          "frameTiming": {
+            "samples": 817,
+            "averageMs": 7.364993880048961,
+            "minMs": 5.600000000000364,
+            "maxMs": 199.89999999999964
+          }
+        },
+        "pinSpacerCount": 0,
+        "mainTop": 579,
+        "phase": "reverse"
+      },
+      {
+        "intro": {
+          "progress": 0,
+          "release": 0,
+          "phase": "opening",
+          "loadState": "ready",
+          "interactionSuppressed": true,
+          "firstFrameReady": true,
+          "scrubReady": true,
+          "fatalFailure": false,
+          "heroLifecycle": "suspended",
+          "handoff": {
+            "progress": 0,
+            "geometry": {
+              "left": 810.953125,
+              "top": 1111,
+              "width": 689.046875,
+              "height": 689.046875
+            },
+            "opacity": "0"
+          },
+          "range": {
+            "start": 0,
+            "end": 972.0000000000001
+          },
+          "sequence": {
+            "frameCount": 64,
+            "loaded": 64,
+            "failed": 0,
+            "firstFrameReady": true,
+            "variant": "desktop",
+            "requestedProgress": 0,
+            "requestedIndex": 0,
+            "renderedIndex": 0,
+            "fallbackUsed": false,
+            "contiguousDecodedThrough": 63,
+            "scrubReady": true,
+            "pixelRatio": 1,
+            "canvasWidth": 1680,
+            "canvasHeight": 900
+          }
+        },
+        "hero": {
+          "targetProgress": 0,
+          "currentProgress": 0,
+          "motionEnabled": true,
+          "lifecycleMotionAllowed": false,
+          "lifecycleSettled": false,
+          "heroLifecycle": "suspended",
+          "handoffProgress": 0,
+          "reducedMotion": false,
+          "ringCount": 5,
+          "shellJointCount": 42,
+          "emberCount": 18,
+          "postProcessing": true,
+          "renderPath": "composer",
+          "lowPowerDevice": false,
+          "forceDirectRenderer": false,
+          "forceComposer": false,
+          "pixelRatio": 1,
+          "renderer": {
+            "calls": 50,
+            "triangles": 47635,
+            "points": 180,
+            "lines": 120,
+            "geometries": 16,
+            "textures": 23,
+            "programs": 18
+          },
+          "geometry": {
+            "coreRadius": 0.96,
+            "shellRadius": 1.22,
+            "outerRingRadius": 2.1,
+            "coreOuterDiameterRatio": 0.45714285714285713
+          },
+          "materials": {
+            "core": {
+              "metalness": 0.12,
+              "roughness": 0.25,
+              "clearcoat": 1,
+              "clearcoatRoughness": 0.2,
+              "envMapIntensity": 0.94
+            },
+            "agedBronze": {
+              "metalness": 0.9,
+              "roughness": 0.34,
+              "envMapIntensity": 1.22
+            }
+          },
+          "frameTiming": {
+            "samples": 917,
+            "averageMs": 7.2623773173391495,
+            "minMs": 5.600000000000364,
+            "maxMs": 199.89999999999964
+          }
+        },
+        "pinSpacerCount": 0,
+        "mainTop": 1065,
+        "phase": "rewound"
+      }
+    ]
+  },
+  {
+    "viewport": {
+      "name": "1366x768",
+      "width": 1366,
+      "height": 768
+    },
+    "errors": [],
+    "samples": [
+      {
+        "intro": {
+          "progress": 0,
+          "release": 0,
+          "phase": "opening",
+          "loadState": "ready",
+          "interactionSuppressed": true,
+          "firstFrameReady": true,
+          "scrubReady": true,
+          "fatalFailure": false,
+          "heroLifecycle": "suspended",
+          "handoff": {
+            "progress": 0,
+            "geometry": {
+              "left": 647.140625,
+              "top": 969.6181030273438,
+              "width": 694.859375,
+              "height": 694.8594360351562
+            },
+            "opacity": "0"
+          },
+          "range": {
+            "start": 0,
+            "end": 829.44
+          },
+          "sequence": {
+            "frameCount": 64,
+            "loaded": 64,
+            "failed": 0,
+            "firstFrameReady": true,
+            "variant": "desktop",
+            "requestedProgress": 0,
+            "requestedIndex": 0,
+            "renderedIndex": 0,
+            "fallbackUsed": false,
+            "contiguousDecodedThrough": 63,
+            "scrubReady": true,
+            "pixelRatio": 1,
+            "canvasWidth": 1366,
+            "canvasHeight": 768
+          }
+        },
+        "hero": {
+          "targetProgress": 0,
+          "currentProgress": 0,
+          "motionEnabled": true,
+          "lifecycleMotionAllowed": false,
+          "lifecycleSettled": false,
+          "heroLifecycle": "suspended",
+          "handoffProgress": 0,
+          "reducedMotion": false,
+          "ringCount": 5,
+          "shellJointCount": 42,
+          "emberCount": 18,
+          "postProcessing": true,
+          "renderPath": "composer",
+          "lowPowerDevice": false,
+          "forceDirectRenderer": false,
+          "forceComposer": false,
+          "pixelRatio": 1,
+          "renderer": {
+            "calls": 50,
+            "triangles": 47635,
+            "points": 180,
+            "lines": 120,
+            "geometries": 16,
+            "textures": 17,
+            "programs": 18
+          },
+          "geometry": {
+            "coreRadius": 0.96,
+            "shellRadius": 1.22,
+            "outerRingRadius": 2.1,
+            "coreOuterDiameterRatio": 0.45714285714285713
+          },
+          "materials": {
+            "core": {
+              "metalness": 0.12,
+              "roughness": 0.25,
+              "clearcoat": 1,
+              "clearcoatRoughness": 0.2,
+              "envMapIntensity": 0.94
+            },
+            "agedBronze": {
+              "metalness": 0.9,
+              "roughness": 0.34,
+              "envMapIntensity": 1.22
+            }
+          },
+          "frameTiming": {
+            "samples": 82,
+            "averageMs": 6.057317073170729,
+            "minMs": 5.699999999999818,
+            "maxMs": 6.5
+          }
+        },
+        "pinSpacerCount": 0,
+        "mainTop": 922,
+        "phase": "opening"
+      },
+      {
+        "intro": {
+          "progress": 0.5003375771604938,
+          "release": 0,
+          "phase": "progression",
+          "loadState": "ready",
+          "interactionSuppressed": true,
+          "firstFrameReady": true,
+          "scrubReady": true,
+          "fatalFailure": false,
+          "heroLifecycle": "suspended",
+          "handoff": {
+            "progress": 0,
+            "geometry": {
+              "left": 647.140625,
+              "top": 577,
+              "width": 694.859375,
+              "height": 694.859375
+            },
+            "opacity": "0"
+          },
+          "range": {
+            "start": 0,
+            "end": 829.44
+          },
+          "sequence": {
+            "frameCount": 64,
+            "loaded": 64,
+            "failed": 0,
+            "firstFrameReady": true,
+            "variant": "desktop",
+            "requestedProgress": 0.6414584322570432,
+            "requestedIndex": 40,
+            "renderedIndex": 40,
+            "fallbackUsed": false,
+            "contiguousDecodedThrough": 63,
+            "scrubReady": true,
+            "pixelRatio": 1,
+            "canvasWidth": 1366,
+            "canvasHeight": 768
+          }
+        },
+        "hero": {
+          "targetProgress": 0,
+          "currentProgress": 0,
+          "motionEnabled": true,
+          "lifecycleMotionAllowed": false,
+          "lifecycleSettled": false,
+          "heroLifecycle": "suspended",
+          "handoffProgress": 0,
+          "reducedMotion": false,
+          "ringCount": 5,
+          "shellJointCount": 42,
+          "emberCount": 18,
+          "postProcessing": true,
+          "renderPath": "composer",
+          "lowPowerDevice": false,
+          "forceDirectRenderer": false,
+          "forceComposer": false,
+          "pixelRatio": 1,
+          "renderer": {
+            "calls": 50,
+            "triangles": 47635,
+            "points": 180,
+            "lines": 120,
+            "geometries": 16,
+            "textures": 23,
+            "programs": 18
+          },
+          "geometry": {
+            "coreRadius": 0.96,
+            "shellRadius": 1.22,
+            "outerRingRadius": 2.1,
+            "coreOuterDiameterRatio": 0.45714285714285713
+          },
+          "materials": {
+            "core": {
+              "metalness": 0.12,
+              "roughness": 0.25,
+              "clearcoat": 1,
+              "clearcoatRoughness": 0.2,
+              "envMapIntensity": 0.94
+            },
+            "agedBronze": {
+              "metalness": 0.9,
+              "roughness": 0.34,
+              "envMapIntensity": 1.22
+            }
+          },
+          "frameTiming": {
+            "samples": 681,
+            "averageMs": 6.228487518355359,
+            "minMs": 5.299999999999727,
+            "maxMs": 48.5
+          }
+        },
+        "pinSpacerCount": 0,
+        "mainTop": 507,
+        "phase": "mid-reveal"
+      },
+      {
+        "intro": {
+          "progress": 0.7800443672839505,
+          "release": 0,
+          "phase": "final-clean-hold",
+          "loadState": "ready",
+          "interactionSuppressed": true,
+          "firstFrameReady": true,
+          "scrubReady": true,
+          "fatalFailure": false,
+          "heroLifecycle": "prewarming",
+          "handoff": {
+            "progress": 0,
+            "geometry": {
+              "left": 647.140625,
+              "top": 323.1777648925781,
+              "width": 694.859375,
+              "height": 694.859375
+            },
+            "opacity": "0"
+          },
+          "range": {
+            "start": 0,
+            "end": 829.44
+          },
+          "sequence": {
+            "frameCount": 64,
+            "loaded": 64,
+            "failed": 0,
+            "firstFrameReady": true,
+            "variant": "desktop",
+            "requestedProgress": 1,
+            "requestedIndex": 63,
+            "renderedIndex": 63,
+            "fallbackUsed": false,
+            "contiguousDecodedThrough": 63,
+            "scrubReady": true,
+            "pixelRatio": 1,
+            "canvasWidth": 1366,
+            "canvasHeight": 768
+          }
+        },
+        "hero": {
+          "targetProgress": 0,
+          "currentProgress": 0,
+          "motionEnabled": true,
+          "lifecycleMotionAllowed": false,
+          "lifecycleSettled": false,
+          "heroLifecycle": "prewarming",
+          "handoffProgress": 0,
+          "reducedMotion": false,
+          "ringCount": 5,
+          "shellJointCount": 42,
+          "emberCount": 18,
+          "postProcessing": true,
+          "renderPath": "composer",
+          "lowPowerDevice": false,
+          "forceDirectRenderer": false,
+          "forceComposer": false,
+          "pixelRatio": 1,
+          "renderer": {
+            "calls": 50,
+            "triangles": 47635,
+            "points": 180,
+            "lines": 120,
+            "geometries": 16,
+            "textures": 23,
+            "programs": 18
+          },
+          "geometry": {
+            "coreRadius": 0.96,
+            "shellRadius": 1.22,
+            "outerRingRadius": 2.1,
+            "coreOuterDiameterRatio": 0.45714285714285713
+          },
+          "materials": {
+            "core": {
+              "metalness": 0.12,
+              "roughness": 0.25,
+              "clearcoat": 1,
+              "clearcoatRoughness": 0.2,
+              "envMapIntensity": 0.94
+            },
+            "agedBronze": {
+              "metalness": 0.9,
+              "roughness": 0.34,
+              "envMapIntensity": 1.22
+            }
+          },
+          "frameTiming": {
+            "samples": 749,
+            "averageMs": 6.3750333778371155,
+            "minMs": 5.299999999999727,
+            "maxMs": 78.80000000000018
+          }
+        },
+        "pinSpacerCount": 0,
+        "mainTop": 275,
+        "phase": "final-hold"
+      },
+      {
+        "intro": {
+          "progress": 0.929542824074074,
+          "release": 0.5890396485641807,
+          "phase": "dom-handoff",
+          "loadState": "ready",
+          "interactionSuppressed": true,
+          "firstFrameReady": true,
+          "scrubReady": true,
+          "fatalFailure": false,
+          "heroLifecycle": "handoff-ready",
+          "handoff": {
+            "progress": 0.5227,
+            "geometry": {
+              "left": 647.140625,
+              "top": 197,
+              "width": 694.859375,
+              "height": 694.859375
+            },
+            "opacity": "1.0000"
+          },
+          "range": {
+            "start": 0,
+            "end": 829.44
+          },
+          "sequence": {
+            "frameCount": 64,
+            "loaded": 64,
+            "failed": 0,
+            "firstFrameReady": true,
+            "variant": "desktop",
+            "requestedProgress": 1,
+            "requestedIndex": 63,
+            "renderedIndex": 63,
+            "fallbackUsed": false,
+            "contiguousDecodedThrough": 63,
+            "scrubReady": true,
+            "pixelRatio": 1,
+            "canvasWidth": 1366,
+            "canvasHeight": 768
+          }
+        },
+        "hero": {
+          "targetProgress": 0,
+          "currentProgress": 0,
+          "motionEnabled": true,
+          "lifecycleMotionAllowed": false,
+          "lifecycleSettled": false,
+          "heroLifecycle": "handoff-ready",
+          "handoffProgress": 0.5226911154532675,
+          "reducedMotion": false,
+          "ringCount": 5,
+          "shellJointCount": 42,
+          "emberCount": 18,
+          "postProcessing": true,
+          "renderPath": "composer",
+          "lowPowerDevice": false,
+          "forceDirectRenderer": false,
+          "forceComposer": false,
+          "pixelRatio": 1,
+          "renderer": {
+            "calls": 50,
+            "triangles": 47635,
+            "points": 180,
+            "lines": 120,
+            "geometries": 16,
+            "textures": 23,
+            "programs": 18
+          },
+          "geometry": {
+            "coreRadius": 0.96,
+            "shellRadius": 1.22,
+            "outerRingRadius": 2.1,
+            "coreOuterDiameterRatio": 0.45714285714285713
+          },
+          "materials": {
+            "core": {
+              "metalness": 0.12,
+              "roughness": 0.25,
+              "clearcoat": 1,
+              "clearcoatRoughness": 0.2,
+              "envMapIntensity": 0.94
+            },
+            "agedBronze": {
+              "metalness": 0.9,
+              "roughness": 0.34,
+              "envMapIntensity": 1.22
+            }
+          },
+          "frameTiming": {
+            "samples": 814,
+            "averageMs": 6.3649877149877145,
+            "minMs": 5.299999999999727,
+            "maxMs": 78.80000000000018
+          }
+        },
+        "pinSpacerCount": 0,
+        "mainTop": 151,
+        "phase": "spatial-midpoint"
+      },
+      {
+        "intro": {
+          "progress": 0.9922357253086419,
+          "release": 0.9931640187893305,
+          "phase": "dom-handoff",
+          "loadState": "ready",
+          "interactionSuppressed": true,
+          "firstFrameReady": true,
+          "scrubReady": true,
+          "fatalFailure": false,
+          "heroLifecycle": "handoff-ready",
+          "handoff": {
+            "progress": 0.9988,
+            "geometry": {
+              "left": 647.140625,
+              "top": 145,
+              "width": 694.859375,
+              "height": 694.859375
+            },
+            "opacity": "0.0002"
+          },
+          "range": {
+            "start": 0,
+            "end": 829.44
+          },
+          "sequence": {
+            "frameCount": 64,
+            "loaded": 64,
+            "failed": 0,
+            "firstFrameReady": true,
+            "variant": "desktop",
+            "requestedProgress": 1,
+            "requestedIndex": 63,
+            "renderedIndex": 63,
+            "fallbackUsed": false,
+            "contiguousDecodedThrough": 63,
+            "scrubReady": true,
+            "pixelRatio": 1,
+            "canvasWidth": 1366,
+            "canvasHeight": 768
+          }
+        },
+        "hero": {
+          "targetProgress": 0,
+          "currentProgress": 0,
+          "motionEnabled": true,
+          "lifecycleMotionAllowed": false,
+          "lifecycleSettled": false,
+          "heroLifecycle": "handoff-ready",
+          "handoffProgress": 0.9987593569807572,
+          "reducedMotion": false,
+          "ringCount": 5,
+          "shellJointCount": 42,
+          "emberCount": 18,
+          "postProcessing": true,
+          "renderPath": "composer",
+          "lowPowerDevice": false,
+          "forceDirectRenderer": false,
+          "forceComposer": false,
+          "pixelRatio": 1,
+          "renderer": {
+            "calls": 50,
+            "triangles": 47635,
+            "points": 180,
+            "lines": 120,
+            "geometries": 16,
+            "textures": 23,
+            "programs": 18
+          },
+          "geometry": {
+            "coreRadius": 0.96,
+            "shellRadius": 1.22,
+            "outerRingRadius": 2.1,
+            "coreOuterDiameterRatio": 0.45714285714285713
+          },
+          "materials": {
+            "core": {
+              "metalness": 0.12,
+              "roughness": 0.25,
+              "clearcoat": 1,
+              "clearcoatRoughness": 0.2,
+              "envMapIntensity": 0.94
+            },
+            "agedBronze": {
+              "metalness": 0.9,
+              "roughness": 0.34,
+              "envMapIntensity": 1.22
+            }
+          },
+          "frameTiming": {
+            "samples": 892,
+            "averageMs": 6.453587443946188,
+            "minMs": 5.299999999999727,
+            "maxMs": 78.80000000000018
+          }
+        },
+        "pinSpacerCount": 0,
+        "mainTop": 99,
+        "phase": "swap"
+      },
+      {
+        "intro": {
+          "progress": 0.9994695216049382,
+          "release": 0.9999670954696666,
+          "phase": "dom-handoff",
+          "loadState": "ready",
+          "interactionSuppressed": false,
+          "firstFrameReady": true,
+          "scrubReady": true,
+          "fatalFailure": false,
+          "heroLifecycle": "active",
+          "handoff": {
+            "progress": 1,
+            "geometry": {
+              "left": 647.140625,
+              "top": 139,
+              "width": 694.859375,
+              "height": 694.859375
+            },
+            "opacity": "0.0000"
+          },
+          "range": {
+            "start": 0,
+            "end": 829.44
+          },
+          "sequence": {
+            "frameCount": 64,
+            "loaded": 64,
+            "failed": 0,
+            "firstFrameReady": true,
+            "variant": "desktop",
+            "requestedProgress": 1,
+            "requestedIndex": 63,
+            "renderedIndex": 63,
+            "fallbackUsed": false,
+            "contiguousDecodedThrough": 63,
+            "scrubReady": true,
+            "pixelRatio": 1,
+            "canvasWidth": 1366,
+            "canvasHeight": 768
+          }
+        },
+        "hero": {
+          "targetProgress": 0,
+          "currentProgress": 0,
+          "motionEnabled": true,
+          "lifecycleMotionAllowed": true,
+          "lifecycleSettled": true,
+          "heroLifecycle": "active",
+          "handoffProgress": 1,
+          "reducedMotion": false,
+          "ringCount": 5,
+          "shellJointCount": 42,
+          "emberCount": 18,
+          "postProcessing": true,
+          "renderPath": "composer",
+          "lowPowerDevice": false,
+          "forceDirectRenderer": false,
+          "forceComposer": false,
+          "pixelRatio": 1,
+          "renderer": {
+            "calls": 50,
+            "triangles": 47635,
+            "points": 180,
+            "lines": 120,
+            "geometries": 16,
+            "textures": 23,
+            "programs": 18
+          },
+          "geometry": {
+            "coreRadius": 0.96,
+            "shellRadius": 1.22,
+            "outerRingRadius": 2.1,
+            "coreOuterDiameterRatio": 0.45714285714285713
+          },
+          "materials": {
+            "core": {
+              "metalness": 0.12,
+              "roughness": 0.25,
+              "clearcoat": 1,
+              "clearcoatRoughness": 0.2,
+              "envMapIntensity": 0.94
+            },
+            "agedBronze": {
+              "metalness": 0.9,
+              "roughness": 0.34,
+              "envMapIntensity": 1.22
+            }
+          },
+          "frameTiming": {
+            "samples": 1062,
+            "averageMs": 6.664500941619585,
+            "minMs": 5.299999999999727,
+            "maxMs": 230.39999999999964
+          }
+        },
+        "pinSpacerCount": 0,
+        "mainTop": 93,
+        "phase": "settled"
+      },
+      {
+        "intro": {
+          "progress": 0.5003375771604938,
+          "release": 0,
+          "phase": "progression",
+          "loadState": "ready",
+          "interactionSuppressed": true,
+          "firstFrameReady": true,
+          "scrubReady": true,
+          "fatalFailure": false,
+          "heroLifecycle": "suspended",
+          "handoff": {
+            "progress": 0,
+            "geometry": {
+              "left": 647.140625,
+              "top": 553,
+              "width": 694.859375,
+              "height": 694.859375
+            },
+            "opacity": "0"
+          },
+          "range": {
+            "start": 0,
+            "end": 829.44
+          },
+          "sequence": {
+            "frameCount": 64,
+            "loaded": 64,
+            "failed": 0,
+            "firstFrameReady": true,
+            "variant": "desktop",
+            "requestedProgress": 0.6414584322570432,
+            "requestedIndex": 40,
+            "renderedIndex": 40,
+            "fallbackUsed": false,
+            "contiguousDecodedThrough": 63,
+            "scrubReady": true,
+            "pixelRatio": 1,
+            "canvasWidth": 1366,
+            "canvasHeight": 768
+          }
+        },
+        "hero": {
+          "targetProgress": 0,
+          "currentProgress": 0,
+          "motionEnabled": true,
+          "lifecycleMotionAllowed": false,
+          "lifecycleSettled": false,
+          "heroLifecycle": "suspended",
+          "handoffProgress": 0,
+          "reducedMotion": false,
+          "ringCount": 5,
+          "shellJointCount": 42,
+          "emberCount": 18,
+          "postProcessing": true,
+          "renderPath": "composer",
+          "lowPowerDevice": false,
+          "forceDirectRenderer": false,
+          "forceComposer": false,
+          "pixelRatio": 1,
+          "renderer": {
+            "calls": 50,
+            "triangles": 47635,
+            "points": 180,
+            "lines": 120,
+            "geometries": 16,
+            "textures": 23,
+            "programs": 18
+          },
+          "geometry": {
+            "coreRadius": 0.96,
+            "shellRadius": 1.22,
+            "outerRingRadius": 2.1,
+            "coreOuterDiameterRatio": 0.45714285714285713
+          },
+          "materials": {
+            "core": {
+              "metalness": 0.12,
+              "roughness": 0.25,
+              "clearcoat": 1,
+              "clearcoatRoughness": 0.2,
+              "envMapIntensity": 0.94
+            },
+            "agedBronze": {
+              "metalness": 0.9,
+              "roughness": 0.34,
+              "envMapIntensity": 1.22
+            }
+          },
+          "frameTiming": {
+            "samples": 1147,
+            "averageMs": 6.677942458587619,
+            "minMs": 5.100000000000364,
+            "maxMs": 230.39999999999964
+          }
+        },
+        "pinSpacerCount": 0,
+        "mainTop": 507,
+        "phase": "reverse"
+      },
+      {
+        "intro": {
+          "progress": 0,
+          "release": 0,
+          "phase": "opening",
+          "loadState": "ready",
+          "interactionSuppressed": true,
+          "firstFrameReady": true,
+          "scrubReady": true,
+          "fatalFailure": false,
+          "heroLifecycle": "suspended",
+          "handoff": {
+            "progress": 0,
+            "geometry": {
+              "left": 647.140625,
+              "top": 968,
+              "width": 694.859375,
+              "height": 694.859375
+            },
+            "opacity": "0"
+          },
+          "range": {
+            "start": 0,
+            "end": 829.44
+          },
+          "sequence": {
+            "frameCount": 64,
+            "loaded": 64,
+            "failed": 0,
+            "firstFrameReady": true,
+            "variant": "desktop",
+            "requestedProgress": 0,
+            "requestedIndex": 0,
+            "renderedIndex": 0,
+            "fallbackUsed": false,
+            "contiguousDecodedThrough": 63,
+            "scrubReady": true,
+            "pixelRatio": 1,
+            "canvasWidth": 1366,
+            "canvasHeight": 768
+          }
+        },
+        "hero": {
+          "targetProgress": 0,
+          "currentProgress": 0,
+          "motionEnabled": true,
+          "lifecycleMotionAllowed": false,
+          "lifecycleSettled": false,
+          "heroLifecycle": "suspended",
+          "handoffProgress": 0,
+          "reducedMotion": false,
+          "ringCount": 5,
+          "shellJointCount": 42,
+          "emberCount": 18,
+          "postProcessing": true,
+          "renderPath": "composer",
+          "lowPowerDevice": false,
+          "forceDirectRenderer": false,
+          "forceComposer": false,
+          "pixelRatio": 1,
+          "renderer": {
+            "calls": 50,
+            "triangles": 47635,
+            "points": 180,
+            "lines": 120,
+            "geometries": 16,
+            "textures": 23,
+            "programs": 18
+          },
+          "geometry": {
+            "coreRadius": 0.96,
+            "shellRadius": 1.22,
+            "outerRingRadius": 2.1,
+            "coreOuterDiameterRatio": 0.45714285714285713
+          },
+          "materials": {
+            "core": {
+              "metalness": 0.12,
+              "roughness": 0.25,
+              "clearcoat": 1,
+              "clearcoatRoughness": 0.2,
+              "envMapIntensity": 0.94
+            },
+            "agedBronze": {
+              "metalness": 0.9,
+              "roughness": 0.34,
+              "envMapIntensity": 1.22
+            }
+          },
+          "frameTiming": {
+            "samples": 1227,
+            "averageMs": 6.637408312958435,
+            "minMs": 5.100000000000364,
+            "maxMs": 230.39999999999964
+          }
+        },
+        "pinSpacerCount": 0,
+        "mainTop": 922,
+        "phase": "rewound"
+      }
+    ]
+  },
+  {
+    "viewport": {
+      "name": "390x844",
+      "width": 390,
+      "height": 844
+    },
+    "errors": [],
+    "samples": [
+      {
+        "intro": {
+          "progress": 0,
+          "release": 0,
+          "phase": "opening",
+          "loadState": "ready",
+          "interactionSuppressed": true,
+          "firstFrameReady": true,
+          "scrubReady": true,
+          "fatalFailure": false,
+          "heroLifecycle": "suspended",
+          "handoff": {
+            "progress": 0,
+            "geometry": {
+              "left": 23.40625,
+              "top": 929,
+              "width": 343.1875,
+              "height": 343.1875
+            },
+            "opacity": "0"
+          },
+          "range": {
+            "start": 0,
+            "end": 776.48
+          },
+          "sequence": {
+            "frameCount": 64,
+            "loaded": 64,
+            "failed": 0,
+            "firstFrameReady": true,
+            "variant": "mobile",
+            "requestedProgress": 0,
+            "requestedIndex": 0,
+            "renderedIndex": 0,
+            "fallbackUsed": false,
+            "contiguousDecodedThrough": 63,
+            "scrubReady": true,
+            "pixelRatio": 1,
+            "canvasWidth": 390,
+            "canvasHeight": 844
+          }
+        },
+        "hero": {
+          "targetProgress": 0,
+          "currentProgress": 0,
+          "motionEnabled": true,
+          "lifecycleMotionAllowed": false,
+          "lifecycleSettled": false,
+          "heroLifecycle": "suspended",
+          "handoffProgress": 0,
+          "reducedMotion": false,
+          "ringCount": 5,
+          "shellJointCount": 42,
+          "emberCount": 9,
+          "postProcessing": false,
+          "renderPath": "direct",
+          "lowPowerDevice": false,
+          "forceDirectRenderer": false,
+          "forceComposer": false,
+          "pixelRatio": 1,
+          "renderer": {
+            "calls": 24,
+            "triangles": 40432,
+            "points": 95,
+            "lines": 120,
+            "geometries": 15,
+            "textures": 6,
+            "programs": 6
+          },
+          "geometry": {
+            "coreRadius": 0.96,
+            "shellRadius": 1.22,
+            "outerRingRadius": 2.1,
+            "coreOuterDiameterRatio": 0.45714285714285713
+          },
+          "materials": {
+            "core": {
+              "metalness": 0.12,
+              "roughness": 0.25,
+              "clearcoat": 1,
+              "clearcoatRoughness": 0.2,
+              "envMapIntensity": 0.94
+            },
+            "agedBronze": {
+              "metalness": 0.9,
+              "roughness": 0.34,
+              "envMapIntensity": 1.22
+            }
+          },
+          "frameTiming": {
+            "samples": 89,
+            "averageMs": 7.629213483146067,
+            "minMs": 4.800000000000182,
+            "maxMs": 109.10000000000036
+          }
+        },
+        "pinSpacerCount": 0,
+        "mainTop": 853,
+        "phase": "opening"
+      },
+      {
+        "intro": {
+          "progress": 0.4996909128374201,
+          "release": 0,
+          "phase": "progression",
+          "loadState": "ready",
+          "interactionSuppressed": true,
+          "firstFrameReady": true,
+          "scrubReady": true,
+          "fatalFailure": false,
+          "heroLifecycle": "suspended",
+          "handoff": {
+            "progress": 0,
+            "geometry": {
+              "left": 23.40625,
+              "top": 565,
+              "width": 343.1875,
+              "height": 343.1875
+            },
+            "opacity": "0"
+          },
+          "range": {
+            "start": 0,
+            "end": 776.48
+          },
+          "sequence": {
+            "frameCount": 64,
+            "loaded": 64,
+            "failed": 0,
+            "firstFrameReady": true,
+            "variant": "mobile",
+            "requestedProgress": 0.6406293754325899,
+            "requestedIndex": 40,
+            "renderedIndex": 40,
+            "fallbackUsed": false,
+            "contiguousDecodedThrough": 63,
+            "scrubReady": true,
+            "pixelRatio": 1,
+            "canvasWidth": 390,
+            "canvasHeight": 844
+          }
+        },
+        "hero": {
+          "targetProgress": 0,
+          "currentProgress": 0,
+          "motionEnabled": true,
+          "lifecycleMotionAllowed": false,
+          "lifecycleSettled": false,
+          "heroLifecycle": "suspended",
+          "handoffProgress": 0,
+          "reducedMotion": false,
+          "ringCount": 5,
+          "shellJointCount": 42,
+          "emberCount": 9,
+          "postProcessing": false,
+          "renderPath": "direct",
+          "lowPowerDevice": false,
+          "forceDirectRenderer": false,
+          "forceComposer": false,
+          "pixelRatio": 1,
+          "renderer": {
+            "calls": 24,
+            "triangles": 40432,
+            "points": 95,
+            "lines": 120,
+            "geometries": 15,
+            "textures": 6,
+            "programs": 6
+          },
+          "geometry": {
+            "coreRadius": 0.96,
+            "shellRadius": 1.22,
+            "outerRingRadius": 2.1,
+            "coreOuterDiameterRatio": 0.45714285714285713
+          },
+          "materials": {
+            "core": {
+              "metalness": 0.12,
+              "roughness": 0.25,
+              "clearcoat": 1,
+              "clearcoatRoughness": 0.2,
+              "envMapIntensity": 0.94
+            },
+            "agedBronze": {
+              "metalness": 0.9,
+              "roughness": 0.34,
+              "envMapIntensity": 1.22
+            }
+          },
+          "frameTiming": {
+            "samples": 115,
+            "averageMs": 7.271304347826085,
+            "minMs": 4.800000000000182,
+            "maxMs": 109.10000000000036
+          }
+        },
+        "pinSpacerCount": 0,
+        "mainTop": 465,
+        "phase": "mid-reveal"
+      },
+      {
+        "intro": {
+          "progress": 0.780445085514115,
+          "release": 0,
+          "phase": "final-clean-hold",
+          "loadState": "ready",
+          "interactionSuppressed": true,
+          "firstFrameReady": true,
+          "scrubReady": true,
+          "fatalFailure": false,
+          "heroLifecycle": "prewarming",
+          "handoff": {
+            "progress": 0,
+            "geometry": {
+              "left": 23.40625,
+              "top": 326.9958190917969,
+              "width": 343.1875,
+              "height": 343.1875305175781
+            },
+            "opacity": "0"
+          },
+          "range": {
+            "start": 0,
+            "end": 776.48
+          },
+          "sequence": {
+            "frameCount": 64,
+            "loaded": 64,
+            "failed": 0,
+            "firstFrameReady": true,
+            "variant": "mobile",
+            "requestedProgress": 1,
+            "requestedIndex": 63,
+            "renderedIndex": 63,
+            "fallbackUsed": false,
+            "contiguousDecodedThrough": 63,
+            "scrubReady": true,
+            "pixelRatio": 1,
+            "canvasWidth": 390,
+            "canvasHeight": 844
+          }
+        },
+        "hero": {
+          "targetProgress": 0,
+          "currentProgress": 0,
+          "motionEnabled": true,
+          "lifecycleMotionAllowed": false,
+          "lifecycleSettled": false,
+          "heroLifecycle": "prewarming",
+          "handoffProgress": 0,
+          "reducedMotion": false,
+          "ringCount": 5,
+          "shellJointCount": 42,
+          "emberCount": 9,
+          "postProcessing": false,
+          "renderPath": "direct",
+          "lowPowerDevice": false,
+          "forceDirectRenderer": false,
+          "forceComposer": false,
+          "pixelRatio": 1,
+          "renderer": {
+            "calls": 24,
+            "triangles": 40432,
+            "points": 95,
+            "lines": 120,
+            "geometries": 15,
+            "textures": 6,
+            "programs": 6
+          },
+          "geometry": {
+            "coreRadius": 0.96,
+            "shellRadius": 1.22,
+            "outerRingRadius": 2.1,
+            "coreOuterDiameterRatio": 0.45714285714285713
+          },
+          "materials": {
+            "core": {
+              "metalness": 0.12,
+              "roughness": 0.25,
+              "clearcoat": 1,
+              "clearcoatRoughness": 0.2,
+              "envMapIntensity": 0.94
+            },
+            "agedBronze": {
+              "metalness": 0.9,
+              "roughness": 0.34,
+              "envMapIntensity": 1.22
+            }
+          },
+          "frameTiming": {
+            "samples": 140,
+            "averageMs": 9.219999999999995,
+            "minMs": 4.800000000000182,
+            "maxMs": 145.4999999999991
+          }
+        },
+        "pinSpacerCount": 0,
+        "mainTop": 247,
+        "phase": "final-hold"
+      },
+      {
+        "intro": {
+          "progress": 0.9298372140943746,
+          "release": 0.5917590604100843,
+          "phase": "dom-handoff",
+          "loadState": "ready",
+          "interactionSuppressed": true,
+          "firstFrameReady": true,
+          "scrubReady": true,
+          "fatalFailure": false,
+          "heroLifecycle": "handoff-ready",
+          "handoff": {
+            "progress": 0.526,
+            "geometry": {
+              "left": 23.40625,
+              "top": 207.87374877929688,
+              "width": 343.1875,
+              "height": 343.1875305175781
+            },
+            "opacity": "1.0000"
+          },
+          "range": {
+            "start": 0,
+            "end": 776.48
+          },
+          "sequence": {
+            "frameCount": 64,
+            "loaded": 64,
+            "failed": 0,
+            "firstFrameReady": true,
+            "variant": "mobile",
+            "requestedProgress": 1,
+            "requestedIndex": 63,
+            "renderedIndex": 63,
+            "fallbackUsed": false,
+            "contiguousDecodedThrough": 63,
+            "scrubReady": true,
+            "pixelRatio": 1,
+            "canvasWidth": 390,
+            "canvasHeight": 844
+          }
+        },
+        "hero": {
+          "targetProgress": 0,
+          "currentProgress": 0,
+          "motionEnabled": true,
+          "lifecycleMotionAllowed": false,
+          "lifecycleSettled": false,
+          "heroLifecycle": "handoff-ready",
+          "handoffProgress": 0.5259586672418106,
+          "reducedMotion": false,
+          "ringCount": 5,
+          "shellJointCount": 42,
+          "emberCount": 9,
+          "postProcessing": false,
+          "renderPath": "direct",
+          "lowPowerDevice": false,
+          "forceDirectRenderer": false,
+          "forceComposer": false,
+          "pixelRatio": 1,
+          "renderer": {
+            "calls": 24,
+            "triangles": 40432,
+            "points": 95,
+            "lines": 120,
+            "geometries": 15,
+            "textures": 6,
+            "programs": 6
+          },
+          "geometry": {
+            "coreRadius": 0.96,
+            "shellRadius": 1.22,
+            "outerRingRadius": 2.1,
+            "coreOuterDiameterRatio": 0.45714285714285713
+          },
+          "materials": {
+            "core": {
+              "metalness": 0.12,
+              "roughness": 0.25,
+              "clearcoat": 1,
+              "clearcoatRoughness": 0.2,
+              "envMapIntensity": 0.94
+            },
+            "agedBronze": {
+              "metalness": 0.9,
+              "roughness": 0.34,
+              "envMapIntensity": 1.22
+            }
+          },
+          "frameTiming": {
+            "samples": 165,
+            "averageMs": 8.887878787878789,
+            "minMs": 4.800000000000182,
+            "maxMs": 145.4999999999991
+          }
+        },
+        "pinSpacerCount": 0,
+        "mainTop": 131,
+        "phase": "spatial-midpoint"
+      },
+      {
+        "intro": {
+          "progress": 0.9916546466103441,
+          "release": 0.9921222802384311,
+          "phase": "dom-handoff",
+          "loadState": "ready",
+          "interactionSuppressed": true,
+          "firstFrameReady": true,
+          "scrubReady": true,
+          "fatalFailure": false,
+          "heroLifecycle": "handoff-ready",
+          "handoff": {
+            "progress": 0.9982,
+            "geometry": {
+              "left": 23.40625,
+              "top": 159,
+              "width": 343.1875,
+              "height": 343.1875
+            },
+            "opacity": "0.0004"
+          },
+          "range": {
+            "start": 0,
+            "end": 776.48
+          },
+          "sequence": {
+            "frameCount": 64,
+            "loaded": 64,
+            "failed": 0,
+            "firstFrameReady": true,
+            "variant": "mobile",
+            "requestedProgress": 1,
+            "requestedIndex": 63,
+            "renderedIndex": 63,
+            "fallbackUsed": false,
+            "contiguousDecodedThrough": 63,
+            "scrubReady": true,
+            "pixelRatio": 1,
+            "canvasWidth": 390,
+            "canvasHeight": 844
+          }
+        },
+        "hero": {
+          "targetProgress": 0,
+          "currentProgress": 0,
+          "motionEnabled": true,
+          "lifecycleMotionAllowed": false,
+          "lifecycleSettled": false,
+          "heroLifecycle": "handoff-ready",
+          "handoffProgress": 0.9981882296955096,
+          "reducedMotion": false,
+          "ringCount": 5,
+          "shellJointCount": 42,
+          "emberCount": 9,
+          "postProcessing": false,
+          "renderPath": "direct",
+          "lowPowerDevice": false,
+          "forceDirectRenderer": false,
+          "forceComposer": false,
+          "pixelRatio": 1,
+          "renderer": {
+            "calls": 24,
+            "triangles": 40432,
+            "points": 95,
+            "lines": 120,
+            "geometries": 15,
+            "textures": 6,
+            "programs": 6
+          },
+          "geometry": {
+            "coreRadius": 0.96,
+            "shellRadius": 1.22,
+            "outerRingRadius": 2.1,
+            "coreOuterDiameterRatio": 0.45714285714285713
+          },
+          "materials": {
+            "core": {
+              "metalness": 0.12,
+              "roughness": 0.25,
+              "clearcoat": 1,
+              "clearcoatRoughness": 0.2,
+              "envMapIntensity": 0.94
+            },
+            "agedBronze": {
+              "metalness": 0.9,
+              "roughness": 0.34,
+              "envMapIntensity": 1.22
+            }
+          },
+          "frameTiming": {
+            "samples": 212,
+            "averageMs": 8.290094339622641,
+            "minMs": 4.800000000000182,
+            "maxMs": 145.4999999999991
+          }
+        },
+        "pinSpacerCount": 0,
+        "mainTop": 83,
+        "phase": "swap"
+      },
+      {
+        "intro": {
+          "progress": 0.9993818256748402,
+          "release": 0.999955333373885,
+          "phase": "dom-handoff",
+          "loadState": "ready",
+          "interactionSuppressed": false,
+          "firstFrameReady": true,
+          "scrubReady": true,
+          "fatalFailure": false,
+          "heroLifecycle": "active",
+          "handoff": {
+            "progress": 1,
+            "geometry": {
+              "left": 23.40625,
+              "top": 153,
+              "width": 343.1875,
+              "height": 343.1875
+            },
+            "opacity": "0.0000"
+          },
+          "range": {
+            "start": 0,
+            "end": 776.48
+          },
+          "sequence": {
+            "frameCount": 64,
+            "loaded": 64,
+            "failed": 0,
+            "firstFrameReady": true,
+            "variant": "mobile",
+            "requestedProgress": 1,
+            "requestedIndex": 63,
+            "renderedIndex": 63,
+            "fallbackUsed": false,
+            "contiguousDecodedThrough": 63,
+            "scrubReady": true,
+            "pixelRatio": 1,
+            "canvasWidth": 390,
+            "canvasHeight": 844
+          }
+        },
+        "hero": {
+          "targetProgress": 0,
+          "currentProgress": 0,
+          "motionEnabled": true,
+          "lifecycleMotionAllowed": true,
+          "lifecycleSettled": true,
+          "heroLifecycle": "active",
+          "handoffProgress": 1,
+          "reducedMotion": false,
+          "ringCount": 5,
+          "shellJointCount": 42,
+          "emberCount": 9,
+          "postProcessing": false,
+          "renderPath": "direct",
+          "lowPowerDevice": false,
+          "forceDirectRenderer": false,
+          "forceComposer": false,
+          "pixelRatio": 1,
+          "renderer": {
+            "calls": 24,
+            "triangles": 40432,
+            "points": 95,
+            "lines": 120,
+            "geometries": 15,
+            "textures": 6,
+            "programs": 6
+          },
+          "geometry": {
+            "coreRadius": 0.96,
+            "shellRadius": 1.22,
+            "outerRingRadius": 2.1,
+            "coreOuterDiameterRatio": 0.45714285714285713
+          },
+          "materials": {
+            "core": {
+              "metalness": 0.12,
+              "roughness": 0.25,
+              "clearcoat": 1,
+              "clearcoatRoughness": 0.2,
+              "envMapIntensity": 0.94
+            },
+            "agedBronze": {
+              "metalness": 0.9,
+              "roughness": 0.34,
+              "envMapIntensity": 1.22
+            }
+          },
+          "frameTiming": {
+            "samples": 345,
+            "averageMs": 7.517391304347826,
+            "minMs": 4.800000000000182,
+            "maxMs": 145.4999999999991
+          }
+        },
+        "pinSpacerCount": 0,
+        "mainTop": 77,
+        "phase": "settled"
+      },
+      {
+        "intro": {
+          "progress": 0.4996909128374201,
+          "release": 0,
+          "phase": "progression",
+          "loadState": "ready",
+          "interactionSuppressed": true,
+          "firstFrameReady": true,
+          "scrubReady": true,
+          "fatalFailure": false,
+          "heroLifecycle": "suspended",
+          "handoff": {
+            "progress": 0,
+            "geometry": {
+              "left": 23.40625,
+              "top": 541,
+              "width": 343.1875,
+              "height": 343.1875
+            },
+            "opacity": "0"
+          },
+          "range": {
+            "start": 0,
+            "end": 776.48
+          },
+          "sequence": {
+            "frameCount": 64,
+            "loaded": 64,
+            "failed": 0,
+            "firstFrameReady": true,
+            "variant": "mobile",
+            "requestedProgress": 0.6406293754325899,
+            "requestedIndex": 40,
+            "renderedIndex": 40,
+            "fallbackUsed": false,
+            "contiguousDecodedThrough": 63,
+            "scrubReady": true,
+            "pixelRatio": 1,
+            "canvasWidth": 390,
+            "canvasHeight": 844
+          }
+        },
+        "hero": {
+          "targetProgress": 0,
+          "currentProgress": 0,
+          "motionEnabled": true,
+          "lifecycleMotionAllowed": false,
+          "lifecycleSettled": false,
+          "heroLifecycle": "suspended",
+          "handoffProgress": 0,
+          "reducedMotion": false,
+          "ringCount": 5,
+          "shellJointCount": 42,
+          "emberCount": 9,
+          "postProcessing": false,
+          "renderPath": "direct",
+          "lowPowerDevice": false,
+          "forceDirectRenderer": false,
+          "forceComposer": false,
+          "pixelRatio": 1,
+          "renderer": {
+            "calls": 24,
+            "triangles": 40432,
+            "points": 95,
+            "lines": 120,
+            "geometries": 15,
+            "textures": 6,
+            "programs": 6
+          },
+          "geometry": {
+            "coreRadius": 0.96,
+            "shellRadius": 1.22,
+            "outerRingRadius": 2.1,
+            "coreOuterDiameterRatio": 0.45714285714285713
+          },
+          "materials": {
+            "core": {
+              "metalness": 0.12,
+              "roughness": 0.25,
+              "clearcoat": 1,
+              "clearcoatRoughness": 0.2,
+              "envMapIntensity": 0.94
+            },
+            "agedBronze": {
+              "metalness": 0.9,
+              "roughness": 0.34,
+              "envMapIntensity": 1.22
+            }
+          },
+          "frameTiming": {
+            "samples": 389,
+            "averageMs": 7.39974293059126,
+            "minMs": 4.699999999998909,
+            "maxMs": 145.4999999999991
+          }
+        },
+        "pinSpacerCount": 0,
+        "mainTop": 465,
+        "phase": "reverse"
+      },
+      {
+        "intro": {
+          "progress": 0,
+          "release": 0,
+          "phase": "opening",
+          "loadState": "ready",
+          "interactionSuppressed": true,
+          "firstFrameReady": true,
+          "scrubReady": true,
+          "fatalFailure": false,
+          "heroLifecycle": "suspended",
+          "handoff": {
+            "progress": 0,
+            "geometry": {
+              "left": 23.40625,
+              "top": 929,
+              "width": 343.1875,
+              "height": 343.1875
+            },
+            "opacity": "0"
+          },
+          "range": {
+            "start": 0,
+            "end": 776.48
+          },
+          "sequence": {
+            "frameCount": 64,
+            "loaded": 64,
+            "failed": 0,
+            "firstFrameReady": true,
+            "variant": "mobile",
+            "requestedProgress": 0,
+            "requestedIndex": 0,
+            "renderedIndex": 0,
+            "fallbackUsed": false,
+            "contiguousDecodedThrough": 63,
+            "scrubReady": true,
+            "pixelRatio": 1,
+            "canvasWidth": 390,
+            "canvasHeight": 844
+          }
+        },
+        "hero": {
+          "targetProgress": 0,
+          "currentProgress": 0,
+          "motionEnabled": true,
+          "lifecycleMotionAllowed": false,
+          "lifecycleSettled": false,
+          "heroLifecycle": "suspended",
+          "handoffProgress": 0,
+          "reducedMotion": false,
+          "ringCount": 5,
+          "shellJointCount": 42,
+          "emberCount": 9,
+          "postProcessing": false,
+          "renderPath": "direct",
+          "lowPowerDevice": false,
+          "forceDirectRenderer": false,
+          "forceComposer": false,
+          "pixelRatio": 1,
+          "renderer": {
+            "calls": 24,
+            "triangles": 40432,
+            "points": 95,
+            "lines": 120,
+            "geometries": 15,
+            "textures": 6,
+            "programs": 6
+          },
+          "geometry": {
+            "coreRadius": 0.96,
+            "shellRadius": 1.22,
+            "outerRingRadius": 2.1,
+            "coreOuterDiameterRatio": 0.45714285714285713
+          },
+          "materials": {
+            "core": {
+              "metalness": 0.12,
+              "roughness": 0.25,
+              "clearcoat": 1,
+              "clearcoatRoughness": 0.2,
+              "envMapIntensity": 0.94
+            },
+            "agedBronze": {
+              "metalness": 0.9,
+              "roughness": 0.34,
+              "envMapIntensity": 1.22
+            }
+          },
+          "frameTiming": {
+            "samples": 428,
+            "averageMs": 7.277336448598133,
+            "minMs": 4.699999999998909,
+            "maxMs": 145.4999999999991
+          }
+        },
+        "pinSpacerCount": 0,
+        "mainTop": 853,
+        "phase": "rewound"
+      }
+    ]
+  },
+  {
+    "viewport": {
+      "name": "430x932",
+      "width": 430,
+      "height": 932
+    },
+    "errors": [],
+    "samples": [
+      {
+        "intro": {
+          "progress": 0,
+          "release": 0,
+          "phase": "opening",
+          "loadState": "ready",
+          "interactionSuppressed": true,
+          "firstFrameReady": true,
+          "scrubReady": true,
+          "fatalFailure": false,
+          "heroLifecycle": "suspended",
+          "handoff": {
+            "progress": 0,
+            "geometry": {
+              "left": 25,
+              "top": 1012,
+              "width": 380,
+              "height": 380
+            },
+            "opacity": "0"
+          },
+          "range": {
+            "start": 0,
+            "end": 857.44
+          },
+          "sequence": {
+            "frameCount": 64,
+            "loaded": 64,
+            "failed": 0,
+            "firstFrameReady": true,
+            "variant": "mobile",
+            "requestedProgress": 0,
+            "requestedIndex": 0,
+            "renderedIndex": 0,
+            "fallbackUsed": false,
+            "contiguousDecodedThrough": 63,
+            "scrubReady": true,
+            "pixelRatio": 1,
+            "canvasWidth": 430,
+            "canvasHeight": 932
+          }
+        },
+        "hero": {
+          "targetProgress": 0,
+          "currentProgress": 0,
+          "motionEnabled": true,
+          "lifecycleMotionAllowed": false,
+          "lifecycleSettled": false,
+          "heroLifecycle": "suspended",
+          "handoffProgress": 0,
+          "reducedMotion": false,
+          "ringCount": 5,
+          "shellJointCount": 42,
+          "emberCount": 9,
+          "postProcessing": false,
+          "renderPath": "direct",
+          "lowPowerDevice": false,
+          "forceDirectRenderer": false,
+          "forceComposer": false,
+          "pixelRatio": 1,
+          "renderer": {
+            "calls": 24,
+            "triangles": 40432,
+            "points": 95,
+            "lines": 120,
+            "geometries": 15,
+            "textures": 6,
+            "programs": 6
+          },
+          "geometry": {
+            "coreRadius": 0.96,
+            "shellRadius": 1.22,
+            "outerRingRadius": 2.1,
+            "coreOuterDiameterRatio": 0.45714285714285713
+          },
+          "materials": {
+            "core": {
+              "metalness": 0.12,
+              "roughness": 0.25,
+              "clearcoat": 1,
+              "clearcoatRoughness": 0.2,
+              "envMapIntensity": 0.94
+            },
+            "agedBronze": {
+              "metalness": 0.9,
+              "roughness": 0.34,
+              "envMapIntensity": 1.22
+            }
+          },
+          "frameTiming": {
+            "samples": 101,
+            "averageMs": 6.184158415841588,
+            "minMs": 5.600000000000364,
+            "maxMs": 12.200000000000728
+          }
+        },
+        "pinSpacerCount": 0,
+        "mainTop": 934,
+        "phase": "opening"
+      },
+      {
+        "intro": {
+          "progress": 0.5003265534614667,
+          "release": 0,
+          "phase": "progression",
+          "loadState": "ready",
+          "interactionSuppressed": true,
+          "firstFrameReady": true,
+          "scrubReady": true,
+          "fatalFailure": false,
+          "heroLifecycle": "suspended",
+          "handoff": {
+            "progress": 0,
+            "geometry": {
+              "left": 25,
+              "top": 607,
+              "width": 380,
+              "height": 380
+            },
+            "opacity": "0"
+          },
+          "range": {
+            "start": 0,
+            "end": 857.44
+          },
+          "sequence": {
+            "frameCount": 64,
+            "loaded": 64,
+            "failed": 0,
+            "firstFrameReady": true,
+            "variant": "mobile",
+            "requestedProgress": 0.6414442993095727,
+            "requestedIndex": 40,
+            "renderedIndex": 40,
+            "fallbackUsed": false,
+            "contiguousDecodedThrough": 63,
+            "scrubReady": true,
+            "pixelRatio": 1,
+            "canvasWidth": 430,
+            "canvasHeight": 932
+          }
+        },
+        "hero": {
+          "targetProgress": 0,
+          "currentProgress": 0,
+          "motionEnabled": true,
+          "lifecycleMotionAllowed": false,
+          "lifecycleSettled": false,
+          "heroLifecycle": "suspended",
+          "handoffProgress": 0,
+          "reducedMotion": false,
+          "ringCount": 5,
+          "shellJointCount": 42,
+          "emberCount": 9,
+          "postProcessing": false,
+          "renderPath": "direct",
+          "lowPowerDevice": false,
+          "forceDirectRenderer": false,
+          "forceComposer": false,
+          "pixelRatio": 1,
+          "renderer": {
+            "calls": 24,
+            "triangles": 40432,
+            "points": 95,
+            "lines": 120,
+            "geometries": 15,
+            "textures": 6,
+            "programs": 6
+          },
+          "geometry": {
+            "coreRadius": 0.96,
+            "shellRadius": 1.22,
+            "outerRingRadius": 2.1,
+            "coreOuterDiameterRatio": 0.45714285714285713
+          },
+          "materials": {
+            "core": {
+              "metalness": 0.12,
+              "roughness": 0.25,
+              "clearcoat": 1,
+              "clearcoatRoughness": 0.2,
+              "envMapIntensity": 0.94
+            },
+            "agedBronze": {
+              "metalness": 0.9,
+              "roughness": 0.34,
+              "envMapIntensity": 1.22
+            }
+          },
+          "frameTiming": {
+            "samples": 451,
+            "averageMs": 6.328824833702883,
+            "minMs": 5.399999999999636,
+            "maxMs": 48.400000000000546
+          }
+        },
+        "pinSpacerCount": 0,
+        "mainTop": 505,
+        "phase": "mid-reveal"
+      },
+      {
+        "intro": {
+          "progress": 0.7802295204329165,
+          "release": 0,
+          "phase": "final-clean-hold",
+          "loadState": "ready",
+          "interactionSuppressed": true,
+          "firstFrameReady": true,
+          "scrubReady": true,
+          "fatalFailure": false,
+          "heroLifecycle": "prewarming",
+          "handoff": {
+            "progress": 0,
+            "geometry": {
+              "left": 25,
+              "top": 357.58587646484375,
+              "width": 380,
+              "height": 380
+            },
+            "opacity": "0"
+          },
+          "range": {
+            "start": 0,
+            "end": 857.44
+          },
+          "sequence": {
+            "frameCount": 64,
+            "loaded": 64,
+            "failed": 0,
+            "firstFrameReady": true,
+            "variant": "mobile",
+            "requestedProgress": 1,
+            "requestedIndex": 63,
+            "renderedIndex": 63,
+            "fallbackUsed": false,
+            "contiguousDecodedThrough": 63,
+            "scrubReady": true,
+            "pixelRatio": 1,
+            "canvasWidth": 430,
+            "canvasHeight": 932
+          }
+        },
+        "hero": {
+          "targetProgress": 0,
+          "currentProgress": 0,
+          "motionEnabled": true,
+          "lifecycleMotionAllowed": false,
+          "lifecycleSettled": false,
+          "heroLifecycle": "prewarming",
+          "handoffProgress": 0,
+          "reducedMotion": false,
+          "ringCount": 5,
+          "shellJointCount": 42,
+          "emberCount": 9,
+          "postProcessing": false,
+          "renderPath": "direct",
+          "lowPowerDevice": false,
+          "forceDirectRenderer": false,
+          "forceComposer": false,
+          "pixelRatio": 1,
+          "renderer": {
+            "calls": 24,
+            "triangles": 40432,
+            "points": 95,
+            "lines": 120,
+            "geometries": 15,
+            "textures": 6,
+            "programs": 6
+          },
+          "geometry": {
+            "coreRadius": 0.96,
+            "shellRadius": 1.22,
+            "outerRingRadius": 2.1,
+            "coreOuterDiameterRatio": 0.45714285714285713
+          },
+          "materials": {
+            "core": {
+              "metalness": 0.12,
+              "roughness": 0.25,
+              "clearcoat": 1,
+              "clearcoatRoughness": 0.2,
+              "envMapIntensity": 0.94
+            },
+            "agedBronze": {
+              "metalness": 0.9,
+              "roughness": 0.34,
+              "envMapIntensity": 1.22
+            }
+          },
+          "frameTiming": {
+            "samples": 481,
+            "averageMs": 6.387733887733888,
+            "minMs": 5.399999999999636,
+            "maxMs": 48.400000000000546
+          }
+        },
+        "pinSpacerCount": 0,
+        "mainTop": 265,
+        "phase": "final-hold"
+      },
+      {
+        "intro": {
+          "progress": 0.9295111028176898,
+          "release": 0.5887464792466396,
+          "phase": "dom-handoff",
+          "loadState": "ready",
+          "interactionSuppressed": true,
+          "firstFrameReady": true,
+          "scrubReady": true,
+          "fatalFailure": false,
+          "heroLifecycle": "handoff-ready",
+          "handoff": {
+            "progress": 0.5223,
+            "geometry": {
+              "left": 25,
+              "top": 220.52716064453125,
+              "width": 380,
+              "height": 380
+            },
+            "opacity": "1.0000"
+          },
+          "range": {
+            "start": 0,
+            "end": 857.44
+          },
+          "sequence": {
+            "frameCount": 64,
+            "loaded": 64,
+            "failed": 0,
+            "firstFrameReady": true,
+            "variant": "mobile",
+            "requestedProgress": 1,
+            "requestedIndex": 63,
+            "renderedIndex": 63,
+            "fallbackUsed": false,
+            "contiguousDecodedThrough": 63,
+            "scrubReady": true,
+            "pixelRatio": 1,
+            "canvasWidth": 430,
+            "canvasHeight": 932
+          }
+        },
+        "hero": {
+          "targetProgress": 0,
+          "currentProgress": 0,
+          "motionEnabled": true,
+          "lifecycleMotionAllowed": false,
+          "lifecycleSettled": false,
+          "heroLifecycle": "handoff-ready",
+          "handoffProgress": 0.522338974883488,
+          "reducedMotion": false,
+          "ringCount": 5,
+          "shellJointCount": 42,
+          "emberCount": 9,
+          "postProcessing": false,
+          "renderPath": "direct",
+          "lowPowerDevice": false,
+          "forceDirectRenderer": false,
+          "forceComposer": false,
+          "pixelRatio": 1,
+          "renderer": {
+            "calls": 24,
+            "triangles": 40432,
+            "points": 95,
+            "lines": 120,
+            "geometries": 15,
+            "textures": 6,
+            "programs": 6
+          },
+          "geometry": {
+            "coreRadius": 0.96,
+            "shellRadius": 1.22,
+            "outerRingRadius": 2.1,
+            "coreOuterDiameterRatio": 0.45714285714285713
+          },
+          "materials": {
+            "core": {
+              "metalness": 0.12,
+              "roughness": 0.25,
+              "clearcoat": 1,
+              "clearcoatRoughness": 0.2,
+              "envMapIntensity": 0.94
+            },
+            "agedBronze": {
+              "metalness": 0.9,
+              "roughness": 0.34,
+              "envMapIntensity": 1.22
+            }
+          },
+          "frameTiming": {
+            "samples": 504,
+            "averageMs": 6.420634920634921,
+            "minMs": 5.399999999999636,
+            "maxMs": 48.400000000000546
+          }
+        },
+        "pinSpacerCount": 0,
+        "mainTop": 137,
+        "phase": "spatial-midpoint"
+      },
+      {
+        "intro": {
+          "progress": 0.992489270386266,
+          "release": 0.993596207995365,
+          "phase": "dom-handoff",
+          "loadState": "ready",
+          "interactionSuppressed": true,
+          "firstFrameReady": true,
+          "scrubReady": true,
+          "fatalFailure": false,
+          "heroLifecycle": "handoff-ready",
+          "handoff": {
+            "progress": 0.999,
+            "geometry": {
+              "left": 25,
+              "top": 161.1967315673828,
+              "width": 380,
+              "height": 380.00006103515625
+            },
+            "opacity": "0.0001"
+          },
+          "range": {
+            "start": 0,
+            "end": 857.44
+          },
+          "sequence": {
+            "frameCount": 64,
+            "loaded": 64,
+            "failed": 0,
+            "firstFrameReady": true,
+            "variant": "mobile",
+            "requestedProgress": 1,
+            "requestedIndex": 63,
+            "renderedIndex": 63,
+            "fallbackUsed": false,
+            "contiguousDecodedThrough": 63,
+            "scrubReady": true,
+            "pixelRatio": 1,
+            "canvasWidth": 430,
+            "canvasHeight": 932
+          }
+        },
+        "hero": {
+          "targetProgress": 0,
+          "currentProgress": 0,
+          "motionEnabled": true,
+          "lifecycleMotionAllowed": false,
+          "lifecycleSettled": false,
+          "heroLifecycle": "handoff-ready",
+          "handoffProgress": 0.9989752090622673,
+          "reducedMotion": false,
+          "ringCount": 5,
+          "shellJointCount": 42,
+          "emberCount": 9,
+          "postProcessing": false,
+          "renderPath": "direct",
+          "lowPowerDevice": false,
+          "forceDirectRenderer": false,
+          "forceComposer": false,
+          "pixelRatio": 1,
+          "renderer": {
+            "calls": 24,
+            "triangles": 40432,
+            "points": 95,
+            "lines": 120,
+            "geometries": 15,
+            "textures": 6,
+            "programs": 6
+          },
+          "geometry": {
+            "coreRadius": 0.96,
+            "shellRadius": 1.22,
+            "outerRingRadius": 2.1,
+            "coreOuterDiameterRatio": 0.45714285714285713
+          },
+          "materials": {
+            "core": {
+              "metalness": 0.12,
+              "roughness": 0.25,
+              "clearcoat": 1,
+              "clearcoatRoughness": 0.2,
+              "envMapIntensity": 0.94
+            },
+            "agedBronze": {
+              "metalness": 0.9,
+              "roughness": 0.34,
+              "envMapIntensity": 1.22
+            }
+          },
+          "frameTiming": {
+            "samples": 557,
+            "averageMs": 6.397127468581689,
+            "minMs": 5.399999999999636,
+            "maxMs": 48.400000000000546
+          }
+        },
+        "pinSpacerCount": 0,
+        "mainTop": 83,
+        "phase": "swap"
+      },
+      {
+        "intro": {
+          "progress": 0.9994868445605523,
+          "release": 0.999969207171507,
+          "phase": "dom-handoff",
+          "loadState": "ready",
+          "interactionSuppressed": false,
+          "firstFrameReady": true,
+          "scrubReady": true,
+          "fatalFailure": false,
+          "heroLifecycle": "active",
+          "handoff": {
+            "progress": 1,
+            "geometry": {
+              "left": 25,
+              "top": 155,
+              "width": 380,
+              "height": 380
+            },
+            "opacity": "0.0000"
+          },
+          "range": {
+            "start": 0,
+            "end": 857.44
+          },
+          "sequence": {
+            "frameCount": 64,
+            "loaded": 64,
+            "failed": 0,
+            "firstFrameReady": true,
+            "variant": "mobile",
+            "requestedProgress": 1,
+            "requestedIndex": 63,
+            "renderedIndex": 63,
+            "fallbackUsed": false,
+            "contiguousDecodedThrough": 63,
+            "scrubReady": true,
+            "pixelRatio": 1,
+            "canvasWidth": 430,
+            "canvasHeight": 932
+          }
+        },
+        "hero": {
+          "targetProgress": 0,
+          "currentProgress": 0,
+          "motionEnabled": true,
+          "lifecycleMotionAllowed": true,
+          "lifecycleSettled": true,
+          "heroLifecycle": "active",
+          "handoffProgress": 1,
+          "reducedMotion": false,
+          "ringCount": 5,
+          "shellJointCount": 42,
+          "emberCount": 9,
+          "postProcessing": false,
+          "renderPath": "direct",
+          "lowPowerDevice": false,
+          "forceDirectRenderer": false,
+          "forceComposer": false,
+          "pixelRatio": 1,
+          "renderer": {
+            "calls": 24,
+            "triangles": 40432,
+            "points": 95,
+            "lines": 120,
+            "geometries": 15,
+            "textures": 6,
+            "programs": 6
+          },
+          "geometry": {
+            "coreRadius": 0.96,
+            "shellRadius": 1.22,
+            "outerRingRadius": 2.1,
+            "coreOuterDiameterRatio": 0.45714285714285713
+          },
+          "materials": {
+            "core": {
+              "metalness": 0.12,
+              "roughness": 0.25,
+              "clearcoat": 1,
+              "clearcoatRoughness": 0.2,
+              "envMapIntensity": 0.94
+            },
+            "agedBronze": {
+              "metalness": 0.9,
+              "roughness": 0.34,
+              "envMapIntensity": 1.22
+            }
+          },
+          "frameTiming": {
+            "samples": 688,
+            "averageMs": 6.385755813953488,
+            "minMs": 5.399999999999636,
+            "maxMs": 48.400000000000546
+          }
+        },
+        "pinSpacerCount": 0,
+        "mainTop": 77,
+        "phase": "settled"
+      },
+      {
+        "intro": {
+          "progress": 0.5003265534614667,
+          "release": 0,
+          "phase": "progression",
+          "loadState": "ready",
+          "interactionSuppressed": true,
+          "firstFrameReady": true,
+          "scrubReady": true,
+          "fatalFailure": false,
+          "heroLifecycle": "suspended",
+          "handoff": {
+            "progress": 0,
+            "geometry": {
+              "left": 25,
+              "top": 583,
+              "width": 380,
+              "height": 380
+            },
+            "opacity": "0"
+          },
+          "range": {
+            "start": 0,
+            "end": 857.44
+          },
+          "sequence": {
+            "frameCount": 64,
+            "loaded": 64,
+            "failed": 0,
+            "firstFrameReady": true,
+            "variant": "mobile",
+            "requestedProgress": 0.6414442993095727,
+            "requestedIndex": 40,
+            "renderedIndex": 40,
+            "fallbackUsed": false,
+            "contiguousDecodedThrough": 63,
+            "scrubReady": true,
+            "pixelRatio": 1,
+            "canvasWidth": 430,
+            "canvasHeight": 932
+          }
+        },
+        "hero": {
+          "targetProgress": 0,
+          "currentProgress": 0,
+          "motionEnabled": true,
+          "lifecycleMotionAllowed": false,
+          "lifecycleSettled": false,
+          "heroLifecycle": "suspended",
+          "handoffProgress": 0,
+          "reducedMotion": false,
+          "ringCount": 5,
+          "shellJointCount": 42,
+          "emberCount": 9,
+          "postProcessing": false,
+          "renderPath": "direct",
+          "lowPowerDevice": false,
+          "forceDirectRenderer": false,
+          "forceComposer": false,
+          "pixelRatio": 1,
+          "renderer": {
+            "calls": 24,
+            "triangles": 40432,
+            "points": 95,
+            "lines": 120,
+            "geometries": 15,
+            "textures": 6,
+            "programs": 6
+          },
+          "geometry": {
+            "coreRadius": 0.96,
+            "shellRadius": 1.22,
+            "outerRingRadius": 2.1,
+            "coreOuterDiameterRatio": 0.45714285714285713
+          },
+          "materials": {
+            "core": {
+              "metalness": 0.12,
+              "roughness": 0.25,
+              "clearcoat": 1,
+              "clearcoatRoughness": 0.2,
+              "envMapIntensity": 0.94
+            },
+            "agedBronze": {
+              "metalness": 0.9,
+              "roughness": 0.34,
+              "envMapIntensity": 1.22
+            }
+          },
+          "frameTiming": {
+            "samples": 742,
+            "averageMs": 6.402695417789759,
+            "minMs": 5.399999999999636,
+            "maxMs": 48.400000000000546
+          }
+        },
+        "pinSpacerCount": 0,
+        "mainTop": 505,
+        "phase": "reverse"
+      },
+      {
+        "intro": {
+          "progress": 0,
+          "release": 0,
+          "phase": "opening",
+          "loadState": "ready",
+          "interactionSuppressed": true,
+          "firstFrameReady": true,
+          "scrubReady": true,
+          "fatalFailure": false,
+          "heroLifecycle": "suspended",
+          "handoff": {
+            "progress": 0,
+            "geometry": {
+              "left": 25,
+              "top": 1012,
+              "width": 380,
+              "height": 380
+            },
+            "opacity": "0"
+          },
+          "range": {
+            "start": 0,
+            "end": 857.44
+          },
+          "sequence": {
+            "frameCount": 64,
+            "loaded": 64,
+            "failed": 0,
+            "firstFrameReady": true,
+            "variant": "mobile",
+            "requestedProgress": 0,
+            "requestedIndex": 0,
+            "renderedIndex": 0,
+            "fallbackUsed": false,
+            "contiguousDecodedThrough": 63,
+            "scrubReady": true,
+            "pixelRatio": 1,
+            "canvasWidth": 430,
+            "canvasHeight": 932
+          }
+        },
+        "hero": {
+          "targetProgress": 0,
+          "currentProgress": 0,
+          "motionEnabled": true,
+          "lifecycleMotionAllowed": false,
+          "lifecycleSettled": false,
+          "heroLifecycle": "suspended",
+          "handoffProgress": 0,
+          "reducedMotion": false,
+          "ringCount": 5,
+          "shellJointCount": 42,
+          "emberCount": 9,
+          "postProcessing": false,
+          "renderPath": "direct",
+          "lowPowerDevice": false,
+          "forceDirectRenderer": false,
+          "forceComposer": false,
+          "pixelRatio": 1,
+          "renderer": {
+            "calls": 24,
+            "triangles": 40432,
+            "points": 95,
+            "lines": 120,
+            "geometries": 15,
+            "textures": 6,
+            "programs": 6
+          },
+          "geometry": {
+            "coreRadius": 0.96,
+            "shellRadius": 1.22,
+            "outerRingRadius": 2.1,
+            "coreOuterDiameterRatio": 0.45714285714285713
+          },
+          "materials": {
+            "core": {
+              "metalness": 0.12,
+              "roughness": 0.25,
+              "clearcoat": 1,
+              "clearcoatRoughness": 0.2,
+              "envMapIntensity": 0.94
+            },
+            "agedBronze": {
+              "metalness": 0.9,
+              "roughness": 0.34,
+              "envMapIntensity": 1.22
+            }
+          },
+          "frameTiming": {
+            "samples": 791,
+            "averageMs": 6.389127686472821,
+            "minMs": 5.399999999999636,
+            "maxMs": 48.400000000000546
+          }
+        },
+        "pinSpacerCount": 0,
+        "mainTop": 934,
+        "phase": "rewound"
+      }
+    ]
+  }
+]

@@ -1,0 +1,89 @@
+{
+  "version": 9,
+  "createdAt": "2026-07-26T16:46:06.139880+00:00",
+  "approval": {
+    "status": "pending-headed-browser-review"
+  },
+  "boards": [
+    {
+      "checkpoint": "opening",
+      "board": "artifacts/tbm-v9-approval/gate-01-source-stills-r01/opening-board.png",
+      "baseline": "assets/tbm-cinematic-v7/keyframes/phase-ignition.png",
+      "proposed": "assets/tbm-cinematic-v9/keyframes/phase-opening.png",
+      "baselineSha256": "03708f4eef83644461191b4a58cc375335febbb8af64bf574a63fa9aeb067875",
+      "proposedSha256": "845b74982502945d45f489206cc1728b59ca8a9515a31f1362a5c1b62bad7141",
+      "baselineSubjectBox": [
+        1,
+        0,
+        731,
+        450
+      ],
+      "proposedSubjectBox": [
+        0,
+        34,
+        733,
+        450
+      ]
+    },
+    {
+      "checkpoint": "outer-formation",
+      "board": "artifacts/tbm-v9-approval/gate-01-source-stills-r01/outer-formation-board.png",
+      "baseline": "assets/tbm-cinematic-v7/keyframes/phase-ignition.png",
+      "proposed": "assets/tbm-cinematic-v9/keyframes/phase-outer-formation.png",
+      "baselineSha256": "03708f4eef83644461191b4a58cc375335febbb8af64bf574a63fa9aeb067875",
+      "proposedSha256": "193f2e682dcd26c9125506f2eac13b71de24529012d7c41048793716d3b718de",
+      "baselineSubjectBox": [
+        1,
+        0,
+        731,
+        450
+      ],
+      "proposedSubjectBox": [
+        8,
+        0,
+        795,
+        450
+      ]
+    },
+    {
+      "checkpoint": "network",
+      "board": "artifacts/tbm-v9-approval/gate-01-source-stills-r01/network-board.png",
+      "baseline": "assets/tbm-cinematic-v7/keyframes/phase-network.png",
+      "proposed": "assets/tbm-cinematic-v9/keyframes/phase-network.png",
+      "baselineSha256": "40d8e51fa74513bfd78ad79ee4e51462960e2223d4997b88d352658b8f3fb0d5",
+      "proposedSha256": "726f69ffecee6b864d81b611cc5a958e9ae0c379f3753230b1a27ce6f4b1608b",
+      "baselineSubjectBox": [
+        49,
+        0,
+        800,
+        450
+      ],
+      "proposedSubjectBox": [
+        100,
+        0,
+        800,
+        450
+      ]
+    },
+    {
+      "checkpoint": "handoff",
+      "board": "artifacts/tbm-v9-approval/gate-01-source-stills-r01/handoff-board.png",
+      "baseline": "assets/tbm-cinematic-v7/keyframes/phase-handoff.png",
+      "proposed": "assets/tbm-cinematic-v9/keyframes/phase-handoff.png",
+      "baselineSha256": "a2ec05074977b7b0614d7fdfff6b81d89c94cc8091a4ceaa3a9ada0498b119e1",
+      "proposedSha256": "a6e3bb9c58478d00e630191bb4b1a011b88047f07767720e2c37b5ca51a9c41e",
+      "baselineSubjectBox": [
+        126,
+        0,
+        800,
+        450
+      ],
+      "proposedSubjectBox": [
+        119,
+        0,
+        747,
+        450
+      ]
+    }
+  ]
+}

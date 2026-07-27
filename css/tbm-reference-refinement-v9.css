@@ -1,0 +1,92 @@
+/* V9-R05: preserve Blender framing and grade through the reveal-to-hero handoff. */
+.tbm-reveal-v9-stage {
+  position: relative;
+  height: 380svh;
+  background: #020302;
+}
+
+.tbm-reveal-v9-stage .tbm-reveal-v6 {
+  position: sticky;
+  top: 92px;
+  z-index: 60;
+  width: 100%;
+  height: calc(100svh - 92px);
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+.tbm-reveal-v9-stage .tbm-reveal-v6__canvas {
+  width: 100%;
+  height: 100%;
+  image-rendering: auto;
+}
+
+.tbm-reveal-v9-stage .tbm-reveal-v6__shade {
+  background: radial-gradient(ellipse at 55% 57%, transparent 22%, rgba(2, 3, 2, .035) 63%, rgba(2, 3, 2, .28) 100%);
+}
+
+.tbm-reveal-v9-stage .tbm-reveal-v6__meter:before {
+  width: calc(var(--forge-progress, 0) * 100%);
+}
+
+.hero-v9 {
+  min-height: 850px;
+  background: #020302;
+}
+
+.hero-v9:before {
+  background: linear-gradient(90deg, #020302 0%, rgba(2, 3, 2, .96) 28%, rgba(2, 3, 2, .46) 49%, rgba(2, 3, 2, 0) 64%, rgba(2, 3, 2, 0) 100%);
+}
+
+.hero-v9__plate {
+  top: 92px;
+  right: 0;
+  bottom: auto;
+  left: 0;
+  height: calc(100svh - 92px);
+  overflow: hidden;
+}
+
+.hero-v9__plate img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center center;
+  filter: none;
+}
+
+.hero-v9__grain {
+  opacity: .08;
+}
+
+.hero-v9 .hero-copy {
+  position: relative;
+  z-index: 3;
+  max-width: min(43vw, 660px);
+}
+
+@media (max-width: 840px) {
+  .tbm-reveal-v9-stage .tbm-reveal-v6 {
+    top: 76px;
+    height: calc(100svh - 76px);
+  }
+
+  .hero-v9__plate {
+    top: 76px;
+    height: calc(100svh - 76px);
+  }
+}
+
+@media (max-width: 640px) {
+  .hero-v9__plate img {
+    opacity: .62;
+    filter: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tbm-reveal-v9-stage {
+    display: none;
+  }
+}

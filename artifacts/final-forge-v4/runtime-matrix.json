@@ -1,0 +1,133 @@
+{
+  "generatedAt": "2026-07-24T20:31:32.970Z",
+  "reducedMotion": {
+    "body": "home-v2 forge-intro-released",
+    "intro": {
+      "progress": 1,
+      "release": 1,
+      "phase": "released",
+      "loadState": "bypassed",
+      "interactionSuppressed": false,
+      "firstFrameReady": false,
+      "scrubReady": false,
+      "fatalFailure": false,
+      "heroLifecycle": "active",
+      "handoff": {
+        "progress": 0,
+        "geometry": {
+          "left": 647.140625,
+          "top": 968,
+          "width": 694.859375,
+          "height": 694.859375
+        },
+        "opacity": "0"
+      },
+      "range": {
+        "start": 0,
+        "end": 829.44
+      },
+      "sequence": null
+    },
+    "hero": {
+      "targetProgress": 0,
+      "currentProgress": 0,
+      "motionEnabled": true,
+      "lifecycleMotionAllowed": true,
+      "lifecycleSettled": true,
+      "heroLifecycle": "active",
+      "handoffProgress": 0,
+      "reducedMotion": true,
+      "ringCount": 5,
+      "shellJointCount": 42,
+      "emberCount": 18,
+      "postProcessing": false,
+      "renderPath": "direct",
+      "lowPowerDevice": false,
+      "forceDirectRenderer": false,
+      "forceComposer": false,
+      "pixelRatio": 1,
+      "renderer": {
+        "calls": 33,
+        "triangles": 47618,
+        "points": 180,
+        "lines": 120,
+        "geometries": 15,
+        "textures": 6,
+        "programs": 6
+      },
+      "geometry": {
+        "coreRadius": 0.96,
+        "shellRadius": 1.22,
+        "outerRingRadius": 2.1,
+        "coreOuterDiameterRatio": 0.45714285714285713
+      },
+      "materials": {
+        "core": {
+          "metalness": 0.12,
+          "roughness": 0.25,
+          "clearcoat": 1,
+          "clearcoatRoughness": 0.2,
+          "envMapIntensity": 0.94
+        },
+        "agedBronze": {
+          "metalness": 0.9,
+          "roughness": 0.34,
+          "envMapIntensity": 1.22
+        }
+      },
+      "frameTiming": {
+        "samples": 19,
+        "averageMs": 10.521052631578929,
+        "minMs": 6,
+        "maxMs": 24.100000000000364
+      }
+    },
+    "introDisplay": "none",
+    "mainTop": 93
+  },
+  "manifestFailure": {
+    "body": "home-v2 forge-intro-released",
+    "intro": {
+      "progress": 1,
+      "release": 1,
+      "phase": "released",
+      "loadState": "failed",
+      "interactionSuppressed": false,
+      "firstFrameReady": false,
+      "scrubReady": false,
+      "fatalFailure": true,
+      "heroLifecycle": "active",
+      "handoff": {
+        "progress": 0,
+        "geometry": {
+          "left": 647.140625,
+          "top": 968,
+          "width": 694.859375,
+          "height": 694.859375
+        },
+        "opacity": "0"
+      },
+      "range": {
+        "start": 0,
+        "end": 829.44
+      },
+      "sequence": null
+    },
+    "mainTop": 93
+  },
+  "webglContextLoss": {
+    "rootClass": "js webgl-fallback",
+    "body": "home-v2 forge-intro-released",
+    "canvasOpacity": "0",
+    "canvasTransition": "0s",
+    "fallbackOpacity": "1"
+  },
+  "directFile": {
+    "rootClass": "tbm-direct-file-preview",
+    "body": "home-v2 forge-intro-released",
+    "noticeHidden": false,
+    "noticeText": "This is a limited file preview. Double-click preview-site.cmd for the complete reveal and 3D experience.",
+    "introDisplay": "none",
+    "mainPointer": "auto"
+  }
+}

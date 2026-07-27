@@ -4,7 +4,13 @@ const intro = document.getElementById('forge-intro');
 const canvas = document.getElementById('forge-intro-canvas');
 const hero = document.querySelector('.hero-scroll-sequence');
 const status = document.getElementById('forge-intro-status');
+const handoffProxy = document.getElementById('forge-handoff-proxy');
+const heroCanvas = document.getElementById('hero-canvas');
 const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+const REVEAL_MOTION_END = 0.78;
+const HERO_PREWARM_START = 0.74;
+const HANDOFF_START = 0.86;
+const HANDOFF_COMPLETE = 0.995;
 
 if (intro && canvas && hero) initialise();
 
@@ -19,6 +25,10 @@ function initialise() {
   const supportsInert = 'inert' in HTMLElement.prototype;
   const fallbackTabStops = new Map();
   const fallbackAria = new Map();
+  const scrollSpace = document.createElement('div');
+  scrollSpace.className = 'forge-intro__scroll-space';
+  scrollSpace.setAttribute('aria-hidden', 'true');
+  document.getElementById('main-content')?.before(scrollSpace);
   const clamp = value => Math.min(1, Math.max(0, value));
   const smooth = (from, to, value) => {
     if (to <= from) return value >= to ? 1 : 0;
@@ -31,10 +41,66 @@ function initialise() {
   let currentProgress = -1;
   let currentRelease = 0;
   let firstFrameReady = false;
+  let scrubReady = false;
   let fatalFailure = false;
   let interactionSuppressed = false;
   let range = { start: 0, end: 1 };
   let pageVisible = !document.hidden;
+  let lastHeroLifecycle = '';
+  let handoffGeometry = null;
+
+  function publishHeroLifecycle(state, progress = 0) {
+    document.documentElement.dataset.tbmHeroLifecycle = state;
+    document.documentElement.style.setProperty('--tbm-handoff-progress', progress.toFixed(4));
+    if (state === lastHeroLifecycle && state !== 'handoff-ready') return;
+    lastHeroLifecycle = state;
+    window.dispatchEvent(new CustomEvent('tbm:hero-lifecycle', { detail: { state, progress } }));
+  }
+
+  function updateHeroLifecycle(progress) {
+    if (progress < HERO_PREWARM_START) return publishHeroLifecycle('suspended');
+    if (progress < HANDOFF_START) return publishHeroLifecycle('prewarming');
+    if (progress < HANDOFF_COMPLETE) return publishHeroLifecycle('handoff-ready', smooth(HANDOFF_START, HANDOFF_COMPLETE, progress));
+    return publishHeroLifecycle('active', 1);
+  }
+
+  function measureHandoffGeometry() {
+    const rect = heroCanvas?.getBoundingClientRect();
+    if (!rect || rect.width < 1 || rect.height < 1) {
+      handoffGeometry = null;
+      return;
+    }
+    handoffGeometry = {
+      left: rect.left,
+      top: rect.top,
+      width: rect.width,
+      height: rect.height
+    };
+  }
+
+  function renderHandoff(progress) {
+    if (!handoffProxy) return;
+    measureHandoffGeometry();
+    if (progress < HANDOFF_START || !handoffGeometry) {
+      handoffProxy.style.setProperty('--tbm-handoff-opacity', '0');
+      handoffProxy.dataset.progress = '0';
+      return;
+    }
+
+    const handoff = smooth(HANDOFF_START, HANDOFF_COMPLETE, progress);
+    const left = handoffGeometry.left * handoff;
+    const top = handoffGeometry.top * handoff;
+    const width = window.innerWidth + (handoffGeometry.width - window.innerWidth) * handoff;
+    const height = window.innerHeight + (handoffGeometry.height - window.innerHeight) * handoff;
+    const proxyOpacity = 1 - smooth(.84, 1, handoff);
+
+    handoffProxy.style.setProperty('--tbm-handoff-x', left.toFixed(2) + 'px');
+    handoffProxy.style.setProperty('--tbm-handoff-y', top.toFixed(2) + 'px');
+    handoffProxy.style.setProperty('--tbm-handoff-width', Math.max(1, width).toFixed(2) + 'px');
+    handoffProxy.style.setProperty('--tbm-handoff-height', Math.max(1, height).toFixed(2) + 'px');
+    handoffProxy.style.setProperty('--tbm-handoff-opacity', proxyOpacity.toFixed(4));
+    handoffProxy.dataset.progress = handoff.toFixed(4);
+  }
 
   function suppressFallback(target) {
     if (!fallbackAria.has(target)) fallbackAria.set(target, target.getAttribute('aria-hidden'));
@@ -91,9 +157,7 @@ function initialise() {
     if (sequence || fatalFailure || reducedMotion.matches) return;
     const testFailure = Boolean(window.__FORGE_TEST_FRAME_FAILURE__);
     sequence = createForgeFrameSequence(canvas, {
-      frameCount: 32,
-      desktopBase: testFailure ? 'assets/forge-reveal/__missing__' : 'assets/forge-reveal/desktop',
-      mobileBase: testFailure ? 'assets/forge-reveal/__missing__' : 'assets/forge-reveal/mobile',
+      manifestUrl: testFailure ? 'assets/forge-reveal-v5/__missing__/frame-manifest.json' : 'assets/forge-reveal-v5/frame-manifest.json',
       onFirstFrame() {
         firstFrameReady = true;
         intro.dataset.loadState = 'ready';
@@ -102,11 +166,13 @@ function initialise() {
         currentProgress = -1;
         requestRender();
       },
-      onProgress({ loaded, failed, total, variant }) {
+      onProgress({ loaded, failed, total, variant, scrubReady: nextScrubReady }) {
+        scrubReady = nextScrubReady;
         intro.dataset.loadedFrames = String(loaded);
         intro.dataset.failedFrames = String(failed);
         intro.dataset.assetVariant = variant;
         intro.dataset.totalFrames = String(total);
+        intro.dataset.scrubReady = String(scrubReady);
       },
       onFatal(error) {
         console.warn('Forge frame reveal released to the homepage.', error.message);
@@ -118,16 +184,17 @@ function initialise() {
   }
 
   function measure() {
-    const heroTop = hero.getBoundingClientRect().top + window.scrollY;
     const desktop = window.innerWidth >= 900;
     const travel = desktop
       ? Math.max(window.innerHeight * 1.08, 820)
       : Math.max(window.innerHeight * 0.92, 640);
+    scrollSpace.style.height = `${Math.round(travel)}px`;
     range = {
-      start: Math.max(0, heroTop - window.innerHeight * 0.035),
-      end: Math.max(1, heroTop + travel)
+      start: 0,
+      end: Math.max(1, travel)
     };
     sequence?.resize();
+    measureHandoffGeometry();
   }
 
   function releaseImmediately(reason = 'bypass') {
@@ -141,9 +208,14 @@ function initialise() {
     intro.dataset.phase = 'released';
     intro.dataset.loadState = fatalFailure ? 'failed' : 'bypassed';
     intro.classList.add('is-complete');
+    handoffProxy?.style.setProperty('--tbm-handoff-opacity', '0');
+    scrollSpace.style.height = '0px';
     intro.setAttribute('aria-hidden', 'true');
     if (status) status.textContent = fatalFailure ? 'Reveal unavailable. Homepage shown.' : '';
+    body.classList.remove('forge-intro-active', 'forge-intro-pending');
+    body.classList.add('forge-intro-released');
     setInteractionSuppressed(false);
+    publishHeroLifecycle('active', 1);
   }
 
   function render() {
@@ -154,7 +226,7 @@ function initialise() {
     if (Math.abs(progress - currentProgress) < 0.0004 && firstFrameReady) return;
     currentProgress = progress;
 
-    const sequenceProgress = clamp(progress / 0.82);
+    const sequenceProgress = clamp(progress / REVEAL_MOTION_END);
     const release = smooth(0.84, 1, progress);
     currentRelease = release;
 
@@ -164,15 +236,17 @@ function initialise() {
     intro.style.setProperty('--forge-ready', firstFrameReady ? '1' : '0');
     intro.dataset.phase = progress < 0.1
       ? 'opening'
-      : progress < 0.82
+      : progress < REVEAL_MOTION_END
         ? 'progression'
         : progress < 0.84
           ? 'final-clean-hold'
           : 'dom-handoff';
 
-    sequence?.setProgress(sequenceProgress);
+    sequence?.drawProgress(sequenceProgress, { allowFallback: !scrubReady });
+    renderHandoff(progress);
+    updateHeroLifecycle(progress);
 
-    const complete = progress >= 0.999;
+    const complete = progress >= HANDOFF_COMPLETE;
     intro.classList.toggle('is-complete', complete);
     intro.setAttribute('aria-hidden', String(complete));
     setInteractionSuppressed(!complete);
@@ -215,6 +289,7 @@ function initialise() {
   if (reducedMotion.matches) {
     releaseImmediately('reduced-motion');
   } else {
+    publishHeroLifecycle('suspended');
     setInteractionSuppressed(true);
     intro.dataset.loadState = 'loading';
     startSequence();
@@ -235,6 +310,15 @@ function initialise() {
         phase: intro.dataset.phase,
         loadState: intro.dataset.loadState,
         interactionSuppressed,
+        firstFrameReady,
+        scrubReady,
+        fatalFailure,
+        heroLifecycle: document.documentElement.dataset.tbmHeroLifecycle || null,
+        handoff: handoffProxy ? {
+          progress: Number(handoffProxy.dataset.progress || 0),
+          geometry: handoffGeometry ? { ...handoffGeometry } : null,
+          opacity: handoffProxy.style.getPropertyValue('--tbm-handoff-opacity') || '0'
+        } : null,
         range: { ...range },
         sequence: sequence?.getState() ?? null
       };
@@ -247,6 +331,8 @@ function initialise() {
   window.addEventListener('pagehide', () => {
     if (frameRequest) cancelAnimationFrame(frameRequest);
     sequence?.dispose();
+    handoffProxy?.style.setProperty('--tbm-handoff-opacity', '0');
+    publishHeroLifecycle('offscreen');
     delete window.__tbmForgeIntro;
   }, { once: true });
 }

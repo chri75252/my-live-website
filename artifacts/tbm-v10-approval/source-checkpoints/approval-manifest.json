@@ -1,0 +1,41 @@
+{
+  "version": 10,
+  "createdAt": "2026-07-27T00:11:23.239699+00:00",
+  "approval": {
+    "status": "pending-headed-browser-review"
+  },
+  "boards": [
+    {
+      "checkpoint": "opening",
+      "board": "artifacts/tbm-v10-approval/source-checkpoints/opening-board.png",
+      "baseline": "assets/tbm-cinematic-v9/keyframes/phase-opening.png",
+      "proposal": "assets/tbm-cinematic-v10/keyframes/phase-opening.png",
+      "baselineSha256": "845b74982502945d45f489206cc1728b59ca8a9515a31f1362a5c1b62bad7141",
+      "proposalSha256": "cd6a8da7c5d20732fe1f54c54b87e9a6bbea1ab191153111167aa92e3e89ab31"
+    },
+    {
+      "checkpoint": "contact-push",
+      "board": "artifacts/tbm-v10-approval/source-checkpoints/contact-push-board.png",
+      "baseline": "assets/tbm-cinematic-v9/keyframes/phase-cinematic-push.png",
+      "proposal": "assets/tbm-cinematic-v10/keyframes/phase-contact-push.png",
+      "baselineSha256": "d0a2ab5f4b4dbb2777f0d8acf0a84e2c467218d951a892d59e41ab0b8f2de7e0",
+      "proposalSha256": "47ef1f27bd76f3bb47be6e3bc1610816990831134d0ef292829a41111f1ffbc3"
+    },
+    {
+      "checkpoint": "network-orbit",
+      "board": "artifacts/tbm-v10-approval/source-checkpoints/network-orbit-board.png",
+      "baseline": "assets/tbm-cinematic-v9/keyframes/phase-network.png",
+      "proposal": "assets/tbm-cinematic-v10/keyframes/phase-network-orbit.png",
+      "baselineSha256": "726f69ffecee6b864d81b611cc5a958e9ae0c379f3753230b1a27ce6f4b1608b",
+      "proposalSha256": "9c29524b4f0af992a979ea6caf4f741ab9060bd8502aa79e763a2c43f1aec975"
+    },
+    {
+      "checkpoint": "handoff",
+      "board": "artifacts/tbm-v10-approval/source-checkpoints/handoff-board.png",
+      "baseline": "assets/tbm-cinematic-v9/keyframes/phase-handoff.png",
+      "proposal": "assets/tbm-cinematic-v10/keyframes/phase-handoff.png",
+      "baselineSha256": "a6e3bb9c58478d00e630191bb4b1a011b88047f07767720e2c37b5ca51a9c41e",
+      "proposalSha256": "e51b3d02344cc0e2ff60a1dbe31633349ad6a1a37f6c9ed21cdc8cc9576558a0"
+    }
+  ]
+}

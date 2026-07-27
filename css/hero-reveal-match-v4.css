@@ -1,0 +1,22 @@
+/* Recovery layer: preserve V2 rendering and reveal it only after the spatial proxy reaches the hero canvas. */
+:root{--tbm-hero-webgl-opacity:0}
+.hero-scroll-sequence #hero-canvas{
+  opacity:var(--tbm-hero-webgl-opacity);
+  transition:opacity .14s linear;
+}
+.hero-scroll-sequence .float-card{
+  opacity:0;
+  transform:translate3d(0,16px,0) scale(.97);
+  transition:opacity .32s ease,transform .32s ease;
+}
+html[data-tbm-hero-lifecycle="active"] .hero-scroll-sequence .float-card{
+  opacity:1;
+  transform:none;
+}
+html.webgl-fallback .hero-scroll-sequence #hero-canvas{opacity:0;transition:none}
+@media(max-width:899px){
+  .hero-scroll-sequence .hero-visual{order:-1}
+}
+@media(prefers-reduced-motion:reduce){
+  .hero-scroll-sequence #hero-canvas{transition:none}
+}

@@ -1,0 +1,6 @@
+{
+  "copiedFrames": 45,
+  "stoppedAt": "2026-07-26T23:39:05.8883358+04:00",
+  "sourceRenderLog": "backup/v10_continuous_handoff_20260726/v10-full-render-seam-corrected.log",
+  "reason": "Frame 0040 visual gate: contact arc reads as a thick flat white squiggle rather than a short amber contact accent."
+}

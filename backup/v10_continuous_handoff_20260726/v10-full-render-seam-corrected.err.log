@@ -1,0 +1,12 @@
+C:\idrive -carlo\Cloud-Drive_carloboul57@gmail.com\Cloud-Drive\Full\TBM\my-live-website\blender\reference-match-v10\scripts\build_reference_match_v10.py:368: DeprecationWarning: 'World.use_nodes' is expected to be removed in Blender 6.0
+  scene.world.use_nodes = True
+C:\idrive -carlo\Cloud-Drive_carloboul57@gmail.com\Cloud-Drive\Full\TBM\my-live-website\blender\reference-match-v10\scripts\build_reference_match_v10.py:97: DeprecationWarning: 'Material.use_nodes' is expected to be removed in Blender 6.0
+  material.use_nodes = True
+C:\idrive -carlo\Cloud-Drive_carloboul57@gmail.com\Cloud-Drive\Full\TBM\my-live-website\blender\reference-match-v10\scripts\build_reference_match_v10.py:142: DeprecationWarning: 'Material.use_nodes' is expected to be removed in Blender 6.0
+  material.use_nodes = True
+C:\idrive -carlo\Cloud-Drive_carloboul57@gmail.com\Cloud-Drive\Full\TBM\my-live-website\blender\reference-match-v10\scripts\build_reference_match_v10.py:155: DeprecationWarning: 'Material.use_nodes' is expected to be removed in Blender 6.0
+  material.use_nodes = True
+C:\idrive -carlo\Cloud-Drive_carloboul57@gmail.com\Cloud-Drive\Full\TBM\my-live-website\blender\reference-match-v10\scripts\build_reference_match_v10.py:637: DeprecationWarning: 'Material.use_nodes' is expected to be removed in Blender 6.0
+  backdrop_material.use_nodes = True
+C:\idrive -carlo\Cloud-Drive_carloboul57@gmail.com\Cloud-Drive\Full\TBM\my-live-website\blender\reference-match-v10\scripts\build_reference_match_v10.py:383: DeprecationWarning: 'Material.use_nodes' is expected to be removed in Blender 6.0
+  material.use_nodes = True

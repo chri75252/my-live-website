@@ -1,0 +1,94 @@
+{
+  "name": "TBM Evidence-Gated Visual Recovery V9",
+  "sourceBaseline": "reference-match-v7",
+  "fps": 24,
+  "frameStart": 1,
+  "frameEnd": 216,
+  "approvalFrames": {
+    "opening": 18,
+    "outerFormation": 72,
+    "cinematicPush": 128,
+    "network": 174,
+    "handoff": 216
+  },
+  "progressWindows": {
+    "latent": [
+      0,
+      0.18
+    ],
+    "outerForge": [
+      0.12,
+      0.36
+    ],
+    "orbits": [
+      0.28,
+      0.58
+    ],
+    "network": [
+      0.48,
+      0.78
+    ],
+    "settle": [
+      0.7,
+      0.9
+    ],
+    "handoff": [
+      0.88,
+      1
+    ]
+  },
+  "deliveryCandidates": [
+    96,
+    120,
+    144
+  ],
+  "selectedRevealFrameCount": 120,
+  "render": {
+    "keyframes": [
+      1920,
+      1080
+    ],
+    "reveal": [
+      1600,
+      900
+    ],
+    "revealMobile": [
+      900,
+      1600
+    ],
+    "cards": [
+      640,
+      820
+    ],
+    "keyframeSamples": 128,
+    "sequenceSamples": 32,
+    "cardSamples": 48,
+    "revealWebpQuality": 88
+  },
+  "palette": {
+    "void": "#030403",
+    "iron": "#0a0e10",
+    "ironHighlight": "#3a464a",
+    "brass": "#8f4f27",
+    "brassHighlight": "#ffbd70",
+    "amber": "#ffad48",
+    "smoke": "#233330"
+  },
+  "composition": {
+    "finalObjectViewportWidthMin": 0.44,
+    "finalObjectViewportWidthMax": 0.52,
+    "copySafeRight": 0.46
+  },
+  "handoffTolerance": {
+    "centerViewport": 0.015,
+    "sizeViewport": 0.03,
+    "silhouetteOverlap": 0.97
+  },
+  "web": {
+    "root": "assets/tbm-cinematic-v9",
+    "desktopReveal": "assets/tbm-cinematic-v9/reveal-desktop",
+    "mobileReveal": "assets/tbm-cinematic-v9/reveal-mobile",
+    "posters": "assets/tbm-cinematic-v9/keyframes",
+    "productFocus": "assets/tbm-cinematic-v7/product-focus"
+  }
+}

@@ -1,0 +1,12 @@
+Repository was heavily dirty before V8 implementation.
+Relevant scoped pre-edit status:
+ M index.html
+?? .sisyphus/
+?? TBM_V8_UNIFIED_LIVE_3D_REVEAL_HERO_PLAN_2026-07-26.md
+?? blender/
+?? css/tbm-reference-refinement-v7.css
+?? js/tbm-reveal-v7.js
+?? backup/
+
+The complete `git status --short` output was inspected interactively before edits.
+Unrelated modified and untracked files are intentionally preserved.

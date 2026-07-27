@@ -1,0 +1,17 @@
+EDIT index.html
+EDIT .sisyphus/notepads/handoff/session_handoff.md
+ADD css/tbm-live-3d-v8.css
+ADD js/tbm-live-3d-v8.js
+ADD blender/reference-match-v8/config/scene-contract.json
+ADD blender/reference-match-v8/scripts/build_live_v8.py
+ADD scripts/generate-tbm-v8-smoke.py
+ADD tests/test_tbm_v8_live_3d.py
+ADD scripts/audit-tbm-v8-luminance.py
+GENERATE blender/reference-match-v8/TBM_LIVE_V8.blend
+GENERATE assets/tbm-live-v8/tbm-armillary-v8.glb
+GENERATE assets/tbm-live-v8/scene-contract.json
+GENERATE assets/tbm-live-v8/poster-desktop.webp
+GENERATE assets/tbm-live-v8/poster-mobile.webp
+GENERATE assets/tbm-live-v8/smoke/smoke-01.webp
+GENERATE assets/tbm-live-v8/smoke/smoke-02.webp
+

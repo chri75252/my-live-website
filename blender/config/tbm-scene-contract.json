@@ -1,0 +1,26 @@
+{
+  "name": "TBM Armillary V5",
+  "fps": 24,
+  "frameStart": 1,
+  "frameEnd": 156,
+  "render": {
+    "desktop": [960, 540],
+    "mobile": [540, 960],
+    "samples": 24,
+    "revealSamples": 64
+  },
+  "palette": {
+    "bronze": "#9F542B",
+    "bronzeHighlight": "#E4AD78",
+    "iron": "#111719",
+    "ember": "#F4A43A",
+    "void": "#030707",
+    "mist": "#223435"
+  },
+  "web": {
+    "glb": "assets/armillary/tbm-armillary-v5.glb",
+    "revealRoot": "assets/forge-reveal-v5",
+    "maxTriangleTarget": 42000,
+    "maxGlbBytes": 2500000
+  }
+}

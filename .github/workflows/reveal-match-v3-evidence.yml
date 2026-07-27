@@ -1,0 +1,54 @@
+name: Reveal-Matched Live Armillary V3 Evidence
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - index.html
+      - css/hero-reveal-match-v3.css
+      - js/hero-3d-reveal-match-v3.js
+      - js/forge-intro.js
+      - js/forge-frame-sequence.js
+      - assets/forge-reveal/**
+      - scripts/verify-reveal-match-v3.py
+      - scripts/capture-reveal-match-v3.mjs
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  evidence:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+      - name: Validate source contracts
+        run: |
+          node --check js/hero-3d-reveal-match-v3.js
+          node --check js/forge-intro.js
+          node --check js/forge-frame-sequence.js
+          node --check scripts/capture-reveal-match-v3.mjs
+          python scripts/verify-reveal-match-v3.py
+          node scripts/validate-forge-frame-sequence.mjs
+      - name: Install Playwright Chromium
+        run: |
+          npm install --no-save playwright@1.53.2
+          npx playwright install --with-deps chromium
+      - name: Start preview
+        run: python3 -m http.server 4173 --bind 127.0.0.1 > /tmp/tbm-preview.log 2>&1 &
+      - name: Capture V3 evidence
+        run: node scripts/capture-reveal-match-v3.mjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: reveal-match-v3-evidence
+          path: artifacts/reveal-match-v3/**
+          if-no-files-found: error
+          retention-days: 30

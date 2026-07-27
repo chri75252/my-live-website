@@ -154,6 +154,63 @@
   pointer-events:none;
 }
 
+.forge-handoff-proxy{
+  --tbm-handoff-x:0px;
+  --tbm-handoff-y:0px;
+  --tbm-handoff-width:100vw;
+  --tbm-handoff-height:100vh;
+  --tbm-handoff-opacity:0;
+  position:fixed;
+  left:var(--tbm-handoff-x);
+  top:var(--tbm-handoff-y);
+  z-index:2999;
+  width:var(--tbm-handoff-width);
+  height:var(--tbm-handoff-height);
+  overflow:hidden;
+  pointer-events:none;
+  opacity:var(--tbm-handoff-opacity);
+  background:#071011;
+  will-change:left,top,width,height,opacity;
+}
+
+.forge-handoff-proxy img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  object-position:center;
+}
+
+.tbm-direct-preview-notice{
+  position:fixed;
+  right:16px;
+  bottom:16px;
+  z-index:4000;
+  max-width:min(420px,calc(100vw - 32px));
+  padding:12px 14px;
+  border:1px solid rgba(230,185,85,.42);
+  border-radius:10px;
+  color:#f3eee4;
+  background:rgba(6,9,8,.94);
+  box-shadow:0 14px 36px rgba(0,0,0,.36);
+  font:600 .76rem/1.45 var(--sans,"Manrope",sans-serif);
+}
+
+.tbm-direct-preview-notice code{color:#f1c978}
+
+/* Modules and manifest fetches are not dependable from file://. Keep the page usable and make the limited mode explicit. */
+html.tbm-direct-file-preview .forge-intro,
+html.tbm-direct-file-preview .forge-handoff-proxy{display:none!important}
+html.tbm-direct-file-preview body.forge-intro-pending > .skip-link,
+html.tbm-direct-file-preview body.forge-intro-pending > .site-header,
+html.tbm-direct-file-preview body.forge-intro-pending > main,
+html.tbm-direct-file-preview body.forge-intro-pending > .site-footer{pointer-events:auto!important;user-select:auto!important}
+
+.forge-intro__scroll-space{
+  position:relative;
+  width:1px;
+  pointer-events:none;
+}
+
 body.forge-intro-pending > .skip-link,
 body.forge-intro-pending > .site-header,
 body.forge-intro-pending > main,

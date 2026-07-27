@@ -1,0 +1,8 @@
+{
+  "mode": "corrected-cycles-120-desktop-and-mobile",
+  "startedAt": "2026-07-26T19:26:02.8704889+04:00",
+  "command": "C:\\Program Files\\Blender Foundation\\Blender 5.2\\blender.exe --background --python blender/reference-match-v9/scripts/build_reference_match_v9.py -- --render reveal",
+  "processId": 49012,
+  "stdout": "C:\\idrive -carlo\\Cloud-Drive_carloboul57@gmail.com\\Cloud-Drive\\Full\\TBM\\my-live-website\\artifacts\\reference-match-v9\\cycles-delivery\\render-stdout.log",
+  "stderr": "C:\\idrive -carlo\\Cloud-Drive_carloboul57@gmail.com\\Cloud-Drive\\Full\\TBM\\my-live-website\\artifacts\\reference-match-v9\\cycles-delivery\\render-stderr.log"
+}

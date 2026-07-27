@@ -1,0 +1,6 @@
+{
+  "reason": "Rejected before activation: Eevee delivery did not match Cycles-approved material and lighting; mobile was a desktop portrait crop.",
+  "movedAt": "2026-07-26T19:25:41.9992485+04:00",
+  "replacement": "Cycles delivery via render_reveal() plus independently keyed Camera_Mobile.",
+  "sourceBuilder": "blender/reference-match-v9/scripts/build_reference_match_v9.py"
+}

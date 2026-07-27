@@ -1,0 +1,25 @@
+{
+  "package": "TBM Final GitHub-Verified Handoff",
+  "generated_date": "2026-07-13",
+  "repository": "chri75252/my-live-website",
+  "current_main": "65cdf3c34ad6fc87837bee9969b1d382cf3bb762",
+  "pr11_merge": "2b56fe29e3e5d4a059c0bbfa025243c77f6b49ce",
+  "pr12_merge": "65cdf3c34ad6fc87837bee9969b1d382cf3bb762",
+  "user_video_required": true,
+  "project_source_policy": "GitHub repository only; user-provided source video is the sole external project asset exception",
+  "documents": [
+    "README.md",
+    "00_FINAL_EXECUTION_PROMPT.md",
+    "01_CURRENT_REPOSITORY_STATE.md",
+    "02_CONFIRMED_PROBLEMS_AND_ROOT_CAUSE_HYPOTHESES.md",
+    "03_PR_HISTORY_AND_REUSE_MAP.md",
+    "04_REVEAL_VIDEO_AND_SCROLL_PIPELINE_SPEC.md",
+    "05_PERSISTENT_HERO_RECONSTRUCTION_SPEC.md",
+    "06_SKILL_AND_TOOLCHAIN_MATRIX.md",
+    "07_EXACT_REPOSITORY_INSPECTION_MAP.md",
+    "08_VALIDATION_AND_ACCEPTANCE_GATE.md",
+    "09_SOURCE_REFERENCE_MANIFEST.md",
+    "MANIFEST.json",
+    "SHA256SUMS.json"
+  ]
+}

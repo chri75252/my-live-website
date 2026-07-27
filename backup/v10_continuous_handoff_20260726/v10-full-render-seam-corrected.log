@@ -1,0 +1,111 @@
+00:02.296  cycles           | WARNING HIPEW initialization failed: Error opening HIP dynamic library
+00:59.046  render           | Saved: 'C:\idrive -carlo\Cloud-Drive_carloboul57@gmail.com\Cloud-Drive\Full\TBM\my-live-website\assets\tbm-cinematic-v10\keyframes\phase-opening.png'
+01:37.453  render           | Saved: 'C:\idrive -carlo\Cloud-Drive_carloboul57@gmail.com\Cloud-Drive\Full\TBM\my-live-website\assets\tbm-cinematic-v10\keyframes\phase-contact-push.png'
+02:16.796  render           | Saved: 'C:\idrive -carlo\Cloud-Drive_carloboul57@gmail.com\Cloud-Drive\Full\TBM\my-live-website\assets\tbm-cinematic-v10\keyframes\phase-material-close.png'
+02:17.250  cycles           | WARNING Topology differs, disabling motion blur for object Network_Edge_022
+02:17.250  cycles           | WARNING Topology differs, disabling motion blur for object Network_Edge_024
+02:17.250  cycles           | WARNING Topology differs, disabling motion blur for object Network_Edge_029
+02:17.265  cycles           | WARNING Topology differs, disabling motion blur for object Network_Edge_076
+02:17.265  cycles           | WARNING Topology differs, disabling motion blur for object Network_Edge_078
+02:17.265  cycles           | WARNING Topology differs, disabling motion blur for object Network_Edge_083
+02:17.265  cycles           | WARNING Topology differs, disabling motion blur for object Network_Edge_130
+02:17.265  cycles           | WARNING Topology differs, disabling motion blur for object Network_Edge_132
+02:17.265  cycles           | WARNING Topology differs, disabling motion blur for object Network_Edge_137
+02:17.265  cycles           | WARNING Topology differs, disabling motion blur for object Network_Edge_184
+02:17.265  cycles           | WARNING Topology differs, disabling motion blur for object Network_Edge_186
+02:17.265  cycles           | WARNING Topology differs, disabling motion blur for object Network_Edge_191
+02:17.265  cycles           | WARNING Topology differs, disabling motion blur for object Network_Edge_238
+02:17.265  cycles           | WARNING Topology differs, disabling motion blur for object Network_Edge_240
+02:17.265  cycles           | WARNING Topology differs, disabling motion blur for object Network_Edge_245
+02:17.265  cycles           | WARNING Topology differs, disabling motion blur for object Network_Edge_292
+02:17.265  cycles           | WARNING Topology differs, disabling motion blur for object Network_Edge_294
+02:17.265  cycles           | WARNING Topology differs, disabling motion blur for object Network_Edge_299
+02:17.265  cycles           | WARNING Topology differs, disabling motion blur for object Network_Edge_346
+02:17.265  cycles           | WARNING Topology differs, disabling motion blur for object Network_Edge_348
+02:17.265  cycles           | WARNING Topology differs, disabling motion blur for object Network_Edge_353
+02:17.265  cycles           | WARNING Topology differs, disabling motion blur for object Network_Edge_400
+02:17.265  cycles           | WARNING Topology differs, disabling motion blur for object Network_Edge_402
+02:17.265  cycles           | WARNING Topology differs, disabling motion blur for object Network_Edge_407
+02:17.281  cycles           | WARNING Topology differs, disabling motion blur for object Network_Edge_454
+02:17.281  cycles           | WARNING Topology differs, disabling motion blur for object Network_Edge_456
+02:17.281  cycles           | WARNING Topology differs, disabling motion blur for object Network_Edge_461
+02:17.296  cycles           | WARNING Topology differs, discarding motion blur for object Network_Edge_025 at time 1
+02:17.296  cycles           | WARNING Topology differs, discarding motion blur for object Network_Edge_030 at time 1
+02:17.296  cycles           | WARNING Topology differs, discarding motion blur for object Network_Edge_032 at time 1
+02:17.312  cycles           | WARNING Topology differs, discarding motion blur for object Network_Edge_079 at time 1
+02:17.312  cycles           | WARNING Topology differs, discarding motion blur for object Network_Edge_084 at time 1
+02:17.312  cycles           | WARNING Topology differs, discarding motion blur for object Network_Edge_086 at time 1
+02:17.312  cycles           | WARNING Topology differs, discarding motion blur for object Network_Edge_133 at time 1
+02:17.312  cycles           | WARNING Topology differs, discarding motion blur for object Network_Edge_138 at time 1
+02:17.312  cycles           | WARNING Topology differs, discarding motion blur for object Network_Edge_140 at time 1
+02:17.312  cycles           | WARNING Topology differs, discarding motion blur for object Network_Edge_187 at time 1
+02:17.312  cycles           | WARNING Topology differs, discarding motion blur for object Network_Edge_192 at time 1
+02:17.312  cycles           | WARNING Topology differs, discarding motion blur for object Network_Edge_194 at time 1
+02:17.312  cycles           | WARNING Topology differs, discarding motion blur for object Network_Edge_241 at time 1
+02:17.312  cycles           | WARNING Topology differs, discarding motion blur for object Network_Edge_246 at time 1
+02:17.312  cycles           | WARNING Topology differs, discarding motion blur for object Network_Edge_248 at time 1
+02:17.312  cycles           | WARNING Topology differs, discarding motion blur for object Network_Edge_295 at time 1
+02:17.312  cycles           | WARNING Topology differs, discarding motion blur for object Network_Edge_300 at time 1
+02:17.312  cycles           | WARNING Topology differs, discarding motion blur for object Network_Edge_302 at time 1
+02:17.312  cycles           | WARNING Topology differs, discarding motion blur for object Network_Edge_349 at time 1
+02:17.312  cycles           | WARNING Topology differs, discarding motion blur for object Network_Edge_354 at time 1
+02:17.312  cycles           | WARNING Topology differs, discarding motion blur for object Network_Edge_356 at time 1
+02:17.328  cycles           | WARNING Topology differs, discarding motion blur for object Network_Edge_403 at time 1
+02:17.328  cycles           | WARNING Topology differs, discarding motion blur for object Network_Edge_408 at time 1
+02:17.328  cycles           | WARNING Topology differs, discarding motion blur for object Network_Edge_410 at time 1
+02:17.328  cycles           | WARNING Topology differs, discarding motion blur for object Network_Edge_457 at time 1
+02:17.328  cycles           | WARNING Topology differs, discarding motion blur for object Network_Edge_462 at time 1
+02:17.328  cycles           | WARNING Topology differs, discarding motion blur for object Network_Edge_464 at time 1
+02:55.343  render           | Saved: 'C:\idrive -carlo\Cloud-Drive_carloboul57@gmail.com\Cloud-Drive\Full\TBM\my-live-website\assets\tbm-cinematic-v10\keyframes\phase-network-orbit.png'
+03:31.531  render           | Saved: 'C:\idrive -carlo\Cloud-Drive_carloboul57@gmail.com\Cloud-Drive\Full\TBM\my-live-website\assets\tbm-cinematic-v10\keyframes\phase-handoff.png'
+03:54.250  render           | Saved: 'C:\idrive -carlo\Cloud-Drive_carloboul57@gmail.com\Cloud-Drive\Full\TBM\my-live-website\assets\tbm-cinematic-v10\reveal-desktop\frame_0001.webp'
+04:19.546  render           | Saved: 'C:\idrive -carlo\Cloud-Drive_carloboul57@gmail.com\Cloud-Drive\Full\TBM\my-live-website\assets\tbm-cinematic-v10\reveal-desktop\frame_0002.webp'
+04:43.828  render           | Saved: 'C:\idrive -carlo\Cloud-Drive_carloboul57@gmail.com\Cloud-Drive\Full\TBM\my-live-website\assets\tbm-cinematic-v10\reveal-desktop\frame_0003.webp'
+05:07.218  render           | Saved: 'C:\idrive -carlo\Cloud-Drive_carloboul57@gmail.com\Cloud-Drive\Full\TBM\my-live-website\assets\tbm-cinematic-v10\reveal-desktop\frame_0004.webp'
+05:29.906  render           | Saved: 'C:\idrive -carlo\Cloud-Drive_carloboul57@gmail.com\Cloud-Drive\Full\TBM\my-live-website\assets\tbm-cinematic-v10\reveal-desktop\frame_0005.webp'
+05:54.265  render           | Saved: 'C:\idrive -carlo\Cloud-Drive_carloboul57@gmail.com\Cloud-Drive\Full\TBM\my-live-website\assets\tbm-cinematic-v10\reveal-desktop\frame_0006.webp'
+06:19.312  render           | Saved: 'C:\idrive -carlo\Cloud-Drive_carloboul57@gmail.com\Cloud-Drive\Full\TBM\my-live-website\assets\tbm-cinematic-v10\reveal-desktop\frame_0007.webp'
+06:43.656  render           | Saved: 'C:\idrive -carlo\Cloud-Drive_carloboul57@gmail.com\Cloud-Drive\Full\TBM\my-live-website\assets\tbm-cinematic-v10\reveal-desktop\frame_0008.webp'
+07:05.515  render           | Saved: 'C:\idrive -carlo\Cloud-Drive_carloboul57@gmail.com\Cloud-Drive\Full\TBM\my-live-website\assets\tbm-cinematic-v10\reveal-desktop\frame_0009.webp'
+07:27.812  render           | Saved: 'C:\idrive -carlo\Cloud-Drive_carloboul57@gmail.com\Cloud-Drive\Full\TBM\my-live-website\assets\tbm-cinematic-v10\reveal-desktop\frame_0010.webp'
+07:50.125  render           | Saved: 'C:\idrive -carlo\Cloud-Drive_carloboul57@gmail.com\Cloud-Drive\Full\TBM\my-live-website\assets\tbm-cinematic-v10\reveal-desktop\frame_0011.webp'
+08:12.171  render           | Saved: 'C:\idrive -carlo\Cloud-Drive_carloboul57@gmail.com\Cloud-Drive\Full\TBM\my-live-website\assets\tbm-cinematic-v10\reveal-desktop\frame_0012.webp'
+08:37.312  render           | Saved: 'C:\idrive -carlo\Cloud-Drive_carloboul57@gmail.com\Cloud-Drive\Full\TBM\my-live-website\assets\tbm-cinematic-v10\reveal-desktop\frame_0013.webp'
+09:01.968  render           | Saved: 'C:\idrive -carlo\Cloud-Drive_carloboul57@gmail.com\Cloud-Drive\Full\TBM\my-live-website\assets\tbm-cinematic-v10\reveal-desktop\frame_0014.webp'
+09:24.359  render           | Saved: 'C:\idrive -carlo\Cloud-Drive_carloboul57@gmail.com\Cloud-Drive\Full\TBM\my-live-website\assets\tbm-cinematic-v10\reveal-desktop\frame_0015.webp'
+09:46.906  render           | Saved: 'C:\idrive -carlo\Cloud-Drive_carloboul57@gmail.com\Cloud-Drive\Full\TBM\my-live-website\assets\tbm-cinematic-v10\reveal-desktop\frame_0016.webp'
+10:08.109  render           | Saved: 'C:\idrive -carlo\Cloud-Drive_carloboul57@gmail.com\Cloud-Drive\Full\TBM\my-live-website\assets\tbm-cinematic-v10\reveal-desktop\frame_0017.webp'
+10:30.906  render           | Saved: 'C:\idrive -carlo\Cloud-Drive_carloboul57@gmail.com\Cloud-Drive\Full\TBM\my-live-website\assets\tbm-cinematic-v10\reveal-desktop\frame_0018.webp'
+10:53.906  render           | Saved: 'C:\idrive -carlo\Cloud-Drive_carloboul57@gmail.com\Cloud-Drive\Full\TBM\my-live-website\assets\tbm-cinematic-v10\reveal-desktop\frame_0019.webp'
+11:16.953  render           | Saved: 'C:\idrive -carlo\Cloud-Drive_carloboul57@gmail.com\Cloud-Drive\Full\TBM\my-live-website\assets\tbm-cinematic-v10\reveal-desktop\frame_0020.webp'
+11:41.656  render           | Saved: 'C:\idrive -carlo\Cloud-Drive_carloboul57@gmail.com\Cloud-Drive\Full\TBM\my-live-website\assets\tbm-cinematic-v10\reveal-desktop\frame_0021.webp'
+12:06.109  render           | Saved: 'C:\idrive -carlo\Cloud-Drive_carloboul57@gmail.com\Cloud-Drive\Full\TBM\my-live-website\assets\tbm-cinematic-v10\reveal-desktop\frame_0022.webp'
+12:29.546  render           | Saved: 'C:\idrive -carlo\Cloud-Drive_carloboul57@gmail.com\Cloud-Drive\Full\TBM\my-live-website\assets\tbm-cinematic-v10\reveal-desktop\frame_0023.webp'
+12:52.437  render           | Saved: 'C:\idrive -carlo\Cloud-Drive_carloboul57@gmail.com\Cloud-Drive\Full\TBM\my-live-website\assets\tbm-cinematic-v10\reveal-desktop\frame_0024.webp'
+13:15.046  render           | Saved: 'C:\idrive -carlo\Cloud-Drive_carloboul57@gmail.com\Cloud-Drive\Full\TBM\my-live-website\assets\tbm-cinematic-v10\reveal-desktop\frame_0025.webp'
+13:36.734  render           | Saved: 'C:\idrive -carlo\Cloud-Drive_carloboul57@gmail.com\Cloud-Drive\Full\TBM\my-live-website\assets\tbm-cinematic-v10\reveal-desktop\frame_0026.webp'
+13:59.640  render           | Saved: 'C:\idrive -carlo\Cloud-Drive_carloboul57@gmail.com\Cloud-Drive\Full\TBM\my-live-website\assets\tbm-cinematic-v10\reveal-desktop\frame_0027.webp'
+14:22.218  render           | Saved: 'C:\idrive -carlo\Cloud-Drive_carloboul57@gmail.com\Cloud-Drive\Full\TBM\my-live-website\assets\tbm-cinematic-v10\reveal-desktop\frame_0028.webp'
+14:45.750  render           | Saved: 'C:\idrive -carlo\Cloud-Drive_carloboul57@gmail.com\Cloud-Drive\Full\TBM\my-live-website\assets\tbm-cinematic-v10\reveal-desktop\frame_0029.webp'
+14:46.421  cycles           | WARNING Topology differs, disabling motion blur for object Contact_A
+14:46.468  cycles           | WARNING Topology differs, disabling motion blur for object Contact_A
+15:10.000  render           | Saved: 'C:\idrive -carlo\Cloud-Drive_carloboul57@gmail.com\Cloud-Drive\Full\TBM\my-live-website\assets\tbm-cinematic-v10\reveal-desktop\frame_0030.webp'
+15:10.421  cycles           | WARNING Topology differs, disabling motion blur for object Contact_A_Branch
+15:34.531  render           | Saved: 'C:\idrive -carlo\Cloud-Drive_carloboul57@gmail.com\Cloud-Drive\Full\TBM\my-live-website\assets\tbm-cinematic-v10\reveal-desktop\frame_0031.webp'
+15:57.625  render           | Saved: 'C:\idrive -carlo\Cloud-Drive_carloboul57@gmail.com\Cloud-Drive\Full\TBM\my-live-website\assets\tbm-cinematic-v10\reveal-desktop\frame_0032.webp'
+16:19.812  render           | Saved: 'C:\idrive -carlo\Cloud-Drive_carloboul57@gmail.com\Cloud-Drive\Full\TBM\my-live-website\assets\tbm-cinematic-v10\reveal-desktop\frame_0033.webp'
+16:43.765  render           | Saved: 'C:\idrive -carlo\Cloud-Drive_carloboul57@gmail.com\Cloud-Drive\Full\TBM\my-live-website\assets\tbm-cinematic-v10\reveal-desktop\frame_0034.webp'
+17:06.796  render           | Saved: 'C:\idrive -carlo\Cloud-Drive_carloboul57@gmail.com\Cloud-Drive\Full\TBM\my-live-website\assets\tbm-cinematic-v10\reveal-desktop\frame_0035.webp'
+17:30.328  render           | Saved: 'C:\idrive -carlo\Cloud-Drive_carloboul57@gmail.com\Cloud-Drive\Full\TBM\my-live-website\assets\tbm-cinematic-v10\reveal-desktop\frame_0036.webp'
+17:54.343  render           | Saved: 'C:\idrive -carlo\Cloud-Drive_carloboul57@gmail.com\Cloud-Drive\Full\TBM\my-live-website\assets\tbm-cinematic-v10\reveal-desktop\frame_0037.webp'
+18:16.750  render           | Saved: 'C:\idrive -carlo\Cloud-Drive_carloboul57@gmail.com\Cloud-Drive\Full\TBM\my-live-website\assets\tbm-cinematic-v10\reveal-desktop\frame_0038.webp'
+18:39.984  render           | Saved: 'C:\idrive -carlo\Cloud-Drive_carloboul57@gmail.com\Cloud-Drive\Full\TBM\my-live-website\assets\tbm-cinematic-v10\reveal-desktop\frame_0039.webp'
+18:40.359  cycles           | WARNING Topology differs, disabling motion blur for object Contact_B
+18:40.375  cycles           | WARNING Topology differs, disabling motion blur for object Contact_B
+19:02.781  render           | Saved: 'C:\idrive -carlo\Cloud-Drive_carloboul57@gmail.com\Cloud-Drive\Full\TBM\my-live-website\assets\tbm-cinematic-v10\reveal-desktop\frame_0040.webp'
+19:03.171  cycles           | WARNING Topology differs, disabling motion blur for object Contact_B_Branch
+19:25.765  render           | Saved: 'C:\idrive -carlo\Cloud-Drive_carloboul57@gmail.com\Cloud-Drive\Full\TBM\my-live-website\assets\tbm-cinematic-v10\reveal-desktop\frame_0041.webp'
+19:52.250  render           | Saved: 'C:\idrive -carlo\Cloud-Drive_carloboul57@gmail.com\Cloud-Drive\Full\TBM\my-live-website\assets\tbm-cinematic-v10\reveal-desktop\frame_0042.webp'
+20:15.828  render           | Saved: 'C:\idrive -carlo\Cloud-Drive_carloboul57@gmail.com\Cloud-Drive\Full\TBM\my-live-website\assets\tbm-cinematic-v10\reveal-desktop\frame_0043.webp'
+20:38.390  render           | Saved: 'C:\idrive -carlo\Cloud-Drive_carloboul57@gmail.com\Cloud-Drive\Full\TBM\my-live-website\assets\tbm-cinematic-v10\reveal-desktop\frame_0044.webp'
+21:03.578  render           | Saved: 'C:\idrive -carlo\Cloud-Drive_carloboul57@gmail.com\Cloud-Drive\Full\TBM\my-live-website\assets\tbm-cinematic-v10\reveal-desktop\frame_0045.webp'

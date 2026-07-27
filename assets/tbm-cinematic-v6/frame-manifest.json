@@ -1,0 +1,102 @@
+{
+  "version": 6,
+  "sampleCount": 24,
+  "frames": [
+    {
+      "desktop": "assets/tbm-cinematic-v6/reveal-desktop/frame_0001.webp",
+      "mobile": "assets/tbm-cinematic-v6/reveal-mobile/frame_0001.webp"
+    },
+    {
+      "desktop": "assets/tbm-cinematic-v6/reveal-desktop/frame_0002.webp",
+      "mobile": "assets/tbm-cinematic-v6/reveal-mobile/frame_0002.webp"
+    },
+    {
+      "desktop": "assets/tbm-cinematic-v6/reveal-desktop/frame_0003.webp",
+      "mobile": "assets/tbm-cinematic-v6/reveal-mobile/frame_0003.webp"
+    },
+    {
+      "desktop": "assets/tbm-cinematic-v6/reveal-desktop/frame_0004.webp",
+      "mobile": "assets/tbm-cinematic-v6/reveal-mobile/frame_0004.webp"
+    },
+    {
+      "desktop": "assets/tbm-cinematic-v6/reveal-desktop/frame_0005.webp",
+      "mobile": "assets/tbm-cinematic-v6/reveal-mobile/frame_0005.webp"
+    },
+    {
+      "desktop": "assets/tbm-cinematic-v6/reveal-desktop/frame_0006.webp",
+      "mobile": "assets/tbm-cinematic-v6/reveal-mobile/frame_0006.webp"
+    },
+    {
+      "desktop": "assets/tbm-cinematic-v6/reveal-desktop/frame_0007.webp",
+      "mobile": "assets/tbm-cinematic-v6/reveal-mobile/frame_0007.webp"
+    },
+    {
+      "desktop": "assets/tbm-cinematic-v6/reveal-desktop/frame_0008.webp",
+      "mobile": "assets/tbm-cinematic-v6/reveal-mobile/frame_0008.webp"
+    },
+    {
+      "desktop": "assets/tbm-cinematic-v6/reveal-desktop/frame_0009.webp",
+      "mobile": "assets/tbm-cinematic-v6/reveal-mobile/frame_0009.webp"
+    },
+    {
+      "desktop": "assets/tbm-cinematic-v6/reveal-desktop/frame_0010.webp",
+      "mobile": "assets/tbm-cinematic-v6/reveal-mobile/frame_0010.webp"
+    },
+    {
+      "desktop": "assets/tbm-cinematic-v6/reveal-desktop/frame_0011.webp",
+      "mobile": "assets/tbm-cinematic-v6/reveal-mobile/frame_0011.webp"
+    },
+    {
+      "desktop": "assets/tbm-cinematic-v6/reveal-desktop/frame_0012.webp",
+      "mobile": "assets/tbm-cinematic-v6/reveal-mobile/frame_0012.webp"
+    },
+    {
+      "desktop": "assets/tbm-cinematic-v6/reveal-desktop/frame_0013.webp",
+      "mobile": "assets/tbm-cinematic-v6/reveal-mobile/frame_0013.webp"
+    },
+    {
+      "desktop": "assets/tbm-cinematic-v6/reveal-desktop/frame_0014.webp",
+      "mobile": "assets/tbm-cinematic-v6/reveal-mobile/frame_0014.webp"
+    },
+    {
+      "desktop": "assets/tbm-cinematic-v6/reveal-desktop/frame_0015.webp",
+      "mobile": "assets/tbm-cinematic-v6/reveal-mobile/frame_0015.webp"
+    },
+    {
+      "desktop": "assets/tbm-cinematic-v6/reveal-desktop/frame_0016.webp",
+      "mobile": "assets/tbm-cinematic-v6/reveal-mobile/frame_0016.webp"
+    },
+    {
+      "desktop": "assets/tbm-cinematic-v6/reveal-desktop/frame_0017.webp",
+      "mobile": "assets/tbm-cinematic-v6/reveal-mobile/frame_0017.webp"
+    },
+    {
+      "desktop": "assets/tbm-cinematic-v6/reveal-desktop/frame_0018.webp",
+      "mobile": "assets/tbm-cinematic-v6/reveal-mobile/frame_0018.webp"
+    },
+    {
+      "desktop": "assets/tbm-cinematic-v6/reveal-desktop/frame_0019.webp",
+      "mobile": "assets/tbm-cinematic-v6/reveal-mobile/frame_0019.webp"
+    },
+    {
+      "desktop": "assets/tbm-cinematic-v6/reveal-desktop/frame_0020.webp",
+      "mobile": "assets/tbm-cinematic-v6/reveal-mobile/frame_0020.webp"
+    },
+    {
+      "desktop": "assets/tbm-cinematic-v6/reveal-desktop/frame_0021.webp",
+      "mobile": "assets/tbm-cinematic-v6/reveal-mobile/frame_0021.webp"
+    },
+    {
+      "desktop": "assets/tbm-cinematic-v6/reveal-desktop/frame_0022.webp",
+      "mobile": "assets/tbm-cinematic-v6/reveal-mobile/frame_0022.webp"
+    },
+    {
+      "desktop": "assets/tbm-cinematic-v6/reveal-desktop/frame_0023.webp",
+      "mobile": "assets/tbm-cinematic-v6/reveal-mobile/frame_0023.webp"
+    },
+    {
+      "desktop": "assets/tbm-cinematic-v6/reveal-desktop/frame_0024.webp",
+      "mobile": "assets/tbm-cinematic-v6/reveal-mobile/frame_0024.webp"
+    }
+  ]
+}

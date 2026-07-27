@@ -1,0 +1,37 @@
+[
+  {
+    "Path": "js\\tbm-reveal-v7.js",
+    "SHA256": "EAC2441E352756CE027D864C16D6AA3509AE1C85EC5C3184B36FE5BB2DEABE0A",
+    "Bytes": 6616
+  },
+  {
+    "Path": "blender\\reference-match-v7\\scripts\\build_reference_match_v7.py",
+    "SHA256": "9D4FD51B819867839C920329658A909C003F0B78952487ADF3E66EA64D805B27",
+    "Bytes": 36296
+  },
+  {
+    "Path": "tests\\test_tbm_v7_visual.py",
+    "SHA256": "2B4C6CAFC86496FBC53530E37C9DA3A388617B35BC4110F7DF4FA2EDC3B3FE40",
+    "Bytes": 3374
+  },
+  {
+    "Path": "css\\tbm-reference-refinement-v7.css",
+    "SHA256": "9AF9496F97656EB931A8FC0028EDB946214581657A5EDB4A58AC6054C92B5A77",
+    "Bytes": 4206
+  },
+  {
+    "Path": "preview-site.cmd",
+    "SHA256": "26DDE286A2E16A9810767429822AAEC5655E7052D8F5F2FD1A62557F699EC590",
+    "Bytes": 200
+  },
+  {
+    "Path": "index.html",
+    "SHA256": "E101843444FF44B29804D264DAEA23A6BF9C05939A4DCCCDA5FB27A2B1D9F0A4",
+    "Bytes": 16570
+  },
+  {
+    "Path": "blender\\reference-match-v7\\config\\scene-contract.json",
+    "SHA256": "71DE7F3696733F298E7641D790ABB2EDDCDCFBA28BCD9AFB3620711F1EE86CB8",
+    "Bytes": 852
+  }
+]
