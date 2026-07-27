@@ -1,6 +1,24 @@
 {
   "site": "https://www.theblacksmithmarket.com",
   "updated": "2026-07-27",
+  "pages": [
+    {"path": "/", "file": "index.html", "indexable": true, "lastmod": "2026-07-27"},
+    {"path": "/about.html", "file": "about.html", "indexable": true, "lastmod": "2026-07-27"},
+    {"path": "/products.html", "file": "products.html", "indexable": true, "lastmod": "2026-07-27"},
+    {"path": "/partnership.html", "file": "partnership.html", "indexable": true, "lastmod": "2026-07-27"},
+    {"path": "/contact.html", "file": "contact.html", "indexable": true, "lastmod": "2026-07-27"},
+    {"path": "/faq.html", "file": "faq.html", "indexable": true, "lastmod": "2026-07-27"},
+    {"path": "/blog.html", "file": "blog.html", "indexable": true, "lastmod": "2026-07-27"},
+    {"path": "/blog/search-ai-discovery-checklist.html", "file": "blog/search-ai-discovery-checklist.html", "indexable": true, "lastmod": "2026-07-27"},
+    {"path": "/editorial-policy.html", "file": "editorial-policy.html", "indexable": true, "lastmod": "2026-07-27"},
+    {"path": "/research-methodology.html", "file": "research-methodology.html", "indexable": true, "lastmod": "2026-07-27"},
+    {"path": "/ai-content-policy.html", "file": "ai-content-policy.html", "indexable": true, "lastmod": "2026-07-27"},
+    {"path": "/privacy-policy.html", "file": "privacy-policy.html", "indexable": true, "lastmod": "2026-07-27"},
+    {"path": "/terms.html", "file": "terms.html", "indexable": true, "lastmod": "2026-07-27"},
+    {"path": "/testimonials.html", "file": "testimonials.html", "indexable": false, "lastmod": "2026-07-27"},
+    {"path": "/blog/uk-wholesale-distributor-guide.html", "file": "blog/uk-wholesale-distributor-guide.html", "indexable": false, "lastmod": "2026-07-27"},
+    {"path": "/404.html", "file": "404.html", "indexable": false, "lastmod": "2026-07-27"}
+  ],
   "articles": [
     {
       "slug": "search-ai-discovery-checklist",
