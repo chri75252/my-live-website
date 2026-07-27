@@ -1,7 +1,9 @@
 # Search, content and AI-discovery baseline
 
-**Property:** `sc-domain:theblacksmithmarket.com`  
-**Research date:** 27 July 2026  
+**Property:** `sc-domain:theblacksmithmarket.com`
+
+**Research date:** 27 July 2026
+
 **Market:** United Kingdom unless stated otherwise
 
 ## 1. Google Search Console baseline
