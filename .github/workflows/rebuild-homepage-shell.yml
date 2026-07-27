@@ -1,4 +1,4 @@
-name: Rebuild Homepage Shell
+name: Finalise Corrective Homepage
 
 on:
   push:
@@ -10,11 +10,11 @@ permissions:
   contents: write
 
 jobs:
-  rebuild:
+  finalise:
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
-      - name: Clone, rebuild and push
+      - name: Apply final wording, validate and clean temporary workflows
         env:
           GH_TOKEN: ${{ github.token }}
         shell: bash
@@ -22,24 +22,60 @@ jobs:
           set -euo pipefail
           git clone --quiet --branch fix/post-seo-content-correction --single-branch "https://x-access-token:${GH_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" repo
           cd repo
-          git fetch --quiet origin main
-          sed -i '/if digest != EXPECTED_SHA256:/,+1d' scripts/rebuild_homepage_corrective.py
-          python scripts/rebuild_homepage_corrective.py
           python - <<'PY'
           from pathlib import Path
-          text = Path('index.html').read_text(encoding='utf-8')
-          required = ['Products &amp; Opportunities','Blog &amp; Resources','From The Forge','home-forge-section','Products, partnerships and modern commerce','js/tbm-cinematic-v10.js','js/home-v2.js','js/tbm-product-network-v7.js']
-          forbidden = ['Premium wholesale partnerships','high and rising across multiple channels','category specialists and streamlined checks','strong margin potential with repeat sales','>Insights</a>']
-          missing = [x for x in required if x not in text]
-          remaining = [x for x in forbidden if x in text]
-          print('missing:', missing)
-          print('remaining:', remaining)
+
+          path = Path("index.html")
+          text = path.read_text(encoding="utf-8")
+          replacements = {
+              '<h3>Discuss the Opportunity</h3><p>Suitable ranges move into direct commercial and logistical discussion.</p>': '<h3>Clarify where relevant</h3><p>Resolve material questions before treating an opportunity as commercially actionable.</p>',
+              '<h3>Agree Clear Terms</h3><p>Volumes, delivery, documentation and payment are confirmed before ordering.</p>': '<h3>Continue or close</h3><p>Move forward only where a potential fit exists; submission does not guarantee a purchase.</p>',
+              '<p>Commercial evaluation brings demand, margin and operational fit into the same supplier conversation.</p>': '<p>Useful review brings the product, commercial terms and operational reality into the same conversation.</p>',
+              '<strong>Demand</strong><span>Practical resale context</span>': '<strong>Product fit</strong><span>Identity, use and category context</span>',
+              '<strong>Margin</strong><span>Commercially grounded offer</span>': '<strong>Commercial terms</strong><span>Price, quantity and conditions</span>',
+              '<strong>Operational fit</strong><span>Documentation and fulfilment clarity</span>': '<strong>Operational fit</strong><span>Availability, documentation and delivery</span>',
+          }
+          for old, new in replacements.items():
+              if old not in text:
+                  raise SystemExit(f"Required final homepage snippet not found: {old}")
+              text = text.replace(old, new, 1)
+          path.write_text(text, encoding="utf-8")
+
+          required = [
+              "Products &amp; Opportunities",
+              "Blog &amp; Resources",
+              "From The Forge",
+              "home-forge-section",
+              "Clarify where relevant",
+              "Continue or close",
+              "Product fit",
+              "Commercial terms",
+              "js/tbm-cinematic-v10.js",
+              "js/home-v2.js",
+              "js/tbm-product-network-v7.js",
+          ]
+          forbidden = [
+              "Premium wholesale partnerships",
+              "high and rising across multiple channels",
+              "category specialists and streamlined checks",
+              "strong margin potential with repeat sales",
+              "Discuss the Opportunity",
+              "Agree Clear Terms",
+              "Commercial evaluation brings demand, margin",
+              ">Insights</a>",
+          ]
+          missing = [value for value in required if value not in text]
+          remaining = [value for value in forbidden if value in text]
           if missing or remaining:
-              raise SystemExit(1)
+              raise SystemExit(f"missing={missing}; forbidden={remaining}")
+          for script in ("js/tbm-cinematic-v10.js", "js/home-v2.js", "js/tbm-product-network-v7.js"):
+              if text.count(script) != 1:
+                  raise SystemExit(f"Unexpected script import count for {script}: {text.count(script)}")
+          print("Final homepage content and V10 runtime handoff validated.")
           PY
-          rm -rf .index-rebuild scripts/rebuild_homepage_corrective.py homepage-rebuild-diagnostic.txt
+          rm -f .github/workflows/rebuild-corrective-homepage.yml .github/workflows/rebuild-homepage-shell.yml
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add -A
-          git commit -m "fix: restore corrective homepage from main baseline"
+          git commit -m "fix: finalise corrective homepage and remove recovery workflows"
           git push --quiet origin HEAD:fix/post-seo-content-correction
