@@ -1,0 +1,23 @@
+# The Blacksmith Market
+> UK-based wholesale stock evaluation and operator-led research on Amazon FBA, product validation, supplier analysis and ecommerce automation.
+
+## Primary pages
+- [Home](https://www.theblacksmithmarket.com/)
+- [About](https://www.theblacksmithmarket.com/about.html)
+- [Product focus](https://www.theblacksmithmarket.com/products.html)
+- [Supplier information](https://www.theblacksmithmarket.com/partnership.html)
+- [Insights](https://www.theblacksmithmarket.com/blog.html)
+- [Research methodology](https://www.theblacksmithmarket.com/research-methodology.html)
+- [Editorial policy](https://www.theblacksmithmarket.com/editorial-policy.html)
+- [AI content policy](https://www.theblacksmithmarket.com/ai-content-policy.html)
+
+## Published guide
+- [Search and AI-discovery checklist](https://www.theblacksmithmarket.com/blog/search-ai-discovery-checklist.html)
+
+## Content principles
+- Distinguish verified facts, estimates and inference.
+- Do not invent authors, testimonials, statistics or operating capabilities.
+- Prefer original methods, examples, calculations and reusable tools.
+
+## Contact
+- info@theblacksmithmarket.com
