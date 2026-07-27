@@ -10,11 +10,14 @@ on:
       - "llms.txt"
       - "data/content-manifest.json"
       - "css/seo-content.css"
+      - "css/seo-content-v2.css"
+      - "js/secondary-nav.js"
       - "scripts/seo_validate.py"
+      - "scripts/validate_corrective_surface.py"
       - "scripts/generate_sitemap.py"
       - ".github/workflows/seo-quality-gate.yml"
   push:
-    branches: [main, seo/search-authority-foundation]
+    branches: [main, fix/post-seo-content-correction]
     paths:
       - "**.html"
       - "robots.txt"
@@ -22,7 +25,10 @@ on:
       - "llms.txt"
       - "data/content-manifest.json"
       - "css/seo-content.css"
+      - "css/seo-content-v2.css"
+      - "js/secondary-nav.js"
       - "scripts/seo_validate.py"
+      - "scripts/validate_corrective_surface.py"
       - "scripts/generate_sitemap.py"
       - ".github/workflows/seo-quality-gate.yml"
   workflow_dispatch:
@@ -44,6 +50,10 @@ jobs:
           python-version: "3.13"
       - name: Validate canonical public surface
         run: python scripts/seo_validate.py
+      - name: Validate corrective public surface
+        env:
+          PR_BASE_SHA: ${{ github.event.pull_request.base.sha }}
+        run: python scripts/validate_corrective_surface.py
       - name: Confirm sitemap is synchronized
         run: python scripts/generate_sitemap.py --check
       - name: Check whitespace and patch integrity
