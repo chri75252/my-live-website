@@ -10,5 +10,5 @@
 - [ ] Examples are real, anonymised or clearly illustrative.
 - [ ] The article adds original methodology, evidence, data or experienced judgement.
 - [ ] Internal links point to existing canonical pages.
-- [ ] `BlogPosting` and breadcrumb data match visible content.
+- [ ] `BlogPosting` data matches visible content; breadcrumb data also matches when breadcrumbs are present.
 - [ ] No placeholder links, testimonials, people, addresses or statistics remain.
