@@ -1,0 +1,17 @@
+{
+  "site": "https://www.theblacksmithmarket.com",
+  "updated": "2026-07-27",
+  "articles": [
+    {
+      "slug": "search-ai-discovery-checklist",
+      "path": "/blog/search-ai-discovery-checklist.html",
+      "title": "A Practical Search and AI-Discovery Checklist for Small-Business Websites",
+      "description": "A practical search and AI-discovery checklist covering canonical URLs, sitemaps, crawlability, evidence, authorship, structured data and content quality.",
+      "publisher": "The Blacksmith Market Ltd",
+      "published": "2026-07-27",
+      "modified": "2026-07-27",
+      "status": "published",
+      "topic": "search-ai-discovery"
+    }
+  ]
+}
