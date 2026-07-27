@@ -1,0 +1,1 @@
+Temporary recovery staging. The PR-triggered workflow removes this directory after rebuilding and verifying index.html.
