@@ -7,6 +7,13 @@ on:
       - "scripts/rebuild_homepage_corrective.py"
       - ".github/workflows/rebuild-corrective-homepage.yml"
       - ".index-rebuild/**"
+  pull_request:
+    branches: [main]
+    paths:
+      - "index.html"
+      - "scripts/rebuild_homepage_corrective.py"
+      - ".github/workflows/rebuild-corrective-homepage.yml"
+      - ".index-rebuild/**"
   workflow_dispatch:
 
 permissions:
