@@ -27,6 +27,29 @@ TEMPORARY_RECOVERY_PATHS = [
     ".github/workflows/rebuild-homepage-shell.yml",
     "homepage-rebuild-diagnostic.txt",
 ]
+CARD_PAGES = {
+    "products.html": 9,
+    "about.html": 3,
+    "blog.html": 10,
+    "partnership.html": 3,
+    "contact.html": 4,
+}
+CARD_ASSETS = [
+    "css/secondary-cards.css",
+    "js/card-spotlight.js",
+    "images/site/digital-commerce.svg",
+    "images/site/about-products.svg",
+    "images/site/about-partnerships.svg",
+    "images/site/about-modern-commerce.svg",
+]
+PRODUCT_IMAGES = [
+    "/assets/tbm-cinematic-v6/product-focus/beauty.webp",
+    "/assets/tbm-cinematic-v6/product-focus/home-kitchen.webp",
+    "/assets/tbm-cinematic-v6/product-focus/toys-games.webp",
+    "/assets/tbm-cinematic-v6/product-focus/electronics.webp",
+    "/assets/tbm-cinematic-v6/product-focus/general-merchandise.webp",
+    "/images/site/digital-commerce.svg",
+]
 
 
 def fail(message: str) -> None:
@@ -51,6 +74,10 @@ for rel in TEMPORARY_RECOVERY_PATHS:
     if (ROOT / rel).exists():
         fail(f"temporary homepage-recovery path remains in the branch: {rel}")
 
+for rel in CARD_ASSETS:
+    if not (ROOT / rel).is_file():
+        fail(f"required card asset is missing: {rel}")
+
 public_files = [page["file"] for page in manifest.get("pages", []) if page.get("indexable")]
 for rel in public_files:
     text = read(rel)
@@ -64,10 +91,41 @@ for rel in public_files:
         if f'href="/{retired}"' in text or f'href="{retired}"' in text:
             fail(f"{rel}: retired policy page is publicly linked")
 
-products = read("products.html").lower()
+for rel, minimum_cards in CARD_PAGES.items():
+    text = read(rel)
+    if 'class="category-card"' in text:
+        fail(f"{rel}: legacy conflicting category-card class remains")
+    if 'class="category-grid"' in text:
+        fail(f"{rel}: legacy conflicting category-grid class remains")
+    if text.count("data-spotlight-card") < minimum_cards:
+        fail(f"{rel}: expected at least {minimum_cards} spotlight cards")
+    if "/css/secondary-cards.css" not in text:
+        fail(f"{rel}: secondary card stylesheet missing")
+    if "/js/card-spotlight.js" not in text:
+        fail(f"{rel}: spotlight script missing")
+    if 'aria-current="page"' not in text:
+        fail(f"{rel}: active navigation lacks aria-current")
+
+products = read("products.html")
+products_lower = products.lower()
 for phrase in ("what a useful product file contains", "useful product file", "product file contains"):
-    if phrase in products:
+    if phrase in products_lower:
         fail("products.html still presents supplier-file requirements as product content")
+for image in PRODUCT_IMAGES:
+    if image not in products:
+        fail(f"products.html missing product-card image: {image}")
+    if not (ROOT / image.lstrip("/")).is_file():
+        fail(f"referenced product-card image does not exist: {image}")
+
+spotlight_script = read("js/card-spotlight.js")
+for marker in ("data-spotlight-card", "--spotlight-x", "--spotlight-y", "requestAnimationFrame"):
+    if marker not in spotlight_script:
+        fail(f"spotlight script missing implementation marker: {marker}")
+
+card_css = read("css/secondary-cards.css")
+for marker in (".tbm-card-grid", ".tbm-card__media", "radial-gradient", "prefers-reduced-motion"):
+    if marker not in card_css:
+        fail(f"secondary card stylesheet missing marker: {marker}")
 
 homepage = read("index.html")
 for marker in (

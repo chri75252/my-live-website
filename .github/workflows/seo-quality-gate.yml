@@ -11,13 +11,16 @@ on:
       - "data/content-manifest.json"
       - "css/seo-content.css"
       - "css/seo-content-v2.css"
+      - "css/secondary-cards.css"
       - "js/secondary-nav.js"
+      - "js/card-spotlight.js"
+      - "images/site/**"
       - "scripts/seo_validate.py"
       - "scripts/validate_corrective_surface.py"
       - "scripts/generate_sitemap.py"
       - ".github/workflows/seo-quality-gate.yml"
   push:
-    branches: [main, fix/post-seo-content-correction]
+    branches: [main, fix/secondary-card-layout-images-spotlight]
     paths:
       - "**.html"
       - "robots.txt"
@@ -26,7 +29,10 @@ on:
       - "data/content-manifest.json"
       - "css/seo-content.css"
       - "css/seo-content-v2.css"
+      - "css/secondary-cards.css"
       - "js/secondary-nav.js"
+      - "js/card-spotlight.js"
+      - "images/site/**"
       - "scripts/seo_validate.py"
       - "scripts/validate_corrective_surface.py"
       - "scripts/generate_sitemap.py"
