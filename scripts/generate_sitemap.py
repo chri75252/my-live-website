@@ -1,50 +1,35 @@
 #!/usr/bin/env python3
-"""Generate sitemap.xml from the approved canonical public page set."""
+"""Generate sitemap.xml from the canonical content manifest."""
 from __future__ import annotations
 
 import argparse
-import subprocess
+import json
 from pathlib import Path
 from xml.sax.saxutils import escape
 
 ROOT = Path(__file__).resolve().parents[1]
-SITE = "https://www.theblacksmithmarket.com"
-PAGES = [
-    ("/", "index.html"),
-    ("/about.html", "about.html"),
-    ("/products.html", "products.html"),
-    ("/partnership.html", "partnership.html"),
-    ("/contact.html", "contact.html"),
-    ("/faq.html", "faq.html"),
-    ("/blog.html", "blog.html"),
-    ("/blog/search-ai-discovery-checklist.html", "blog/search-ai-discovery-checklist.html"),
-    ("/editorial-policy.html", "editorial-policy.html"),
-    ("/research-methodology.html", "research-methodology.html"),
-    ("/ai-content-policy.html", "ai-content-policy.html"),
-    ("/privacy-policy.html", "privacy-policy.html"),
-    ("/terms.html", "terms.html"),
-]
+MANIFEST = ROOT / "data/content-manifest.json"
+FALLBACK_DATE = "2026-07-27"
 
 
-def last_modified(path: str) -> str:
-    result = subprocess.run(
-        ["git", "log", "-1", "--format=%cs", "--", path],
-        cwd=ROOT,
-        text=True,
-        capture_output=True,
-        check=False,
-    )
-    value = result.stdout.strip()
-    return value or "2026-07-27"
+def load_manifest() -> dict:
+    return json.loads(MANIFEST.read_text(encoding="utf-8"))
 
 
 def render() -> str:
-    rows = []
-    for url_path, file_path in PAGES:
+    manifest = load_manifest()
+    site = manifest["site"].rstrip("/")
+    rows: list[str] = []
+    for page in manifest.get("pages", []):
+        if not page.get("indexable", False):
+            continue
+        file_path = page["file"]
         if not (ROOT / file_path).exists():
             raise FileNotFoundError(f"Approved sitemap page is missing: {file_path}")
+        url_path = page["path"]
+        lastmod = page.get("lastmod") or manifest.get("updated") or FALLBACK_DATE
         rows.append(
-            f"  <url><loc>{escape(SITE + url_path)}</loc><lastmod>{last_modified(file_path)}</lastmod></url>"
+            f"  <url><loc>{escape(site + url_path)}</loc><lastmod>{lastmod}</lastmod></url>"
         )
     return (
         '<?xml version="1.0" encoding="UTF-8"?>\n'
