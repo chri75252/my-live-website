@@ -20,6 +20,13 @@ PROTECTED = [
     "css/site-v2.css",
     "assets/tbm-cinematic-v9",
 ]
+TEMPORARY_RECOVERY_PATHS = [
+    ".index-rebuild",
+    "scripts/rebuild_homepage_corrective.py",
+    ".github/workflows/rebuild-corrective-homepage.yml",
+    ".github/workflows/rebuild-homepage-shell.yml",
+    "homepage-rebuild-diagnostic.txt",
+]
 
 
 def fail(message: str) -> None:
@@ -39,6 +46,10 @@ try:
 except json.JSONDecodeError as exc:
     fail(f"invalid manifest JSON: {exc}")
     manifest = {"pages": [], "articles": []}
+
+for rel in TEMPORARY_RECOVERY_PATHS:
+    if (ROOT / rel).exists():
+        fail(f"temporary homepage-recovery path remains in the branch: {rel}")
 
 public_files = [page["file"] for page in manifest.get("pages", []) if page.get("indexable")]
 for rel in public_files:
@@ -63,15 +74,29 @@ for marker in (
     "Products &amp; Opportunities",
     "Blog &amp; Resources",
     "From The Forge",
+    "Clarify where relevant",
+    "Continue or close",
+    "Product fit",
+    "Commercial terms",
     "js/tbm-cinematic-v10.js",
     "js/home-v2.js",
     "js/tbm-product-network-v7.js",
 ):
     if marker not in homepage:
         fail(f"index.html missing required marker: {marker}")
-for unsupported in ("high and rising across multiple channels", "category specialists", "strong margin potential with repeat sales"):
-    if unsupported in homepage.lower():
-        fail(f"index.html retains unsupported claim: {unsupported}")
+for unsupported in (
+    "high and rising across multiple channels",
+    "category specialists",
+    "strong margin potential with repeat sales",
+    "Discuss the Opportunity",
+    "Agree Clear Terms",
+    "Commercial evaluation brings demand, margin",
+):
+    if unsupported.lower() in homepage.lower():
+        fail(f"index.html retains superseded or unsupported wording: {unsupported}")
+for script in ("js/tbm-cinematic-v10.js", "js/home-v2.js", "js/tbm-product-network-v7.js"):
+    if homepage.count(script) != 1:
+        fail(f"index.html has an unexpected import count for {script}: {homepage.count(script)}")
 
 blog = read("blog.html")
 if "The Forge" not in blog or "Blog &amp; Resources" not in blog:
