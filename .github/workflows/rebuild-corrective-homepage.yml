@@ -1,0 +1,39 @@
+name: Rebuild Corrective Homepage
+
+on:
+  push:
+    branches: [fix/post-seo-content-correction]
+    paths:
+      - "scripts/rebuild_homepage_corrective.py"
+      - ".github/workflows/rebuild-corrective-homepage.yml"
+      - ".index-rebuild/**"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  rebuild:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: fix/post-seo-content-correction
+          fetch-depth: 0
+          persist-credentials: true
+      - name: Fetch canonical main baseline
+        run: git fetch origin main
+      - name: Rebuild and verify homepage
+        run: python scripts/rebuild_homepage_corrective.py
+      - name: Remove temporary recovery files
+        run: rm -rf .index-rebuild scripts/rebuild_homepage_corrective.py .github/workflows/rebuild-corrective-homepage.yml
+      - name: Commit verified homepage
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -m "fix: restore verified corrective homepage"
+          git push origin HEAD:fix/post-seo-content-correction
