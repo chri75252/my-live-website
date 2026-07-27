@@ -1,0 +1,31 @@
+name: IndexNow Submission
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "**.html"
+      - "sitemap.xml"
+      - "robots.txt"
+      - "data/content-manifest.json"
+      - "scripts/submit_indexnow.py"
+      - ".github/workflows/indexnow.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  submit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+      - name: Verify the public key file exists
+        run: test -f b7e3f0129a4c4dd78c6543b9f2a1d0e6.txt
+      - name: Submit canonical URLs
+        continue-on-error: true
+        run: python scripts/submit_indexnow.py
