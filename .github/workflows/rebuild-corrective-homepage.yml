@@ -29,12 +29,13 @@ jobs:
           ref: fix/post-seo-content-correction
           fetch-depth: 0
           persist-credentials: true
+          show-progress: false
       - name: Fetch canonical main baseline
-        run: git fetch origin main
-      - name: Rebuild homepage from main
+        run: git fetch --quiet origin main
+      - name: Attempt deterministic homepage rebuild
         shell: bash
         run: |
-          set -euo pipefail
+          set -uo pipefail
           python - <<'PY'
           from pathlib import Path
           import re
@@ -49,27 +50,19 @@ jobs:
           text = re.sub(r'\nif digest != EXPECTED_SHA256:\n    raise SystemExit\([^\n]+\)\n?', '\n', text)
           path.write_text(text, encoding='utf-8')
           PY
-          python scripts/rebuild_homepage_corrective.py
-      - name: Record homepage diagnostics
-        continue-on-error: true
-        run: |
-          python - <<'PY'
-          from pathlib import Path
-          text = Path('index.html').read_text(encoding='utf-8')
-          required = ['Products &amp; Opportunities','Blog &amp; Resources','From The Forge','home-forge-section','Products, partnerships and modern commerce','js/tbm-cinematic-v10.js','js/home-v2.js','js/tbm-product-network-v7.js']
-          forbidden = ['Premium wholesale partnerships','high and rising across multiple channels','category specialists and streamlined checks','strong margin potential with repeat sales','>Insights</a>']
-          print('missing:', [x for x in required if x not in text])
-          print('remaining:', [x for x in forbidden if x in text])
-          print('bytes:', len(text.encode('utf-8')))
-          PY
-      - name: Remove temporary payload files
-        run: rm -rf .index-rebuild scripts/rebuild_homepage_corrective.py
-      - name: Commit rebuilt homepage
+          set +e
+          python scripts/rebuild_homepage_corrective.py > homepage-rebuild-diagnostic.txt 2>&1
+          status=$?
+          set -e
+          printf '\nexit_status=%s\n' "$status" >> homepage-rebuild-diagnostic.txt
+          git checkout -- scripts/rebuild_homepage_corrective.py
+          cat homepage-rebuild-diagnostic.txt
+      - name: Commit diagnostic or reconstructed homepage
         shell: bash
         run: |
           set -euo pipefail
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add -A
-          git commit -m "fix: restore corrective homepage from main baseline"
+          git add index.html homepage-rebuild-diagnostic.txt
+          git commit -m "chore: record corrective homepage rebuild result"
           git push origin HEAD:fix/post-seo-content-correction
