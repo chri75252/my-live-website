@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
-"""Validate the canonical public SEO, trust and link contracts."""
+"""Validate the canonical public SEO, content and link contracts."""
 from __future__ import annotations
 
 import json
+import re
 import sys
 import xml.etree.ElementTree as ET
 from html.parser import HTMLParser
@@ -12,22 +13,13 @@ from urllib.parse import urlparse
 ROOT = Path(__file__).resolve().parents[1]
 MANIFEST_PATH = ROOT / "data/content-manifest.json"
 STATIC_REQUIRED = [
-    "robots.txt",
-    "sitemap.xml",
-    "llms.txt",
-    "data/content-manifest.json",
-    "css/seo-content.css",
+    "robots.txt", "sitemap.xml", "llms.txt", "data/content-manifest.json",
+    "css/seo-content.css", "css/seo-content-v2.css", "js/secondary-nav.js",
 ]
 FORBIDDEN = [
-    "theblacksmithmarket.co.uk",
-    "https://formspree.io/f/your-form-id",
-    "123 Commerce Park",
-    "+44 (0) 161 123 4567",
-    "James Harrison",
-    "CRN-12345678",
-    "Average Partner Rating",
-    "Partner Retention Rate",
-    "Active Manufacturer Partners",
+    "theblacksmithmarket.co.uk", "https://formspree.io/f/your-form-id", "FORM_ENDPOINT",
+    "123 Commerce Park", "+44 (0) 161 123 4567", "James Harrison", "CRN-12345678",
+    "Average Partner Rating", "Partner Retention Rate", "Active Manufacturer Partners",
     "GB123456789",
 ]
 errors: list[str] = []
@@ -38,8 +30,6 @@ def fail(message: str) -> None:
 
 
 class PageParser(HTMLParser):
-    """Collect relevant HTML metadata without depending on attribute order."""
-
     def __init__(self) -> None:
         super().__init__(convert_charrefs=True)
         self.canonicals: list[str] = []
@@ -91,6 +81,7 @@ except (OSError, json.JSONDecodeError) as exc:
 
 site = str(manifest.get("site", "")).rstrip("/")
 pages = manifest.get("pages", [])
+articles = manifest.get("articles", [])
 if not site.startswith("https://"):
     fail("content manifest must define an HTTPS site URL")
 if not isinstance(pages, list) or not pages:
@@ -145,11 +136,8 @@ for rel, page in page_by_file.items():
         fail(f"missing canonical in {rel}")
     elif len(parser.canonicals) > 1:
         fail(f"multiple canonicals in {rel}: {parser.canonicals}")
-    elif parser.canonicals[0] != expected_canonical:
-        fail(
-            f"canonical does not match manifest in {rel}: "
-            f"{parser.canonicals[0]} != {expected_canonical}"
-        )
+    elif page["indexable"] and parser.canonicals[0] != expected_canonical:
+        fail(f"canonical does not match manifest in {rel}: {parser.canonicals[0]} != {expected_canonical}")
 
     is_noindex = any("noindex" in value.lower() for value in parser.robots)
     should_index = bool(page["indexable"])
@@ -168,7 +156,7 @@ for rel, page in page_by_file.items():
         if og_urls and og_urls != [expected_canonical]:
             fail(f"og:url does not match manifest in {rel}: {og_urls}")
 
-    if rel != "404.html" and not parser.jsonld:
+    if should_index and rel != "404.html" and not parser.jsonld:
         fail(f"missing JSON-LD in {rel}")
     for payload in parser.jsonld:
         try:
@@ -182,22 +170,23 @@ for rel, page in page_by_file.items():
         clean = href.split("#", 1)[0].split("?", 1)[0]
         if not clean:
             continue
-        if clean.startswith("/"):
-            target = ROOT / (clean.lstrip("/") or "index.html")
-        else:
-            target = path.parent / clean
+        target = ROOT / (clean.lstrip("/") or "index.html") if clean.startswith("/") else path.parent / clean
         if target.is_dir():
             target = target / "index.html"
         if not target.exists():
             fail(f"broken internal link in {rel}: {href}")
 
+    if should_index and rel not in {"index.html", "privacy-policy.html", "terms.html"}:
+        if "Blog &amp; Resources" not in text and "Blog & Resources" not in text:
+            fail(f"public page missing clear Blog & Resources label: {rel}")
+    if should_index and rel != "index.html" and re.search(r">Insights<", text):
+        fail(f"legacy Insights-only navigation remains in {rel}")
+
 robots_path = ROOT / "robots.txt"
 robots = robots_path.read_text(encoding="utf-8") if robots_path.exists() else ""
-if f"Sitemap: {site}/sitemap.xml" not in robots:
-    fail("robots.txt does not advertise the canonical sitemap")
-for bot in ("OAI-SearchBot", "PerplexityBot", "Googlebot", "Bingbot"):
-    if f"User-agent: {bot}" not in robots:
-        fail(f"robots.txt missing explicit policy for {bot}")
+expected_robots = f"User-agent: *\nAllow: /\n\nSitemap: {site}/sitemap.xml\n"
+if robots != expected_robots:
+    fail("robots.txt must use the approved minimal public crawl policy")
 
 sitemap_path = ROOT / "sitemap.xml"
 if sitemap_path.exists():
@@ -218,7 +207,8 @@ if sitemap_path.exists():
     except ET.ParseError as exc:
         fail(f"invalid sitemap XML: {exc}")
 
-for article in manifest.get("articles", []):
+blog_text = (ROOT / "blog.html").read_text(encoding="utf-8", errors="ignore") if (ROOT / "blog.html").exists() else ""
+for article in articles:
     try:
         target = ROOT / article["path"].lstrip("/")
     except (KeyError, TypeError) as exc:
@@ -226,11 +216,19 @@ for article in manifest.get("articles", []):
         continue
     if not target.exists():
         fail(f"content manifest points to missing article: {article.get('path')}")
+        continue
+    if article.get("status") == "published" and article.get("path") not in blog_text:
+        fail(f"blog hub does not link published article: {article.get('path')}")
+    content = target.read_text(encoding="utf-8", errors="ignore")
+    if article.get("status") == "published":
+        if '"@type":"BlogPosting"' not in content:
+            fail(f"published article missing BlogPosting schema: {target.relative_to(ROOT)}")
+        if '"@type":"BreadcrumbList"' not in content:
+            fail(f"published article missing BreadcrumbList schema: {target.relative_to(ROOT)}")
 
 if errors:
     print("SEO validation failed:")
     for item in errors:
         print(f"- {item}")
     sys.exit(1)
-
 print("SEO validation passed.")

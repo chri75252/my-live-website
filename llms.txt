@@ -1,23 +1,28 @@
 # The Blacksmith Market
-> UK-based wholesale stock evaluation and operator-led research on Amazon FBA, product validation, supplier analysis and ecommerce automation.
+> UK company exploring selected product opportunities, supplier relationships and practical ideas shaping modern commerce.
 
 ## Primary pages
 - [Home](https://www.theblacksmithmarket.com/)
 - [About](https://www.theblacksmithmarket.com/about.html)
-- [Product focus](https://www.theblacksmithmarket.com/products.html)
-- [Supplier information](https://www.theblacksmithmarket.com/partnership.html)
-- [Insights](https://www.theblacksmithmarket.com/blog.html)
-- [Research methodology](https://www.theblacksmithmarket.com/research-methodology.html)
-- [Editorial policy](https://www.theblacksmithmarket.com/editorial-policy.html)
-- [AI content policy](https://www.theblacksmithmarket.com/ai-content-policy.html)
+- [Products & Opportunities](https://www.theblacksmithmarket.com/products.html)
+- [Blog & Resources — The Forge](https://www.theblacksmithmarket.com/blog.html)
+- [Sell to Us](https://www.theblacksmithmarket.com/partnership.html)
+- [Contact](https://www.theblacksmithmarket.com/contact.html)
+- [FAQ](https://www.theblacksmithmarket.com/faq.html)
+- [Editorial Standards](https://www.theblacksmithmarket.com/editorial-standards.html)
 
-## Published guide
-- [Search and AI-discovery checklist](https://www.theblacksmithmarket.com/blog/search-ai-discovery-checklist.html)
+## The Forge — selected resources
+- [Agentic Commerce in 2026](https://www.theblacksmithmarket.com/blog/agentic-commerce-2026.html)
+- [What Ecommerce Should Automate with AI](https://www.theblacksmithmarket.com/blog/ai-automation-ecommerce-human-tasks.html)
+- [From Search to Chat to Cart](https://www.theblacksmithmarket.com/blog/search-chat-cart-product-discovery.html)
+- [Unified Commerce for Smaller Businesses](https://www.theblacksmithmarket.com/blog/unified-commerce-small-business.html)
+- [Ecommerce Tools and Technologies to Watch in 2026](https://www.theblacksmithmarket.com/blog/ecommerce-tools-technologies-2026.html)
 
-## Content principles
-- Distinguish verified facts, estimates and inference.
-- Do not invent authors, testimonials, statistics or operating capabilities.
-- Prefer original methods, examples, calculations and reusable tools.
+## Publishing principles
+- Do not invent products, services, testimonials, authors, statistics or operating capabilities.
+- Use current sources for changeable claims.
+- Distinguish confirmed facts, publisher-reported figures and interpretation.
+- Update material when platform capabilities or evidence change.
 
 ## Contact
 - info@theblacksmithmarket.com

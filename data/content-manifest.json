@@ -5,31 +5,32 @@
     {"path": "/", "file": "index.html", "indexable": true, "lastmod": "2026-07-27"},
     {"path": "/about.html", "file": "about.html", "indexable": true, "lastmod": "2026-07-27"},
     {"path": "/products.html", "file": "products.html", "indexable": true, "lastmod": "2026-07-27"},
+    {"path": "/blog.html", "file": "blog.html", "indexable": true, "lastmod": "2026-07-27"},
     {"path": "/partnership.html", "file": "partnership.html", "indexable": true, "lastmod": "2026-07-27"},
     {"path": "/contact.html", "file": "contact.html", "indexable": true, "lastmod": "2026-07-27"},
     {"path": "/faq.html", "file": "faq.html", "indexable": true, "lastmod": "2026-07-27"},
-    {"path": "/blog.html", "file": "blog.html", "indexable": true, "lastmod": "2026-07-27"},
-    {"path": "/blog/search-ai-discovery-checklist.html", "file": "blog/search-ai-discovery-checklist.html", "indexable": true, "lastmod": "2026-07-27"},
-    {"path": "/editorial-policy.html", "file": "editorial-policy.html", "indexable": true, "lastmod": "2026-07-27"},
-    {"path": "/research-methodology.html", "file": "research-methodology.html", "indexable": true, "lastmod": "2026-07-27"},
-    {"path": "/ai-content-policy.html", "file": "ai-content-policy.html", "indexable": true, "lastmod": "2026-07-27"},
+    {"path": "/editorial-standards.html", "file": "editorial-standards.html", "indexable": true, "lastmod": "2026-07-27"},
     {"path": "/privacy-policy.html", "file": "privacy-policy.html", "indexable": true, "lastmod": "2026-07-27"},
     {"path": "/terms.html", "file": "terms.html", "indexable": true, "lastmod": "2026-07-27"},
+    {"path": "/blog/agentic-commerce-2026.html", "file": "blog/agentic-commerce-2026.html", "indexable": true, "lastmod": "2026-07-27"},
+    {"path": "/blog/ai-automation-ecommerce-human-tasks.html", "file": "blog/ai-automation-ecommerce-human-tasks.html", "indexable": true, "lastmod": "2026-07-27"},
+    {"path": "/blog/search-chat-cart-product-discovery.html", "file": "blog/search-chat-cart-product-discovery.html", "indexable": true, "lastmod": "2026-07-27"},
+    {"path": "/blog/unified-commerce-small-business.html", "file": "blog/unified-commerce-small-business.html", "indexable": true, "lastmod": "2026-07-27"},
+    {"path": "/blog/ecommerce-tools-technologies-2026.html", "file": "blog/ecommerce-tools-technologies-2026.html", "indexable": true, "lastmod": "2026-07-27"},
+    {"path": "/blog/search-ai-discovery-checklist.html", "file": "blog/search-ai-discovery-checklist.html", "indexable": true, "lastmod": "2026-07-27"},
     {"path": "/testimonials.html", "file": "testimonials.html", "indexable": false, "lastmod": "2026-07-27"},
+    {"path": "/editorial-policy.html", "file": "editorial-policy.html", "indexable": false, "lastmod": "2026-07-27"},
+    {"path": "/research-methodology.html", "file": "research-methodology.html", "indexable": false, "lastmod": "2026-07-27"},
+    {"path": "/ai-content-policy.html", "file": "ai-content-policy.html", "indexable": false, "lastmod": "2026-07-27"},
     {"path": "/blog/uk-wholesale-distributor-guide.html", "file": "blog/uk-wholesale-distributor-guide.html", "indexable": false, "lastmod": "2026-07-27"},
     {"path": "/404.html", "file": "404.html", "indexable": false, "lastmod": "2026-07-27"}
   ],
   "articles": [
-    {
-      "slug": "search-ai-discovery-checklist",
-      "path": "/blog/search-ai-discovery-checklist.html",
-      "title": "A Practical Search and AI-Discovery Checklist for Small-Business Websites",
-      "description": "A practical search and AI-discovery checklist covering canonical URLs, sitemaps, crawlability, evidence, authorship, structured data and content quality.",
-      "publisher": "The Blacksmith Market Ltd",
-      "published": "2026-07-27",
-      "modified": "2026-07-27",
-      "status": "published",
-      "topic": "search-ai-discovery"
-    }
+    {"slug": "agentic-commerce-2026", "path": "/blog/agentic-commerce-2026.html", "title": "Agentic Commerce in 2026: What It Means Beyond the Hype", "description": "A practical explanation of agentic commerce, what is live in 2026, what remains emerging, and how ecommerce and retail businesses should prepare.", "publisher": "The Blacksmith Market Ltd", "published": "2026-07-27", "modified": "2026-07-27", "status": "published", "topic": "AI & Automation"},
+    {"slug": "ai-automation-ecommerce-human-tasks", "path": "/blog/ai-automation-ecommerce-human-tasks.html", "title": "What Ecommerce Businesses Should Automate with AI — and What Should Stay Human", "description": "A practical framework for choosing ecommerce AI automations, setting guardrails and keeping human control over high-risk decisions.", "publisher": "The Blacksmith Market Ltd", "published": "2026-07-27", "modified": "2026-07-27", "status": "published", "topic": "AI & Automation"},
+    {"slug": "search-chat-cart-product-discovery", "path": "/blog/search-chat-cart-product-discovery.html", "title": "From Search to Chat to Cart: How Product Discovery Is Changing", "description": "How search, AI assistants, social feeds, creators, visual search and marketplaces are changing product discovery—and what businesses should do.", "publisher": "The Blacksmith Market Ltd", "published": "2026-07-27", "modified": "2026-07-27", "status": "published", "topic": "Discovery & Digital Retail"},
+    {"slug": "unified-commerce-small-business", "path": "/blog/unified-commerce-small-business.html", "title": "Unified Commerce for Smaller Businesses: One View of Products, Orders and Customers", "description": "A plain-English guide to unified commerce for smaller businesses, including data foundations, channel integration, risks and an implementation sequence.", "publisher": "The Blacksmith Market Ltd", "published": "2026-07-27", "modified": "2026-07-27", "status": "published", "topic": "Ecommerce & Online Business"},
+    {"slug": "ecommerce-tools-technologies-2026", "path": "/blog/ecommerce-tools-technologies-2026.html", "title": "Ecommerce Tools and Technologies to Watch in 2026", "description": "A practical 2026 watchlist covering agentic commerce, conversational and visual discovery, AI operations, B2B ecommerce, payments and tool-stack discipline.", "publisher": "The Blacksmith Market Ltd", "published": "2026-07-27", "modified": "2026-07-27", "status": "published", "topic": "Tools & Technology"},
+    {"slug": "search-ai-discovery-checklist", "path": "/blog/search-ai-discovery-checklist.html", "title": "A Practical Search and AI-Discovery Checklist for Small-Business Websites", "description": "A secondary technical resource about crawlability, content, structured data and search/AI discovery.", "publisher": "The Blacksmith Market Ltd", "published": "2026-07-27", "modified": "2026-07-27", "status": "published", "topic": "Site & Search"}
   ]
 }
