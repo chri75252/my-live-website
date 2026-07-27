@@ -1,28 +1,4 @@
-# Specific groups below take precedence over User-agent: *.
-# Any future Disallow rule intended for every listed bot must be repeated in each specific group.
 User-agent: *
-Allow: /
-
-User-agent: Googlebot
-Allow: /
-
-User-agent: Bingbot
-Allow: /
-
-User-agent: OAI-SearchBot
-Allow: /
-
-User-agent: GPTBot
-Allow: /
-
-User-agent: PerplexityBot
-Allow: /
-
-User-agent: ClaudeBot
-Allow: /
-
-# Google-Extended is a control token rather than a crawler. This explicit Allow records the current policy.
-User-agent: Google-Extended
 Allow: /
 
 Sitemap: https://www.theblacksmithmarket.com/sitemap.xml
