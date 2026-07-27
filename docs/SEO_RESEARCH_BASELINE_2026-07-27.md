@@ -30,6 +30,8 @@ Markifact and Windsor.ai both confirmed access to the verified domain property.
 | Blog | 0 | 2 | 0% | 10.50 |
 | Contact | 0 | 2 | 0% | 10.50 |
 
+**Connector reconciliation note:** the page-level rows above total 541 impressions, while a separate property-level request returned 392 impressions for the nominal six-month range. These values came from separate connector requests and are therefore not treated as an additive accounting table. The available outputs do not expose enough request metadata to determine whether the difference comes from date-boundary handling, fresh-data settings, aggregation behaviour or connector caching. The property-level figure is retained as the overall baseline; page rows are used directionally to identify which URLs Google displayed. This should be reconciled against the native Search Console interface or a single exported report before setting numeric targets.
+
 ### Exposed queries
 
 The connector exposed only four queries: `blacksmith market`, `blacksmith market place`, `blacksmith marketing`, and `smith market`. Low-volume queries may be withheld by Search Console for privacy, but the available evidence shows no meaningful non-brand footprint yet.
@@ -101,6 +103,7 @@ This is more defensible than a general AI, SEO or FBA publication because it com
 
 - Google Trends values are relative indices, not search volumes.
 - Search Console hides some low-volume query data.
+- Separate connector requests may return non-additive dimensional summaries; native exports should be used for exact reconciliation.
 - SERPs and AI answers are snapshots and may change by date, location, device and personalisation.
 - AI-generated answers may contain unsupported or outdated specifics; they are research inputs, not source evidence.
 - No ranking or AI citation is guaranteed by implementing the recommendations.
