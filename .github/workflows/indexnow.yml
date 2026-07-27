@@ -21,11 +21,22 @@ jobs:
     timeout-minutes: 10
     steps:
       - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
       - uses: actions/setup-python@v5
         with:
           python-version: "3.13"
       - name: Verify the public key file exists
         run: test -f b7e3f0129a4c4dd78c6543b9f2a1d0e6.txt
       - name: Submit canonical URLs
-        continue-on-error: true
-        run: python scripts/submit_indexnow.py
+        shell: bash
+        run: |
+          set +e
+          output=$(python scripts/submit_indexnow.py 2>&1)
+          status=$?
+          set -e
+          printf '%s\n' "$output"
+          if [[ $status -ne 0 ]]; then
+            message=$(printf '%s' "$output" | tr '\n' ' ' | cut -c1-1000)
+            echo "::warning title=IndexNow submission failed::$message"
+          fi
