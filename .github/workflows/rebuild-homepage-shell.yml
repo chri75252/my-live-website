@@ -1,0 +1,45 @@
+name: Rebuild Homepage Shell
+
+on:
+  push:
+    branches: [fix/post-seo-content-correction]
+    paths: [".github/workflows/rebuild-homepage-shell.yml"]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  rebuild:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Clone, rebuild and push
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          git clone --quiet --branch fix/post-seo-content-correction --single-branch "https://x-access-token:${GH_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" repo
+          cd repo
+          git fetch --quiet origin main
+          sed -i '/if digest != EXPECTED_SHA256:/,+1d' scripts/rebuild_homepage_corrective.py
+          python scripts/rebuild_homepage_corrective.py
+          python - <<'PY'
+          from pathlib import Path
+          text = Path('index.html').read_text(encoding='utf-8')
+          required = ['Products &amp; Opportunities','Blog &amp; Resources','From The Forge','home-forge-section','Products, partnerships and modern commerce','js/tbm-cinematic-v10.js','js/home-v2.js','js/tbm-product-network-v7.js']
+          forbidden = ['Premium wholesale partnerships','high and rising across multiple channels','category specialists and streamlined checks','strong margin potential with repeat sales','>Insights</a>']
+          missing = [x for x in required if x not in text]
+          remaining = [x for x in forbidden if x in text]
+          print('missing:', missing)
+          print('remaining:', remaining)
+          if missing or remaining:
+              raise SystemExit(1)
+          PY
+          rm -rf .index-rebuild scripts/rebuild_homepage_corrective.py homepage-rebuild-diagnostic.txt
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -m "fix: restore corrective homepage from main baseline"
+          git push --quiet origin HEAD:fix/post-seo-content-correction
