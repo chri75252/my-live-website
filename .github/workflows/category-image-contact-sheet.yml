@@ -61,8 +61,20 @@ jobs:
           sheet.save(output, quality=92, optimize=True)
           print(f'Created {output} from {len(paths)} images')
           PY
+      - name: Package corrective working files
+        run: |
+          zip -r repository-snapshot.zip \
+            ./*.html blog/*.html css/seo-content-v2.css css/secondary-cards.css \
+            scripts/validate_corrective_surface.py scripts/seo_validate.py scripts/generate_sitemap.py \
+            data/content-manifest.json sitemap.xml images/*.png images/tbm-logo-actual.svg images/tbm-logo.svg \
+            .github/workflows/seo-quality-gate.yml
       - uses: actions/upload-artifact@v4
         with:
           name: category-image-contact-sheet
           path: category-image-contact-sheet.jpg
+          retention-days: 7
+      - uses: actions/upload-artifact@v4
+        with:
+          name: corrective-repository-snapshot
+          path: repository-snapshot.zip
           retention-days: 7
