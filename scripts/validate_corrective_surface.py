@@ -30,26 +30,50 @@ TEMPORARY_RECOVERY_PATHS = [
 CARD_PAGES = {
     "products.html": 9,
     "about.html": 3,
-    "blog.html": 10,
+    "blog.html": 6,
     "partnership.html": 3,
     "contact.html": 4,
 }
 CARD_ASSETS = [
     "css/secondary-cards.css",
     "js/card-spotlight.js",
-    "images/site/digital-commerce.svg",
     "images/site/about-products.svg",
     "images/site/about-partnerships.svg",
     "images/site/about-modern-commerce.svg",
+    "images/favicon-tbm.svg",
+    "images/favicon-48.png",
+    "images/apple-touch-icon.png",
+    "images/categories/beauty-personal-care.webp",
+    "images/categories/home-living.webp",
+    "images/categories/toys-games-leisure.webp",
+    "images/categories/consumer-technology.webp",
+    "images/categories/general-merchandise.webp",
+    "images/categories/digital-commerce.webp",
 ]
 PRODUCT_IMAGES = [
-    "/assets/tbm-cinematic-v6/product-focus/beauty.webp",
-    "/assets/tbm-cinematic-v6/product-focus/home-kitchen.webp",
-    "/assets/tbm-cinematic-v6/product-focus/toys-games.webp",
-    "/assets/tbm-cinematic-v6/product-focus/electronics.webp",
-    "/assets/tbm-cinematic-v6/product-focus/general-merchandise.webp",
-    "/images/site/digital-commerce.svg",
+    "/images/categories/beauty-personal-care.webp",
+    "/images/categories/home-living.webp",
+    "/images/categories/toys-games-leisure.webp",
+    "/images/categories/consumer-technology.webp",
+    "/images/categories/general-merchandise.webp",
+    "/images/categories/digital-commerce.webp",
 ]
+
+
+PROHIBITED_PUBLIC_COPY = (
+    "does not mean every product is continuously purchased",
+    "without treating every category as continuously purchased",
+    "only presented as live once",
+    "the website should not imply a capability",
+    "verified fallback contact route",
+    "optional website form",
+    "no placeholder form endpoint",
+    "market lens",
+    "review lens",
+    "opportunity lens",
+    "conceptual evaluation signals only",
+    "submission does not guarantee a purchase",
+)
 
 
 def fail(message: str) -> None:
@@ -90,6 +114,20 @@ for rel in public_files:
     for retired in ("editorial-policy.html", "research-methodology.html", "ai-content-policy.html"):
         if f'href="/{retired}"' in text or f'href="{retired}"' in text:
             fail(f"{rel}: retired policy page is publicly linked")
+
+
+for rel in public_files:
+    text = read(rel)
+    lower = text.lower()
+    for phrase in PROHIBITED_PUBLIC_COPY:
+        if phrase in lower:
+            fail(f"{rel}: internal or disclaimer-style public copy remains: {phrase}")
+    if "tbm-logo.svg" in text:
+        fail(f"{rel}: legacy visible logo reference remains")
+    if "/images/favicon-tbm.svg" not in text:
+        fail(f"{rel}: canonical favicon reference missing")
+    if "blog.html#ai-automation" in text or "blog.html#digital-retail" in text or "blog.html#wholesale-b2b" in text:
+        fail(f"{rel}: topic link is incorrectly exposed as a global footer section")
 
 for rel, minimum_cards in CARD_PAGES.items():
     text = read(rel)
@@ -132,10 +170,9 @@ for marker in (
     "Products &amp; Opportunities",
     "Blog &amp; Resources",
     "From The Forge",
-    "Clarify where relevant",
-    "Continue or close",
-    "Product fit",
-    "Commercial terms",
+    "Explore products for modern life.",
+    "From first introduction to the right next step.",
+    "Good products. Strong relationships. Clear potential.",
     "js/tbm-cinematic-v10.js",
     "js/home-v2.js",
     "js/tbm-product-network-v7.js",
@@ -159,6 +196,12 @@ for script in ("js/tbm-cinematic-v10.js", "js/home-v2.js", "js/tbm-product-netwo
 blog = read("blog.html")
 if "The Forge" not in blog or "Blog &amp; Resources" not in blog:
     fail("blog.html must use The Forge as the editorial brand and Blog & Resources as the functional label")
+
+for marker in ('id="latest-articles"', 'id="browse-topics"', "Browse by topic"):
+    if marker not in blog:
+        fail(f"blog.html missing hub hierarchy marker: {marker}")
+if "Research areas" in blog:
+    fail("blog.html still presents topics as separate research-area sections")
 for article in manifest.get("articles", []):
     if article.get("status") != "published":
         continue
