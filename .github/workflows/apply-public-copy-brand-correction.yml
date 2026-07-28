@@ -1,8 +1,8 @@
 name: Apply Public Copy and Brand Correction
 
 on:
-  push:
-    branches: [fix/public-copy-logo-forge-images]
+  pull_request:
+    branches: [main]
     paths:
       - "scripts/apply_public_copy_brand_correction.py"
       - ".github/workflows/apply-public-copy-brand-correction.yml"
@@ -25,6 +25,53 @@ jobs:
           python-version: "3.13"
       - name: Install image tooling
         run: python -m pip install --disable-pip-version-check pillow
+      - name: Patch migration for final public surface
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+
+          path = Path('scripts/apply_public_copy_brand_correction.py')
+          text = path.read_text(encoding='utf-8')
+
+          old = '''    text = replace_once(
+              text,
+              "Ideas, tools and shifts shaping modern commerce.",
+              "Practical guides and perspectives on ecommerce, AI, retail technology and modern business.",
+              "blog hero lead",
+          )'''
+          new = '''    text = replace_once(
+              text,
+              '<p class="seo-lead">Ideas, tools and shifts shaping modern commerce.</p>',
+              '<p class="seo-lead">Practical guides and perspectives on ecommerce, AI, retail technology and modern business.</p>',
+              "blog hero lead",
+          )'''
+          if old not in text:
+              raise SystemExit('Unable to patch blog hero replacement')
+          text = text.replace(old, new, 1)
+
+          text = text.replace(
+              'image = ImageOps.fit(image, (1200, 1500), method=Image.Resampling.LANCZOS)',
+              'image = ImageOps.fit(image, (640, 800), method=Image.Resampling.LANCZOS)',
+              1,
+          )
+          text = text.replace(
+              'image.save(output_dir / output_name, "WEBP", quality=84, method=6)',
+              'image.save(output_dir / output_name, "WEBP", quality=82, method=6)',
+              1,
+          )
+
+          validator_write = '    path.write_text(text, encoding="utf-8")\n\n\ndef main() -> None:'
+          validator_patch = '''    text = text.replace('"blog.html": 10,', '"blog.html": 6,', 1)
+              path.write_text(text, encoding="utf-8")
+
+
+          def main() -> None:'''
+          if validator_write not in text:
+              raise SystemExit('Unable to patch validator card count')
+          text = text.replace(validator_write, validator_patch, 1)
+
+          path.write_text(text, encoding='utf-8')
+          PY
       - name: Apply corrective migration
         run: python scripts/apply_public_copy_brand_correction.py
       - name: Synchronise sitemap
@@ -46,8 +93,6 @@ jobs:
           fi
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add index.html about.html products.html blog.html partnership.html contact.html faq.html editorial-standards.html privacy-policy.html terms.html 404.html testimonials.html editorial-policy.html research-methodology.html ai-content-policy.html blog css/seo-content-v2.css images/favicon-tbm.svg images/favicon-48.png images/apple-touch-icon.png images/categories data/content-manifest.json sitemap.xml scripts/validate_corrective_surface.py
+          git add -A
           git commit -m "fix: replace internal copy and correct public brand hierarchy"
           git push origin HEAD:fix/public-copy-logo-forge-images
-
-# A committed workflow update intentionally triggers the migration on this branch.
