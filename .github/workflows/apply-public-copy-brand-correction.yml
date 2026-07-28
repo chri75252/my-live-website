@@ -49,3 +49,5 @@ jobs:
           git add index.html about.html products.html blog.html partnership.html contact.html faq.html editorial-standards.html privacy-policy.html terms.html 404.html testimonials.html editorial-policy.html research-methodology.html ai-content-policy.html blog css/seo-content-v2.css images/favicon-tbm.svg images/favicon-48.png images/apple-touch-icon.png images/categories data/content-manifest.json sitemap.xml scripts/validate_corrective_surface.py
           git commit -m "fix: replace internal copy and correct public brand hierarchy"
           git push origin HEAD:fix/public-copy-logo-forge-images
+
+# A committed workflow update intentionally triggers the migration on this branch.
