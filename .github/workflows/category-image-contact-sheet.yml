@@ -1,6 +1,11 @@
 name: Category Image Contact Sheet
 
 on:
+  pull_request:
+    branches: [main]
+    paths:
+      - "images/*.png"
+      - ".github/workflows/category-image-contact-sheet.yml"
   push:
     branches: [fix/public-copy-logo-forge-images]
     paths:
@@ -39,7 +44,6 @@ jobs:
           rows = (len(paths) + cols - 1) // cols
           sheet = Image.new('RGB', (cols * cell_w, rows * cell_h), '#101010')
           draw = ImageDraw.Draw(sheet)
-          font = ImageFont.load_default(size=18)
           small = ImageFont.load_default(size=14)
 
           for index, path in enumerate(paths):
