@@ -65,7 +65,8 @@ jobs:
         run: |
           zip -r repository-snapshot.zip \
             ./*.html blog/*.html css/seo-content-v2.css css/secondary-cards.css \
-            scripts/validate_corrective_surface.py scripts/seo_validate.py scripts/generate_sitemap.py \
+            scripts/apply_public_copy_brand_correction.py scripts/validate_corrective_surface.py \
+            scripts/seo_validate.py scripts/generate_sitemap.py \
             data/content-manifest.json sitemap.xml images/*.png images/tbm-logo-actual.svg images/tbm-logo.svg \
             .github/workflows/seo-quality-gate.yml
       - uses: actions/upload-artifact@v4
