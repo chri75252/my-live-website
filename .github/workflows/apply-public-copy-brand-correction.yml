@@ -1,0 +1,51 @@
+name: Apply Public Copy and Brand Correction
+
+on:
+  push:
+    branches: [fix/public-copy-logo-forge-images]
+    paths:
+      - "scripts/apply_public_copy_brand_correction.py"
+      - ".github/workflows/apply-public-copy-brand-correction.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  apply:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: fix/public-copy-logo-forge-images
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+      - name: Install image tooling
+        run: python -m pip install --disable-pip-version-check pillow
+      - name: Apply corrective migration
+        run: python scripts/apply_public_copy_brand_correction.py
+      - name: Synchronise sitemap
+        run: python scripts/generate_sitemap.py
+      - name: Validate generated surface
+        env:
+          PR_BASE_SHA: 8451f98a4db3ae3497257298ca8d24f480a897b3
+        run: |
+          python scripts/seo_validate.py
+          python scripts/validate_corrective_surface.py
+          git diff --check
+      - name: Commit generated changes
+        shell: bash
+        run: |
+          set -euo pipefail
+          if git diff --quiet && [[ -z "$(git status --porcelain)" ]]; then
+            echo "No generated changes to commit."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add index.html about.html products.html blog.html partnership.html contact.html faq.html editorial-standards.html privacy-policy.html terms.html 404.html testimonials.html editorial-policy.html research-methodology.html ai-content-policy.html blog css/seo-content-v2.css images/favicon-tbm.svg images/favicon-48.png images/apple-touch-icon.png images/categories data/content-manifest.json sitemap.xml scripts/validate_corrective_surface.py
+          git commit -m "fix: replace internal copy and correct public brand hierarchy"
+          git push origin HEAD:fix/public-copy-logo-forge-images
