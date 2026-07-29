@@ -40,9 +40,11 @@ CARD_ASSETS = [
     "images/site/about-products.svg",
     "images/site/about-partnerships.svg",
     "images/site/about-modern-commerce.svg",
-    "images/favicon-tbm.svg",
-    "images/favicon-48.png",
-    "images/apple-touch-icon.png",
+    "images/tbm-logo-latest.png",
+    "images/favicon/favicon.ico",
+    "images/favicon/favicon-32x32.png",
+    "images/favicon/favicon-16x16.png",
+    "images/favicon/apple-touch-icon.png",
     "images/categories/beauty-personal-care.webp",
     "images/categories/home-living.webp",
     "images/categories/toys-games-leisure.webp",
@@ -122,10 +124,12 @@ for rel in public_files:
     for phrase in PROHIBITED_PUBLIC_COPY:
         if phrase in lower:
             fail(f"{rel}: internal or disclaimer-style public copy remains: {phrase}")
-    if "tbm-logo.svg" in text:
+    if "tbm-logo.svg" in text or "tbm-logo-actual.svg" in text:
         fail(f"{rel}: legacy visible logo reference remains")
-    if "/images/favicon-tbm.svg" not in text:
-        fail(f"{rel}: canonical favicon reference missing")
+    if "tbm-logo-latest.png" not in text:
+        fail(f"{rel}: latest visible logo reference missing")
+    if "/images/favicon/favicon.ico" not in text:
+        fail(f"{rel}: canonical favicon package reference missing")
     if "blog.html#ai-automation" in text or "blog.html#digital-retail" in text or "blog.html#wholesale-b2b" in text:
         fail(f"{rel}: topic link is incorrectly exposed as a global footer section")
 
@@ -179,6 +183,26 @@ for marker in (
 ):
     if marker not in homepage:
         fail(f"index.html missing required marker: {marker}")
+for marker in (
+    'class="sector-filters"',
+    'data-sector-filter="all"',
+    'data-sector-filter="demand"',
+    'data-sector-filter="evergreen"',
+    'data-sector-filter="fast"',
+    'data-sector-filter="margin"',
+):
+    if marker not in homepage:
+        fail(f"index.html missing restored sector filter marker: {marker}")
+for card, tags in {
+    "beauty": "demand margin",
+    "home-kitchen": "evergreen demand",
+    "toys-games": "fast demand margin",
+    "electronics": "fast margin",
+    "general-merchandise": "evergreen fast",
+}.items():
+    pattern = rf'data-sector-card="{re.escape(card)}"\s+data-tags="{re.escape(tags)}"'
+    if not re.search(pattern, homepage):
+        fail(f"index.html missing restored filter tags for {card}: {tags}")
 for unsupported in (
     "high and rising across multiple channels",
     "category specialists",
