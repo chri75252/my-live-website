@@ -235,7 +235,7 @@
     min-width: 0;
     font-size: clamp(1.55rem, 7.2vw, 2rem);
     line-height: .88;
-    overflow-wrap: normal;
+    overflow-wrap: anywhere;
     word-break: normal;
   }
 
@@ -243,10 +243,6 @@
     min-width: 0;
     gap: 8px;
     font-size: .64rem;
-  }
-
-  #product-focus .sector-card__action span:first-child {
-    min-width: 0;
     overflow-wrap: anywhere;
   }
 }
