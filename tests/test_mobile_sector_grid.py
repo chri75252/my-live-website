@@ -15,12 +15,22 @@ VIEWPORTS = (
 )
 
 
-def visible_boxes(page: Page) -> list[dict[str, float | str]]:
+def visible_boxes(page: Page) -> list[dict[str, object]]:
     return page.locator("#product-focus [data-sector-card]:not([hidden])").evaluate_all(
         """
         cards => cards.map(card => {
           const box = card.getBoundingClientRect();
+          const heading = card.querySelector('h3')?.getBoundingClientRect();
+          const action = card.querySelector('.sector-card__action')?.getBoundingClientRect();
           const style = getComputedStyle(card);
+          const serialize = rect => rect ? ({
+            left: rect.left,
+            right: rect.right,
+            top: rect.top,
+            bottom: rect.bottom,
+            width: rect.width,
+            height: rect.height
+          }) : null;
           return {
             sector: card.dataset.sectorCard,
             left: box.left,
@@ -30,14 +40,33 @@ def visible_boxes(page: Page) -> list[dict[str, float | str]]:
             width: box.width,
             height: box.height,
             minWidth: style.minWidth,
-            transform: style.transform
+            transform: style.transform,
+            heading: serialize(heading),
+            action: serialize(action)
           };
         })
         """
     )
 
 
-def assert_contained_and_separate(page: Page, label: str) -> list[dict[str, float | str]]:
+def assert_inner_box(card: dict[str, object], key: str, label: str, tolerance: float) -> None:
+    inner = card.get(key)
+    assert isinstance(inner, dict), f"{label}: {card['sector']} has no {key} box"
+    assert inner["left"] >= card["left"] - tolerance, (
+        f"{label}: {card['sector']} {key} escapes left edge: {inner} / {card}"
+    )
+    assert inner["right"] <= card["right"] + tolerance, (
+        f"{label}: {card['sector']} {key} escapes right edge: {inner} / {card}"
+    )
+    assert inner["top"] >= card["top"] - tolerance, (
+        f"{label}: {card['sector']} {key} escapes top edge: {inner} / {card}"
+    )
+    assert inner["bottom"] <= card["bottom"] + tolerance, (
+        f"{label}: {card['sector']} {key} escapes bottom edge: {inner} / {card}"
+    )
+
+
+def assert_contained_and_separate(page: Page, label: str) -> list[dict[str, object]]:
     cards = visible_boxes(page)
     assert cards, f"{label}: no visible sector cards"
 
@@ -55,6 +84,8 @@ def assert_contained_and_separate(page: Page, label: str) -> list[dict[str, floa
         assert card["width"] <= container["width"] + tolerance, (
             f"{label}: {card['sector']} is wider than the grid: {card} / {container}"
         )
+        assert_inner_box(card, "heading", label, tolerance)
+        assert_inner_box(card, "action", label, tolerance)
 
     collisions: list[dict[str, object]] = []
     for index, first in enumerate(cards):
@@ -73,6 +104,14 @@ def assert_contained_and_separate(page: Page, label: str) -> list[dict[str, floa
 
     assert not collisions, f"{label}: overlapping sector cards: {json.dumps(collisions)}"
     return cards
+
+
+def scroll_grid_into_view(page: Page) -> None:
+    grid_top = page.locator("#product-focus .sector-cards").evaluate(
+        "element => element.getBoundingClientRect().top + window.scrollY"
+    )
+    page.evaluate("y => scrollTo(0, y)", grid_top - 96)
+    page.wait_for_timeout(250)
 
 
 def open_product_section(browser: Browser, viewport: dict[str, int | str]) -> Page:
@@ -104,6 +143,7 @@ def main() -> None:
 
             all_cards = assert_contained_and_separate(page, f"{name}/all")
             assert len(all_cards) == 5, f"{name}: expected five cards, got {len(all_cards)}"
+            scroll_grid_into_view(page)
             page.screenshot(path=str(OUT / f"{name}-all.png"), full_page=False)
 
             everyday = page.locator('[data-sector-filter="evergreen"]')
@@ -114,6 +154,7 @@ def main() -> None:
                 "home-kitchen",
                 "general-merchandise",
             }, f"{name}: unexpected everyday-use cards: {filtered_cards}"
+            scroll_grid_into_view(page)
             page.screenshot(path=str(OUT / f"{name}-everyday.png"), full_page=False)
 
             # Selecting the second visible card must not reintroduce a transform collision.
