@@ -4,13 +4,17 @@ on:
   pull_request:
     branches: [main]
     paths:
-      - "css/tbm-reference-refinement-v7.css"
+      - "index.html"
+      - "js/tbm-product-network-v7.js"
+      - "css/**"
       - "tests/test_mobile_sector_grid.py"
       - ".github/workflows/mobile-sector-grid.yml"
   push:
     branches: [fix/mobile-sector-card-overlap]
     paths:
-      - "css/tbm-reference-refinement-v7.css"
+      - "index.html"
+      - "js/tbm-product-network-v7.js"
+      - "css/**"
       - "tests/test_mobile_sector_grid.py"
       - ".github/workflows/mobile-sector-grid.yml"
   workflow_dispatch:
