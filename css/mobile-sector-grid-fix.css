@@ -1,0 +1,78 @@
+/*
+ * Mobile sector-card containment fix.
+ *
+ * Root cause: the two-column grid uses narrow minmax(0, 1fr) tracks, while
+ * .sector-card kept its default min-width:auto intrinsic size. Long headings
+ * therefore forced individual cards wider than their tracks, causing adjacent
+ * cards to paint over one another. Selection transforms made the collision
+ * more noticeable after filtering.
+ *
+ * This file is loaded after the V6/V7/V9/V10 styles and is deliberately scoped
+ * to the homepage product network at phone widths only.
+ */
+
+@media (max-width: 640px) {
+  #product-focus .sector-cards {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-auto-flow: row;
+    grid-auto-rows: auto;
+    align-items: stretch;
+    gap: 14px;
+    width: 100%;
+  }
+
+  #product-focus .sector-card {
+    min-width: 0;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    transform: none;
+  }
+
+  #product-focus .sector-card:hover,
+  #product-focus .sector-card:focus-visible,
+  #product-focus .sector-card.is-near,
+  #product-focus .sector-card.is-selected {
+    transform: none;
+  }
+
+  #product-focus .sector-card.is-selected {
+    min-height: 355px;
+  }
+
+  #product-focus .sector-card h3 {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    font-size: clamp(1.55rem, 7.2vw, 2rem);
+    line-height: .88;
+    overflow-wrap: normal;
+    word-break: normal;
+  }
+
+  #product-focus .sector-card__action {
+    min-width: 0;
+    gap: 8px;
+    font-size: .64rem;
+  }
+
+  #product-focus .sector-card__action span:first-child {
+    min-width: 0;
+    overflow-wrap: anywhere;
+  }
+}
+
+@media (max-width: 340px) {
+  #product-focus .sector-cards {
+    grid-template-columns: 1fr;
+  }
+
+  #product-focus .sector-card,
+  #product-focus .sector-card.is-selected {
+    min-height: 340px;
+  }
+
+  #product-focus .sector-card h3 {
+    font-size: 2rem;
+  }
+}
