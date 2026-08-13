@@ -1,102 +1,102 @@
 {
   "site": "https://www.theblacksmithmarket.com",
-  "updated": "2026-07-28",
+  "updated": "2026-08-13",
   "pages": [
     {
       "path": "/",
       "file": "index.html",
       "indexable": true,
-      "lastmod": "2026-07-28"
+      "lastmod": "2026-08-13"
     },
     {
       "path": "/about.html",
       "file": "about.html",
       "indexable": true,
-      "lastmod": "2026-07-28"
+      "lastmod": "2026-08-13"
     },
     {
       "path": "/products.html",
       "file": "products.html",
       "indexable": true,
-      "lastmod": "2026-07-28"
+      "lastmod": "2026-08-13"
     },
     {
       "path": "/blog.html",
       "file": "blog.html",
       "indexable": true,
-      "lastmod": "2026-07-28"
+      "lastmod": "2026-08-13"
     },
     {
       "path": "/partnership.html",
       "file": "partnership.html",
       "indexable": true,
-      "lastmod": "2026-07-28"
+      "lastmod": "2026-08-13"
     },
     {
       "path": "/contact.html",
       "file": "contact.html",
       "indexable": true,
-      "lastmod": "2026-07-28"
+      "lastmod": "2026-08-13"
     },
     {
       "path": "/faq.html",
       "file": "faq.html",
       "indexable": true,
-      "lastmod": "2026-07-28"
+      "lastmod": "2026-08-13"
     },
     {
       "path": "/editorial-standards.html",
       "file": "editorial-standards.html",
       "indexable": true,
-      "lastmod": "2026-07-28"
+      "lastmod": "2026-08-13"
     },
     {
       "path": "/privacy-policy.html",
       "file": "privacy-policy.html",
       "indexable": true,
-      "lastmod": "2026-07-28"
+      "lastmod": "2026-08-13"
     },
     {
       "path": "/terms.html",
       "file": "terms.html",
       "indexable": true,
-      "lastmod": "2026-07-28"
+      "lastmod": "2026-08-13"
     },
     {
       "path": "/blog/agentic-commerce-2026.html",
       "file": "blog/agentic-commerce-2026.html",
       "indexable": true,
-      "lastmod": "2026-07-28"
+      "lastmod": "2026-08-13"
     },
     {
       "path": "/blog/ai-automation-ecommerce-human-tasks.html",
       "file": "blog/ai-automation-ecommerce-human-tasks.html",
       "indexable": true,
-      "lastmod": "2026-07-28"
+      "lastmod": "2026-08-13"
     },
     {
       "path": "/blog/search-chat-cart-product-discovery.html",
       "file": "blog/search-chat-cart-product-discovery.html",
       "indexable": true,
-      "lastmod": "2026-07-28"
+      "lastmod": "2026-08-13"
     },
     {
       "path": "/blog/unified-commerce-small-business.html",
       "file": "blog/unified-commerce-small-business.html",
       "indexable": true,
-      "lastmod": "2026-07-28"
+      "lastmod": "2026-08-13"
     },
     {
       "path": "/blog/ecommerce-tools-technologies-2026.html",
       "file": "blog/ecommerce-tools-technologies-2026.html",
       "indexable": true,
-      "lastmod": "2026-07-28"
+      "lastmod": "2026-08-13"
     },
     {
       "path": "/blog/search-ai-discovery-checklist.html",
       "file": "blog/search-ai-discovery-checklist.html",
       "indexable": true,
-      "lastmod": "2026-07-28"
+      "lastmod": "2026-08-13"
     },
     {
       "path": "/testimonials.html",
