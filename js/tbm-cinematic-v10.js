@@ -4,12 +4,11 @@ const canvas = document.getElementById('tbm-cinematic-v10-canvas');
 const status = document.getElementById('tbm-cinematic-v10-status');
 const skip = document.getElementById('tbm-cinematic-v10-skip');
 const fallback = document.querySelector('.hero-v10__fallback');
-const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
 const viewportMedia = matchMedia('(max-width: 700px)');
 const MANIFEST_URL = 'assets/tbm-cinematic-v10/frame-manifest.json';
 const INITIAL_REVEAL_WINDOW = 12;
 
-if (stage && visual && canvas && !reducedMotion.matches) {
+if (stage && visual && canvas) {
   initialise().catch(showFallback);
 } else if (stage) {
   showFallback();
