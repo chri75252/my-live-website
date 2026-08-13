@@ -6,6 +6,7 @@ on:
     paths:
       - js/tbm-cinematic-v10.js
       - css/tbm-cinematic-v10.css
+      - tests/test_tbm_v10_visual.py
       - tests/test_tbm_v10_reduced_motion.py
       - .github/workflows/v10-reveal-motion-policy.yml
   workflow_dispatch:
@@ -16,7 +17,7 @@ permissions:
 jobs:
   reduced-motion-reveal:
     runs-on: ubuntu-latest
-    timeout-minutes: 15
+    timeout-minutes: 20
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -34,6 +35,18 @@ jobs:
           python -m pip install --disable-pip-version-check playwright==1.53.2
           python -m playwright install --with-deps chromium
       - name: Start static preview
-        run: python -m http.server 4173 --bind 127.0.0.1 > /tmp/tbm-v10-preview.log 2>&1 &
+        shell: bash
+        run: |
+          python -m http.server 4173 --bind 127.0.0.1 > /tmp/tbm-v10-preview.log 2>&1 &
+          for attempt in {1..30}; do
+            if curl --fail --silent http://127.0.0.1:4173/index.html > /dev/null; then
+              exit 0
+            fi
+            sleep 1
+          done
+          cat /tmp/tbm-v10-preview.log
+          exit 1
+      - name: Verify existing V10 browser contract
+        run: python tests/test_tbm_v10_visual.py
       - name: Verify reveal ignores reduced-motion preference
         run: python tests/test_tbm_v10_reduced_motion.py
