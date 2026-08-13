@@ -20,7 +20,6 @@ def main() -> None:
 
         stage = page.locator('[data-cinematic-stage]')
         stage.locator('canvas#tbm-cinematic-v10-canvas').wait_for(state="visible", timeout=60000)
-        stage.locator('[data-cinematic-stage][data-ready="true"]') if False else None
         page.locator('[data-cinematic-stage][data-ready="true"]').wait_for(timeout=60000)
         page.wait_for_function("() => window.__tbmCinematicV10?.getState?.().ready === true", timeout=10000)
 
