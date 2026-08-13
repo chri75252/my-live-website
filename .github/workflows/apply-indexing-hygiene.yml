@@ -5,6 +5,7 @@ on:
     branches: [fix/search-indexing-crawl-hygiene]
     paths:
       - scripts/apply_indexing_hygiene.py
+      - scripts/seo_validate.py
       - .github/workflows/apply-indexing-hygiene.yml
   workflow_dispatch:
 
