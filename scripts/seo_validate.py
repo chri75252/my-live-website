@@ -187,7 +187,7 @@ for rel, page in page_by_file.items():
 
     for href in parser.hrefs:
         target_path = internal_manifest_path(href, page["path"])
-        if should_index and target_path == "/index.html":
+        if should_index and rel != "index.html" and target_path == "/index.html":
             fail(f"indexable page links duplicate homepage alias instead of '/': {rel}: {href}")
         if should_index and target_path in page_by_path:
             target_page = page_by_path[target_path]
