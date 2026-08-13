@@ -198,29 +198,3 @@
     line-height: 1.5;
   }
 }
-
-@media (prefers-reduced-motion: reduce) {
-  .tbm-cinematic-v10-stage {
-    height: auto;
-  }
-
-  .tbm-cinematic-v10-visual {
-    display: none;
-  }
-
-  .hero-v10 {
-    position: relative;
-    top: auto;
-    height: auto;
-    min-height: 850px;
-    margin-top: 0;
-    background: #020302;
-  }
-
-  .hero-v10 .hero-grid,
-  .hero-v10 .proof-strip,
-  .hero-v10 .hero-v6__phase {
-    opacity: 1;
-    transform: none;
-  }
-}
