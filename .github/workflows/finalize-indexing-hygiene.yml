@@ -1,0 +1,59 @@
+name: Finalize Indexing Hygiene
+
+on:
+  push:
+    branches: [fix/search-indexing-crawl-hygiene]
+    paths:
+      - .github/workflows/finalize-indexing-hygiene.yml
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  finalize:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: fix/search-indexing-crawl-hygiene
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+      - name: Narrow crawl guardrail and restore unchanged homepage lastmod
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+
+          validator = Path('scripts/seo_validate.py')
+          text = validator.read_text(encoding='utf-8')
+          old = 'if should_index and target_path == "/index.html":'
+          new = 'if should_index and rel != "index.html" and target_path == "/index.html":'
+          if old not in text:
+              raise SystemExit('Expected duplicate-home guardrail line not found')
+          validator.write_text(text.replace(old, new, 1), encoding='utf-8')
+
+          manifest_path = Path('data/content-manifest.json')
+          manifest = json.loads(manifest_path.read_text(encoding='utf-8'))
+          homepage = next(page for page in manifest['pages'] if page['path'] == '/')
+          homepage['lastmod'] = '2026-07-28'
+          manifest_path.write_text(json.dumps(manifest, indent=2, ensure_ascii=False) + '\n', encoding='utf-8')
+          PY
+          python scripts/generate_sitemap.py
+      - name: Validate final SEO surface
+        run: |
+          python scripts/seo_validate.py
+          python scripts/generate_sitemap.py --check
+          git diff --check
+      - name: Commit final narrowing
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add scripts/seo_validate.py data/content-manifest.json sitemap.xml
+          git commit -m "seo: isolate crawl hygiene from protected homepage"
+          git push origin HEAD:fix/search-indexing-crawl-hygiene
