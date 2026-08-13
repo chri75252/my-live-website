@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Validate the canonical public SEO, content and link contracts."""
+"""Validate the canonical public SEO, content, crawl-discovery and link contracts."""
 from __future__ import annotations
 
 import json
@@ -8,7 +8,7 @@ import sys
 import xml.etree.ElementTree as ET
 from html.parser import HTMLParser
 from pathlib import Path
-from urllib.parse import urlparse
+from urllib.parse import urljoin, urlparse
 
 ROOT = Path(__file__).resolve().parents[1]
 MANIFEST_PATH = ROOT / "data/content-manifest.json"
@@ -82,12 +82,14 @@ except (OSError, json.JSONDecodeError) as exc:
 site = str(manifest.get("site", "")).rstrip("/")
 pages = manifest.get("pages", [])
 articles = manifest.get("articles", [])
+site_parts = urlparse(site)
 if not site.startswith("https://"):
     fail("content manifest must define an HTTPS site URL")
 if not isinstance(pages, list) or not pages:
     fail("content manifest must define at least one page")
 
 page_by_file: dict[str, dict] = {}
+page_by_path: dict[str, dict] = {}
 for page in pages:
     try:
         file_path = page["file"]
@@ -98,11 +100,30 @@ for page in pages:
         continue
     if file_path in page_by_file:
         fail(f"duplicate file in content manifest: {file_path}")
+    if url_path in page_by_path:
+        fail(f"duplicate canonical path in content manifest: {url_path}")
     page_by_file[file_path] = page
+    page_by_path[url_path] = page
     if not isinstance(url_path, str) or not url_path.startswith("/"):
         fail(f"invalid canonical path in content manifest: {url_path!r}")
     if indexable and not page.get("lastmod"):
         fail(f"indexable page missing lastmod in content manifest: {file_path}")
+
+indexable_paths = {page["path"] for page in pages if page.get("indexable")}
+link_graph: dict[str, set[str]] = {path: set() for path in indexable_paths}
+
+
+def internal_manifest_path(href: str, source_path: str) -> str | None:
+    """Resolve an href to a same-host path, or return None for non-HTML navigation."""
+    if href.startswith(("mailto:", "tel:", "javascript:", "#")):
+        return None
+    resolved = urlparse(urljoin(site + source_path, href))
+    if resolved.scheme not in {"http", "https"}:
+        return None
+    if resolved.netloc != site_parts.netloc:
+        return None
+    return resolved.path or "/"
+
 
 for rel in list(page_by_file) + STATIC_REQUIRED:
     if not (ROOT / rel).is_file():
@@ -165,6 +186,16 @@ for rel, page in page_by_file.items():
             fail(f"invalid JSON-LD in {rel}: {exc}")
 
     for href in parser.hrefs:
+        target_path = internal_manifest_path(href, page["path"])
+        if should_index and target_path == "/index.html":
+            fail(f"indexable page links duplicate homepage alias instead of '/': {rel}: {href}")
+        if should_index and target_path in page_by_path:
+            target_page = page_by_path[target_path]
+            if not target_page.get("indexable"):
+                fail(f"indexable page links retired/non-indexable URL: {rel}: {href}")
+            else:
+                link_graph[page["path"]].add(target_path)
+
         if href.startswith(("http://", "https://", "mailto:", "tel:", "#", "javascript:")):
             continue
         clean = href.split("#", 1)[0].split("?", 1)[0]
@@ -181,6 +212,21 @@ for rel, page in page_by_file.items():
             fail(f"public page missing clear Blog & Resources label: {rel}")
     if should_index and rel != "index.html" and re.search(r">Insights<", text):
         fail(f"legacy Insights-only navigation remains in {rel}")
+
+if "/" not in indexable_paths:
+    fail("canonical homepage '/' must be indexable")
+else:
+    reachable = {"/"}
+    pending = ["/"]
+    while pending:
+        source = pending.pop()
+        for target in link_graph.get(source, set()):
+            if target not in reachable:
+                reachable.add(target)
+                pending.append(target)
+    orphaned = sorted(indexable_paths - reachable)
+    if orphaned:
+        fail("indexable canonical pages are not crawl-reachable from '/': " + ", ".join(orphaned))
 
 robots_path = ROOT / "robots.txt"
 robots = robots_path.read_text(encoding="utf-8") if robots_path.exists() else ""
@@ -199,6 +245,8 @@ if sitemap_path.exists():
             fail("duplicate URLs in sitemap")
         if urls != expected_urls:
             fail("sitemap URLs or order do not match the indexable content manifest")
+        if any(urlparse(url).path == "/index.html" for url in urls):
+            fail("sitemap must not contain duplicate homepage alias /index.html")
         for url in urls:
             parsed = urlparse(url)
             rel = parsed.path.lstrip("/") or "index.html"
@@ -221,6 +269,8 @@ for article in articles:
         fail(f"blog hub does not link published article: {article.get('path')}")
     content = target.read_text(encoding="utf-8", errors="ignore")
     if article.get("status") == "published":
+        if article.get("path") not in indexable_paths:
+            fail(f"published article is not an indexable canonical page: {article.get('path')}")
         if '"@type":"BlogPosting"' not in content:
             fail(f"published article missing BlogPosting schema: {target.relative_to(ROOT)}")
         if '"@type":"BreadcrumbList"' not in content:
