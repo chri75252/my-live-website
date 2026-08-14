@@ -1,0 +1,10 @@
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "name": "tbm-forge-api",
+  "main": "src/index.js",
+  "compatibility_date": "2026-08-14",
+  "compatibility_flags": ["nodejs_compat"],
+  "observability": { "enabled": true, "head_sampling_rate": 1 },
+  "routes": [{ "pattern": "api.theblacksmithmarket.com", "custom_domain": true }],
+  "d1_databases": [{ "binding": "DB", "database_name": "tbm-forge", "database_id": "ddef5fdb-dc28-4320-b8e7-fa483f0dd433", "migrations_dir": "migrations" }]
+}

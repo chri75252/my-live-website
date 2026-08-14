@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="index,follow">
+    <title>Ask The Forge | The Blacksmith Market</title>
+    <meta name="description" content="Ask a practical question about ecommerce, procurement, operations, AI automation, or digital systems.">
+    <link rel="canonical" href="https://www.theblacksmithmarket.com/ask-the-forge.html">
+    <meta property="og:site_name" content="The Blacksmith Market">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Ask The Forge | The Blacksmith Market">
+    <meta property="og:description" content="Ask a practical question about ecommerce, procurement, operations, AI automation, or digital systems.">
+    <meta property="og:url" content="https://www.theblacksmithmarket.com/ask-the-forge.html">
+    <meta property="og:image" content="https://www.theblacksmithmarket.com/assets/tbm-cinematic-v9/reveal-desktop/frame_0120.webp">
+    <meta property="og:image:alt" content="The Blacksmith Market">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Ask The Forge | The Blacksmith Market">
+    <meta name="twitter:description" content="Ask a practical question about ecommerce, procurement, operations, AI automation, or digital systems.">
+    <meta name="twitter:image" content="https://www.theblacksmithmarket.com/assets/tbm-cinematic-v9/reveal-desktop/frame_0120.webp">
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"ContactPage","@id":"https://www.theblacksmithmarket.com/ask-the-forge.html#webpage","url":"https://www.theblacksmithmarket.com/ask-the-forge.html","name":"Ask The Forge","description":"Ask a practical question about ecommerce, procurement, operations, AI automation, or digital systems.","publisher":{"@id":"https://www.theblacksmithmarket.com/#organization"}}</script>
+    <link rel="icon" href="/images/favicon/favicon.ico" sizes="any">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Raleway:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/ask-forge.css">
+    <script>document.documentElement.classList.add('js');</script>
+</head>
+<body>
+    <header>
+        <div class="container header-container">
+            <div class="logo"><img src="/images/tbm-logo-latest.png" alt="" width="48" height="48"><span class="logo-text">The Blacksmith Market</span></div>
+            <nav class="nav-menu" id="nav-menu" aria-label="Main navigation">
+                <a href="/" class="nav-link">Home</a>
+                <a href="about.html" class="nav-link">About Us</a>
+                <a href="products.html" class="nav-link">Products</a>
+                <a href="partnership.html" class="nav-link">Partnership</a>
+                <a href="blog.html" class="nav-link">Blog &amp; Resources</a>
+                <a href="contact.html" class="nav-link">Contact</a>
+            </nav>
+            <button class="mobile-menu-btn" id="mobile-menu-btn" type="button" aria-label="Open navigation"><i class="fas fa-bars"></i></button>
+            <div class="mobile-menu" id="mobile-menu">
+                <a href="/" class="mobile-nav-link">Home</a><a href="about.html" class="mobile-nav-link">About Us</a><a href="products.html" class="mobile-nav-link">Products</a><a href="partnership.html" class="mobile-nav-link">Partnership</a><a href="blog.html" class="mobile-nav-link">Blog &amp; Resources</a><a href="contact.html" class="mobile-nav-link">Contact</a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="page-header">
+            <div class="container">
+                <h1>Ask The Forge</h1>
+                <nav aria-label="Breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="/">Home</a></li><li class="breadcrumb-item active" aria-current="page">Ask The Forge</li></ol></nav>
+            </div>
+        </section>
+
+        <section class="section section-dark">
+            <div class="container ask-forge-layout">
+                <div class="ask-forge-intro">
+                    <p class="eyebrow">Practical questions, properly considered</p>
+                    <h2>What are you working through?</h2>
+                    <p>Send a question about ecommerce, procurement, operations, AI automation, or digital systems. We use submissions to guide future editorial research. If you choose, we may email you if your question is answered.</p>
+                    <p>Do not include confidential, financial, health, or other sensitive personal information. See our <a href="privacy-policy.html">Privacy Policy</a> for how this form is processed.</p>
+                </div>
+
+                <form id="ask-forge-form" class="ask-forge-form" novalidate>
+                    <div class="form-group">
+                        <label class="form-label" for="forge-question">Your question <span aria-hidden="true">*</span></label>
+                        <textarea id="forge-question" class="form-control" name="question" minlength="20" maxlength="3000" required aria-describedby="forge-question-help forge-question-error"></textarea>
+                        <p id="forge-question-help" class="form-text">20 to 3,000 characters. Please avoid sensitive personal or business information.</p>
+                        <p id="forge-question-error" class="field-error" data-field-error="question"></p>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label" for="forge-topic">Topic</label>
+                            <select id="forge-topic" class="form-control" name="topic"><option value="">Choose a topic (optional)</option><option value="ecommerce">Ecommerce and product economics</option><option value="ai-automation">AI and automation</option><option value="procurement">Procurement and suppliers</option><option value="operations">Operations and project controls</option><option value="search-digital">Search and digital systems</option><option value="other">Other</option></select>
+                            <p class="field-error" data-field-error="topic"></p>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="forge-country">Country or region relevant to the question</label>
+                            <input id="forge-country" class="form-control" name="country_relevance" maxlength="100" autocomplete="country-name">
+                            <p class="field-error" data-field-error="country_relevance"></p>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="forge-email">Email</label>
+                        <input id="forge-email" class="form-control" name="email" type="email" maxlength="254" autocomplete="email" aria-describedby="forge-email-help forge-email-error">
+                        <p id="forge-email-help" class="form-text">Optional, unless you ask us to notify you of an answer or opt into the future Forge Brief.</p>
+                        <p id="forge-email-error" class="field-error" data-field-error="email"></p>
+                    </div>
+                    <div class="form-group form-checkbox"><input id="forge-notify" name="notify_answer" type="checkbox"><label for="forge-notify">Email me if this question is answered</label></div>
+                    <div class="form-group form-checkbox"><input id="forge-newsletter" name="newsletter_consent" type="checkbox"><label for="forge-newsletter">Also send me The Forge Brief when it launches</label></div>
+                    <p class="form-text">The Forge Brief is not currently being sent. This optional consent is separate from any answer notification.</p>
+                    <div class="turnstile-wrap">
+                        <div class="cf-turnstile" data-sitekey="0x4AAAAAAEPiYohId9GXFj5z" data-action="ask_forge"></div>
+                        <p class="field-error" data-field-error="turnstile_token"></p>
+                    </div>
+                    <button class="form-submit" type="submit">Ask The Forge</button>
+                    <p id="ask-forge-status" class="ask-forge-status" role="status" aria-live="polite" tabindex="-1"></p>
+                    <noscript><p class="ask-forge-noscript">JavaScript is required to submit a question. You can contact us through the <a href="contact.html">contact page</a>.</p></noscript>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer"><div class="container footer-container"><div class="footer-branding"><div class="logo"><img src="/images/tbm-logo-latest.png" alt="" width="48" height="48"><span class="logo-text">The Blacksmith Market</span></div><p>Professional wholesale distribution of branded products throughout the UK and Europe.</p></div><div class="footer-links-container"><h3 class="footer-heading">Quick Links</h3><ul class="footer-links"><li class="footer-item"><a href="about.html" class="footer-link">About Us</a></li><li class="footer-item"><a href="blog.html" class="footer-link">Blog &amp; Resources</a></li><li class="footer-item"><a href="contact.html" class="footer-link">Contact</a></li></ul></div><div class="footer-links-container"><h3 class="footer-heading">Legal</h3><ul class="footer-links"><li class="footer-item"><a href="privacy-policy.html" class="footer-link">Privacy Policy</a></li><li class="footer-item"><a href="terms.html" class="footer-link">Terms of Service</a></li></ul></div></div><div class="footer-bottom"><div class="container footer-bottom-container"><p class="footer-copyright">© 2025 The Blacksmith Market Ltd. All rights reserved.</p></div></div></footer>
+    <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+    <script src="js/main.js"></script>
+    <script src="js/ask-forge.js"></script>
+</body>
+</html>

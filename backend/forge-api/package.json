@@ -1,0 +1,1 @@
+{"name":"tbm-forge-api","version":"0.1.0","private":true,"type":"module","scripts":{"check":"node --check src/index.js && node --test","deploy:dry":"wrangler deploy --dry-run","dev":"wrangler dev","test":"node --test"},"devDependencies":{"wrangler":"4.123.0"}}
