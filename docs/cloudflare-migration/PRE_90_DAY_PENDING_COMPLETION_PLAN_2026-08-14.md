@@ -1,7 +1,7 @@
 # The Blacksmith Market: pre-90-day pending-completion implementation plan
 
-Version: 1.0  
-Prepared: 2026-08-14  
+Version: 1.0
+Prepared: 2026-08-14
 Scope: complete every prerequisite still pending before beginning Day 1 of `TBM_Forge_90_Day_Content_Interactive_Growth_Implementation_Plan_2026-08-13.html`.
 
 ## 1. Required outcome
